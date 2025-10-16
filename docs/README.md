@@ -1,10 +1,26 @@
 # SIGL (Structured Image Generation Language) Documentation
 
+**Version:** 0.1.0 (Alpha)  
+**Implementation Status:** 🚧 15-20% Complete
+
 Welcome to the comprehensive documentation for SIGL, a powerful domain-specific language designed for creating detailed, customizable scene illustrations with human figures, objects, and environments.
+
+## 📊 Implementation Status Legend
+
+- ✅ **Fully Implemented** - Feature is complete and tested
+- 🚧 **Partially Implemented** - Core functionality exists, needs enhancement
+- 📋 **Planned** - Specified but not yet implemented
+- 💡 **Future Enhancement** - Planned for later versions
 
 ## Overview
 
 SIGL provides an intuitive, English-like syntax for describing complex scenes while offering advanced features for customization, reusability, and domain-specific extensions. The language is built on a modular architecture that separates core functionality from specialized domain knowledge.
+
+## 🚀 Quick Links
+
+- **[Getting Started Guide](GETTING_STARTED.md)** ✅ - Start here for your first scene
+- **[Grammar Specification](system/grammar-specification.md)** ✅ - Formal language definition
+- **[Documentation Review](DOCUMENTATION_REVIEW.md)** ✅ - Known gaps and improvements
 
 ## Quick Start
 
@@ -22,28 +38,36 @@ DRAW TREE BEHIND PEOPLE
 
 The core system provides fundamental entities, attributes, and composition features:
 
-- **[Entities](core/entities.md)** - Basic entity types (humans, animals, objects, nature)
-- **[Human Attributes](core/human-attributes.md)** - Comprehensive human customization options
-- **[Positioning and Layout](core/positioning.md)** - Spatial arrangement and scene composition
-- **[Composition](core/composition.md)** - Advanced scene building and organization
+- **[Entities](core/entities.md)** 🚧 - Basic entity types (humans, animals, objects, nature)
+- **[Human Attributes](core/human-attributes.md)** 🚧 - Comprehensive human customization options
+- **[Positioning and Layout](core/positioning.md)** 📋 - Spatial arrangement and scene composition  
+- **[Composition](core/composition.md)** 📋 - Advanced scene building and organization
+- **[Colors](core/colors.md)** 🚧 - Color system and specifications
 
 ### 🏥 Domain Extensions
 
 Specialized extensions for specific domains and use cases:
 
-- **[Court and Legal](extensions/court-legal.md)** - Legal professionals, courtrooms, legal proceedings
-- **[Religious](extensions/religious.md)** - Religious figures, buildings, ceremonies, interfaith content
-- **[Transportation](extensions/transportation.md)** - Vehicles, transportation personnel, travel scenarios
-- **[Educational](extensions/educational.md)** - Schools, teachers, students, educational environments
+- **[Educational](extensions/educational.md)** 📋 - Schools, teachers, students, educational environments
+- **[Hospital](extensions/hospital.md)** 📋 - Medical professionals, equipment, medical scenarios
+- **[Military](extensions/military.md)** 📋 - Soldiers, officers, military vehicles and equipment
+- **[Court and Legal](extensions/court-legal.md)** 📋 - Legal professionals, courtrooms, legal proceedings
+- **[Religious](extensions/religious.md)** 📋 - Religious figures, buildings, ceremonies
+- **[Transportation](extensions/transportation.md)** 📋 - Vehicles, transportation personnel, travel scenarios
+- **[Space](extensions/space.md)** 💡 - Astronauts, spacecraft, space environments
 
 ### ⚙️ System Features
 
 Advanced features for power users and developers:
 
-- **[Templates and Reusability](features/templates.md)** - Template system for reusable components
-- **[Background and Environment](features/backgrounds.md)** - Environmental context and scene settings
-- **[Variation Handling](features/variations.md)** - Advanced parameter and variation system
-- **[Advanced Features](features/advanced.md)** - Implementation guidelines and best practices
+- **[Templates and Reusability](features/templates.md)** 🚧 - Template system for reusable components
+- **[Background and Environment](features/backgrounds.md)** 📋 - Environmental context and scene settings
+- **[Variation Handling](features/variations.md)** 📋 - Advanced parameter and variation system
+- **[Animations](features/animations.md)** 📋 - Movement, transitions, and dynamic effects
+- **[Patterns](features/patterns.md)** 📋 - Visual patterns for clothing and surfaces
+- **[Lighting](features/lighting.md)** 📋 - Advanced lighting and shadows
+- **[Rendering](features/rendering.md)** 🚧 - Output formats and quality settings
+- **[Advanced Features](features/advanced.md)** 📋 - Implementation guidelines and best practices
 
 ## Key Features
 

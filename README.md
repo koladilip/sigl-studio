@@ -2,6 +2,8 @@
 
 > A browser-based 3D scene generator powered by natural language
 
+**🚀 [Try Live Demo](https://koladilip.github.io/sigl-studio/)** | [Documentation](docs/README.md) | [Examples](examples/)
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://reactjs.org/)
 [![Three.js](https://img.shields.io/badge/Three.js-0.160-000000.svg)](https://threejs.org/)

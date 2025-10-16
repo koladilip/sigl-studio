@@ -4,6 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/sigl-studio/', // GitHub Pages base path
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -11,6 +12,10 @@ export default defineConfig({
   },
   server: {
     port: 3000
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false
   }
 })
 

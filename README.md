@@ -8,6 +8,7 @@
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://reactjs.org/)
 [![Three.js](https://img.shields.io/badge/Three.js-0.180-000000.svg)](https://threejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.1-646CFF.svg)](https://vitejs.dev/)
+[![License](https://img.shields.io/badge/license-Elastic_2.0-blue.svg)](LICENSE)
 
 ## 🎨 What is SIGL?
 
@@ -253,7 +254,22 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 
 ## 📄 License
 
-License to be determined - currently in alpha development.
+This project is licensed under the **Elastic License 2.0** - see the [LICENSE](LICENSE) file for details.
+
+### What This Means
+
+✅ **You CAN:**
+- Use SIGL Studio for free in your projects
+- Modify and customize the code
+- Build applications on top of it
+- Use it internally in your company
+
+❌ **You CANNOT:**
+- Offer SIGL Studio as a managed service to third parties
+- Remove or bypass licensing features
+- Remove copyright notices
+
+This protects SIGL Studio as a core product offering while keeping it source-available for the community.
 
 ## 🙏 Acknowledgments
 

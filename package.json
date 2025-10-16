@@ -13,13 +13,18 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest --coverage",
+    "test:watch": "vitest",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src/**/*.{ts,tsx,json}",
     "type-check": "tsc --noEmit",
-    "antlr:generate": "npx antlr4 -Dlanguage=TypeScript -visitor -no-listener src/parser/grammar/SIGL.g4 -o src/parser/generated",
     "clean": "rm -rf dist node_modules/.vite",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate": "node -r esbuild-register src/cli/generate.ts"
+  },
+  "bin": {
+    "sigl": "./dist/cli/generate.js",
+    "sigl-generate": "./dist/cli/generate.js"
   },
   "keywords": [
     "sigl",
@@ -34,12 +39,13 @@
   "license": "MIT",
   "dependencies": {
     "ajv": "^8.12.0",
-    "antlr4": "^4.13.0",
-    "antlr4ts": "^0.5.0-alpha.4",
     "chroma-js": "^2.4.2",
     "fabric": "^5.3.0",
     "lodash": "^4.17.21",
     "uuid": "^9.0.1"
+  },
+  "optionalDependencies": {
+    "canvas": "^2.11.2"
   },
   "devDependencies": {
     "@types/chroma-js": "^3.1.1",
@@ -49,6 +55,7 @@
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "@vitest/coverage-v8": "^3.2.4",
+    "esbuild-register": "^3.5.0",
     "eslint": "^8.52.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.0",

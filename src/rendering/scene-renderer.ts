@@ -8,13 +8,15 @@ import {
   AtmosphereDefinition,
   FogDefinition
 } from '../core/types';
+import { CanvasFactory, type CanvasLike, type ContextLike } from './platform-canvas';
 
 /**
  * Rendering context for managing canvas and drawing operations
+ * Works in both browser and Node.js environments
  */
 export interface RenderContext {
-  canvas: HTMLCanvasElement;
-  ctx: CanvasRenderingContext2D;
+  canvas: CanvasLike;
+  ctx: ContextLike;
   width: number;
   height: number;
   scale: number;
@@ -63,10 +65,10 @@ export class SceneRenderer {
   }
 
   /**
-   * Render a scene to a canvas
+   * Render a scene to a canvas (works in browser and Node.js)
    */
   async render(scene: SceneDefinition, options: RenderOptions = {}): Promise<RenderResult> {
-    const startTime = performance.now();
+    const startTime = typeof performance !== 'undefined' ? performance.now() : Date.now();
     const errors: SIGLError[] = [];
     const renderedEntities: RenderedEntity[] = [];
 
@@ -126,38 +128,31 @@ export class SceneRenderer {
   }
 
   /**
-   * Create a render context
+   * Create a render context (platform-agnostic)
    */
   private createRenderContext(options: RenderOptions): RenderContext {
     const width = options.width || this.config.canvas.width;
     const height = options.height || this.config.canvas.height;
     
-    // Create canvas if not provided
-    let canvas: HTMLCanvasElement;
-    if (typeof document !== 'undefined') {
-      canvas = document.createElement('canvas');
-    } else {
-      // For Node.js environments, we'd need a canvas library like node-canvas
-      throw new Error('Canvas rendering not supported in this environment');
-    }
-    
-    canvas.width = width;
-    canvas.height = height;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-      throw new Error('Failed to get 2D rendering context');
-    }
+    // Create canvas using platform factory
+    const canvasFactory = CanvasFactory.getInstance();
+    const canvas = canvasFactory.createCanvas(width, height);
+    const ctx = canvasFactory.getContext(canvas);
     
     // Configure context
     ctx.imageSmoothingEnabled = this.config.rendering.antialiasing;
+    
+    // Get device pixel ratio (browser) or use 1 (Node.js)
+    const scale = typeof window !== 'undefined' && window.devicePixelRatio 
+      ? window.devicePixelRatio 
+      : 1;
     
     return {
       canvas,
       ctx,
       width,
       height,
-      scale: window.devicePixelRatio || 1,
+      scale,
       camera: {
         x: 0,
         y: 0,

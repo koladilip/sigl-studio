@@ -66,23 +66,35 @@ class BrowserCanvas implements PlatformCanvas {
  * Node.js implementation using node-canvas
  */
 class NodeCanvas implements PlatformCanvas {
-  private Canvas: any;
+  private createCanvasFn: any;
 
   constructor() {
     try {
       // Dynamic import for node-canvas
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { createCanvas } = require('canvas');
-      this.Canvas = createCanvas;
+      let canvas;
+      try {
+        // Try ES module import first
+        canvas = require('canvas');
+      } catch {
+        // Fallback: try to import directly
+        throw new Error('Canvas module not found');
+      }
+      
+      this.createCanvasFn = canvas.createCanvas || canvas.default?.createCanvas;
+      
+      if (!this.createCanvasFn) {
+        throw new Error('createCanvas function not found in canvas module');
+      }
     } catch (error) {
       throw new Error(
-        'node-canvas is required for Node.js environment. Install it with: npm install canvas'
+        'node-canvas is required for Node.js environment. Install it with: npm install canvas\n' +
+        `Error: ${error instanceof Error ? error.message : 'Unknown'}`
       );
     }
   }
 
   createCanvas(width: number, height: number): any {
-    return this.Canvas(width, height);
+    return this.createCanvasFn(width, height);
   }
 
   getContext(canvas: any): any {

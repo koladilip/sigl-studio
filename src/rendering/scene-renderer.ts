@@ -102,7 +102,9 @@ export class SceneRenderer {
       // Apply post-processing effects
       await this.applyPostProcessing(scene);
       
-      const renderTime = performance.now() - startTime;
+      const renderTime = typeof performance !== 'undefined' 
+        ? performance.now() - startTime 
+        : Date.now() - startTime;
       
       return {
         success: errors.length === 0,
@@ -113,7 +115,9 @@ export class SceneRenderer {
       };
       
     } catch (error) {
-      const renderTime = performance.now() - startTime;
+      const renderTime = typeof performance !== 'undefined' 
+        ? performance.now() - startTime 
+        : Date.now() - startTime;
       
       return {
         success: false,

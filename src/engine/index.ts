@@ -18,7 +18,6 @@ export { HumanEntity } from './entities/human-entity';
 // Utility exports
 export { ColorSystem } from './utils/colors/color-system';
 export { PositionSystem } from './utils/positioning/position-system';
-export { ValidationEngine } from './utils/validation/validation-engine';
 
 // Extension system exports
 export { ExtensionManager } from './extensions/extension-manager';

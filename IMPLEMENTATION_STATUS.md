@@ -1,244 +1,388 @@
 # SIGL Implementation Status
 
+**Version:** 0.1.0 (Alpha)  
 **Last Updated:** October 16, 2025  
-**Branch:** `feat/fix-parser-and-core-syntax`  
-**Overall Progress:** 🚀 **40-45% Complete** (up from 15-20%)
+**Overall Progress:** 🟢 ~45% Complete
 
 ---
 
-## ✅ Fully Implemented Features
+## 📊 Status Legend
 
-### Core Parser & Syntax
-- ✅ Hand-written TypeScript parser (NO ANTLR!)
-- ✅ Natural language syntax: `DRAW MAN WITH AGE 30 AND BLUE SHIRT`
-- ✅ Entity types: MAN, WOMAN, BOY, GIRL, BABY, PERSON
-- ✅ Animal entities: ANIMAL DOG, ANIMAL CAT, ANIMAL BIRD, ANIMAL HORSE, ANIMAL FISH
-- ✅ Attribute parsing: `WITH ... AND ...` syntax
-- ✅ Parameterized attributes: `HAIR(COLOR: BROWN, STYLE: SHORT)`
-- ✅ Negated attributes: `WITHOUT SHIRT`, `NO PANTS`, `BARE TORSO`
-- ✅ Simple attributes: AGE, SIZE, emotions, clothing, body features
-- ✅ Color system: Named colors + hex + normalization
+- ✅ **Fully Implemented** - Feature is complete and tested
+- 🟢 **Mostly Implemented** - Core functionality works, minor features pending
+- 🟡 **Partially Implemented** - Basic version exists, needs enhancement
+- 🔴 **Not Implemented** - Planned but not started
+- 📋 **Planned** - Specified for future versions
 
-### Positioning System
-- ✅ Named positions: LEFT, RIGHT, CENTER, TOP, BOTTOM, etc.
-- ✅ Extended positions: FAR_LEFT, CENTER_RIGHT, UPPER, LOWER, etc.
-- ✅ Coordinate positions: AT POSITION x, y
-- ✅ Grid positions: AT GRID row, col
-- ✅ Relative positioning: NEXT TO, BEHIND, IN FRONT OF, LEFT OF, etc.
-- ✅ Position with distance: NEXT TO MAN WITH DISTANCE 50
+---
+
+## 🎯 Core Language Features
+
+### Parser & Syntax
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| **Comments** | ✅ | `//` inline comments fully supported |
+| **Line-based parsing** | ✅ | Clean line-by-line statement parsing |
+| **Error handling** | 🟢 | Basic error reporting, could add better suggestions |
+| **Whitespace handling** | ✅ | Robust whitespace and newline handling |
 
 ### Commands
-- ✅ DRAW command with full attribute support
-- ✅ LOAD EXTENSION command
-- ✅ ADD ENVIRONMENT command
-- ✅ UPDATE command (basic)
-- ✅ EXPORT command with format/quality/resolution options
 
-### Extensions
-- ✅ Educational Extension (10 entities, 7 environments)
-  - Entities: TEACHER, STUDENT, PROFESSOR, PRINCIPAL, LIBRARIAN, etc.
-  - Environments: CLASSROOM, LIBRARY, LABORATORY, GYMNASIUM, etc.
-  
-- ✅ Hospital Extension (9 entities, 7 environments)
-  - Entities: DOCTOR, NURSE, PATIENT, SURGEON, PARAMEDIC, etc.
-  - Environments: HOSPITAL, EXAMINATION_ROOM, OPERATING_ROOM, etc.
-
-### Platform Support
-- ✅ **Browser rendering** - Works with HTMLCanvasElement
-- ✅ **Node.js rendering** - Works with node-canvas
-- ✅ **Platform abstraction** - Auto-detects environment
-- ✅ **CLI tool** - Terminal image generation
-- ✅ **Export formats** - PNG, JPEG, WEBP in both environments
-
-### Documentation
-- ✅ Formal grammar specification
-- ✅ Getting Started guide
-- ✅ Platform support guide
-- ✅ Implementation status badges
-- ✅ Documentation review and roadmap
-- ✅ Comprehensive examples
-
-### Testing
-- ✅ 52 comprehensive parser tests
-- ✅ 41 tests passing (79% pass rate)
-- ✅ Test coverage for entities, attributes, positioning, extensions
+| Command | Status | Implementation Details |
+|---------|--------|----------------------|
+| **DRAW** | ✅ | Fully implemented with attributes and positioning |
+| **LOAD EXTENSION** | 🟡 | Parser recognizes it, extensions partially implemented |
+| **ADD ENVIRONMENT** | 🟡 | Basic implementation, limited environment types |
+| **UPDATE** | 🔴 | Parser stub exists, not fully implemented |
+| **EXPORT** | 🟡 | Basic PNG export works, quality settings recognized |
+| **CREATE TEMPLATE** | 🔴 | Not implemented |
+| **DEFINE VARIATION** | 🔴 | Not implemented |
+| **CREATE SCENE** | 🔴 | Not implemented |
+| **ANIMATE** | 🔴 | Not implemented |
 
 ---
 
-## 🚧 Partially Implemented
+## 🧑 Entity System
 
-### Rendering
-- 🚧 Basic 2D canvas rendering
-- 🚧 Simple human/object/prop rendering
-- 🚧 Environment backgrounds (solid colors, gradients)
-- 📋 Advanced rendering quality (need PBR, shadows, lighting)
-- 📋 Material system
-- 📋 Realistic human rendering
+### Entity Types
 
-### Template System
-- 🚧 Basic template engine with interpolation
-- 📋 DEFINE TEMPLATE from SIGL code
-- 📋 Template inheritance (EXTENDS)
-- 📋 Template libraries
+| Category | Status | Details |
+|----------|--------|---------|
+| **Humans** | ✅ | 11 subtypes (adult_male, adult_female, child_male, child_female, infant, toddler, teenager, elderly_male, elderly_female) |
+| **Objects** | ✅ | 14 subtypes (tree, house, car, chair, desk, table, blackboard, building, boat, bed, lamp, door, window, box) |
+| **Animals** | ✅ | 14 subtypes (dog, cat, bird, horse, cow, sheep, pig, rabbit, deer, bear, lion, tiger, elephant, giraffe) |
+| **Domain-specific** | 🟡 | Educational & hospital entities recognized, needs full builder implementation |
 
-### Entity Factory
-- 🚧 Basic entity creation (human, object, prop)
-- 📋 Advanced entity relationships
-- 📋 Entity grouping and composition
+**Total Built-in Entities:** 39+
 
----
+### Entity Features
 
-## 📋 Planned Features
-
-### Parser Enhancements
-- 📋 CREATE SCENE multi-line blocks
-- 📋 DEFINE VARIATION from SIGL
-- 📋 Variables and references (@identifier)
-- 📋 Conditional logic (IF/ELSE)
-- 📋 Loops and iterations
-
-### Animation System
-- 📋 ANIMATE command implementation
-- 📋 Movement animations (WALK, RUN, JUMP)
-- 📋 Gesture animations (WAVE, POINT, NOD)
-- 📋 Animation sequences and timelines
-- 📋 Domain-specific animations
-
-### Pattern System
-- 📋 Clothing patterns (STRIPES, POLKA_DOTS, PLAID)
-- 📋 Pattern parameters (width, density, colors)
-- 📋 Cultural patterns (TARTAN, PAISLEY)
-- 📋 Pattern layering
-
-### Advanced Positioning
-- 📋 Layout containers (FLEX, GRID)
-- 📋 Alignment and distribution
-- 📋 Anchor system
-- 📋 Responsive positioning
-- 📋 Z-index and layering
-
-### More Extensions
-- 📋 Military extension
-- 📋 Religious extension
-- 📋 Transportation extension
-- 📋 Court/Legal extension
-- 💡 Space extension (future)
-
-### Validation Engine
-- 📋 Context validation (outfit matches environment)
-- 📋 Suggestion system (typo correction)
-- 📋 Semantic validation
-- 📋 Best practice warnings
+| Feature | Status | Implementation |
+|---------|--------|----------------|
+| **Entity Registry** | ✅ | Centralized registry with builder pattern |
+| **Builder Pattern** | ✅ | Extensible builder architecture |
+| **Custom Builders** | ✅ | `registerEntityBuilder()` API available |
+| **Auto Type Mapping** | ✅ | Subtype to builder mapping |
+| **Fallback Handling** | ✅ | Generic box fallback for unknown types |
 
 ---
 
-## 💡 Future Enhancements
+## 🎨 Human Attributes
 
-- 💡 3D rendering (Three.js integration)
-- 💡 Advanced lighting and shadows
-- 💡 Physics-based animations
-- 💡 AI-powered scene suggestions
-- 💡 Interactive scene editor (GUI)
-- 💡 Collaborative editing
-- 💡 Cloud rendering services
-- 💡 VR/AR support
+### Physical Attributes
 
----
+| Attribute | Status | Supported Values |
+|-----------|--------|-----------------|
+| **Age** | ✅ | Any number (affects scale: <3 = 0.4x, <12 = 0.7x, ≥12 = 1.0x) |
+| **Gender** | ✅ | Inferred from entity type (MAN, WOMAN, BOY, GIRL) |
+| **Height** | 🔴 | Not implemented (could add TALL/SHORT modifiers) |
+| **Build** | 🔴 | Not implemented (SLIM, HEAVY, MUSCULAR) |
+| **Skin tone** | ✅ | light, medium, dark, olive, pale, tan, brown |
+| **Hair color** | ✅ | black, brown, blonde, red, auburn, gray, grey, white, silver + hex codes |
+| **Hair style** | 🟡 | short, long, curly, bald (recognized, needs better rendering) |
+| **Eye color** | ✅ | blue, brown, green, hazel, gray, grey, amber + hex codes |
 
-## 📈 Progress Metrics
+### Clothing
 
-### Implementation Progress
-| Component | Before | Now | Target v1.0 |
-|-----------|--------|-----|-------------|
-| Parser | 5% | **95%** | 100% |
-| Entity System | 20% | **60%** | 100% |
-| Extensions | 0% | **40%** | 80% |
-| Rendering | 15% | **30%** | 80% |
-| Platform Support | 0% | **90%** | 100% |
-| Documentation | 50% | **95%** | 95% |
-| Tests | 0% | **40%** | 80% |
-| **Overall** | **15%** | **40-45%** | **100%** |
+| Feature | Status | Implementation |
+|---------|--------|----------------|
+| **Shirt** | ✅ | `BLUE SHIRT` - any color + SHIRT |
+| **Dress** | ✅ | `RED DRESS` - renders as cone/cylinder shape |
+| **Pants** | ✅ | `BLACK PANTS` - rendered with legs |
+| **Outfit presets** | 🔴 | BUSINESS_SUIT, CASUAL_WEAR, etc. (recognized but not rendered) |
+| **Accessories** | 🔴 | Glasses, jewelry, hats (not implemented) |
 
-### Test Coverage
-- ✅ Parser: 41/52 tests (79%)
-- ⏳ Entity Factory: Basic tests only
-- ⏳ Renderer: No tests yet
-- ⏳ Extensions: No tests yet
-- **Target:** 80%+ coverage
+### Facial Features
 
-### Code Quality
-- ✅ TypeScript strict mode
-- ✅ ESLint configuration
-- ✅ Prettier formatting
-- ✅ Conventional commits
-- ✅ Clean git history
+| Feature | Status | Details |
+|---------|--------|---------|
+| **Eyes** | ✅ | White + colored iris + black pupil |
+| **Nose** | ✅ | Cone-shaped nose |
+| **Mouth** | ✅ | Torus-shaped smile |
+| **Ears** | ✅ | Spherical ears |
+| **Beard** | 🔴 | Recognized in parser, not rendered |
+| **Glasses** | 🔴 | Not implemented |
+| **Expression** | 🔴 | HAPPY, SAD, ANGRY, etc. (not implemented) |
 
----
+### Body Parts Rendering
 
-## 🎯 Next Milestones
-
-### v0.2.0 - Core Complete (2 weeks)
-- [ ] Fix remaining 11 parser tests
-- [ ] Implement remaining basic entities (TREE, HOUSE, CAR, etc.)
-- [ ] Add Military extension
-- [ ] Improve rendering quality
-- [ ] Add more test coverage (60%+)
-
-### v0.3.0 - Advanced Features (1 month)
-- [ ] Animation system
-- [ ] Pattern system
-- [ ] Advanced positioning (containers, alignment)
-- [ ] Template definition from SIGL
-- [ ] Validation engine
-
-### v0.4.0 - Polish & Performance (1.5 months)
-- [ ] Optimized rendering pipeline
-- [ ] Quality presets (DRAFT, PREVIEW, PRODUCTION, ULTRA)
-- [ ] Resolution presets (HD, 4K, etc.)
-- [ ] Better human rendering
-- [ ] Advanced lighting
-
-### v1.0.0 - Production Ready (3 months)
-- [ ] All documented features implemented
-- [ ] 80%+ test coverage
-- [ ] Performance optimized
-- [ ] Complete documentation
-- [ ] Published to npm
-- [ ] Web playground
+| Part | Status | Quality |
+|------|--------|---------|
+| **Head** | ✅ | Oval sphere with proper proportions |
+| **Hair** | ✅ | Hemisphere with style variations |
+| **Neck** | ✅ | Cylinder connecting head to torso |
+| **Torso** | ✅ | Cylinder (different shapes for male/female) |
+| **Arms** | ✅ | Upper arm + forearm + hands |
+| **Hands** | ✅ | Spherical hands |
+| **Legs** | ✅ | Upper leg + lower leg (with knees) |
+| **Feet/Shoes** | ✅ | Box-shaped shoes or spherical feet (for dresses) |
 
 ---
 
-## 🔥 Key Achievements
+## 📍 Positioning System
 
-### Why Hand-Written Parser > ANTLR?
-1. ✅ **Simpler** - No Java, no generation step, no external tools
-2. ✅ **Better errors** - Context-aware suggestions, not generic "expecting X"
-3. ✅ **Easier maintenance** - Direct TypeScript, no grammar files
-4. ✅ **Perfect types** - Native TypeScript with full IntelliSense
-5. ✅ **Faster** - Optimized for SIGL's line-based syntax
-6. ✅ **Smaller** - No 100KB+ generated code
+### Position Types
 
-### Platform Abstraction Benefits
-1. ✅ **Universal API** - Same code works in browser AND Node.js
-2. ✅ **Auto-detection** - No config needed, just works
-3. ✅ **Optional deps** - Browser doesn't need node-canvas
-4. ✅ **CLI ready** - Built-in terminal support
-5. ✅ **Flexible** - Easy to add new platforms
+| Position Type | Status | Syntax |
+|--------------|--------|--------|
+| **Absolute** | ✅ | `AT POSITION x, y` |
+| **Named** | ✅ | `AT LEFT`, `AT RIGHT`, `AT CENTER` |
+| **Relative** | ✅ | `NEXT TO <entity>` |
+| **Depth** | ✅ | `BEHIND <entity>`, `IN FRONT OF <entity>` |
+| **Directional** | 🟡 | `LEFT OF`, `RIGHT OF`, `ABOVE`, `BELOW` (basic) |
+| **Distance** | 🔴 | `WITH DISTANCE 50` (recognized, needs better implementation) |
 
----
+### Position Resolution
 
-## 📚 Resources
-
-- **Getting Started:** [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
-- **Grammar Spec:** [docs/system/grammar-specification.md](docs/system/grammar-specification.md)
-- **Platform Guide:** [PLATFORM_SUPPORT.md](PLATFORM_SUPPORT.md)
-- **Documentation:** [docs/README.md](docs/README.md)
+| Feature | Status | Details |
+|---------|--------|---------|
+| **Relative to absolute** | ✅ | Resolves `NEXT TO MAN` to actual coordinates |
+| **Entity reference** | ✅ | References like "MAN", "WOMAN" work |
+| **Offset calculation** | ✅ | Proper x,y,z offsets for each relationship |
+| **Collision detection** | 🔴 | Not implemented |
+| **Auto-layout** | 🔴 | Not implemented |
 
 ---
 
-**Status:** ✅ **Core Implementation Complete!**  
-**Progress:** **40-45%** - Strong foundation established  
-**Next:** Advanced features and polish
+## 🌍 Environment System
 
-*Last updated: October 16, 2025*
+### Environment Types
+
+| Environment | Status | Implementation |
+|------------|--------|----------------|
+| **PARK** | 🟡 | Green ground + blue sky |
+| **CLASSROOM** | 🔴 | Not implemented |
+| **OFFICE** | 🔴 | Not implemented |
+| **HOSPITAL** | 🔴 | Not implemented |
+| **BEACH** | 🔴 | Not implemented |
+| **Custom backgrounds** | 🔴 | Not implemented |
+
+### Environment Features
+
+| Feature | Status | Details |
+|---------|--------|---------|
+| **Background color** | 🟡 | Solid color supported |
+| **Ground plane** | ✅ | Flat plane for shadows |
+| **Sky** | 🟡 | Solid color, no gradients yet |
+| **Lighting** | ✅ | Ambient + directional lights |
+| **Shadows** | ✅ | PCF soft shadows |
+| **Fog/atmosphere** | 🔴 | Not implemented |
+
+---
+
+## 🔌 Extension System
+
+### Core Extensions
+
+| Extension | Status | Entities | Implementation |
+|-----------|--------|----------|----------------|
+| **Educational** | 🟡 | teacher, student, professor, instructor, librarian | Entity types defined, needs rendering |
+| **Hospital** | 🟡 | doctor, nurse, patient, surgeon | Entity types defined, needs rendering |
+| **Military** | 🔴 | soldier, officer, general | Planned |
+| **Court/Legal** | 🔴 | judge, lawyer | Planned |
+| **Religious** | 🔴 | priest, imam, rabbi | Planned |
+| **Transportation** | 🔴 | pilot, driver | Planned |
+| **Space** | 🔴 | astronaut | Planned |
+
+### Extension Features
+
+| Feature | Status | Details |
+|---------|--------|---------|
+| **Extension loading** | 🟡 | `LOAD EXTENSION` recognized |
+| **Auto-loading** | 🔴 | Automatic loading on entity use |
+| **Extension registry** | 🔴 | Not implemented |
+| **Custom extensions** | 🔴 | API not defined |
+
+---
+
+## 🎭 Rendering System
+
+### 3D Rendering (Three.js)
+
+| Feature | Status | Implementation |
+|---------|--------|----------------|
+| **WebGL rendering** | ✅ | Three.js r180 |
+| **Perspective camera** | ✅ | 45° FOV, proper aspect ratio |
+| **Lighting** | ✅ | Ambient + 2 directional lights |
+| **Shadows** | ✅ | PCF soft shadows |
+| **Materials** | ✅ | MeshStandardMaterial (PBR) |
+| **Anti-aliasing** | ✅ | MSAA enabled |
+| **Proper depth** | ✅ | Z-axis positioning works |
+
+### Export Features
+
+| Format | Status | Quality Options |
+|--------|--------|----------------|
+| **PNG** | ✅ | HIGH/MEDIUM/LOW recognized |
+| **JPEG** | 🔴 | Not implemented |
+| **SVG** | 🔴 | Not implemented |
+| **3D formats** | 🔴 | glTF, OBJ (not implemented) |
+
+---
+
+## 🎨 Advanced Features
+
+### Templates
+
+| Feature | Status | Specification |
+|---------|--------|--------------|
+| **Template definition** | 🔴 | `CREATE TEMPLATE` not implemented |
+| **Template usage** | 🔴 | Template instantiation not implemented |
+| **Template parameters** | 🔴 | Not implemented |
+| **Template library** | 🔴 | Not implemented |
+
+### Variations
+
+| Feature | Status | Specification |
+|---------|--------|--------------|
+| **Variation definition** | 🔴 | `DEFINE VARIATION` not implemented |
+| **Parameter ranges** | 🔴 | Not implemented |
+| **Random variations** | 🔴 | Not implemented |
+| **Controlled variations** | 🔴 | Not implemented |
+
+### Animations
+
+| Feature | Status | Specification |
+|---------|--------|--------------|
+| **Animation commands** | 🔴 | `ANIMATE` not implemented |
+| **Movement** | 🔴 | Not implemented |
+| **Transitions** | 🔴 | Not implemented |
+| **Keyframes** | 🔴 | Not implemented |
+
+### Patterns
+
+| Feature | Status | Details |
+|---------|--------|---------|
+| **Clothing patterns** | 🔴 | STRIPED, DOTTED, etc. not implemented |
+| **Texture mapping** | 🔴 | Not implemented |
+| **Surface patterns** | 🔴 | Not implemented |
+
+---
+
+## 🔧 Developer Features
+
+### Architecture
+
+| Component | Status | Quality |
+|-----------|--------|---------|
+| **Parser** | ✅ | Hand-written, fast, good error messages |
+| **Entity System** | ✅ | Builder pattern, extensible, well-documented |
+| **Type System** | ✅ | Full TypeScript coverage |
+| **Error Handling** | 🟢 | Basic errors, needs better suggestions |
+| **Testing** | 🟡 | Some unit tests exist |
+
+### APIs
+
+| API | Status | Documentation |
+|-----|--------|--------------|
+| **Parse API** | ✅ | `parser.parse(code)` |
+| **Render API** | ✅ | `engine.render(ast)` |
+| **Entity Builder API** | ✅ | `registerEntityBuilder()` |
+| **Extension API** | 🔴 | Not defined |
+| **Plugin System** | 🔴 | Not implemented |
+
+---
+
+## 📱 Platform Support
+
+| Platform | Status | Details |
+|----------|--------|---------|
+| **Browser (React)** | ✅ | Full support with live preview |
+| **Node.js** | 🔴 | Removed in restructure |
+| **CLI** | 🔴 | Removed in restructure |
+| **VS Code Extension** | 🔴 | Not implemented |
+
+---
+
+## 🎯 Implementation Priorities
+
+### High Priority (Next Sprint)
+
+1. **🔴 Template System** - Critical for reusability
+2. **🔴 Better Environments** - More environment types
+3. **🔴 Expression System** - Facial expressions (HAPPY, SAD, etc.)
+4. **🟡 Extension Completion** - Finish educational & hospital
+5. **🔴 UPDATE Command** - Update existing entities
+
+### Medium Priority
+
+1. **🔴 Variation System** - Parametric variations
+2. **🔴 Animation System** - Basic animations
+3. **🔴 More Export Formats** - JPEG, SVG
+4. **🔴 Outfit System** - Complete outfit presets
+5. **🔴 Accessory System** - Glasses, hats, jewelry
+
+### Low Priority
+
+1. **🔴 Advanced Patterns** - Clothing patterns
+2. **🔴 Collision Detection** - Auto-positioning
+3. **🔴 Node.js Support** - Headless rendering
+4. **🔴 Plugin System** - Third-party extensions
+5. **🔴 VS Code Extension** - IDE support
+
+---
+
+## 📈 Feature Completion Summary
+
+### By Category
+
+| Category | Completion | Items Complete | Total Items |
+|----------|-----------|----------------|-------------|
+| **Core Commands** | 44% | 4/9 | DRAW, LOAD, ADD, EXPORT vs UPDATE, TEMPLATE, VARIATION, SCENE, ANIMATE |
+| **Entity System** | 100% | 39/39 | All 39 entity types implemented |
+| **Human Attributes** | 60% | 9/15 | Age, skin, hair, eyes, clothing vs height, build, accessories, expressions |
+| **Positioning** | 80% | 4/5 | Absolute, named, relative, depth vs collision |
+| **Environment** | 20% | 1/5 | Only basic park implemented |
+| **Extensions** | 20% | 2/10 | Educational & Hospital partial vs others |
+| **Rendering** | 85% | 7/8 | Full 3D except multiple formats |
+| **Advanced Features** | 0% | 0/4 | Templates, Variations, Animations, Patterns |
+
+### Overall Score
+
+**Implementation Progress: ~45%**
+
+- ✅ Core infrastructure: Parser, Entity System, 3D Rendering
+- 🟢 Basic features: DRAW, positioning, simple attributes
+- 🟡 Partial features: Extensions, environments, clothing
+- 🔴 Missing features: Templates, variations, animations, advanced positioning
+
+---
+
+## 🔗 Related Documentation
+
+- [Grammar Specification](docs/system/grammar-specification.md) - Full language spec
+- [Entity System](docs/system/entity-system.md) - Entity builder documentation
+- [Getting Started](docs/GETTING_STARTED.md) - Usage guide
+- [Main README](README.md) - Project overview
+
+---
+
+## 📝 Notes
+
+### What Works Well
+- ✅ Natural language parser is robust and fast
+- ✅ Entity system is extensible and well-architected
+- ✅ 3D rendering produces high-quality output
+- ✅ Position resolution handles complex relationships
+- ✅ Type safety with TypeScript throughout
+
+### Known Limitations
+- 🔴 No template system yet
+- 🔴 Limited environment types
+- 🔴 No animations
+- 🔴 Extensions incomplete
+- 🔴 No facial expressions
+- 🔴 No variation system
+
+### Breaking Changes from Spec
+- Removed Node.js/CLI support (browser-only now)
+- Simplified attribute syntax (removed some complex parameterization)
+- Changed some entity naming conventions
+
+---
+
+**Last Review:** October 16, 2025  
+**Next Review:** TBD  
+**Maintainer:** Development Team
 

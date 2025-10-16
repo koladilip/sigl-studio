@@ -1,0 +1,65 @@
+export const examples = {
+  'family-portrait': {
+    name: '👨‍👩‍👧‍👦 Family Portrait',
+    code: `// Family Portrait - 3D Scene
+DRAW MAN WITH AGE 35 AND BLUE SHIRT AT LEFT
+DRAW WOMAN WITH AGE 32 AND RED DRESS NEXT TO MAN
+DRAW BOY WITH AGE 8 AND GREEN SHIRT IN FRONT OF MAN
+DRAW GIRL WITH AGE 6 AND YELLOW DRESS IN FRONT OF WOMAN
+
+ADD ENVIRONMENT PARK
+
+EXPORT AS PNG WITH QUALITY: HIGH`
+  },
+  'depth-test': {
+    name: '🎭 Depth Test',
+    code: `// Depth Test - Multiple Z-levels
+DRAW BOY WITH AGE 10 AT CENTER
+DRAW MAN WITH AGE 30 BEHIND BOY
+DRAW WOMAN WITH AGE 28 BEHIND BOY  
+DRAW GIRL WITH AGE 8 IN FRONT OF BOY
+DRAW MAN WITH AGE 35 IN FRONT OF GIRL
+
+ADD ENVIRONMENT PARK`
+  },
+  'classroom': {
+    name: '📚 Classroom',
+    code: `// Classroom Scene
+LOAD EXTENSION educational
+
+ADD ENVIRONMENT CLASSROOM
+
+DRAW TEACHER WITH AGE 35 AND PROFESSIONAL_ATTIRE AT LEFT
+DRAW STUDENT WITH AGE 10 AT CENTER
+DRAW STUDENT WITH AGE 11 NEXT TO STUDENT
+DRAW BLACKBOARD AT RIGHT
+
+EXPORT AS PNG`
+  },
+  'hospital': {
+    name: '🏥 Hospital',
+    code: `// Medical Checkup Scene
+LOAD EXTENSION hospital
+
+ADD ENVIRONMENT EXAMINATION_ROOM
+
+DRAW DOCTOR WITH AGE 45 AND BEARD AT LEFT
+DRAW PATIENT WITH AGE 50 NEXT TO DOCTOR
+DRAW NURSE WITH AGE 35 AT RIGHT
+
+EXPORT AS PNG WITH QUALITY: HIGH`
+  },
+  'custom': {
+    name: '✨ Custom Scene',
+    code: `// Create your own scene here!
+
+DRAW MAN WITH AGE 30 AT CENTER
+
+ADD ENVIRONMENT PARK
+
+EXPORT AS PNG`
+  }
+}
+
+export type ExampleKey = keyof typeof examples
+

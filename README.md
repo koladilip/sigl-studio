@@ -1,276 +1,270 @@
-# SIGL Engine
+# SIGL - Structured Image Generation Language
 
-**Structured Image Generation Language (SIGL)** - A powerful domain-specific language for creating detailed, customizable scene illustrations.
+> A browser-based 3D scene generator powered by natural language
 
-## Overview
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://reactjs.org/)
+[![Three.js](https://img.shields.io/badge/Three.js-0.160-000000.svg)](https://threejs.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-SIGL is a modular, text-based language for generating images and scenes using intuitive, natural language commands. It combines a powerful **Core System** with **Domain Extensions** for specialized use cases.
+## 🎨 What is SIGL?
 
-### 🌍 Universal Platform Support
-
-**SIGL works everywhere:**
-- ✅ **Browser** - React, Vue, vanilla JavaScript
-- ✅ **Node.js** - CLI tools, servers, batch processing
-- ✅ **Terminal** - Command-line image generation
-
-**No ANTLR needed!** Hand-written TypeScript parser for simplicity and better performance.
-
-## Quick Start Guide
-
-### Basic Example
-Here's a complete example from input to output:
+**SIGL** (Structured Image Generation Language) is a domain-specific language for creating 3D scenes using natural, human-readable syntax. Write simple text commands and generate beautiful 3D scenes rendered with Three.js!
 
 ```sigl
-// Load required extensions
-LOAD EXTENSION hospital
+DRAW MAN WITH AGE 35 AND BLUE SHIRT AT LEFT
+DRAW WOMAN WITH AGE 32 AND RED DRESS NEXT TO MAN
+DRAW BOY WITH AGE 8 IN FRONT OF MAN
+DRAW GIRL WITH AGE 6 IN FRONT OF WOMAN
 
-// Create a medical checkup scene
-CREATE SCENE "checkup":
-  DRAW DOCTOR WITH WHITE COAT AND STETHOSCOPE AT LEFT
-  DRAW PATIENT WITH AGE 30 AND CASUAL CLOTHES NEXT TO DOCTOR
-  ADD ENVIRONMENT HOSPITAL_ROOM
-  ADD TEXT "Annual Checkup" AT TOP CENTER WITH FONT SIZE 24
-
-// Export the result
-EXPORT AS PNG WITH SIZE 1024x768 TO "checkup_scene.png"
+ADD ENVIRONMENT PARK
 ```
 
-This creates a hospital scene with a doctor examining a patient, complete with appropriate environment and labeling.
+↓ **Generates** ↓
 
-### More Examples
+Beautiful 3D scene with proper depth, lighting, and perspective! 🎭
 
-#### Family Portrait
+## ✨ Features
+
+- 🎮 **Three.js 3D Rendering** - Real WebGL-powered graphics
+- 📝 **Natural Language Syntax** - Easy to learn and write
+- 🎨 **Live Preview** - See your scenes instantly
+- 💾 **PNG Export** - Download high-quality images
+- 🌐 **Browser-Based** - No installation, runs 100% in browser
+- 🚀 **TypeScript** - Fully type-safe
+- 🔥 **Hot Reload** - Instant updates during development
+
+## 🚀 Quick Start
+
+```bash
+# 1. Clone the repository
+git clone <repo-url>
+cd game-template-engine
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
+
+# 4. Open browser
+# → http://localhost:3000
+```
+
+That's it! The React app will load with Three.js 3D rendering ready to go.
+
+## 📚 Documentation
+
+### Language Reference
+- **[SIGL Syntax Guide](docs/system/grammar-specification.md)** - Complete language specification
+- **[Implementation Status](IMPLEMENTATION_STATUS.md)** 🎯 - What's implemented vs planned (~45% complete)
+- **[Getting Started](docs/GETTING_STARTED.md)** - Beginner's guide
+
+### Core Concepts
+- **[Entities](docs/core/entities.md)** - Characters and objects
+- **[Positioning](docs/core/positioning.md)** - Spatial placement  
+- **[Colors](docs/core/colors.md)** - Color system
+
+### Extensions
+- **[Educational](docs/extensions/educational.md)** - Classroom scenes
+- **[Hospital](docs/extensions/hospital.md)** - Medical environments
+- **[And more...](docs/extensions/)** - Transportation, military, religious, etc.
+
+## 🎯 Example Scenes
+
+### Family Portrait
 ```sigl
-CREATE SCENE "family_portrait":
-  DRAW MAN WITH AGE 35 AND BLUE SHIRT AT LEFT
-  DRAW WOMAN WITH AGE 32 AND RED DRESS NEXT TO MAN
-  DRAW BOY WITH AGE 8 AND GREEN SHIRT IN FRONT OF MAN
-  DRAW GIRL WITH AGE 6 AND YELLOW DRESS IN FRONT OF WOMAN
-  ADD ENVIRONMENT PARK
-  SET LIGHTING DIRECTION TOP-LEFT WITH INTENSITY SOFT
-EXPORT AS PNG WITH SIZE 1920x1080
+DRAW MAN WITH AGE 35 AND BLUE SHIRT AT LEFT
+DRAW WOMAN WITH AGE 32 AND RED DRESS NEXT TO MAN
+DRAW BOY WITH AGE 8 AND GREEN SHIRT IN FRONT OF MAN
+DRAW GIRL WITH AGE 6 AND YELLOW DRESS IN FRONT OF WOMAN
+
+ADD ENVIRONMENT PARK
+EXPORT AS PNG WITH QUALITY: HIGH
 ```
 
-#### Space Mission
+### Classroom
 ```sigl
-LOAD EXTENSION space
-CREATE SCENE "moon_landing":
-  DRAW ASTRONAUT WITH SPACE_SUIT AT CENTER
-  DRAW LUNAR_MODULE AT RIGHT
-  DRAW EARTH IN BACKGROUND AT TOP-LEFT
-  ADD ENVIRONMENT MOON_SURFACE
-  ADD TEXT "One Small Step" AT BOTTOM WITH FONT SIZE 18
-EXPORT AS PNG WITH SIZE 1024x768
+LOAD EXTENSION educational
+
+ADD ENVIRONMENT CLASSROOM
+
+DRAW TEACHER WITH AGE 35 AT LEFT
+DRAW STUDENT WITH AGE 10 AT CENTER
+DRAW STUDENT WITH AGE 11 NEXT TO STUDENT
+DRAW BLACKBOARD AT RIGHT
 ```
 
-#### Professional Portrait with Advanced Features
-```sigl
-CREATE SCENE "executive_portrait":
-  // Advanced camera and composition
-  SET_CAMERA:
-    POSITION: (0, 1.6, 2)
-    FOCAL_LENGTH: 85mm
-    APERTURE: f/2.8
-    DEPTH_OF_FIELD: SHALLOW
-  
-  SET_PORTRAIT_COMPOSITION:
-    FRAMING: THREE_QUARTER
-    HEAD_POSITION: RIGHT_THIRD
-    EYE_LEVEL: SLIGHTLY_ABOVE
-  
-  // Professional lighting setup
-  ADD_LIGHT "key":
-    TYPE: SOFTBOX
-    POSITION: (1, 2, 1)
-    INTENSITY: 0.8
-    COLOR_TEMPERATURE: 5600K
-  
-  ADD_LIGHT "fill":
-    TYPE: UMBRELLA
-    POSITION: (-0.5, 1.5, 1)
-    INTENSITY: 0.3
-  
-  // Subject with advanced materials
-  DRAW PERSON WITH AGE 45:
-    CLOTHING: BUSINESS_SUIT
-    MATERIAL: WOOL_BLEND
-    PATTERN: SUBTLE_PINSTRIPE
-    SKIN_MATERIAL: REALISTIC_SKIN WITH AGE_FACTOR 0.4
-  
-  // High-quality export
-  EXPORT AS PNG:
-    RESOLUTION: 4K
-    COLOR_SPACE: ADOBE_RGB
-    QUALITY: ULTRA
-    DPI: 300
-```
-
-#### Cinematic Landscape
-```sigl
-CREATE_SCENE "golden_hour_vista":
-  // Cinematic camera setup
-  SET_CAMERA:
-    POSITION: (0, 10, -50)
-    FOCAL_LENGTH: 24mm
-    TILT_SHIFT: SUBTLE
-  
-  // Advanced composition
-  SET_LANDSCAPE_COMPOSITION:
-    HORIZON_PLACEMENT: LOWER_THIRD
-    LEADING_LINES: RIVER_PATH
-    FOCAL_POINT: MOUNTAIN_PEAK AT GOLDEN_RATIO
-  
-  // Dynamic lighting
-  SET_TIME_OF_DAY: GOLDEN_HOUR
-  ADD_ATMOSPHERIC_EFFECTS:
-    VOLUMETRIC_LIGHTING: true
-    GOD_RAYS: INTENSITY 0.6
-    ATMOSPHERIC_SCATTERING: true
-  
-  // Advanced materials
-  APPLY_MATERIAL "mountain_rock":
-    TYPE: GRANITE
-    WEATHERING: 0.7
-    MOSS_COVERAGE: 0.2
-  
-  APPLY_MATERIAL "flowing_water":
-    TRANSPARENCY: 0.9
-    WAVE_HEIGHT: 0.1
-    FOAM_COVERAGE: 0.15
-  
-  // Environment with depth layers
-  CREATE_DEPTH_LAYERS:
-    FOREGROUND: WILDFLOWERS WITH SOFT_BLUR
-    MIDGROUND: RIVER WITH SHARP_FOCUS
-    BACKGROUND: MOUNTAINS WITH ATMOSPHERIC_PERSPECTIVE
-  
-  EXPORT AS PNG WITH HDR_TONE_MAPPING
-```
-
-### Command Structure
-All SIGL commands follow this standardized pattern:
-```
-ACTION ENTITY [WITH ATTRIBUTES] [AT POSITION] [MODIFIERS]
-```
-
-### Error Prevention
-Common mistakes to avoid:
-- **Ambiguous positioning**: Use specific coordinates or relative positioning
-- **Missing extensions**: Always load required extensions before using domain-specific entities
-- **Conflicting attributes**: Check for logical conflicts (e.g., BABY WITH BEARD)
-- **Invalid combinations**: Some extensions may not work together
-
-## Glossary
-
-- **SCENE**: A complete composition containing multiple entities and environments
-- **BIOME**: A predefined natural environment template (forest, desert, etc.)
-- **TEMPLATE**: A reusable entity or scene definition
-- **EXTENSION**: A domain-specific module that adds specialized entities and commands
-- **ENTITY**: Any drawable object (person, animal, object, etc.)
-- **ATTRIBUTE**: Properties that modify an entity's appearance (age, color, size, etc.)
-- **ENVIRONMENT**: Background and contextual elements for scenes
-
-## Documentation Structure
-
-This specification has been organized into logical modules for better navigation and maintainability:
-
-### Core System Documentation
-- **[Core Entities](docs/core/entities.md)** - Basic drawing commands for humans, animals, and objects
-- **[Human Attributes](docs/core/human-attributes.md)** - Age, emotion, physical features, clothing, and appearance
-- **[Color System](docs/core/colors.md)** - Color specifications, themes, and patterns
-- **[Nature Elements](docs/core/nature.md)** - Trees, water, terrain, weather, and biomes
-- **[Positioning & Layout](docs/core/positioning.md)** - Coordinate systems, relative positioning, and alignment
-- **[Composition](docs/core/composition.md)** - Scenes, groups, and combining elements
-- **[Text & Labels](docs/core/text.md)** - Text rendering, fonts, and labeling
-- **[Shapes & Primitives](docs/core/shapes.md)** - Basic geometric shapes and drawing primitives
-- **[Lighting & Effects](docs/core/lighting.md)** - Lighting systems and visual effects
-- **[Backgrounds & Environments](docs/core/environments.md)** - Background elements and environmental settings
-
-### Domain Extensions
-- **[Hospital Domain](docs/extensions/hospital.md)** - Medical staff, equipment, and hospital environments
-- **[Space Domain](docs/extensions/space.md)** - Astronauts, spacecraft, and celestial bodies
-- **[Court/Legal Domain](docs/extensions/legal.md)** - Judges, lawyers, and courtroom settings
-- **[Military Domain](docs/extensions/military.md)** - Soldiers, weapons, and military vehicles
-- **[Religious Domain](docs/extensions/religious.md)** - Clergy, religious buildings, and ceremonies
-- **[Transportation Domain](docs/extensions/transportation.md)** - Vehicles and travel scenarios
-- **[Educational Domain](docs/extensions/educational.md)** - Schools, teachers, and students
-
-### Advanced Features
-- **[Pattern System](docs/features/patterns.md)** - Clothing patterns, textures, and visual variations
-- **[Animation System](docs/features/animations.md)** - Entity animations, movements, and dynamic behaviors
-- **[Aliasing System](docs/features/aliasing.md)** - Entity aliases and shorthand configurations
-- **[Enhanced Expressions](docs/features/expressions.md)** - Playful attributes, interactivity, and educational features
-- **[Advanced Templates](docs/features/advanced.md)** - Complex template systems and variations
-- **[Background Systems](docs/features/backgrounds.md)** - Advanced background and environment features
-- **[Template Variations](docs/features/variations.md)** - Template variation and customization systems
-- **[Rendering & Output](docs/features/rendering.md)** - Advanced image generation, export formats, and quality controls
-- **[Lighting & Visual Effects](docs/features/lighting.md)** - Sophisticated lighting systems, shadows, and atmospheric effects
-- **[Camera & Perspective](docs/features/camera.md)** - Camera positioning, lens effects, and perspective controls
-- **[Composition & Layout](docs/features/composition.md)** - Professional composition techniques and visual design principles
-- **[Materials & Textures](docs/features/materials.md)** - Advanced surface properties, PBR materials, and texture systems
-- **[Performance & Optimization](docs/features/performance.md)** - Rendering optimization, memory management, and quality scaling
-
-### System Features
-- **[Templates & Reusability](docs/system/templates.md)** - Creating and using reusable templates
-- **[Export & Output](docs/system/export.md)** - Output formats and export options
-- **[Language Rules](docs/system/language-rules.md)** - Syntax rules and conventions
-- **[Grammar Specification](docs/system/grammar.md)** - Formal grammar definition
-- **[Security & Validation](docs/system/security.md)** - Input validation and security considerations
-- **[Performance Guidelines](docs/system/performance.md)** - Optimization and performance best practices
-- **[Testing & Examples](docs/system/testing.md)** - Test cases and example scenarios
-- **[Implementation Notes](docs/system/implementation.md)** - Technical implementation details
-- **[Integration & APIs](docs/system/integration.md)** - API integration and external interfaces
-- **[Future Enhancements](docs/system/future.md)** - Planned features and roadmap
-
-## Architecture
-
-### Core System
-The core system provides fundamental drawing capabilities:
-- Basic entities (humans, animals, objects)
-- Essential attributes (age, emotion, colors)
-- Nature elements (trees, water, terrain)
-- Basic positioning and layout
-- Core composition features
-
-### Domain Extensions
-Specialized extensions for specific contexts that can be loaded as needed to extend the core functionality with domain-specific entities and commands.
-
-### Extension System Rules
-
-#### Loading Extensions
+### Hospital
 ```sigl
 LOAD EXTENSION hospital
-LOAD EXTENSION space
-LOAD EXTENSION military
+
+ADD ENVIRONMENT EXAMINATION_ROOM
+
+DRAW DOCTOR WITH AGE 45 AND BEARD AT LEFT
+DRAW PATIENT WITH AGE 50 NEXT TO DOCTOR
+DRAW NURSE WITH AGE 35 AT RIGHT
 ```
 
-#### Namespace Resolution
-When multiple extensions define the same entity:
-1. **Core System** takes precedence over extensions
-2. **Last loaded extension** takes precedence over earlier ones
-3. Use explicit namespacing to resolve conflicts:
-   ```sigl
-   DRAW CORE:CAR          // Uses core car definition
-   DRAW TRANSPORT:CAR     // Uses transportation extension car
-   DRAW MILITARY:CAR      // Uses military extension vehicle
-   ```
+See [examples/](examples/) for more scene files.
 
-#### Cross-Extension Compatibility
-Extensions can be combined when they don't conflict:
+## 🏗️ Project Structure
+
+```
+game-template-engine/
+├── src/                    # React App + SIGL Engine
+│   ├── App.tsx             # Main React component
+│   ├── main.tsx            # React entry point
+│   ├── components/         # React UI components
+│   ├── hooks/              # React hooks (engine integration)
+│   ├── utils/              # Utilities & examples
+│   └── engine/             # SIGL Engine
+│       ├── parser/         # SIGL parser (browser-compatible)
+│       ├── core/           # Engine core
+│       ├── rendering/      # Three.js + Canvas renderers
+│       ├── entities/       # Entity definitions
+│       └── extensions/     # Domain extensions
+│
+├── index.html          # HTML entry point
+├── vite.config.ts      # Vite configuration
+├── package.json        # Dependencies & scripts
+├── examples/           # Example .sigl files
+├── docs/               # Documentation
+└── tests/              # Tests
+```
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|-----------|---------|
+| **React 18** | UI framework |
+| **TypeScript** | Type safety |
+| **Three.js** | 3D rendering engine |
+| **Vite** | Build tool & dev server |
+| **Vitest** | Testing framework |
+
+## 🎨 Rendering
+
+SIGL uses **Three.js** for real 3D WebGL rendering in the browser:
+
+- ✅ **Perspective Camera** - Realistic depth
+- ✅ **Dynamic Lighting** - Shadows and illumination  
+- ✅ **3D Meshes** - Real geometry with realistic features
+- ✅ **Materials** - PBR-ready rendering
+- ✅ **Fallback** - 2D Canvas if WebGL unavailable
+
+### 🧩 Extensible Entity System
+
+SIGL features a powerful entity builder library with **39+ built-in entity types**:
+
+- **11 Human Types** - Realistic humans with eyes, facial features, hands, proper anatomy
+- **14 Object Types** - Furniture, buildings, vehicles, props
+- **14 Animal Types** - Dogs, cats, birds, horses, and more
+
+**See [Entity System Docs](docs/system/entity-system.md)** for full details on creating custom entities.
+
+## 📝 Language Syntax
+
+### Basic Commands
+
 ```sigl
-LOAD EXTENSION hospital
-LOAD EXTENSION military
-CREATE SCENE "field_hospital":
-  DRAW MILITARY:MEDIC WITH HOSPITAL:STETHOSCOPE
-  ADD ENVIRONMENT MILITARY:FIELD_TENT WITH HOSPITAL:MEDICAL_EQUIPMENT
+// Draw entities
+DRAW <entity> [WITH <attributes>] [AT/NEXT TO/BEHIND <position>]
+
+// Environment
+ADD ENVIRONMENT <type>
+
+// Extensions
+LOAD EXTENSION <name>
+
+// Export
+EXPORT AS <format> [WITH <options>]
 ```
 
-## Getting Started
+### Entity Types
+- `MAN`, `WOMAN`, `BOY`, `GIRL`, `BABY`
+- `TEACHER`, `STUDENT`, `DOCTOR`, `NURSE`
+- `TREE`, `HOUSE`, `CAR`, `BUILDING`
 
-1. Start with the [Core Entities](docs/core/entities.md) to understand basic drawing commands
-2. Learn about [Human Attributes](docs/core/human-attributes.md) for character customization
-3. Explore [Positioning & Layout](docs/core/positioning.md) for scene composition
-4. Check out domain extensions relevant to your use case
-5. Review [Templates & Reusability](docs/system/templates.md) for efficient workflows
+### Attributes
+- `AGE <number>` - Character age
+- `<color> SHIRT/DRESS/PANTS` - Clothing
+- `BEARD`, `GLASSES` - Features
+- `<skin> SKIN` - Skin tone
 
-For complete examples and test cases, see [Testing & Examples](docs/system/testing.md).
+### Positioning
+- `AT LEFT/CENTER/RIGHT` - Named positions
+- `NEXT TO <entity>` - Relative to other entities
+- `BEHIND/IN FRONT OF <entity>` - Depth positioning
+- `AT POSITION <x>, <y>` - Absolute coordinates
+
+## 🚀 Development
+
+### Setup
+```bash
+npm install
+```
+
+### Run Development Server
+```bash
+npm run dev
+# → http://localhost:3000
+```
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Run Tests
+```bash
+npm test
+npm run test:coverage
+npm run test:watch
+```
+
+## 📦 Deployment
+
+The React app can be deployed to any static hosting:
+
+### Netlify / Vercel
+```bash
+npm run build
+# Deploy the 'dist' folder
+```
+
+### GitHub Pages
+```bash
+npm run build
+# Deploy dist/ to gh-pages branch
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) first.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feat/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feat/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Three.js** - 3D rendering engine
+- **React** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tooling
+
+## 📧 Contact
+
+- **GitHub**: [Issues](https://github.com/yourusername/game-template-engine/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/game-template-engine/discussions)
+
+---
+
+**Made with ❤️ using React + TypeScript + Three.js**

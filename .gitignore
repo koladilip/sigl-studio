@@ -81,7 +81,11 @@ src/parser/generated/
 # Test outputs
 test-results/
 playwright-report/
+.playwright-mcp/
 
 # Temporary files
 tmp/
 temp/
+
+# Archive (old files - not needed in React-only architecture)
+.archive/

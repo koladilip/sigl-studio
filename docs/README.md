@@ -19,6 +19,7 @@ SIGL provides an intuitive, English-like syntax for describing complex scenes wh
 ## 🚀 Quick Links
 
 - **[Getting Started Guide](GETTING_STARTED.md)** ✅ - Start here for your first scene
+- **[Implementation Status](../IMPLEMENTATION_STATUS.md)** 🎯 - What's implemented vs planned (~45% complete)
 - **[Grammar Specification](system/grammar-specification.md)** ✅ - Formal language definition
 - **[Documentation Review](DOCUMENTATION_REVIEW.md)** ✅ - Known gaps and improvements
 
@@ -60,6 +61,7 @@ Specialized extensions for specific domains and use cases:
 
 Advanced features for power users and developers:
 
+- **[Entity System](system/entity-system.md)** ✅ - Extensible 3D entity builder library (39+ entity types)
 - **[Templates and Reusability](features/templates.md)** 🚧 - Template system for reusable components
 - **[Background and Environment](features/backgrounds.md)** 📋 - Environmental context and scene settings
 - **[Variation Handling](features/variations.md)** 📋 - Advanced parameter and variation system

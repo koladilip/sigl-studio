@@ -1,94 +1,94 @@
 # Changelog
 
-All notable changes to SIGL (Structured Image Generation Language) will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
 ### Added
-- Comprehensive ANTLR grammar for natural language syntax
-- Formal grammar specification documentation
-- Getting Started guide for new users
-- Implementation status badges across all documentation
-- Support for DRAW command with entity types (MAN, WOMAN, BOY, GIRL, BABY, ANIMAL)
-- Attribute parsing system (WITH AGE 30 AND BLUE SHIRT syntax)
-- Parameterized attributes (HAIR(COLOR: BROWN, STYLE: SHORT))
-- Positioning syntax (AT LEFT, NEXT TO, BEHIND, etc.)
-- LOAD EXTENSION command structure
-- DEFINE TEMPLATE and DEFINE VARIATION commands
-- CREATE SCENE and ADD ENVIRONMENT commands
-- ANIMATE command structure
-- EXPORT command with format options
-- Negated attributes (WITHOUT SHIRT, NO PANTS, BARE TORSO)
+- ✨ **Extensible Entity System** - Comprehensive entity builder library with 39+ built-in types
+  - HumanBuilder with realistic features (eyes, nose, mouth, ears, hands)
+  - ObjectBuilder for 14+ object types (furniture, buildings, vehicles)
+  - AnimalBuilder for 14+ animal types (pets, farm animals, wildlife)
+  - EntityRegistry for centralized entity management
+  - Builder pattern for easy extensibility
+- 📊 **Implementation Status Document** - Comprehensive tracking of implemented vs planned features
+- 🎨 **Realistic Human Rendering** - Improved 3D human models with:
+  - Eyes with colored pupils and iris
+  - Facial features (nose, mouth, ears)
+  - Detailed hair with style variations
+  - Proper body proportions (neck, elbows, knees, hands)
+  - Age-based scaling
+- 🔧 **Position Resolution System** - Resolves relative positions to absolute coordinates
+- 📚 **Entity System Documentation** - Complete guide for the entity builder library
 
-### Documentation
-- Created comprehensive grammar specification (docs/system/grammar-specification.md)
-- Added Getting Started guide (docs/GETTING_STARTED.md)
-- Added Documentation Review with improvement recommendations
-- Updated README with implementation status indicators
-- Added status legend: ✅ Implemented, 🚧 Partial, 📋 Planned, 💡 Future
+### Fixed
+- 🐛 **WebGL Canvas Rendering** - Fixed canvas cloning issue that prevented 3D scene display
+- 🐛 **Entity Positioning** - Fixed relative positioning (NEXT TO, IN FRONT OF, etc.)
+- 🐛 **Parser Position Resolution** - All entities now properly positioned in 3D space
 
-## [0.1.0] - 2025-10-16 (Initial Release)
+### Changed
+- 📦 **Documentation Organization** - Moved all docs to `docs/` folder
+- 🗑️ **Cleanup** - Removed temporary files and old coverage reports
+- 📝 **Updated README** - Added entity system information
 
-### Initial Features
-- TypeScript project with Vite build system
-- Core type definitions and interfaces
-- Basic entity factory (human/object/prop)
-- Simple canvas-based renderer
-- Template engine with parameter interpolation
-- Extension manager architecture
-- Basic export to PNG/JPEG/WEBP
-- ANTLR4-based grammar with natural language syntax
+## [0.1.0] - 2024-10-16
 
-### Current Status
-- **Overall Completion:** ~15-20%
-- **Parser:** Grammar defined, needs TypeScript integration
-- **Entity System:** Basic factory pattern implemented
-- **Rendering:** Simple 2D canvas rendering
-- **Extensions:** Architecture ready, implementations pending
-- **Templates:** Basic interpolation working
+### 🎉 Initial Release - React Migration
 
-### In Development
-- Domain extension implementations (educational, hospital, military)
-- Advanced positioning system (grid, anchors, relative)
-- Animation system
-- Pattern system for visual effects
-- Comprehensive validation engine
+#### Added
+- ✨ **React + TypeScript Web Application** - Modern browser-based UI
+- 🎮 **Three.js 3D Rendering** - Real WebGL graphics in browser
+- 📝 **Live SIGL Editor** - Write code, see results instantly
+- 💾 **PNG Export** - Download high-quality images
+- 🔥 **Hot Module Replacement** - Instant development updates
+- 📚 **Example Scenes** - Pre-built templates (family, classroom, hospital)
+- 🎨 **SIGL Parser** - Browser-compatible natural language parser
+- 🌈 **Color System** - Comprehensive color palette
+- 📐 **Position System** - Absolute and relative positioning
+- 🎭 **Entity System** - Humans, objects, props with attributes
+- 🔌 **Extension System** - Domain-specific extensions
 
-## Roadmap
+#### Changed
+- 🔄 **Architecture**: Migrated from CLI to React-only application
+- 🌐 **Platform**: Now 100% browser-based (no Node.js runtime needed)
+- 🎯 **Focus**: Browser rendering with Three.js (removed server-side)
+- 📦 **Structure**: Cleaner project organization
 
-### v0.2.0 (Planned - Q4 2025)
-- [ ] Parser integration with new grammar
-- [ ] Educational extension implementation
-- [ ] Hospital extension implementation
-- [ ] Basic test suite
+#### Removed
+- ❌ CLI tools (`sigl-cli.cjs`, `generate.ts`)
+- ❌ Node.js server rendering
+- ❌ Old HTML demos
+- ❌ Backend dependencies
 
-### v0.3.0 (Planned - Q1 2026)
-- [ ] Military extension
-- [ ] Transportation extension
-- [ ] Advanced positioning system
-- [ ] Template inheritance
+### Technical Stack
+- React 18
+- TypeScript 5.2
+- Three.js 0.160
+- Vite 7.1
+- Vitest 3.2
 
-### v0.4.0 (Planned - Q2 2026)
-- [ ] Animation system implementation
-- [ ] Pattern system
-- [ ] Advanced rendering options
+---
 
-### v1.0.0 (Planned - Q3 2026)
-- [ ] All core features implemented
-- [ ] Comprehensive test coverage
-- [ ] Production-ready performance
-- [ ] Complete documentation
-- [ ] CLI tools
-- [ ] Web playground
+## Versioning
 
-## Contributing
+We use [SemVer](http://semver.org/) for versioning.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute to SIGL.
+### Version Format
+- **MAJOR** version for incompatible API changes
+- **MINOR** version for new functionality (backwards-compatible)
+- **PATCH** version for bug fixes (backwards-compatible)
 
-## License
+### Commit Convention
+We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
-MIT License - see [LICENSE](LICENSE) file for details.
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `docs:` - Documentation changes
+- `style:` - Code style changes (formatting, etc.)
+- `refactor:` - Code refactoring
+- `test:` - Adding or updating tests
+- `chore:` - Maintenance tasks
 
+---
+
+[0.1.0]: https://github.com/yourusername/game-template-engine/releases/tag/v0.1.0

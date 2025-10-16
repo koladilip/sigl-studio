@@ -230,6 +230,7 @@ export interface SIGLPlugin {
 
 // Extension interface
 export interface Extension extends SIGLPlugin {
+  description?: string;
   entities?: EntityTypeDefinition[];
   attributes?: AttributeDefinition[];
   environments?: EnvironmentTypeDefinition[];

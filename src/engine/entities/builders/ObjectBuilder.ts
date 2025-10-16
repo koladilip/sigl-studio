@@ -5,7 +5,7 @@
  */
 
 import * as THREE from 'three';
-import { EntityBuilder, EntityColors } from '../base/EntityBase';
+import { EntityBuilder } from '../base/EntityBase';
 import type { EntityDefinition } from '../../core/types';
 
 export class ObjectBuilder extends EntityBuilder {
@@ -210,7 +210,7 @@ export class ObjectBuilder extends EntityBuilder {
     });
   }
   
-  private buildBlackboard(group: THREE.Group, attrs: any): void {
+  private buildBlackboard(group: THREE.Group, _attrs: any): void {
     const s = this.scale;
     
     // Board

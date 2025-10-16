@@ -2,7 +2,7 @@
  * Validation Engine - Utilities for validating SIGL data structures
  */
 
-import Ajv, { JSONSchemaType, ErrorObject } from 'ajv';
+import Ajv from 'ajv';
 import type {
   SIGLConfig,
   SceneDefinition,
@@ -19,7 +19,7 @@ export interface ValidationContext {
 }
 
 export class ValidationEngine {
-  private ajv: Ajv;
+  private ajv: any;
 
   constructor() {
     this.ajv = new Ajv({ allErrors: true });
@@ -377,7 +377,7 @@ export class ValidationEngine {
     return ajvErrors.map(error => ({
       type: 'VALIDATION_ERROR',
       code: 'SCHEMA_VALIDATION_ERROR',
-      message: `${error.instancePath || 'root'}: ${error.message}`,
+      message: `${(error as any).instancePath || (error as any).dataPath || 'root'}: ${error.message}`,
       context: JSON.stringify(error.data),
     }));
   }

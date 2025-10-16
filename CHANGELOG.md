@@ -23,14 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - EXPORT command with format options
 - Negated attributes (WITHOUT SHIRT, NO PANTS, BARE TORSO)
 
-### Changed
-- **BREAKING:** Renamed project from SITL to SIGL (Structured Image Generation Language)
-- **BREAKING:** Grammar now uses uppercase natural language syntax
-- Updated all documentation to use SIGL naming
-- Renamed file extensions: .sitl → .sigl
-- Package name: sitl-engine → sigl-engine
-- Full language name: Scene Illustration Template Language → Structured Image Generation Language
-
 ### Documentation
 - Created comprehensive grammar specification (docs/system/grammar-specification.md)
 - Added Getting Started guide (docs/GETTING_STARTED.md)
@@ -38,79 +30,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated README with implementation status indicators
 - Added status legend: ✅ Implemented, 🚧 Partial, 📋 Planned, 💡 Future
 
-## [0.1.0] - 2025-10-16 (Initial State)
+## [0.1.0] - 2025-10-16 (Initial Release)
 
-### Project Structure
-- Basic TypeScript project with Vite
-- Core type definitions
+### Initial Features
+- TypeScript project with Vite build system
+- Core type definitions and interfaces
 - Basic entity factory (human/object/prop)
 - Simple canvas-based renderer
 - Template engine with parameter interpolation
 - Extension manager architecture
 - Basic export to PNG/JPEG/WEBP
-- Simple ANTLR grammar (lowercase syntax only)
+- ANTLR4-based grammar with natural language syntax
 
-### Implementation Status
+### Current Status
 - **Overall Completion:** ~15-20%
-- **Parser:** Basic structure, needs rewrite for natural language
+- **Parser:** Grammar defined, needs TypeScript integration
 - **Entity System:** Basic factory pattern implemented
 - **Rendering:** Simple 2D canvas rendering
-- **Extensions:** Architecture only, no implementations
-- **Templates:** Basic interpolation only
+- **Extensions:** Architecture ready, implementations pending
+- **Templates:** Basic interpolation working
 
-### Known Limitations
-- No domain extensions implemented
-- Animation system not implemented
-- Advanced positioning not available
-- Pattern system not implemented
-- Validation engine incomplete
-- Natural language parser not integrated
-
----
-
-## Version History
-
-- **v0.1.0** (Oct 16, 2025) - Initial project state and assessment
-- **Unreleased** - Grammar rewrite, rename to SIGL, documentation improvements
-
-## Migration Guide
-
-### Migrating from SITL to SIGL
-
-If you have existing SITL files or code:
-
-1. **Rename file extensions:**
-   ```bash
-   # Rename all .sitl files to .sigl
-   find . -name "*.sitl" -exec rename 's/\.sitl$/.sigl/' {} +
-   ```
-
-2. **Update import statements:**
-   ```typescript
-   // Old
-   import { SITLEngine } from 'sitl-engine';
-   
-   // New
-   import { SIGLEngine } from 'sigl-engine';
-   ```
-
-3. **Update package.json:**
-   ```json
-   {
-     "dependencies": {
-       "sigl-engine": "^0.1.0"  // Updated package name
-     }
-   }
-   ```
-
-4. **No syntax changes required** - The SIGL syntax is backward compatible with the documented SITL syntax
-
-### Breaking Changes in Unreleased
-
-- Grammar now requires UPPERCASE keywords (`DRAW` not `draw`)
-- Entity types are case-sensitive (`MAN` not `man`)
-- File extension changed from `.sitl` to `.sigl`
-- Package renamed from `sitl-engine` to `sigl-engine`
+### In Development
+- Domain extension implementations (educational, hospital, military)
+- Advanced positioning system (grid, anchors, relative)
+- Animation system
+- Pattern system for visual effects
+- Comprehensive validation engine
 
 ## Roadmap
 

@@ -1,9 +1,10 @@
-# Structured Image Generation Language (SIGL) Specification
-**Version 1.0**
+# SIGL Engine
+
+**Structured Image Generation Language (SIGL)** - A powerful domain-specific language for creating detailed, customizable scene illustrations.
 
 ## Overview
 
-The Structured Image Generation Language (SIGL) is a modular, text-based command language for generating simple images using HTML5, JavaScript, and JSON templates. It consists of a **Core System** with basic functionality and **Domain Extensions** for specialized contexts.
+SIGL is a modular, text-based language for generating images and scenes using intuitive, natural language commands. It combines a powerful **Core System** with **Domain Extensions** for specialized use cases.
 
 ## Quick Start Guide
 

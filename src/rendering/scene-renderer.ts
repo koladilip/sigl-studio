@@ -86,11 +86,14 @@ export class SceneRenderer {
       const sortedEntities = this.sortEntitiesByDepth(scene.entities);
       
       // Render each entity
+      console.log(`Rendering ${sortedEntities.length} entities...`);
       for (const entity of sortedEntities) {
         try {
+          console.log(`  Rendering ${entity.attributes.entitySubType} at (${entity.position.x}, ${entity.position.y})`);
           const renderedEntity = await this.renderEntity(entity);
           renderedEntities.push(renderedEntity);
         } catch (error) {
+          console.error(`  ❌ Failed to render ${entity.id}`);
           errors.push({
             type: 'render_error',
             message: `Failed to render entity ${entity.id}: ${error instanceof Error ? error.message : 'Unknown error'}`,
@@ -98,6 +101,7 @@ export class SceneRenderer {
           });
         }
       }
+      console.log(`✅ Rendered ${renderedEntities.length} entities successfully`);
       
       // Apply post-processing effects
       await this.applyPostProcessing(scene);
@@ -234,27 +238,72 @@ export class SceneRenderer {
 
   /**
    * Resolve relative positions to absolute coordinates
+   * Uses multiple passes to handle chains of relative positioning
    */
   private resolveRelativePositions(entities: EntityDefinition[]): void {
+    const maxPasses = 5; // Prevent infinite loops
+    let unresolved = entities.filter(e => (e.position as any).relative);
+    
+    for (let pass = 0; pass < maxPasses && unresolved.length > 0; pass++) {
+      const resolvedThisPass: EntityDefinition[] = [];
+      
+      for (const entity of unresolved) {
+        const pos = entity.position as any;
+        
+        if (pos.relative && pos.relativeTo) {
+          // Find the referenced entity
+          const refTo = pos.relativeTo.toUpperCase();
+          const refEntity = entities.find(e => {
+            // Skip if this entity still has relative position
+            if ((e.position as any).relative) return false;
+            
+            const subType = (e.attributes.entitySubType as string) || '';
+            
+            // Match by entity type keywords
+            if (refTo === 'MAN' && subType.includes('male') && subType.includes('adult')) return true;
+            if (refTo === 'WOMAN' && subType.includes('female') && subType.includes('adult')) return true;
+            if (refTo === 'BOY' && subType.includes('male') && subType.includes('child')) return true;
+            if (refTo === 'GIRL' && subType.includes('female') && subType.includes('child')) return true;
+            
+            // Match by exact subtype or id
+            if (subType === refTo.toLowerCase()) return true;
+            if (e.id === pos.relativeTo) return true;
+            
+            return false;
+          });
+          
+          if (refEntity) {
+            // Calculate absolute position based on reference
+            entity.position.x = refEntity.position.x + (pos.x || 0);
+            entity.position.y = refEntity.position.y + (pos.y || 0);
+            
+            // Preserve z-index for depth
+            if (pos.z !== undefined) {
+              entity.position.z = pos.z;
+            }
+            
+            // Clear relative flags
+            delete (pos as any).relative;
+            delete (pos as any).relativeTo;
+            
+            resolvedThisPass.push(entity);
+          }
+        }
+      }
+      
+      // Update unresolved list
+      unresolved = unresolved.filter(e => !(e.position as any).relative);
+    }
+    
+    // For any remaining unresolved entities, use their offset as absolute position
     for (const entity of entities) {
       const pos = entity.position as any;
-      
-      if (pos.relative && pos.relativeTo) {
-        // Find the referenced entity
-        const refEntity = entities.find(e => 
-          e.attributes.entitySubType === pos.relativeTo.toLowerCase() ||
-          e.id === pos.relativeTo
-        );
-        
-        if (refEntity) {
-          // Calculate absolute position based on reference
-          entity.position.x = refEntity.position.x + (pos.x || 0);
-          entity.position.y = refEntity.position.y + (pos.y || 0);
-          
-          // Clear relative flags
-          delete (pos as any).relative;
-          delete (pos as any).relativeTo;
-        }
+      if (pos.relative) {
+        // Fallback to center if still unresolved
+        entity.position.x = pos.x || 400;
+        entity.position.y = pos.y || 300;
+        delete (pos as any).relative;
+        delete (pos as any).relativeTo;
       }
     }
   }
@@ -345,8 +394,11 @@ export class SceneRenderer {
     const { ctx } = this.context;
     const attributes = entity.attributes as Record<string, unknown>;
     
-    const width = 30;
-    const height = 60;
+    // Make figures larger and scale based on age
+    const age = (attributes.age as number) || 25;
+    const scale = age < 12 ? 0.7 : 1.0; // Children are smaller
+    const width = 60 * scale;
+    const height = 120 * scale;
     const x = -width / 2;
     const y = -height;
     
@@ -365,11 +417,15 @@ export class SceneRenderer {
     const dressColor = clothing?.dress || '#FF69B4'; // Default pink
     const pantsColor = clothing?.pants || '#2c3e50'; // Default dark
     
+    const headSize = 20 * scale;
+    const bodyWidth = width * 0.47;
+    const bodyHeight = height * 0.42;
+    
     // Simple human representation
     // Head
     ctx.fillStyle = skinColor;
     ctx.beginPath();
-    ctx.arc(x + width/2, y + 10, 10, 0, Math.PI * 2);
+    ctx.arc(x + width/2, y + headSize, headSize, 0, Math.PI * 2);
     ctx.fill();
     
     // Hair
@@ -377,37 +433,53 @@ export class SceneRenderer {
       ? hairColor 
       : this.getHairColor(hairColor as string);
     ctx.beginPath();
-    ctx.arc(x + width/2, y + 6, 11, Math.PI, 2 * Math.PI);
+    ctx.arc(x + width/2, y + headSize * 0.6, headSize * 1.1, Math.PI, 2 * Math.PI);
     ctx.fill();
     
     // Body (shirt or dress)
+    const bodyY = y + headSize * 2;
     if (clothing?.dress) {
-      // Draw dress
+      // Draw dress (wider, triangular)
       ctx.fillStyle = dressColor;
       ctx.beginPath();
-      ctx.moveTo(x + 8, y + 20);
-      ctx.lineTo(x + 22, y + 20);
-      ctx.lineTo(x + 26, y + 50);
-      ctx.lineTo(x + 4, y + 50);
+      ctx.moveTo(x + width * 0.27, bodyY);
+      ctx.lineTo(x + width * 0.73, bodyY);
+      ctx.lineTo(x + width * 0.87, bodyY + bodyHeight * 2);
+      ctx.lineTo(x + width * 0.13, bodyY + bodyHeight * 2);
       ctx.closePath();
       ctx.fill();
     } else {
       // Draw shirt
       ctx.fillStyle = shirtColor;
-      ctx.fillRect(x + 8, y + 20, 14, 25);
+      ctx.fillRect(x + width * 0.27, bodyY, bodyWidth, bodyHeight);
     }
     
     // Arms
+    const armWidth = width * 0.27;
+    const armHeight = bodyHeight * 0.8;
     ctx.fillStyle = skinColor;
-    ctx.fillRect(x, y + 22, 8, 20);
-    ctx.fillRect(x + 22, y + 22, 8, 20);
+    ctx.fillRect(x, bodyY + 5 * scale, armWidth, armHeight);
+    ctx.fillRect(x + width * 0.73, bodyY + 5 * scale, armWidth, armHeight);
     
     // Legs (pants or dress continuation)
     if (!clothing?.dress) {
       ctx.fillStyle = pantsColor;
-      ctx.fillRect(x + 8, y + 45, 6, 15);
-      ctx.fillRect(x + 16, y + 45, 6, 15);
+      const legWidth = bodyWidth * 0.42;
+      const legHeight = height * 0.25;
+      ctx.fillRect(x + width * 0.27, bodyY + bodyHeight, legWidth, legHeight);
+      ctx.fillRect(x + width * 0.53, bodyY + bodyHeight, legWidth, legHeight);
     }
+    
+    // Debug: Add outline and label
+    ctx.strokeStyle = '#00000033';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x, y, width, height);
+    
+    // Age label for debugging
+    ctx.fillStyle = '#000000';
+    ctx.font = `${12 * scale}px Arial`;
+    ctx.textAlign = 'center';
+    ctx.fillText(`Age ${attributes.age}`, x + width/2, y + height + 15);
     
     return { x, y, width, height };
   }

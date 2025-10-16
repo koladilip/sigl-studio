@@ -1,0 +1,61 @@
+scene "Hospital Emergency Room" {
+    // Environment setup
+    environment {
+        lighting: bright
+        atmosphere: "busy and urgent"
+        background: "white walls with medical equipment"
+        time: "afternoon"
+        props: ["stretcher", "medical_cart", "monitors"]
+    }
+
+    // Define entities
+    human doctor {
+        age: 35
+        gender: "male"
+        height: 180
+        clothing: "white coat and scrubs"
+        emotion: "focused"
+        pose: "standing"
+        accessories: ["stethoscope", "clipboard"]
+    }
+
+    human patient {
+        age: 28
+        gender: "female"
+        clothing: "hospital gown"
+        emotion: "worried"
+        pose: "lying_down"
+    }
+
+    object bed {
+        material: "metal"
+        color: white
+        size: large
+        condition: "clean"
+    }
+
+    object monitor {
+        material: "plastic"
+        color: #333333
+        size: medium
+        condition: "functioning"
+    }
+
+    // Position entities
+    position doctor at center
+    position patient at (100, 200)
+    position bed near patient
+    position monitor right_of bed
+
+    // Define actions
+    action examination {
+        type: "medical_check"
+        target: patient
+        duration: 300
+        description: "Doctor examining patient"
+    }
+
+    // Set additional attributes
+    set doctor.emotion to "concerned"
+    set monitor.color to rgb(50, 50, 50)
+}

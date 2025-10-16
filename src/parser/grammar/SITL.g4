@@ -1,154 +1,351 @@
 grammar SITL;
 
-// Parser Rules
-scene: sceneHeader sceneBody EOF;
+// ============================================================================
+// PARSER RULES
+// ============================================================================
 
-sceneHeader: 'scene' STRING '{';
+// Top-level program
+program: (statement | comment)* EOF;
 
-sceneBody: (statement)* '}';
-
-statement: 
-    entityDeclaration
-    | environmentDeclaration
-    | actionDeclaration
-    | positionStatement
-    | attributeStatement
+// Statements
+statement:
+    drawStatement
+    | loadExtensionStatement
+    | defineTemplateStatement
+    | defineVariationStatement
+    | createSceneStatement
+    | addEnvironmentStatement
+    | updateStatement
+    | animateStatement
+    | exportStatement
+    | commentLine
     ;
 
-// Entity Declarations
-entityDeclaration: entityType IDENTIFIER '{' (entityAttribute)* '}';
-
-entityType: 'human' | 'object' | 'prop';
-
-entityAttribute:
-    'age' ':' NUMBER
-    | 'gender' ':' STRING
-    | 'height' ':' NUMBER
-    | 'clothing' ':' STRING
-    | 'emotion' ':' STRING
-    | 'pose' ':' STRING
-    | 'material' ':' STRING
-    | 'color' ':' colorValue
-    | 'size' ':' sizeValue
-    | 'texture' ':' STRING
-    | 'condition' ':' STRING
-    | 'accessories' ':' '[' stringList? ']'
+// DRAW command - Main entity creation
+drawStatement:
+    'DRAW' entityType attributeList? positionClause? ';'?
     ;
 
-// Environment Declaration
-environmentDeclaration: 'environment' '{' (environmentAttribute)* '}';
-
-environmentAttribute:
-    'lighting' ':' lightingValue
-    | 'atmosphere' ':' STRING
-    | 'background' ':' STRING
-    | 'weather' ':' STRING
-    | 'time' ':' STRING
-    | 'props' ':' '[' stringList? ']'
+// Entity types
+entityType:
+    // Basic humans
+    'MAN' | 'WOMAN' | 'BOY' | 'GIRL' | 'BABY' | 'PERSON' | 'CHILD'
+    // Animals
+    | 'ANIMAL' animalType
+    // Objects
+    | 'TREE' | 'HOUSE' | 'CAR' | 'BUILDING' | 'BOAT'
+    // Educational (when extension loaded)
+    | 'TEACHER' | 'STUDENT' | 'PROFESSOR' | 'INSTRUCTOR'
+    | 'PRINCIPAL' | 'LIBRARIAN' | 'CUSTODIAN'
+    // Hospital (when extension loaded)
+    | 'DOCTOR' | 'NURSE' | 'PATIENT' | 'SURGEON'
+    // Military (when extension loaded)
+    | 'SOLDIER' | 'OFFICER' | 'GENERAL' | 'MARINE'
+    // Generic
+    | IDENTIFIER
     ;
 
-// Actions
-actionDeclaration: 'action' IDENTIFIER '{' (actionAttribute)* '}';
-
-actionAttribute:
-    'type' ':' STRING
-    | 'target' ':' IDENTIFIER
-    | 'duration' ':' NUMBER
-    | 'intensity' ':' NUMBER
-    | 'description' ':' STRING
+animalType:
+    'DOG' | 'CAT' | 'BIRD' | 'HORSE' | 'FISH'
     ;
 
-// Positioning
-positionStatement: 'position' IDENTIFIER 'at' positionValue;
-
-positionValue:
-    coordinatePosition
-    | relativePosition
-    | namedPosition
-    ;
-
-coordinatePosition: '(' NUMBER ',' NUMBER ')';
-
-relativePosition: 
-    'near' IDENTIFIER
-    | 'behind' IDENTIFIER
-    | 'in_front_of' IDENTIFIER
-    | 'left_of' IDENTIFIER
-    | 'right_of' IDENTIFIER
-    | 'above' IDENTIFIER
-    | 'below' IDENTIFIER
-    ;
-
-namedPosition:
-    'center'
-    | 'left'
-    | 'right'
-    | 'top'
-    | 'bottom'
-    | 'foreground'
-    | 'background'
+// Attribute list
+attributeList:
+    'WITH' attribute ('AND' attribute)*
     ;
 
 // Attributes
-attributeStatement: 'set' IDENTIFIER '.' attributeName 'to' attributeValue;
+attribute:
+    simpleAttribute
+    | parameterizedAttribute
+    | negatedAttribute
+    ;
 
-attributeName: IDENTIFIER;
+// Simple attributes (WITH AGE 30, WITH BLUE SHIRT)
+simpleAttribute:
+    'AGE' NUMBER
+    | 'SIZE' sizeValue
+    | colorValue ('SHIRT' | 'DRESS' | 'PANTS' | 'SKIRT' | 'HAIR' | 'EYES')
+    | 'HAPPY' 'FACE'
+    | 'SAD' 'FACE'
+    | 'ANGRY' 'FACE'
+    | 'SURPRISED' 'FACE'
+    | 'NEUTRAL' 'FACE'
+    | 'EXCITED' 'FACE'
+    | bodyAttribute
+    | clothingAttribute
+    ;
 
-attributeValue:
-    STRING
+// Negated attributes (WITHOUT SHIRT, NO PANTS)
+negatedAttribute:
+    ('WITHOUT' | 'NO') ('SHIRT' | 'PANTS' | 'SHOES' | 'HAT' | 'GLASSES')
+    | 'BARE' 'TORSO'
+    ;
+
+// Body attributes
+bodyAttribute:
+    'TALL' 'HEIGHT'
+    | 'SHORT' 'HEIGHT'
+    | 'CURLY' 'HAIR'
+    | 'LONG' 'HAIR'
+    | 'BEARD'
+    | 'GLASSES'
+    | 'FRECKLES'
+    | skinTone 'SKIN'
+    ;
+
+// Skin tones
+skinTone:
+    'LIGHT' | 'MEDIUM' | 'DARK' | 'OLIVE' | 'PALE' | 'TAN'
+    ;
+
+// Clothing attributes
+clothingAttribute:
+    colorValue ('SHIRT' | 'DRESS' | 'PANTS' | 'SKIRT')
+    | 'BUSINESS_SUIT'
+    | 'CASUAL_WEAR'
+    | 'FORMAL_ATTIRE'
+    | 'UNIFORM'
+    | 'SPORTSWEAR'
+    ;
+
+// Parameterized attributes (HAIR(COLOR: BROWN, STYLE: SHORT))
+parameterizedAttribute:
+    paramName '(' parameterList ')'
+    ;
+
+paramName:
+    'HAIR' | 'EYES' | 'SKIN' | 'BUILD' | 'HEIGHT' | 'FACE'
+    | 'SHIRT' | 'DRESS' | 'PANTS' | 'OUTFIT' | 'ATTIRE'
+    | 'UNIFORM' | 'VARIATION'
+    ;
+
+parameterList:
+    parameter (',' parameter)*
+    ;
+
+parameter:
+    IDENTIFIER ':' (IDENTIFIER | NUMBER | STRING | colorValue)
+    ;
+
+// Position clause
+positionClause:
+    'AT' position
+    | relativePosition
+    ;
+
+// Position types
+position:
+    // Named positions
+    'LEFT' | 'RIGHT' | 'CENTER' | 'TOP' | 'BOTTOM'
+    | 'TOP_LEFT' | 'TOP_RIGHT' | 'BOTTOM_LEFT' | 'BOTTOM_RIGHT'
+    | 'FAR_LEFT' | 'FAR_RIGHT' | 'CENTER_LEFT' | 'CENTER_RIGHT'
+    | 'UPPER' | 'MIDDLE' | 'LOWER'
+    | 'FOREGROUND' | 'BACKGROUND'
+    // Coordinates
+    | 'POSITION' NUMBER ',' NUMBER
+    | '(' NUMBER ',' NUMBER ')'
+    // Grid positions
+    | 'GRID' NUMBER ',' NUMBER
+    ;
+
+// Relative positioning
+relativePosition:
+    'NEXT' 'TO' entityReference
+    | 'BEHIND' entityReference
+    | 'IN' 'FRONT' 'OF' entityReference
+    | 'LEFT' 'OF' entityReference
+    | 'RIGHT' 'OF' entityReference
+    | 'ABOVE' entityReference
+    | 'BELOW' entityReference
+    | 'NEAR' entityReference
+    | positionDistance
+    ;
+
+positionDistance:
+    relativePosition 'WITH' 'DISTANCE' NUMBER
+    ;
+
+entityReference:
+    IDENTIFIER | 'MAN' | 'WOMAN' | 'PERSON'
+    ;
+
+// LOAD EXTENSION command
+loadExtensionStatement:
+    'LOAD' 'EXTENSION' extensionName ';'?
+    ;
+
+extensionName:
+    'educational' | 'hospital' | 'military' | 'religious'
+    | 'transportation' | 'court' | 'space'
+    | IDENTIFIER
+    ;
+
+// DEFINE TEMPLATE command
+defineTemplateStatement:
+    'DEFINE' 'TEMPLATE' STRING ':' templateBody
+    ;
+
+templateBody:
+    '{' (statement)* '}'
+    | statement
+    ;
+
+// DEFINE VARIATION command
+defineVariationStatement:
+    'DEFINE' 'VARIATION' STRING ':' variationBody
+    ;
+
+variationBody:
+    '{' (attribute)+ '}'
+    | attribute
+    ;
+
+// CREATE SCENE command
+createSceneStatement:
+    'CREATE' 'SCENE' STRING ':' sceneBody
+    ;
+
+sceneBody:
+    '{' (statement)* '}'
+    ;
+
+// ADD ENVIRONMENT command
+addEnvironmentStatement:
+    'ADD' 'ENVIRONMENT' environmentType ';'?
+    ;
+
+environmentType:
+    'PARK' | 'OFFICE' | 'HOSPITAL' | 'SCHOOL' | 'BEACH' | 'FOREST' | 'CITY'
+    | 'CLASSROOM' | 'LABORATORY' | 'COURTROOM' | 'AIRPORT'
+    | 'INDOOR' | 'OUTDOOR'
+    | IDENTIFIER
+    ;
+
+// UPDATE command
+updateStatement:
+    'UPDATE' entityReference 'WITH' attributeList ';'?
+    ;
+
+// ANIMATE command
+animateStatement:
+    'ANIMATE' entityReference action animationParams? ';'?
+    ;
+
+action:
+    'WALK' | 'RUN' | 'JUMP' | 'WAVE' | 'SIT' | 'STAND'
+    | 'MOVE' | 'ROTATE' | 'SCALE' | 'FADE'
+    | IDENTIFIER
+    ;
+
+animationParams:
+    'FROM' position 'TO' position
+    | 'WITH' animationAttribute ('AND' animationAttribute)*
+    ;
+
+animationAttribute:
+    'DURATION' NUMBER ('S' | 'MS')?
+    | 'SPEED' ('SLOW' | 'MEDIUM' | 'FAST')
+    | 'REPEAT' (NUMBER | 'INFINITE')
+    ;
+
+// EXPORT command
+exportStatement:
+    'EXPORT' (STRING | 'SCENE')? 'AS' formatType exportOptions? ';'?
+    ;
+
+formatType:
+    'PNG' | 'JPEG' | 'WEBP' | 'SVG' | 'PDF' | 'GIF'
+    ;
+
+exportOptions:
+    'WITH' exportOption ('AND' exportOption)*
+    ;
+
+exportOption:
+    'RESOLUTION' ':' resolution
+    | 'QUALITY' ':' quality
+    | 'DPI' ':' NUMBER
+    ;
+
+resolution:
+    NUMBER 'x' NUMBER
+    | 'HD' | 'FULL_HD' | '4K' | 'THUMBNAIL'
+    ;
+
+quality:
+    'LOW' | 'MEDIUM' | 'HIGH' | 'ULTRA'
     | NUMBER
-    | colorValue
-    | sizeValue
-    | BOOLEAN
     ;
 
-// Value Types
+// ============================================================================
+// VALUE TYPES
+// ============================================================================
+
+// Colors
 colorValue:
-    hexColor
+    namedColor
+    | hexColor
     | rgbColor
-    | namedColor
     ;
-
-hexColor: HEX_COLOR;
-
-rgbColor: 'rgb' '(' NUMBER ',' NUMBER ',' NUMBER ')';
 
 namedColor:
-    'red' | 'green' | 'blue' | 'yellow' | 'orange' | 'purple'
-    | 'pink' | 'brown' | 'black' | 'white' | 'gray' | 'grey'
+    'RED' | 'GREEN' | 'BLUE' | 'YELLOW' | 'ORANGE' | 'PURPLE'
+    | 'PINK' | 'BROWN' | 'BLACK' | 'WHITE' | 'GRAY' | 'GREY'
+    | 'NAVY' | 'NAVY_BLUE' | 'CHARCOAL' | 'CHARCOAL_GRAY'
+    | 'BLONDE' | 'BRUNETTE'
     ;
 
+hexColor:
+    HEX_COLOR
+    ;
+
+rgbColor:
+    'RGB' '(' NUMBER ',' NUMBER ',' NUMBER ')'
+    ;
+
+// Sizes
 sizeValue:
-    'small' | 'medium' | 'large' | 'tiny' | 'huge'
-    | NUMBER 'px'
-    | NUMBER 'cm'
-    | NUMBER '%'
+    'SMALL' | 'MEDIUM' | 'LARGE' | 'TINY' | 'HUGE'
+    | 'EXTRA_LARGE' | 'EXTRA_SMALL'
+    | NUMBER ('PX' | 'CM' | '%')?
     ;
 
-lightingValue:
-    'bright' | 'dim' | 'dark' | 'natural' | 'artificial'
-    | 'warm' | 'cool' | 'harsh' | 'soft'
+// Comments
+comment:
+    LINE_COMMENT | BLOCK_COMMENT
     ;
 
-stringList: STRING (',' STRING)*;
+commentLine:
+    LINE_COMMENT
+    ;
 
-// Lexer Rules
+// ============================================================================
+// LEXER RULES
+// ============================================================================
+
+// Keywords (case-insensitive handled in parser)
+DRAW: 'DRAW';
+WITH: 'WITH';
+AND: 'AND';
+AT: 'AT';
+
+// Identifiers and literals
 IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
 
-STRING: '"' (~["\r\n] | '\\"')* '"';
+STRING: '"' (~["\r\n] | '\\"')* '"' | '\'' (~['\r\n] | '\\\'')* '\'';
 
 NUMBER: '-'? [0-9]+ ('.' [0-9]+)?;
 
-BOOLEAN: 'true' | 'false';
+HEX_COLOR: '#' [0-9a-fA-F]{3,8};
 
-HEX_COLOR: '#' [0-9a-fA-F]{3,6};
+// Comments
+LINE_COMMENT: '//' ~[\r\n]* -> channel(HIDDEN);
 
-// Whitespace and Comments
+BLOCK_COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
+
+// Whitespace
 WS: [ \t\r\n]+ -> skip;
 
-BLOCK_COMMENT: '/*' .*? '*/' -> skip;
-
-LINE_COMMENT: '//' ~[\r\n]* -> skip;
-
-// Error handling for unknown characters
-ERROR_CHAR: . ;
+// Error handling
+ERROR_CHAR: .;

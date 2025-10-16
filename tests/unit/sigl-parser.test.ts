@@ -75,15 +75,16 @@ describe('SIGLParser', () => {
       const result = parser.parse('DRAW MAN WITH BLUE SHIRT');
       
       expect(result.success).toBe(true);
-      expect(result.ast?.entities[0].attributes.clothing).toHaveProperty('shirt');
-      expect(result.ast?.entities[0].attributes.clothing.shirt).toBe('#0000FF');
+      const attrs = result.ast?.entities[0].attributes as any;
+      expect(attrs.clothing).toHaveProperty('shirt');
+      expect(attrs.clothing.shirt).toBe('#0000FF');
     });
 
     it('should parse multiple attributes with AND', () => {
       const result = parser.parse('DRAW MAN WITH AGE 30 AND BLUE SHIRT AND HAPPY FACE');
       
       expect(result.success).toBe(true);
-      const attrs = result.ast?.entities[0].attributes;
+      const attrs = result.ast?.entities[0].attributes as any;
       expect(attrs.age).toBe(30);
       expect(attrs.clothing.shirt).toBe('#0000FF');
       expect(attrs.emotion).toBe('happy');
@@ -480,7 +481,8 @@ describe('SIGLParser', () => {
       const result = parser.parse('DRAW WOMAN WITH LIGHT SKIN');
       
       expect(result.success).toBe(true);
-      expect(result.ast?.entities[0].attributes.appearance?.skin).toBe('light');
+      const attrs = result.ast?.entities[0].attributes as any;
+      expect(attrs.appearance?.skin).toBe('light');
     });
 
     it.todo('should parse CURLY HAIR', () => {
@@ -488,7 +490,8 @@ describe('SIGLParser', () => {
       const result = parser.parse('DRAW BOY WITH CURLY HAIR');
       
       expect(result.success).toBe(true);
-      expect(result.ast?.entities[0].attributes.appearance?.hairstyle).toBe('curly');
+      const attrs = result.ast?.entities[0].attributes as any;
+      expect(attrs.appearance?.hairstyle).toBe('curly');
     });
 
     it('should parse BEARD', () => {

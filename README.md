@@ -6,6 +6,15 @@
 
 SIGL is a modular, text-based language for generating images and scenes using intuitive, natural language commands. It combines a powerful **Core System** with **Domain Extensions** for specialized use cases.
 
+### 🌍 Universal Platform Support
+
+**SIGL works everywhere:**
+- ✅ **Browser** - React, Vue, vanilla JavaScript
+- ✅ **Node.js** - CLI tools, servers, batch processing
+- ✅ **Terminal** - Command-line image generation
+
+**No ANTLR needed!** Hand-written TypeScript parser for simplicity and better performance.
+
 ## Quick Start Guide
 
 ### Basic Example

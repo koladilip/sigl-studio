@@ -1,0 +1,16 @@
+// Medical checkup scene example
+
+// Load hospital extension
+LOAD EXTENSION hospital
+
+// Setup environment
+ADD ENVIRONMENT EXAMINATION_ROOM
+
+// Draw medical staff and patient
+DRAW DOCTOR WITH AGE 45 AND BEARD AT LEFT
+DRAW PATIENT WITH AGE 50 NEXT TO DOCTOR
+DRAW NURSE WITH AGE 35 AT RIGHT
+
+// Export as high-quality image
+EXPORT AS PNG WITH RESOLUTION: HD AND QUALITY: HIGH
+

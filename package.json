@@ -20,7 +20,7 @@
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist node_modules/.vite",
     "prepare": "husky install",
-    "generate": "node -r esbuild-register src/cli/generate.ts"
+    "sigl": "node sigl-cli.cjs"
   },
   "bin": {
     "sigl": "./dist/cli/generate.js",

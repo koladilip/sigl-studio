@@ -1,5 +1,6 @@
 /**
  * SIGL Engine - Core engine implementation
+ * Works in both browser and Node.js environments
  */
 
 import type {
@@ -10,15 +11,19 @@ import type {
   Result,
 } from './types';
 import { SceneRenderer } from '../rendering/scene-renderer';
+import { SIGLParser } from '../parser/sigl-parser';
+import { CanvasFactory } from '../rendering/platform-canvas';
 
 export class SIGLEngine {
   private config: SIGLConfig;
   private initialized: boolean = false;
   private renderer: SceneRenderer;
+  private parser: SIGLParser;
 
   constructor(config: SIGLConfig) {
     this.config = config;
     this.renderer = new SceneRenderer(config);
+    this.parser = new SIGLParser();
   }
 
   /**
@@ -50,7 +55,7 @@ export class SIGLEngine {
   /**
    * Parse SIGL code and generate scene definition
    */
-  async parse(_siglCode: string): Promise<Result<SceneDefinition>> {
+  async parse(siglCode: string): Promise<Result<SceneDefinition>> {
     if (!this.initialized) {
       return {
         success: false,
@@ -63,35 +68,25 @@ export class SIGLEngine {
     }
 
     try {
-      // TODO: Implement actual parsing logic using _siglCode
-      // For now, create a basic scene structure
-      const codeLength = _siglCode.length;
+      // Parse using the new SIGL parser
+      const parseResult = this.parser.parse(siglCode);
       
-      const scene: SceneDefinition = {
-        type: 'scene',
-        id: 'temp-scene',
-        name: codeLength > 0 ? 'Temporary Scene' : 'Empty Scene',
-        entities: [],
-        environment: {
-          type: 'environment',
-          background: { type: 'solid', color: '#ffffff' },
-          lighting: { ambient: 0.5 }
-        },
-        camera: {
-          position: [0, 0, 10],
-          target: [0, 0, 0],
-          fov: 45
-        },
-        metadata: {
-          version: '1.0.0',
-          created: new Date(),
-          modified: new Date()
-        }
-      };
+      if (!parseResult.success || !parseResult.ast) {
+        return {
+          success: false,
+          errors: parseResult.errors.map(err => ({
+            type: err.type,
+            code: err.code || 'PARSE_ERROR',
+            message: err.message,
+            line: err.line,
+            column: err.column
+          }))
+        };
+      }
 
       return {
         success: true,
-        data: scene,
+        data: parseResult.ast
       };
     } catch (error) {
       return {
@@ -154,30 +149,20 @@ export class SIGLEngine {
   }
 
   /**
-   * Export rendered scene
+   * Export rendered scene (works in browser and Node.js)
    */
-  async export(canvas: HTMLCanvasElement, options: ExportOptions): Promise<Result<Blob>> {
+  async export(canvas: any, options: ExportOptions): Promise<Result<Blob>> {
     try {
-      // TODO: Implement actual export logic
-      return new Promise((resolve) => {
-        canvas.toBlob((blob) => {
-          if (blob) {
-            resolve({
-              success: true,
-              data: blob,
-            });
-          } else {
-            resolve({
-              success: false,
-              errors: [{
-                type: 'export_error',
-                code: 'EXPORT_ERROR',
-                message: 'Failed to export canvas to blob',
-              }],
-            });
-          }
-        }, `image/${options.format}`, (options.quality || 90) / 100);
-      });
+      const canvasFactory = CanvasFactory.getInstance();
+      const format = options.format || 'png';
+      const quality = (options.quality || 90) / 100;
+      
+      const blob = await canvasFactory.toBlob(canvas, format, quality);
+      
+      return {
+        success: true,
+        data: blob
+      };
     } catch (error) {
       return {
         success: false,

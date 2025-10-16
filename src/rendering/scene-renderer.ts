@@ -222,11 +222,41 @@ export class SceneRenderer {
    * Sort entities by depth for proper rendering order
    */
   private sortEntitiesByDepth(entities: EntityDefinition[]): EntityDefinition[] {
+    // First, resolve relative positions to absolute
+    this.resolveRelativePositions(entities);
+    
     return [...entities].sort((a, b) => {
       const aZ = a.position.z || 0;
       const bZ = b.position.z || 0;
       return aZ - bZ; // Render back to front
     });
+  }
+
+  /**
+   * Resolve relative positions to absolute coordinates
+   */
+  private resolveRelativePositions(entities: EntityDefinition[]): void {
+    for (const entity of entities) {
+      const pos = entity.position as any;
+      
+      if (pos.relative && pos.relativeTo) {
+        // Find the referenced entity
+        const refEntity = entities.find(e => 
+          e.attributes.entitySubType === pos.relativeTo.toLowerCase() ||
+          e.id === pos.relativeTo
+        );
+        
+        if (refEntity) {
+          // Calculate absolute position based on reference
+          entity.position.x = refEntity.position.x + (pos.x || 0);
+          entity.position.y = refEntity.position.y + (pos.y || 0);
+          
+          // Clear relative flags
+          delete (pos as any).relative;
+          delete (pos as any).relativeTo;
+        }
+      }
+    }
   }
 
   /**
@@ -320,28 +350,64 @@ export class SceneRenderer {
     const x = -width / 2;
     const y = -height;
     
+    // Get skin tone
+    const appearance = attributes.appearance as any;
+    const skinTone = appearance?.skin || 'medium';
+    const skinColor = this.getSkinColor(skinTone);
+    
+    // Get hair color
+    const hairData = attributes.hair as any;
+    const hairColor = hairData?.color || appearance?.hair || this.getHairColor('brown');
+    
+    // Get clothing colors
+    const clothing = attributes.clothing as any;
+    const shirtColor = clothing?.shirt || '#4a90e2'; // Default blue
+    const dressColor = clothing?.dress || '#FF69B4'; // Default pink
+    const pantsColor = clothing?.pants || '#2c3e50'; // Default dark
+    
     // Simple human representation
     // Head
-    ctx.fillStyle = this.getSkinColor(attributes.skin as string || 'medium');
-    ctx.fillRect(x + 5, y, 20, 20);
+    ctx.fillStyle = skinColor;
+    ctx.beginPath();
+    ctx.arc(x + width/2, y + 10, 10, 0, Math.PI * 2);
+    ctx.fill();
     
     // Hair
-    ctx.fillStyle = this.getHairColor(attributes.hair as string || 'brown');
-    ctx.fillRect(x + 3, y - 5, 24, 10);
+    ctx.fillStyle = typeof hairColor === 'string' && hairColor.startsWith('#') 
+      ? hairColor 
+      : this.getHairColor(hairColor as string);
+    ctx.beginPath();
+    ctx.arc(x + width/2, y + 6, 11, Math.PI, 2 * Math.PI);
+    ctx.fill();
     
-    // Body
-    ctx.fillStyle = '#4a90e2';
-    ctx.fillRect(x + 8, y + 20, 14, 25);
+    // Body (shirt or dress)
+    if (clothing?.dress) {
+      // Draw dress
+      ctx.fillStyle = dressColor;
+      ctx.beginPath();
+      ctx.moveTo(x + 8, y + 20);
+      ctx.lineTo(x + 22, y + 20);
+      ctx.lineTo(x + 26, y + 50);
+      ctx.lineTo(x + 4, y + 50);
+      ctx.closePath();
+      ctx.fill();
+    } else {
+      // Draw shirt
+      ctx.fillStyle = shirtColor;
+      ctx.fillRect(x + 8, y + 20, 14, 25);
+    }
     
     // Arms
-    ctx.fillStyle = this.getSkinColor(attributes.skin as string || 'medium');
+    ctx.fillStyle = skinColor;
     ctx.fillRect(x, y + 22, 8, 20);
     ctx.fillRect(x + 22, y + 22, 8, 20);
     
-    // Legs
-    ctx.fillStyle = '#2c3e50';
-    ctx.fillRect(x + 8, y + 45, 6, 15);
-    ctx.fillRect(x + 16, y + 45, 6, 15);
+    // Legs (pants or dress continuation)
+    if (!clothing?.dress) {
+      ctx.fillStyle = pantsColor;
+      ctx.fillRect(x + 8, y + 45, 6, 15);
+      ctx.fillRect(x + 16, y + 45, 6, 15);
+    }
     
     return { x, y, width, height };
   }

@@ -309,7 +309,7 @@ export class SceneRenderer {
   }
 
   /**
-   * Render a single entity
+   * Render a single entity with Enhanced 2.5D depth effects
    */
   private async renderEntity(entity: EntityDefinition): Promise<RenderedEntity> {
     if (!this.context) {
@@ -323,6 +323,39 @@ export class SceneRenderer {
     ctx.save();
     
     try {
+      // === Enhanced 2.5D Depth Effects ===
+      const z = entity.position.z || 0;
+      const distance = Math.abs(z);
+      
+      // 1. Perspective scaling (far = smaller)
+      const perspectiveScale = 1.0 / (1.0 + distance * 0.003);
+      
+      // 2. Depth blur (objects far away are blurry)
+      if (distance > 30) {
+        const blurAmount = Math.min((distance - 30) / 30, 3);
+        ctx.filter = `blur(${blurAmount}px)`;
+      }
+      
+      // 3. Atmospheric fade (distant objects fade)
+      if (distance > 50) {
+        ctx.globalAlpha = Math.max(0.4, 1.0 - (distance - 50) * 0.005);
+      }
+      
+      // 4. Soft shadows (closer = darker shadow)
+      if (z < 0) {
+        // Behind camera - add shadow
+        ctx.shadowBlur = Math.max(5, 15 - distance * 0.1);
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.shadowColor = `rgba(0,0,0,${0.2 * perspectiveScale})`;
+      } else if (z > 0) {
+        // In front - lighter shadow
+        ctx.shadowBlur = 3;
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowColor = `rgba(0,0,0,${0.15 * perspectiveScale})`;
+      }
+      
       // Apply transformations
       ctx.translate(worldPos.x, worldPos.y);
       
@@ -330,9 +363,9 @@ export class SceneRenderer {
         ctx.rotate(entity.position.rotation);
       }
       
-      if (entity.position.scale) {
-        ctx.scale(entity.position.scale, entity.position.scale);
-      }
+      // Apply perspective scale
+      const finalScale = (entity.position.scale || 1.0) * perspectiveScale;
+      ctx.scale(finalScale, finalScale);
       
       // Render based on entity type
       const bounds = await this.renderEntityByType(entity);
@@ -340,10 +373,10 @@ export class SceneRenderer {
       return {
         id: entity.id,
         bounds: {
-          x: worldPos.x + bounds.x,
-          y: worldPos.y + bounds.y,
-          width: bounds.width,
-          height: bounds.height
+          x: worldPos.x + bounds.x * finalScale,
+          y: worldPos.y + bounds.y * finalScale,
+          width: bounds.width * finalScale,
+          height: bounds.height * finalScale
         },
         visible: true,
         zIndex: entity.position.z || 0

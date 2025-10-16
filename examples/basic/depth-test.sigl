@@ -1,0 +1,20 @@
+// Test Enhanced 2.5D depth effects
+// Shows 5 people at different depths
+
+// Foreground (closest to camera, z=100)
+DRAW BOY WITH AGE 6 AND RED SHIRT AT POSITION 400, 400
+
+// Main layer (z=0, normal)
+DRAW MAN WITH AGE 35 AND BLUE SHIRT AT POSITION 300, 350
+DRAW WOMAN WITH AGE 32 AND GREEN DRESS AT POSITION 500, 350
+
+// Mid background (z=-50, slightly behind)
+DRAW GIRL WITH AGE 8 AND YELLOW DRESS AT POSITION 400, 320
+
+// Far background (z=-150, way in back)
+DRAW MAN WITH AGE 40 AND GRAY SHIRT AT POSITION 400, 300
+
+ADD ENVIRONMENT PARK
+
+EXPORT AS PNG WITH RESOLUTION: 1920x1080
+

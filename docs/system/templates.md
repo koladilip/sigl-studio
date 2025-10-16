@@ -1,8 +1,8 @@
-# SITL Template System
+# SIGL Template System
 
 ## Overview
 
-The SITL Template System provides a powerful framework for creating reusable, parameterized scene components and entity configurations. Templates enable developers to define complex structures once and instantiate them multiple times with different parameters, promoting code reusability and maintainability.
+The SIGL Template System provides a powerful framework for creating reusable, parameterized scene components and entity configurations. Templates enable developers to define complex structures once and instantiate them multiple times with different parameters, promoting code reusability and maintainability.
 
 ## Core Principles
 
@@ -10,13 +10,13 @@ The SITL Template System provides a powerful framework for creating reusable, pa
 2. **Parameterization**: Flexible customization through parameters
 3. **Modularity**: Composable template components
 4. **Inheritance**: Template extension and specialization
-5. **Integration**: Seamless integration with aliasing and other SITL systems
+5. **Integration**: Seamless integration with aliasing and other SIGL systems
 
 ## Basic Template Syntax
 
 ### Simple Templates
 
-```sitl
+```sigl
 // Define a basic template
 TEMPLATE basic_room(width, height) {
     ADD ROOM WITH SIZE(${width}, ${height})
@@ -31,7 +31,7 @@ CREATE basic_room(15, 12)
 
 ### Entity Templates
 
-```sitl
+```sigl
 // Character template
 TEMPLATE guard_character(weapon_type, position) {
     DRAW MAN WITH AGE(30-40) AND CLOTHING(ARMOR) AND WEAPON(${weapon_type}) AT ${position}
@@ -49,7 +49,7 @@ CREATE guard_character(BOW, (5,10))
 
 ### Parameter Types
 
-```sitl
+```sigl
 // Different parameter types
 TEMPLATE flexible_character(
     name: STRING,
@@ -71,7 +71,7 @@ CREATE flexible_character("Bob", 30, (5,0), ARMOR, SWORD)
 
 ### Default Parameters
 
-```sitl
+```sigl
 // Template with default values
 TEMPLATE village_house(
     size: INTEGER = 8,
@@ -95,7 +95,7 @@ CREATE village_house(has_garden: FALSE)  // Named parameter override
 
 ### Template-Alias Combinations
 
-```sitl
+```sigl
 // Define aliases for use in templates
 @alias warrior_gear = clothing:armor, weapon:sword, shield:round
 @alias mage_gear = clothing:robe, weapon:staff, accessory:hat
@@ -121,7 +121,7 @@ CREATE party_member("ARCHER", (2,2), 4)
 
 ### Alias Collections in Templates
 
-```sitl
+```sigl
 // Use alias collections within templates
 @collection npc_types {
     merchant = human(age:40, clothing:fine, emotion:friendly)
@@ -153,7 +153,7 @@ TEMPLATE town_square(size, population_density) {
 
 ### Dynamic Alias Creation in Templates
 
-```sitl
+```sigl
 // Templates that create aliases dynamically
 TEMPLATE character_family(family_name, member_count, base_traits) {
     // Create family-specific aliases
@@ -179,7 +179,7 @@ CREATE character_family("Baker", 3, {profession:baker, wealth:comfortable})
 
 ### Base Templates
 
-```sitl
+```sigl
 // Base building template
 TEMPLATE base_building(width, height, material) {
     ADD FOUNDATION WITH SIZE(${width}, ${height})
@@ -215,7 +215,7 @@ TEMPLATE shop EXTENDS base_building(
 
 ### Multiple Inheritance
 
-```sitl
+```sigl
 // Multiple base templates
 TEMPLATE defensive_structure {
     ADD FORTIFICATION
@@ -239,7 +239,7 @@ TEMPLATE fortified_house EXTENDS defensive_structure, residential_structure {
 
 ### Conditional Templates
 
-```sitl
+```sigl
 // Templates with conditional logic
 TEMPLATE adaptive_character(environment, threat_level) {
     IF ${environment} == "FOREST" {
@@ -259,7 +259,7 @@ TEMPLATE adaptive_character(environment, threat_level) {
 
 ### Nested Templates
 
-```sitl
+```sigl
 // Templates that use other templates
 TEMPLATE room_with_furniture(room_type, size) {
     CREATE basic_room(${size}, ${size})
@@ -283,7 +283,7 @@ TEMPLATE bedroom_furniture_set() {
 
 ### Recursive Templates
 
-```sitl
+```sigl
 // Self-referencing templates for complex structures
 TEMPLATE fractal_building(depth, size) {
     ADD BUILDING WITH SIZE(${size})
@@ -301,7 +301,7 @@ TEMPLATE fractal_building(depth, size) {
 
 ### Grouped Templates
 
-```sitl
+```sigl
 // Organize related templates
 TEMPLATE_COLLECTION medieval_buildings {
     TEMPLATE castle(size, defense_level) {
@@ -334,7 +334,7 @@ CREATE medieval_buildings.blacksmith_shop()
 
 ### Template Libraries
 
-```sitl
+```sigl
 // Import template collections
 IMPORT TEMPLATE_LIBRARY "fantasy_characters"
 IMPORT TEMPLATE_LIBRARY "modern_vehicles"
@@ -350,7 +350,7 @@ CREATE sci_fi_environments.space_station(SIZE: MASSIVE, TECH_LEVEL: ADVANCED)
 
 ### Parameter Validation
 
-```sitl
+```sigl
 // Templates with parameter constraints
 TEMPLATE validated_character(
     age: INTEGER RANGE(0, 100),
@@ -371,7 +371,7 @@ TEMPLATE validated_character(
 
 ### Template Testing
 
-```sitl
+```sigl
 // Template unit tests
 TEST_TEMPLATE guard_character {
     TEST "creates guard with sword" {
@@ -393,7 +393,7 @@ TEST_TEMPLATE guard_character {
 
 ### Template Caching
 
-```sitl
+```sigl
 // Cache expensive template instantiations
 TEMPLATE @cached complex_scene(parameters) {
     // Expensive calculations here
@@ -408,7 +408,7 @@ CREATE complex_scene(FOREST_PARAMS)  // Uses cached result
 
 ### Lazy Template Loading
 
-```sitl
+```sigl
 // Load templates only when needed
 TEMPLATE @lazy massive_dungeon(floors, complexity) {
     // Only instantiated when actually used
@@ -422,7 +422,7 @@ TEMPLATE @lazy massive_dungeon(floors, complexity) {
 
 ### Pattern Integration
 
-```sitl
+```sigl
 // Templates using pattern system
 TEMPLATE patterned_clothing_shop(pattern_style) {
     CREATE shop("TAILOR", 3)
@@ -441,7 +441,7 @@ CREATE patterned_clothing_shop(GEOMETRIC)
 
 ### Animation Integration
 
-```sitl
+```sigl
 // Templates with built-in animations
 TEMPLATE animated_marketplace() {
     CREATE town_square(20, MEDIUM)
@@ -462,7 +462,7 @@ TEMPLATE animated_marketplace() {
 
 ### Expression Integration
 
-```sitl
+```sigl
 // Templates with interactive characters
 TEMPLATE interactive_inn() {
     CREATE building(INN, MEDIUM)
@@ -491,7 +491,7 @@ TEMPLATE interactive_inn() {
 
 ### Template Error Recovery
 
-```sitl
+```sigl
 // Templates with error handling
 TEMPLATE robust_character(name, fallback_name) {
     TRY {
@@ -505,7 +505,7 @@ TEMPLATE robust_character(name, fallback_name) {
 
 ### Missing Parameter Handling
 
-```sitl
+```sigl
 // Handle missing or invalid parameters
 TEMPLATE defensive_template(
     required_param: REQUIRED,
@@ -525,7 +525,7 @@ TEMPLATE defensive_template(
 
 ### Template Organization
 
-```sitl
+```sigl
 // Organize templates by domain
 NAMESPACE characters {
     TEMPLATE hero(class, level) { /* ... */ }
@@ -546,7 +546,7 @@ CREATE environments.dungeon(LARGE, HARD)
 
 ### Documentation Standards
 
-```sitl
+```sigl
 /**
  * Creates a fully equipped adventuring party
  * @param party_size Number of party members (3-6)
@@ -565,7 +565,7 @@ TEMPLATE adventuring_party(
 
 ### Version Control
 
-```sitl
+```sigl
 // Template versioning
 TEMPLATE @version(2.1) modern_character(params) {
     // Updated implementation
@@ -581,7 +581,7 @@ TEMPLATE @deprecated("Use modern_character instead") old_character(params) {
 - **AI-Generated Templates**: Automatic template creation based on usage patterns
 - **Visual Template Editor**: GUI for template creation and modification
 - **Template Marketplace**: Sharing and downloading community templates
-- **Cross-Platform Templates**: Templates that work across different SITL implementations
+- **Cross-Platform Templates**: Templates that work across different SIGL implementations
 - **Template Analytics**: Usage tracking and optimization suggestions
 - **Dynamic Template Modification**: Runtime template editing and hot-reloading
 
@@ -593,4 +593,4 @@ TEMPLATE @deprecated("Use modern_character instead") old_character(params) {
 - Circular template dependencies are detected and prevented
 - Memory usage is optimized through template instance pooling
 
-This template system, combined with the aliasing system, provides a powerful foundation for creating complex, reusable SITL content that scales from simple character definitions to complete interactive worlds.
+This template system, combined with the aliasing system, provides a powerful foundation for creating complex, reusable SIGL content that scales from simple character definitions to complete interactive worlds.

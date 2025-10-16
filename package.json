@@ -1,7 +1,7 @@
 {
-  "name": "sitl-engine",
+  "name": "sigl-engine",
   "version": "0.1.0",
-  "description": "SimpleImage Template Language (SITL) - A domain-specific language for generating scene illustrations",
+  "description": "Structured Image Generation Language (SIGL) - A domain-specific language for generating scene illustrations",
   "main": "dist/index.js",
   "type": "module",
   "engines": {
@@ -17,19 +17,20 @@
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src/**/*.{ts,tsx,json}",
     "type-check": "tsc --noEmit",
-    "antlr:generate": "npx antlr4 -Dlanguage=TypeScript -visitor -no-listener src/parser/grammar/SITL.g4 -o src/parser/generated",
+    "antlr:generate": "npx antlr4 -Dlanguage=TypeScript -visitor -no-listener src/parser/grammar/SIGL.g4 -o src/parser/generated",
     "clean": "rm -rf dist node_modules/.vite",
     "prepare": "husky install"
   },
   "keywords": [
-    "sitl",
-    "template-language",
+    "sigl",
+    "image-generation",
     "scene-generation",
     "illustration",
     "dsl",
-    "typescript"
+    "typescript",
+    "structured-language"
   ],
-  "author": "SITL Team",
+  "author": "SIGL Team",
   "license": "MIT",
   "dependencies": {
     "ajv": "^8.12.0",

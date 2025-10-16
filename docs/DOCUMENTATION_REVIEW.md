@@ -5,7 +5,7 @@
 
 ## Executive Summary
 
-The SITL documentation is **comprehensive and well-structured** with excellent coverage of advanced features. However, there are several areas that need clarification, specification improvements, and alignment with implementation realities.
+The SIGL documentation is **comprehensive and well-structured** with excellent coverage of advanced features. However, there are several areas that need clarification, specification improvements, and alignment with implementation realities.
 
 ## ✅ Strengths
 
@@ -38,7 +38,7 @@ The SITL documentation is **comprehensive and well-structured** with excellent c
 - Some docs use: `scene { ... }` vs `CREATE SCENE "name": { ... }`
 
 **Recommendation:**
-```sitl
+```sigl
 // Standardize on ONE primary syntax:
 DRAW MAN WITH AGE 30 AND BLUE SHIRT AT LEFT
 CREATE SCENE "office" {
@@ -217,7 +217,7 @@ Add to `docs/features/animations.md`:
 ## Template Parameter Specification
 
 ### Parameter Types
-```sitl
+```sigl
 DEFINE TEMPLATE "character" WITH PARAMETERS:
   name: STRING REQUIRED
   age: NUMBER(18..100) DEFAULT 25
@@ -284,7 +284,7 @@ Create `docs/system/performance-specifications.md`:
 - Deprecation policy
 
 ### 4. **Testing Guide** (NEW)
-- How to test SITL scripts
+- How to test SIGL scripts
 - Assertion syntax for tests
 - Visual regression testing
 - Performance benchmarking
@@ -318,7 +318,7 @@ Create `docs/system/performance-specifications.md`:
 ### 3. **Add Interactive Examples**
 ```markdown
 ## Try It Yourself
-[Open in SITL Playground](https://sitl-playground.example.com/?code=DRAW+MAN...)
+[Open in SIGL Playground](https://sigl-playground.example.com/?code=DRAW+MAN...)
 ```
 
 ### 4. **Add Diagrams**
@@ -329,7 +329,7 @@ Missing visual aids for:
 - Scene composition diagrams
 
 ### 5. **Add Code Annotations**
-```sitl
+```sigl
 DRAW MAN                    // Entity type: MAN (human, male, adult)
   WITH AGE 30               // Numeric attribute: age in years
   AND BLUE SHIRT            // Clothing attribute: color + item
@@ -394,7 +394,7 @@ DRAW MAN                    // Entity type: MAN (human, male, adult)
 ### 3. **Documentation Generation**
 - Generate API docs from TypeScript interfaces
 - Auto-generate grammar railroad diagrams
-- Create syntax highlighting for SITL
+- Create syntax highlighting for SIGL
 
 ### 4. **Review Process**
 - Docs reviewed before implementation
@@ -432,7 +432,7 @@ DRAW MAN                    // Entity type: MAN (human, male, adult)
 
 ### 1. **Glossary**
 Create `docs/GLOSSARY.md` with:
-- All SITL terminology
+- All SIGL terminology
 - Domain-specific terms
 - Technical terms
 - Abbreviations
@@ -470,7 +470,7 @@ Create `docs/COOKBOOK.md` with:
 
 ## Conclusion
 
-The SITL documentation has a strong foundation with excellent advanced feature coverage. However, **critical specification gaps** need to be addressed:
+The SIGL documentation has a strong foundation with excellent advanced feature coverage. However, **critical specification gaps** need to be addressed:
 
 **Top 3 Priorities:**
 1. **Formal grammar specification** - Foundation for everything

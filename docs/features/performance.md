@@ -2,7 +2,7 @@
 
 ## Overview
 
-The SITL Performance and Optimization System provides comprehensive tools for managing rendering performance, memory usage, and computational efficiency. This system enables fine-tuned control over quality versus performance trade-offs, ensuring optimal image generation across different hardware capabilities and use cases.
+The SIGL Performance and Optimization System provides comprehensive tools for managing rendering performance, memory usage, and computational efficiency. This system enables fine-tuned control over quality versus performance trade-offs, ensuring optimal image generation across different hardware capabilities and use cases.
 
 ## Core Performance Concepts
 
@@ -15,7 +15,7 @@ The SITL Performance and Optimization System provides comprehensive tools for ma
 ## Rendering Performance Controls
 
 ### Quality Presets
-```sitl
+```sigl
 SET_PERFORMANCE_PRESET:
   PRESET: ULTRA | HIGH | MEDIUM | LOW | MOBILE | DRAFT
   
@@ -30,7 +30,7 @@ SET_PERFORMANCE_PRESET:
 ```
 
 ### Adaptive Quality System
-```sitl
+```sigl
 ENABLE_ADAPTIVE_QUALITY:
   TARGET_FRAMERATE: 30 | 60 | 120 | UNLIMITED
   QUALITY_BOUNDS: {
@@ -50,7 +50,7 @@ ENABLE_ADAPTIVE_QUALITY:
 ```
 
 ### Rendering Optimization Techniques
-```sitl
+```sigl
 ENABLE_RENDERING_OPTIMIZATIONS:
   FRUSTUM_CULLING: true         // Remove objects outside view
   OCCLUSION_CULLING: true       // Remove hidden objects
@@ -79,7 +79,7 @@ ENABLE_RENDERING_OPTIMIZATIONS:
 ## Level of Detail (LOD) System
 
 ### Automatic LOD Generation
-```sitl
+```sigl
 CONFIGURE_AUTO_LOD:
   GENERATION_METHOD: GEOMETRIC | TEXTURE | MATERIAL | HYBRID
   
@@ -117,7 +117,7 @@ CONFIGURE_AUTO_LOD:
 ```
 
 ### Element-Specific LOD
-```sitl
+```sigl
 SET_ELEMENT_LOD:
   ELEMENT: PERSON | CLOTHING | HAIR | ENVIRONMENT
   
@@ -141,7 +141,7 @@ SET_ELEMENT_LOD:
 ```
 
 ### Importance-Based LOD
-```sitl
+```sigl
 SET_IMPORTANCE_FACTORS:
   SCREEN_SIZE_WEIGHT: 0.4       // Larger objects get higher LOD
   DISTANCE_WEIGHT: 0.3          // Closer objects get higher LOD
@@ -171,7 +171,7 @@ DEFINE_IMPORTANCE_ZONES:
 ## Memory Management
 
 ### Memory Allocation Strategies
-```sitl
+```sigl
 CONFIGURE_MEMORY_MANAGEMENT:
   ALLOCATION_STRATEGY: POOL | STACK | HEAP | HYBRID
   
@@ -190,7 +190,7 @@ CONFIGURE_MEMORY_MANAGEMENT:
 ```
 
 ### Texture Memory Optimization
-```sitl
+```sigl
 OPTIMIZE_TEXTURE_MEMORY:
   COMPRESSION: {
     format: DXT5 | BC7 | ASTC | ETC2,
@@ -220,7 +220,7 @@ OPTIMIZE_TEXTURE_MEMORY:
 ```
 
 ### Geometry Optimization
-```sitl
+```sigl
 OPTIMIZE_GEOMETRY:
   MESH_COMPRESSION: {
     vertex_compression: QUANTIZED | COMPRESSED | NONE,
@@ -245,7 +245,7 @@ OPTIMIZE_GEOMETRY:
 ## Culling and Visibility Systems
 
 ### Frustum Culling
-```sitl
+```sigl
 CONFIGURE_FRUSTUM_CULLING:
   ENABLED: true
   MARGIN: 0.1                   // Extra margin for safety
@@ -259,7 +259,7 @@ CONFIGURE_FRUSTUM_CULLING:
 ```
 
 ### Occlusion Culling
-```sitl
+```sigl
 CONFIGURE_OCCLUSION_CULLING:
   ENABLED: true
   METHOD: HARDWARE | SOFTWARE | HYBRID
@@ -278,7 +278,7 @@ CONFIGURE_OCCLUSION_CULLING:
 ```
 
 ### Distance-Based Culling
-```sitl
+```sigl
 CONFIGURE_DISTANCE_CULLING:
   ENABLED: true
   
@@ -299,7 +299,7 @@ CONFIGURE_DISTANCE_CULLING:
 ## Lighting and Shadow Optimization
 
 ### Shadow System Optimization
-```sitl
+```sigl
 OPTIMIZE_SHADOWS:
   SHADOW_TECHNIQUE: SHADOW_MAPS | VSM | ESM | PCSS
   
@@ -325,7 +325,7 @@ OPTIMIZE_SHADOWS:
 ```
 
 ### Light Culling
-```sitl
+```sigl
 CONFIGURE_LIGHT_CULLING:
   MAX_LIGHTS_PER_OBJECT: 8     // Hardware limitation
   
@@ -345,7 +345,7 @@ CONFIGURE_LIGHT_CULLING:
 ## Animation and Physics Optimization
 
 ### Animation LOD
-```sitl
+```sigl
 CONFIGURE_ANIMATION_LOD:
   BONE_REDUCTION: {
     lod_0: 100,                 // Percentage of bones
@@ -369,7 +369,7 @@ CONFIGURE_ANIMATION_LOD:
 ```
 
 ### Physics Optimization
-```sitl
+```sigl
 OPTIMIZE_PHYSICS:
   SIMULATION_FREQUENCY: 60     // Hz
   
@@ -390,7 +390,7 @@ OPTIMIZE_PHYSICS:
 ## Streaming and Loading
 
 ### Asset Streaming
-```sitl
+```sigl
 CONFIGURE_ASSET_STREAMING:
   STREAMING_ENABLED: true
   
@@ -410,7 +410,7 @@ CONFIGURE_ASSET_STREAMING:
 ```
 
 ### Texture Streaming
-```sitl
+```sigl
 CONFIGURE_TEXTURE_STREAMING:
   VIRTUAL_TEXTURING: {
     enabled: true,
@@ -429,7 +429,7 @@ CONFIGURE_TEXTURE_STREAMING:
 ## Performance Monitoring and Profiling
 
 ### Real-Time Performance Metrics
-```sitl
+```sigl
 ENABLE_PERFORMANCE_MONITORING:
   DISPLAY_METRICS: true
   
@@ -452,7 +452,7 @@ ENABLE_PERFORMANCE_MONITORING:
 ```
 
 ### Profiling and Debugging
-```sitl
+```sigl
 ENABLE_PROFILING:
   CPU_PROFILING: {
     enabled: true,
@@ -475,7 +475,7 @@ ENABLE_PROFILING:
 ```
 
 ### Performance Budgets
-```sitl
+```sigl
 SET_PERFORMANCE_BUDGETS:
   FRAME_TIME_BUDGET: 16.67ms   // 60 FPS target
   
@@ -498,7 +498,7 @@ SET_PERFORMANCE_BUDGETS:
 ## Platform-Specific Optimizations
 
 ### Mobile Optimizations
-```sitl
+```sigl
 CONFIGURE_MOBILE_OPTIMIZATIONS:
   TILE_BASED_RENDERING: true   // PowerVR, Mali, Adreno
   
@@ -522,7 +522,7 @@ CONFIGURE_MOBILE_OPTIMIZATIONS:
 ```
 
 ### Desktop Optimizations
-```sitl
+```sigl
 CONFIGURE_DESKTOP_OPTIMIZATIONS:
   MULTI_THREADING: {
     render_thread: true,
@@ -547,7 +547,7 @@ CONFIGURE_DESKTOP_OPTIMIZATIONS:
 ## Quality vs Performance Trade-offs
 
 ### Dynamic Quality Adjustment
-```sitl
+```sigl
 CONFIGURE_DYNAMIC_QUALITY:
   ADJUSTMENT_TRIGGERS: [
     FRAME_TIME_SPIKE,
@@ -578,7 +578,7 @@ CONFIGURE_DYNAMIC_QUALITY:
 ```
 
 ### User-Controlled Quality Settings
-```sitl
+```sigl
 EXPOSE_QUALITY_CONTROLS:
   USER_PRESETS: [PERFORMANCE, BALANCED, QUALITY, CUSTOM]
   
@@ -594,7 +594,7 @@ EXPOSE_QUALITY_CONTROLS:
 ## Integration Examples
 
 ### Performance-Optimized Portrait
-```sitl
+```sigl
 CREATE_SCENE "optimized_portrait":
   SET_PERFORMANCE_PRESET: BALANCED
   
@@ -620,7 +620,7 @@ CREATE_SCENE "optimized_portrait":
 ```
 
 ### Mobile-Optimized Scene
-```sitl
+```sigl
 CREATE_SCENE "mobile_scene":
   SET_PERFORMANCE_PRESET: MOBILE
   
@@ -648,7 +648,7 @@ CREATE_SCENE "mobile_scene":
 ```
 
 ### High-Performance Batch Rendering
-```sitl
+```sigl
 CREATE_SCENE "crowd_scene":
   SET_PERFORMANCE_PRESET: HIGH
   
@@ -673,4 +673,4 @@ CREATE_SCENE "crowd_scene":
     USE_SHARED_MATERIALS WHERE_POSSIBLE
 ```
 
-This performance system provides comprehensive tools for optimizing SITL image generation while maintaining visual quality, enabling efficient rendering across a wide range of hardware capabilities and use cases.
+This performance system provides comprehensive tools for optimizing SIGL image generation while maintaining visual quality, enabling efficient rendering across a wide range of hardware capabilities and use cases.

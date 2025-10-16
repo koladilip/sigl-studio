@@ -1,5 +1,5 @@
 /**
- * Extension Manager - Manages SITL extensions and plugins
+ * Extension Manager - Manages SIGL extensions and plugins
  */
 
 import type {
@@ -9,7 +9,7 @@ import type {
   EnvironmentTypeDefinition,
   TemplateDefinition,
   Result,
-  SITLError,
+  SIGLError,
 } from '../core/types';
 
 export interface ExtensionRegistry {
@@ -336,7 +336,7 @@ export class ExtensionManager {
    * Validate extension
    */
   private validateExtension(extension: Extension): Result<void> {
-    const errors: SITLError[] = [];
+    const errors: SIGLError[] = [];
 
     if (!extension.name || typeof extension.name !== 'string') {
       errors.push({

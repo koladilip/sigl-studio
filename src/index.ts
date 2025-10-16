@@ -1,16 +1,16 @@
 /**
- * SITL Engine - SimpleImage Template Language
- * Main entry point for the SITL system
+ * SIGL Engine - Structured Image Generation Language
+ * Main entry point for the SIGL system
  */
 
 // Core engine exports
-export { SITLEngine } from './core/engine';
-export { SITLParser } from './parser/sitl-parser';
+export { SIGLEngine } from './core/engine';
+export { SIGLParser } from './parser/sigl-parser';
 export { SceneRenderer } from './rendering/scene-renderer';
 export { ExportManager } from './rendering/export-manager';
 
 // Import types for internal use
-import type { SITLConfig } from './core/types';
+import type { SIGLConfig } from './core/types';
 
 // Entity system exports
 export { EntityFactory } from './entities/entity-factory';
@@ -29,7 +29,7 @@ export { ExtensionManager } from './extensions/extension-manager';
 
 // Type exports
 export type {
-  SITLConfig,
+  SIGLConfig,
   SceneDefinition,
   EntityDefinition,
   RenderOptions,
@@ -50,10 +50,10 @@ export type {
 
 // Version information
 export const VERSION = '0.1.0';
-export const ENGINE_NAME = 'SITL Engine';
+export const ENGINE_NAME = 'SIGL Engine';
 
 // Default configuration
-export const DEFAULT_CONFIG: Partial<SITLConfig> = {
+export const DEFAULT_CONFIG: Partial<SIGLConfig> = {
   canvas: {
     width: 1024,
     height: 768,

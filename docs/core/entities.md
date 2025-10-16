@@ -1,12 +1,12 @@
 # Core Entity Commands
 
-This document describes the fundamental drawing commands available in the SITL core system for creating basic entities.
+This document describes the fundamental drawing commands available in the SIGL core system for creating basic entities.
 
 ## Humans
 
 The core system provides commands for drawing human figures of different ages and genders:
 
-```sitl
+```sigl
 DRAW MAN
 DRAW WOMAN  
 DRAW BOY
@@ -15,7 +15,7 @@ DRAW BABY
 ```
 
 ### Usage Examples
-```sitl
+```sigl
 // Basic human entities
 DRAW MAN AT LEFT
 DRAW WOMAN AT CENTER
@@ -33,7 +33,7 @@ DRAW BOY WITH BLUE SHIRT
 
 The core system includes basic animal entities:
 
-```sitl
+```sigl
 DRAW ANIMAL DOG
 DRAW ANIMAL CAT
 DRAW ANIMAL BIRD
@@ -42,7 +42,7 @@ DRAW ANIMAL FISH
 ```
 
 ### Usage Examples
-```sitl
+```sigl
 // Basic animals
 DRAW ANIMAL DOG AT RIGHT
 DRAW ANIMAL CAT ON FENCE
@@ -60,7 +60,7 @@ DRAW ANIMAL BIRD WITH WINGS SPREAD
 
 Basic objects for scene composition:
 
-```sitl
+```sigl
 DRAW TREE
 DRAW HOUSE
 DRAW CAR
@@ -69,7 +69,7 @@ DRAW BOAT
 ```
 
 ### Usage Examples
-```sitl
+```sigl
 // Basic objects
 DRAW TREE AT BACKGROUND
 DRAW HOUSE AT CENTER
@@ -89,21 +89,21 @@ DRAW BUILDING WITH HEIGHT TALL
 All entities can be modified with various attributes:
 
 ### Size Attributes
-```sitl
+```sigl
 DRAW MAN WITH SIZE LARGE
 DRAW TREE WITH SIZE SMALL
 DRAW HOUSE WITH SIZE MEDIUM
 ```
 
 ### Color Attributes
-```sitl
+```sigl
 DRAW CAR WITH COLOR RED
 DRAW BUILDING WITH COLOR GRAY
 DRAW BOAT WITH COLOR WHITE
 ```
 
 ### Position Attributes
-```sitl
+```sigl
 DRAW MAN AT POSITION 100,200
 DRAW TREE AT LEFT
 DRAW HOUSE AT CENTER
@@ -113,7 +113,7 @@ DRAW HOUSE AT CENTER
 
 Entities can be combined in scenes:
 
-```sitl
+```sigl
 CREATE SCENE "basic_scene":
   DRAW MAN WITH AGE 30 AT LEFT
   DRAW WOMAN WITH AGE 28 NEXT TO MAN

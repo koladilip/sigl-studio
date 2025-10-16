@@ -1,14 +1,14 @@
 /**
- * Validation Engine - Utilities for validating SITL data structures
+ * Validation Engine - Utilities for validating SIGL data structures
  */
 
 import Ajv, { JSONSchemaType, ErrorObject } from 'ajv';
 import type {
-  SITLConfig,
+  SIGLConfig,
   SceneDefinition,
   EntityDefinition,
   ValidationRule,
-  SITLError,
+  SIGLError,
   Result,
 } from '../../core/types';
 
@@ -26,10 +26,10 @@ export class ValidationEngine {
   }
 
   /**
-   * Validate SITL configuration
+   * Validate SIGL configuration
    */
-  validateConfig(config: unknown): Result<SITLConfig> {
-    const schema: JSONSchemaType<SITLConfig> = {
+  validateConfig(config: unknown): Result<SIGLConfig> {
+    const schema: JSONSchemaType<SIGLConfig> = {
       type: 'object',
       properties: {
         canvas: {
@@ -91,7 +91,7 @@ export class ValidationEngine {
     if (valid) {
       return {
         success: true,
-        data: config as SITLConfig,
+        data: config as SIGLConfig,
       };
     }
 
@@ -105,7 +105,7 @@ export class ValidationEngine {
    * Validate scene definition
    */
   validateScene(scene: unknown): Result<SceneDefinition> {
-    const errors: SITLError[] = [];
+    const errors: SIGLError[] = [];
 
     if (!scene || typeof scene !== 'object') {
       return {
@@ -167,7 +167,7 @@ export class ValidationEngine {
    * Validate entity definition
    */
   validateEntity(entity: unknown): Result<EntityDefinition> {
-    const errors: SITLError[] = [];
+    const errors: SIGLError[] = [];
 
     if (!entity || typeof entity !== 'object') {
       return {
@@ -242,7 +242,7 @@ export class ValidationEngine {
    * Validate position definition
    */
   validatePosition(position: unknown): Result<{ x: number; y: number }> {
-    const errors: SITLError[] = [];
+    const errors: SIGLError[] = [];
 
     if (!position || typeof position !== 'object') {
       return {
@@ -313,8 +313,8 @@ export class ValidationEngine {
   /**
    * Apply custom validation rules
    */
-  applyValidationRules(value: unknown, rules: ValidationRule[]): SITLError[] {
-    const errors: SITLError[] = [];
+  applyValidationRules(value: unknown, rules: ValidationRule[]): SIGLError[] {
+    const errors: SIGLError[] = [];
 
     for (const rule of rules) {
       switch (rule.type) {
@@ -373,7 +373,7 @@ export class ValidationEngine {
   /**
    * Format AJV validation errors
    */
-  private formatAjvErrors(ajvErrors: ErrorObject[]): SITLError[] {
+  private formatAjvErrors(ajvErrors: ErrorObject[]): SIGLError[] {
     return ajvErrors.map(error => ({
       type: 'VALIDATION_ERROR',
       code: 'SCHEMA_VALIDATION_ERROR',

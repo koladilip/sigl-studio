@@ -2,7 +2,7 @@
 
 ## Overview
 
-The SITL Composition and Layout System provides sophisticated tools for creating visually compelling and professionally composed images. This system incorporates classical composition principles, modern design theory, and advanced layout controls to help create balanced, engaging, and aesthetically pleasing scenes.
+The SIGL Composition and Layout System provides sophisticated tools for creating visually compelling and professionally composed images. This system incorporates classical composition principles, modern design theory, and advanced layout controls to help create balanced, engaging, and aesthetically pleasing scenes.
 
 ## Core Principles
 
@@ -15,7 +15,7 @@ The SITL Composition and Layout System provides sophisticated tools for creating
 ## Fundamental Composition Rules
 
 ### Rule of Thirds
-```sitl
+```sigl
 SET COMPOSITION_GRID: RULE_OF_THIRDS
 SHOW_GRID_LINES: true           // Visual guide during composition
 
@@ -30,7 +30,7 @@ AUTO_POSITION HORIZON USING RULE_OF_THIRDS LOWER
 ```
 
 ### Golden Ratio and Fibonacci Spiral
-```sitl
+```sigl
 SET COMPOSITION_GRID: GOLDEN_RATIO
 SET COMPOSITION_GRID: FIBONACCI_SPIRAL
 
@@ -46,7 +46,7 @@ ARRANGE_ELEMENTS ALONG FIBONACCI_SPIRAL:
 ```
 
 ### Leading Lines
-```sitl
+```sigl
 CREATE_LEADING_LINES:
   TYPE: STRAIGHT | CURVED | DIAGONAL | S_CURVE | ZIGZAG
   START_POINT: (0, 0.8)         // Bottom of frame
@@ -63,7 +63,7 @@ USE_AS_LEADING_LINE: ROAD | FENCE | RIVER | SHORELINE | BUILDING_EDGE
 ```
 
 ### Framing and Borders
-```sitl
+```sigl
 CREATE_NATURAL_FRAME:
   TYPE: ARCHWAY | WINDOW | TREE_BRANCHES | DOORWAY | TUNNEL
   POSITION: FOREGROUND
@@ -86,7 +86,7 @@ SET_VISUAL_FRAME:
 ## Advanced Composition Techniques
 
 ### Visual Weight and Balance
-```sitl
+```sigl
 SET_VISUAL_WEIGHT:
   ELEMENT: SUBJECT
   WEIGHT: HEAVY | MEDIUM | LIGHT
@@ -103,7 +103,7 @@ BALANCE_COMPOSITION:
 ```
 
 ### Depth and Layering
-```sitl
+```sigl
 CREATE_DEPTH_LAYERS:
   FOREGROUND: {
     elements: [FLOWERS, ROCKS],
@@ -134,7 +134,7 @@ SET_DEPTH_CUES:
 ```
 
 ### Symmetry and Patterns
-```sitl
+```sigl
 CREATE_SYMMETRY:
   TYPE: VERTICAL | HORIZONTAL | RADIAL | BILATERAL
   AXIS: CENTER | CUSTOM(position)
@@ -154,7 +154,7 @@ CREATE_PATTERN:
 ## Dynamic Composition
 
 ### Movement and Flow
-```sitl
+```sigl
 CREATE_VISUAL_FLOW:
   DIRECTION: LEFT_TO_RIGHT | TOP_TO_BOTTOM | CIRCULAR | SPIRAL
   SPEED: SLOW | MEDIUM | FAST
@@ -170,7 +170,7 @@ ADD_MOVEMENT_INDICATORS:
 ```
 
 ### Tension and Energy
-```sitl
+```sigl
 CREATE_VISUAL_TENSION:
   TYPE: EDGE_TENSION | DIRECTIONAL_TENSION | SIZE_TENSION
   INTENSITY: LOW | MEDIUM | HIGH
@@ -186,7 +186,7 @@ CREATE_VISUAL_TENSION:
 ```
 
 ### Rhythm and Repetition
-```sitl
+```sigl
 CREATE_VISUAL_RHYTHM:
   PATTERN: REGULAR | PROGRESSIVE | FLOWING | STACCATO
   ELEMENTS: [FENCE_POSTS, WINDOWS, WAVES]
@@ -200,7 +200,7 @@ CREATE_VISUAL_RHYTHM:
 ## Specialized Composition Types
 
 ### Portrait Composition
-```sitl
+```sigl
 SET_PORTRAIT_COMPOSITION:
   FRAMING: HEADSHOT | BUST | THREE_QUARTER | FULL_BODY
   ORIENTATION: VERTICAL | HORIZONTAL | SQUARE
@@ -222,7 +222,7 @@ SET_PORTRAIT_COMPOSITION:
 ```
 
 ### Landscape Composition
-```sitl
+```sigl
 SET_LANDSCAPE_COMPOSITION:
   HORIZON_PLACEMENT: LOWER_THIRD | UPPER_THIRD | CENTER | GOLDEN_RATIO
   FOREGROUND_INTEREST: REQUIRED | OPTIONAL | NONE
@@ -240,7 +240,7 @@ SET_LANDSCAPE_COMPOSITION:
 ```
 
 ### Group Composition
-```sitl
+```sigl
 ARRANGE_GROUP:
   FORMATION: TRIANGLE | LINE | CIRCLE | CLUSTER | SCATTERED
   HIERARCHY: EQUAL | LEADER_FOCUSED | PYRAMID
@@ -258,7 +258,7 @@ ARRANGE_GROUP:
 ```
 
 ### Action and Sports Composition
-```sitl
+```sigl
 SET_ACTION_COMPOSITION:
   ANTICIPATION: SHOW_BUILDUP | PEAK_ACTION | FOLLOW_THROUGH
   DIRECTION_OF_ACTION: LEFT_TO_RIGHT | RIGHT_TO_LEFT | TOWARD_CAMERA
@@ -277,7 +277,7 @@ SET_ACTION_COMPOSITION:
 ## Layout and Grid Systems
 
 ### Grid-Based Layouts
-```sitl
+```sigl
 SET_LAYOUT_GRID:
   TYPE: MODULAR | HIERARCHICAL | MANUSCRIPT | COLUMN
   COLUMNS: 2 | 3 | 4 | 6 | 12
@@ -291,7 +291,7 @@ ALIGN_TO_GRID:
 ```
 
 ### Modular Composition
-```sitl
+```sigl
 CREATE_MODULES:
   MODULE_SIZE: UNIFORM | VARIED | PROPORTIONAL
   MODULE_SPACING: TIGHT | MEDIUM | LOOSE
@@ -311,7 +311,7 @@ CREATE_MODULES:
 ```
 
 ### Responsive Composition
-```sitl
+```sigl
 SET_RESPONSIVE_LAYOUT:
   BREAKPOINTS: [MOBILE, TABLET, DESKTOP, LARGE_SCREEN]
   
@@ -331,7 +331,7 @@ SET_RESPONSIVE_LAYOUT:
 ## Color and Composition Integration
 
 ### Color Balance in Composition
-```sitl
+```sigl
 BALANCE_COLOR_COMPOSITION:
   DOMINANT_COLOR: 60% | CUSTOM_PERCENTAGE
   SECONDARY_COLOR: 30% | CUSTOM_PERCENTAGE
@@ -342,7 +342,7 @@ BALANCE_COLOR_COMPOSITION:
 ```
 
 ### Color as Compositional Element
-```sitl
+```sigl
 USE_COLOR_FOR_COMPOSITION:
   FOCAL_POINT_COLOR: CONTRASTING | SATURATED | BRIGHT
   BACKGROUND_COLORS: MUTED | DESATURATED | NEUTRAL
@@ -356,7 +356,7 @@ USE_COLOR_FOR_COMPOSITION:
 ## Advanced Composition Analysis
 
 ### Composition Validation
-```sitl
+```sigl
 ANALYZE_COMPOSITION:
   BALANCE_CHECK: true
   FOCAL_POINT_STRENGTH: MEASURE
@@ -372,7 +372,7 @@ ANALYZE_COMPOSITION:
 ```
 
 ### Composition Suggestions
-```sitl
+```sigl
 GET_COMPOSITION_SUGGESTIONS:
   CURRENT_LAYOUT: AUTO_DETECT
   IMPROVEMENT_AREAS: [BALANCE, FOCAL_POINT, DEPTH, COLOR]
@@ -386,7 +386,7 @@ GET_COMPOSITION_SUGGESTIONS:
 ```
 
 ### A/B Composition Testing
-```sitl
+```sigl
 CREATE_COMPOSITION_VARIANTS:
   VARIANT_A: RULE_OF_THIRDS_PLACEMENT
   VARIANT_B: GOLDEN_RATIO_PLACEMENT
@@ -402,7 +402,7 @@ CREATE_COMPOSITION_VARIANTS:
 ## Integration Examples
 
 ### Professional Portrait with Advanced Composition
-```sitl
+```sigl
 CREATE_SCENE "executive_portrait":
   SET_PORTRAIT_COMPOSITION:
     FRAMING: THREE_QUARTER
@@ -428,7 +428,7 @@ CREATE_SCENE "executive_portrait":
 ```
 
 ### Dynamic Landscape with Multiple Focal Points
-```sitl
+```sigl
 CREATE_SCENE "mountain_vista":
   SET_LANDSCAPE_COMPOSITION:
     HORIZON_PLACEMENT: LOWER_THIRD
@@ -454,7 +454,7 @@ CREATE_SCENE "mountain_vista":
 ```
 
 ### Complex Group Composition
-```sitl
+```sigl
 CREATE_SCENE "family_reunion":
   ARRANGE_GROUP:
     FORMATION: TRIANGLE
@@ -480,4 +480,4 @@ CREATE_SCENE "family_reunion":
   ADD ENVIRONMENT PARK_SETTING
 ```
 
-This composition system provides comprehensive tools for creating visually compelling images while maintaining the intuitive SITL syntax, enabling everything from simple balanced layouts to complex professional compositions.
+This composition system provides comprehensive tools for creating visually compelling images while maintaining the intuitive SIGL syntax, enabling everything from simple balanced layouts to complex professional compositions.

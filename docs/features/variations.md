@@ -21,7 +21,7 @@ The Variation Handling System provides a robust, generalized framework for manag
 ## Variation Syntax
 
 ### Parameterized Attributes
-```sitl
+```sigl
 DRAW <ENTITY> WITH <ATTRIBUTE>(<PARAM1>: <VALUE1>, <PARAM2>: <VALUE2>)
 
 // Examples
@@ -31,7 +31,7 @@ DRAW TREE WITH FOLIAGE(SPECIES: OAK, SEASON: AUTUMN, DENSITY: THICK)
 ```
 
 ### Defining Variation Presets
-```sitl
+```sigl
 DEFINE VARIATION "<preset_name>":
   <ATTRIBUTE>(<PARAM1>: <VALUE1>, <PARAM2>: <VALUE2>)
   <ADDITIONAL_ATTRIBUTES>
@@ -51,7 +51,7 @@ DEFINE VARIATION "ER_Nurse_Standard":
 ```
 
 ### Using Variation Presets
-```sitl
+```sigl
 DRAW <ENTITY> WITH VARIATION "<preset_name>"
 DRAW <ENTITY> WITH VARIATION "<preset_name>" AND <OVERRIDE>
 
@@ -63,7 +63,7 @@ DRAW NURSE WITH VARIATION "ER_Nurse_Standard" AND COLOR: GREEN
 ```
 
 ### Global Defaults
-```sitl
+```sigl
 SET DEFAULT <ATTRIBUTE> FOR <ENTITY>: <PARAMETERS>
 
 // Examples
@@ -73,7 +73,7 @@ SET DEFAULT ATTIRE FOR PRIEST: COLOR(BLACK), STYLE(ROBE)
 ```
 
 ### Contextual Inference
-```sitl
+```sigl
 ADD ENVIRONMENT <context>
 DRAW <ENTITY> WITH <ATTRIBUTE> // Automatically infers from environment
 
@@ -91,7 +91,7 @@ DRAW PRIEST WITH ATTIRE // Infers COLOR: WHITE, STYLE: CEREMONIAL
 ## Cross-Domain Variation Examples
 
 ### Military Domain
-```sitl
+```sigl
 // Define military variation presets
 DEFINE VARIATION "Navy_Officer":
   UNIFORM(COLOR: NAVY_BLUE, STYLE: DRESS, RANK: CAPTAIN, ACCESSORIES: MEDALS)
@@ -105,7 +105,7 @@ DRAW MARINE WITH VARIATION "Marine_Combat" AND EQUIPMENT: RADIO
 ```
 
 ### Religious Domain
-```sitl
+```sigl
 // Define religious variation presets
 DEFINE VARIATION "Buddhist_Monk":
   ATTIRE(COLOR: ORANGE, STYLE: ROBE, ACCESSORIES: PRAYER_BEADS)
@@ -119,7 +119,7 @@ DRAW MONK WITH VARIATION "Buddhist_Monk" // Infers POSTURE: MEDITATIVE
 ```
 
 ### Hospital Domain
-```sitl
+```sigl
 // Define medical variation presets
 DEFINE VARIATION "Surgeon_OR":
   SCRUBS(COLOR: GREEN, PATTERN: STERILE, ACCESSORIES: SURGICAL_MASK, GLOVES)
@@ -133,7 +133,7 @@ DRAW NURSE WITH VARIATION "Pediatric_Nurse" // Infers friendly posture and color
 ```
 
 ### Nature Domain
-```sitl
+```sigl
 // Define natural variation presets
 DEFINE VARIATION "Tropical_Palm":
   TREE(SPECIES: PALM, LEAVES: GREEN, HEIGHT: TALL, FRUIT: COCONUT)
@@ -147,7 +147,7 @@ DRAW TREE WITH VARIATION "Tropical_Palm" // Automatically fits tropical environm
 ```
 
 ### Transportation Domain
-```sitl
+```sigl
 // Define vehicle variation presets
 DEFINE VARIATION "European_High_Speed":
   TRAIN(MODEL: TGV, COLOR: SILVER, STYLE: MODERN, REGION: EU, SPEED: HIGH)
@@ -163,7 +163,7 @@ DRAW TRAIN WITH VARIATION "European_High_Speed" // Fits European infrastructure
 ## Variation Inheritance and Chaining
 
 ### Hierarchical Variations
-```sitl
+```sigl
 // Base variation
 DEFINE VARIATION "Base_Military":
   UNIFORM(COLOR: GREEN, STYLE: STANDARD)
@@ -180,7 +180,7 @@ DRAW SOLDIER WITH VARIATION "Army_Combat" // Inherits green color, adds combat s
 ```
 
 ### Variation Chaining
-```sitl
+```sigl
 // Chain multiple variations
 DRAW SOLDIER WITH VARIATION "Base_Military" AND VARIATION "Combat_Gear" AND RANK: SERGEANT
 
@@ -191,7 +191,7 @@ DRAW NURSE WITH VARIATION "ER_Standard" AND VARIATION "Night_Shift" AND COLOR: P
 ## Error Handling and Validation
 
 ### Variation Conflict Detection
-```sitl
+```sigl
 // Parameter conflicts between variations and explicit attributes
 DRAW SOLDIER WITH UNIFORM(COLOR: BLUE) AND VARIATION "Army_Combat" 
 // Warning: Color conflict detected
@@ -211,7 +211,7 @@ DRAW PRIEST WITH VARIATION "Military_Combat"
 ```
 
 ### Variation Inheritance Conflicts
-```sitl
+```sigl
 // Conflicting inherited attributes
 DEFINE VARIATION "Formal_Military" EXTENDS "Base_Military":
   UNIFORM(STYLE: DRESS) // Conflicts with Base_Military STYLE: COMBAT
@@ -228,7 +228,7 @@ DEFINE VARIATION "B" EXTENDS "A"
 ```
 
 ### Parameter Validation
-```sitl
+```sigl
 // Invalid parameter values
 DRAW SOLDIER WITH UNIFORM(COLOR: INVALID_COLOR, RANK: UNKNOWN_RANK)
 // Error: "Invalid COLOR 'INVALID_COLOR'. Valid options: [CAMOUFLAGE, OLIVE, NAVY, etc.]"
@@ -245,7 +245,7 @@ DRAW SOLDIER WITH UNIFORM(STYLE: COMBAT) // Missing required RANK for combat sty
 ```
 
 ### Fallback Behavior
-```sitl
+```sigl
 // Unspecified variations use entity defaults
 DRAW SOLDIER WITH UNIFORM // Uses default: COLOR(OLIVE), STYLE(STANDARD)
 
@@ -259,7 +259,7 @@ DRAW SOLDIER WITH UNIFORM(STYLE: COMBAT) // Prompts: "Specify rank for combat un
 ## Context Validation
 
 ### Environment-Appropriate Variations
-```sitl
+```sigl
 // Environment-inappropriate variations trigger warnings
 ADD ENVIRONMENT HOSPITAL
 DRAW SOLDIER WITH VARIATION "Combat_Full" 
@@ -275,7 +275,7 @@ DRAW PERSON WITH VARIATION "Beach_Casual"
 ```
 
 ### Cultural Context Validation
-```sitl
+```sigl
 // Cultural appropriateness checks
 ADD ENVIRONMENT MOSQUE
 DRAW PERSON WITH VARIATION "Revealing_Summer"
@@ -284,7 +284,7 @@ DRAW PERSON WITH VARIATION "Revealing_Summer"
 ```
 
 ### Time-Based Context Validation
-```sitl
+```sigl
 // Time appropriateness validation
 SET TIME "NIGHT"
 DRAW PERSON WITH VARIATION "Bright_Neon"
@@ -292,7 +292,7 @@ DRAW PERSON WITH VARIATION "Bright_Neon"
 ```
 
 ### Weather Context Validation
-```sitl
+```sigl
 // Weather appropriateness checks
 SET WEATHER "RAIN"
 DRAW PERSON WITH VARIATION "Light_Summer"
@@ -303,7 +303,7 @@ DRAW PERSON WITH VARIATION "Light_Summer"
 ## Domain-Specific Validation
 
 ### Medical Domain Validation
-```sitl
+```sigl
 // Medical environment requirements
 DRAW SURGEON WITH VARIATION "Casual_Street"
 // Error: "Casual attire not permitted in surgical environment"
@@ -311,7 +311,7 @@ DRAW SURGEON WITH VARIATION "Casual_Street"
 ```
 
 ### Military Domain Validation
-```sitl
+```sigl
 // Military hierarchy validation
 DRAW SOLDIER WITH UNIFORM(RANK: GENERAL, EXPERIENCE: RECRUIT)
 // Warning: "Rank-experience mismatch: GENERAL rank with RECRUIT experience"
@@ -319,7 +319,7 @@ DRAW SOLDIER WITH UNIFORM(RANK: GENERAL, EXPERIENCE: RECRUIT)
 ```
 
 ### Religious Domain Validation
-```sitl
+```sigl
 // Religious appropriateness validation
 DRAW PRIEST WITH VARIATION "Party_Casual"
 // Warning: "Casual party attire inappropriate for religious role"
@@ -327,7 +327,7 @@ DRAW PRIEST WITH VARIATION "Party_Casual"
 ```
 
 ### Educational Domain Validation
-```sitl
+```sigl
 // Educational environment validation
 DRAW TEACHER WITH VARIATION "Club_Night"
 // Warning: "Nightclub attire inappropriate for educational environment"
@@ -337,7 +337,7 @@ DRAW TEACHER WITH VARIATION "Club_Night"
 ## Cross-Domain Compatibility
 
 ### Compatible Cross-Domain Usage
-```sitl
+```sigl
 // Successful cross-domain combinations
 DRAW MILITARY_CHAPLAIN WITH VARIATION "Religious_Formal"
 // Success: Military chaplain can use religious variations
@@ -347,7 +347,7 @@ DRAW DOCTOR_SOLDIER WITH VARIATION "Medical_Military"
 ```
 
 ### Incompatible Cross-Domain Usage
-```sitl
+```sigl
 // Incompatible combinations
 DRAW PRIEST WITH VARIATION "Combat_Assault"
 // Error: "Combat variations incompatible with religious entities"
@@ -361,7 +361,7 @@ DRAW CHILD WITH VARIATION "Adult_Professional"
 ## Error Recovery Strategies
 
 ### Graceful Degradation
-```sitl
+```sigl
 // Missing variation fallback
 DRAW SOLDIER WITH VARIATION "Future_Combat_2050"
 // Error: "Variation 'Future_Combat_2050' not found"
@@ -370,7 +370,7 @@ DRAW SOLDIER WITH VARIATION "Future_Combat_2050"
 ```
 
 ### Automatic Conflict Resolution
-```sitl
+```sigl
 // Conflicting variation resolution
 DRAW PERSON WITH VARIATION "Formal_Business" AND VARIATION "Beach_Casual"
 // Conflict: "Formal and casual variations are incompatible"
@@ -379,7 +379,7 @@ DRAW PERSON WITH VARIATION "Formal_Business" AND VARIATION "Beach_Casual"
 ```
 
 ### Progressive Fallback Chain
-```sitl
+```sigl
 // Hierarchical fallback system
 DRAW DOCTOR WITH VARIATION "Specialized_Neurosurgeon"
 // Fallback chain: "Specialized_Neurosurgeon" → "General_Surgeon" → "Medical_Professional" → "DOCTOR"
@@ -387,7 +387,7 @@ DRAW DOCTOR WITH VARIATION "Specialized_Neurosurgeon"
 ```
 
 ### Context-Aware Error Correction
-```sitl
+```sigl
 // Environment-based correction
 ADD ENVIRONMENT BEACH
 DRAW PERSON WITH VARIATION "Winter_Heavy_Coat"
@@ -397,7 +397,7 @@ DRAW PERSON WITH VARIATION "Winter_Heavy_Coat"
 ```
 
 ### Missing Parameter Interpolation
-```sitl
+```sigl
 // Parameter inference and defaults
 DRAW SOLDIER WITH UNIFORM(RANK: MISSING, BRANCH: ARMY)
 // Error: "Required parameter RANK is missing"
@@ -406,7 +406,7 @@ DRAW SOLDIER WITH UNIFORM(RANK: MISSING, BRANCH: ARMY)
 ```
 
 ### Asset Loading Failure Recovery
-```sitl
+```sigl
 // Asset fallback handling
 LOAD ASSET "military_insignia.svg" FOR VARIATION "Officer_Formal"
 // Error: "Asset 'military_insignia.svg' not found"
@@ -417,7 +417,7 @@ LOAD ASSET "military_insignia.svg" FOR VARIATION "Officer_Formal"
 ## Validation Error Messages
 
 ### Clear, Actionable Error Messages
-```sitl
+```sigl
 // Comprehensive error reporting
 DRAW PRIEST WITH VARIATION "Combat_Gear"
 // Error Message:
@@ -432,7 +432,7 @@ DRAW PRIEST WITH VARIATION "Combat_Gear"
 ```
 
 ### Parameter Validation with Suggestions
-```sitl
+```sigl
 // Detailed parameter guidance
 DRAW PERSON WITH AGE(-5)
 // Error Message:
@@ -445,7 +445,7 @@ DRAW PERSON WITH AGE(-5)
 ```
 
 ### Context Mismatch with Environment Guidance
-```sitl
+```sigl
 // Environment-specific recommendations
 ADD ENVIRONMENT FORMAL_DINNER
 DRAW PERSON WITH VARIATION "Gym_Workout"
@@ -463,7 +463,7 @@ DRAW PERSON WITH VARIATION "Gym_Workout"
 ## Debug and Diagnostic Features
 
 ### Variation Conflict Analysis
-```sitl
+```sigl
 // Scene-wide conflict detection
 DEBUG VARIATION CONFLICTS FOR SCENE
 // Output:
@@ -477,7 +477,7 @@ DEBUG VARIATION CONFLICTS FOR SCENE
 ```
 
 ### Variation Usage Statistics
-```sitl
+```sigl
 // Usage analytics and reporting
 SHOW VARIATION USAGE STATS
 // Output:
@@ -490,7 +490,7 @@ SHOW VARIATION USAGE STATS
 ```
 
 ### Validation Rule Testing
-```sitl
+```sigl
 // Variation testing framework
 TEST VARIATION "Custom_Pilot" WITH ENTITY PILOT IN ENVIRONMENT COCKPIT
 // Output:
@@ -506,7 +506,7 @@ TEST VARIATION "Custom_Pilot" WITH ENTITY PILOT IN ENVIRONMENT COCKPIT
 ## Advanced Variation Features
 
 ### Dynamic Asset Loading
-```sitl
+```sigl
 // Custom asset integration
 LOAD ASSET "army_insignia.svg" FOR VARIATION "US_Army_Combat" ACCESSORIES: BADGE
 LOAD ASSET "hospital_logo.png" FOR VARIATION "ER_Nurse" ACCESSORIES: NAME_TAG
@@ -517,7 +517,7 @@ DEFINE VARIATION "Camo_Desert":
 ```
 
 ### Conditional Variations
-```sitl
+```sigl
 // Environment-responsive variations
 DEFINE VARIATION "Weather_Appropriate":
   IF ENVIRONMENT.WEATHER = "RAIN" THEN ACCESSORIES: RAINCOAT
@@ -531,7 +531,7 @@ DEFINE VARIATION "Shift_Based":
 ```
 
 ### User-Defined Variations
-```sitl
+```sigl
 // Custom variation creation
 DEFINE VARIATION "Sci_Fi_Military":
   UNIFORM(COLOR: METALLIC_SILVER, STYLE: FUTURISTIC, ACCESSORIES: ENERGY_WEAPON, HELMET: VISOR)
@@ -550,7 +550,7 @@ DEFINE VARIATION "Fantasy_Healer":
 ## Usage Examples
 
 ### Basic Variation Usage
-```sitl
+```sigl
 DEFINE VARIATION "Office_Professional":
   ATTIRE(STYLE: BUSINESS_CASUAL, COLOR: NAVY_BLUE)
   ACCESSORIES(BADGE: ID_CARD, BRIEFCASE: LEATHER)
@@ -559,7 +559,7 @@ DRAW PERSON WITH VARIATION "Office_Professional"
 ```
 
 ### Complex Variation with Inheritance
-```sitl
+```sigl
 DEFINE VARIATION "Base_Medical":
   ATTIRE(COLOR: WHITE, STYLE: PROFESSIONAL)
   ACCESSORIES(BADGE: MEDICAL_ID)
@@ -572,7 +572,7 @@ DRAW DOCTOR WITH VARIATION "Emergency_Doctor" AND SPECIALIZATION: CARDIOLOGY
 ```
 
 ### Context-Aware Variation Application
-```sitl
+```sigl
 ADD ENVIRONMENT OPERATING_ROOM
 DRAW SURGEON WITH VARIATION "Surgical_Team_Lead"
 // Automatically applies sterile surgical attire and equipment

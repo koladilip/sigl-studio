@@ -2,7 +2,7 @@
 
 ## Overview
 
-The SITL Rendering and Output System provides comprehensive control over image generation, export formats, and rendering quality. This system enables precise control over the final visual output, supporting everything from quick drafts to high-quality production images.
+The SIGL Rendering and Output System provides comprehensive control over image generation, export formats, and rendering quality. This system enables precise control over the final visual output, supporting everything from quick drafts to high-quality production images.
 
 ## Core Principles
 
@@ -16,14 +16,14 @@ The SITL Rendering and Output System provides comprehensive control over image g
 
 ### Basic Export Syntax
 
-```sitl
+```sigl
 EXPORT SCENE AS FORMAT WITH SETTINGS
 ```
 
 ### Supported Formats
 
 #### Raster Formats
-```sitl
+```sigl
 EXPORT AS PNG WITH:
   RESOLUTION: 1920x1080
   QUALITY: HIGH
@@ -46,7 +46,7 @@ EXPORT AS TIFF WITH:
 ```
 
 #### Vector Formats
-```sitl
+```sigl
 EXPORT AS SVG WITH:
   PRECISION: HIGH
   EMBED_FONTS: true
@@ -60,7 +60,7 @@ EXPORT AS PDF WITH:
 ```
 
 #### Specialized Formats
-```sitl
+```sigl
 EXPORT AS GIF WITH:
   ANIMATION: ENABLED | DISABLED
   LOOP_COUNT: INFINITE | number
@@ -75,7 +75,7 @@ EXPORT AS BMP WITH:
 ## Resolution and Quality Settings
 
 ### Predefined Resolution Presets
-```sitl
+```sigl
 EXPORT WITH RESOLUTION:
   THUMBNAIL: 150x150
   SMALL: 480x320
@@ -92,14 +92,14 @@ EXPORT WITH RESOLUTION:
 ```
 
 ### Custom Resolution
-```sitl
+```sigl
 EXPORT WITH RESOLUTION: CUSTOM(width: 2048, height: 1536)
 EXPORT WITH ASPECT_RATIO: 16:9, WIDTH: 1920  // Height calculated automatically
 EXPORT WITH ASPECT_RATIO: 4:3, HEIGHT: 1200  // Width calculated automatically
 ```
 
 ### DPI Settings
-```sitl
+```sigl
 EXPORT WITH DPI:
   WEB: 72
   STANDARD: 150
@@ -111,7 +111,7 @@ EXPORT WITH DPI:
 ## Quality and Rendering Settings
 
 ### Quality Presets
-```sitl
+```sigl
 EXPORT WITH QUALITY:
   DRAFT: {
     anti_aliasing: NONE,
@@ -143,7 +143,7 @@ EXPORT WITH QUALITY:
 ```
 
 ### Custom Quality Settings
-```sitl
+```sigl
 EXPORT WITH CUSTOM_QUALITY:
   ANTI_ALIASING: NONE | 2X | 4X | 8X | 16X
   TEXTURE_FILTERING: NEAREST | LINEAR | ANISOTROPIC_2X | ANISOTROPIC_4X | ANISOTROPIC_8X
@@ -156,7 +156,7 @@ EXPORT WITH CUSTOM_QUALITY:
 ## Color Management
 
 ### Color Spaces
-```sitl
+```sigl
 EXPORT WITH COLOR_SPACE:
   sRGB: {
     description: "Standard web and monitor color space",
@@ -184,7 +184,7 @@ EXPORT WITH COLOR_SPACE:
 ```
 
 ### Color Profiles
-```sitl
+```sigl
 EXPORT WITH COLOR_PROFILE:
   EMBED_PROFILE: true | false
   PROFILE_TYPE: ICC | ICM
@@ -195,7 +195,7 @@ EXPORT WITH COLOR_PROFILE:
 ## Advanced Rendering Features
 
 ### Anti-Aliasing Options
-```sitl
+```sigl
 SET ANTI_ALIASING:
   TYPE: MSAA | FXAA | SMAA | TAA
   SAMPLES: 2 | 4 | 8 | 16
@@ -204,7 +204,7 @@ SET ANTI_ALIASING:
 ```
 
 ### Post-Processing Pipeline
-```sitl
+```sigl
 APPLY_POST_PROCESSING:
   TONE_MAPPING: {
     type: ACES | FILMIC | REINHARD | LINEAR,
@@ -230,7 +230,7 @@ APPLY_POST_PROCESSING:
 ```
 
 ### Depth and Focus Effects
-```sitl
+```sigl
 SET_DEPTH_EFFECTS:
   DEPTH_OF_FIELD: {
     enabled: true,
@@ -252,7 +252,7 @@ SET_DEPTH_EFFECTS:
 ## Batch Export and Automation
 
 ### Batch Export Settings
-```sitl
+```sigl
 BATCH_EXPORT SCENES: [scene1, scene2, scene3] WITH:
   FORMAT: PNG
   RESOLUTION: 1920x1080
@@ -262,7 +262,7 @@ BATCH_EXPORT SCENES: [scene1, scene2, scene3] WITH:
 ```
 
 ### Export Variations
-```sitl
+```sigl
 EXPORT_VARIATIONS:
   RESOLUTIONS: [THUMBNAIL, MEDIUM, LARGE]
   FORMATS: [PNG, JPEG, WEBP]
@@ -271,7 +271,7 @@ EXPORT_VARIATIONS:
 ```
 
 ### Automated Export Rules
-```sitl
+```sigl
 DEFINE_EXPORT_RULE "web_optimized":
   CONDITION: OUTPUT_TARGET = WEB
   SETTINGS: {
@@ -294,7 +294,7 @@ DEFINE_EXPORT_RULE "print_ready":
 ## Performance Optimization
 
 ### Rendering Optimization
-```sitl
+```sigl
 SET_RENDERING_OPTIMIZATION:
   LOD_SYSTEM: {
     enabled: true,
@@ -317,7 +317,7 @@ SET_RENDERING_OPTIMIZATION:
 ```
 
 ### Memory Management
-```sitl
+```sigl
 SET_MEMORY_LIMITS:
   TEXTURE_MEMORY: 1GB
   GEOMETRY_MEMORY: 512MB
@@ -329,14 +329,14 @@ SET_MEMORY_LIMITS:
 ## Export Metadata
 
 ### Embedded Metadata
-```sitl
+```sigl
 EXPORT WITH METADATA:
   TITLE: "Scene Title"
   DESCRIPTION: "Scene description"
   AUTHOR: "Creator Name"
   COPYRIGHT: "Copyright information"
   CREATION_DATE: AUTO | CUSTOM(date)
-  SOFTWARE: "SITL Engine v1.0"
+  SOFTWARE: "SIGL Engine v1.0"
   KEYWORDS: ["tag1", "tag2", "tag3"]
   
   TECHNICAL_INFO: {
@@ -348,10 +348,10 @@ EXPORT WITH METADATA:
 ```
 
 ### EXIF Data (for JPEG/TIFF)
-```sitl
+```sigl
 EXPORT WITH EXIF:
   CAMERA_INFO: {
-    make: "SITL Engine",
+    make: "SIGL Engine",
     model: "Virtual Camera",
     focal_length: calculated,
     aperture: calculated,
@@ -368,7 +368,7 @@ EXPORT WITH EXIF:
 ## Error Handling and Validation
 
 ### Export Validation
-```sitl
+```sigl
 VALIDATE_EXPORT:
   CHECK_RESOLUTION: true
   CHECK_COLOR_SPACE: true
@@ -378,7 +378,7 @@ VALIDATE_EXPORT:
 ```
 
 ### Error Recovery
-```sitl
+```sigl
 ON_EXPORT_ERROR:
   FALLBACK_FORMAT: PNG
   FALLBACK_QUALITY: MEDIUM
@@ -389,7 +389,7 @@ ON_EXPORT_ERROR:
 ## Integration with Other Systems
 
 ### Template Integration
-```sitl
+```sigl
 EXPORT_TEMPLATE "high_quality_print":
   FORMAT: TIFF
   RESOLUTION: PRINT_LARGE
@@ -401,7 +401,7 @@ USE_EXPORT_TEMPLATE "high_quality_print" FOR SCENE "portrait"
 ```
 
 ### Animation Export
-```sitl
+```sigl
 EXPORT_ANIMATION:
   FORMAT: MP4 | GIF | WEBM | PNG_SEQUENCE
   FRAME_RATE: 24 | 30 | 60
@@ -413,7 +413,7 @@ EXPORT_ANIMATION:
 ## Usage Examples
 
 ### Basic Export
-```sitl
+```sigl
 CREATE SCENE "family_portrait":
   DRAW FAMILY_GROUP AT CENTER
   ADD ENVIRONMENT PARK
@@ -422,7 +422,7 @@ EXPORT "family_portrait" AS PNG WITH RESOLUTION: 1920x1080, QUALITY: HIGH
 ```
 
 ### Professional Print Export
-```sitl
+```sigl
 CREATE SCENE "wedding_photo":
   DRAW BRIDE_AND_GROOM AT CENTER
   ADD ENVIRONMENT CHURCH
@@ -435,13 +435,13 @@ EXPORT "wedding_photo" AS TIFF WITH:
   QUALITY: ULTRA
   METADATA: {
     title: "Wedding Portrait",
-    author: "SITL Studio",
+    author: "SIGL Studio",
     copyright: "2024 Wedding Studio"
   }
 ```
 
 ### Web Optimization Export
-```sitl
+```sigl
 CREATE SCENE "product_showcase":
   DRAW PRODUCT AT CENTER
   ADD ENVIRONMENT STUDIO
@@ -455,7 +455,7 @@ EXPORT_VARIATIONS "product_showcase":
 ```
 
 ### Batch Export for Social Media
-```sitl
+```sigl
 BATCH_EXPORT SCENES: [post1, post2, post3] WITH:
   SOCIAL_MEDIA_PRESETS: {
     instagram_square: {format: JPEG, resolution: 1080x1080, quality: 90},
@@ -465,4 +465,4 @@ BATCH_EXPORT SCENES: [post1, post2, post3] WITH:
   }
 ```
 
-This rendering system provides comprehensive control over the final image output while maintaining the intuitive SITL syntax and supporting both simple exports and complex professional workflows.
+This rendering system provides comprehensive control over the final image output while maintaining the intuitive SIGL syntax and supporting both simple exports and complex professional workflows.

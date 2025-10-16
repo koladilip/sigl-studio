@@ -1,12 +1,12 @@
 # Core Human Attributes
 
-This document describes the comprehensive attribute system for customizing human entities in SITL. Human attributes allow you to specify age, emotions, physical features, clothing, and appearance details.
+This document describes the comprehensive attribute system for customizing human entities in SIGL. Human attributes allow you to specify age, emotions, physical features, clothing, and appearance details.
 
 ## Age Attributes
 
 Specify the age of human entities to affect their appearance and proportions:
 
-```sitl
+```sigl
 DRAW MAN WITH AGE 25
 DRAW WOMAN WITH AGE 60
 DRAW BOY WITH AGE 8
@@ -23,7 +23,7 @@ DRAW BABY WITH AGE 1
 
 Control facial expressions and emotional states:
 
-```sitl
+```sigl
 DRAW MAN WITH SAD FACE
 DRAW WOMAN WITH HAPPY FACE
 DRAW BOY WITH ANGRY FACE
@@ -46,7 +46,7 @@ DRAW WOMAN WITH EXCITED FACE
 
 Simple physical characteristics:
 
-```sitl
+```sigl
 DRAW MAN WITH TALL HEIGHT
 DRAW WOMAN WITH SHORT HEIGHT
 DRAW BOY WITH CURLY HAIR
@@ -61,7 +61,7 @@ DRAW BOY WITH FRECKLES
 Advanced physical customization with detailed parameters:
 
 #### Height and Build Variations
-```sitl
+```sigl
 // Height with build type
 DRAW MAN WITH HEIGHT(SIZE: TALL, BUILD: ATHLETIC)
 DRAW WOMAN WITH HEIGHT(SIZE: MEDIUM, BUILD: SLIM)
@@ -74,7 +74,7 @@ DRAW ATHLETE WITH BUILD(TYPE: STRONG, FITNESS: PEAK, POSTURE: READY)
 ```
 
 #### Hair Styling
-```sitl
+```sigl
 // Detailed hair attributes
 DRAW MAN WITH HAIR(COLOR: BROWN, STYLE: SHORT, TEXTURE: WAVY)
 DRAW WOMAN WITH HAIR(COLOR: BLONDE, STYLE: LONG, TEXTURE: STRAIGHT, ACCESSORIES: HEADBAND)
@@ -87,7 +87,7 @@ DRAW GIRL WITH HAIR(COLOR: RED, SHADE: AUBURN, STYLE: PONYTAIL, ACCESSORIES: SCR
 ```
 
 #### Facial Features
-```sitl
+```sigl
 // Detailed facial customization
 DRAW MAN WITH FACE(BEARD: FULL, MUSTACHE: THICK, GLASSES: READING)
 DRAW WOMAN WITH FACE(MAKEUP: NATURAL, GLASSES: DESIGNER, EXPRESSION: CONFIDENT)
@@ -97,7 +97,7 @@ DRAW BOY WITH FACE(FRECKLES: LIGHT, EXPRESSION: PLAYFUL)
 ## Hair Colors
 
 ### Basic Hair Colors
-```sitl
+```sigl
 DRAW MAN WITH BROWN HAIR
 DRAW WOMAN WITH BLONDE HAIR
 DRAW BOY WITH BLACK HAIR
@@ -107,7 +107,7 @@ DRAW WOMAN WITH SILVER HAIR
 ```
 
 ### Hair Variation Presets
-```sitl
+```sigl
 // Define reusable hair styles
 DEFINE VARIATION "Professional_Hair":
   HAIR(STYLE: NEAT, LENGTH: MEDIUM, TEXTURE: SMOOTH, ACCESSORIES: MINIMAL)
@@ -123,7 +123,7 @@ DRAW STUDENT WITH VARIATION "Casual_Hair" AND COLOR: BROWN
 ## Eye Colors
 
 ### Basic Eye Colors
-```sitl
+```sigl
 DRAW MAN WITH BLUE EYES
 DRAW WOMAN WITH GREEN EYES
 DRAW BOY WITH BROWN EYES
@@ -131,7 +131,7 @@ DRAW GIRL WITH HAZEL EYES
 ```
 
 ### Parameterized Eye Features
-```sitl
+```sigl
 // Detailed eye variations
 DRAW MAN WITH EYES(COLOR: BLUE, SHADE: DEEP, EXPRESSION: INTENSE)
 DRAW WOMAN WITH EYES(COLOR: GREEN, SHADE: EMERALD, EXPRESSION: KIND, ACCESSORIES: CONTACTS)
@@ -149,7 +149,7 @@ DEFINE VARIATION "Gentle_Look":
 ## Skin Tones
 
 ### Basic Skin Tones
-```sitl
+```sigl
 DRAW MAN WITH LIGHT SKIN
 DRAW WOMAN WITH MEDIUM SKIN
 DRAW BOY WITH DARK SKIN
@@ -159,7 +159,7 @@ DRAW WOMAN WITH TAN SKIN
 ```
 
 ### Parameterized Skin Attributes
-```sitl
+```sigl
 // Detailed skin variations
 DRAW MAN WITH SKIN(TONE: LIGHT, UNDERTONE: WARM, TEXTURE: SMOOTH)
 DRAW WOMAN WITH SKIN(TONE: MEDIUM, UNDERTONE: COOL, TEXTURE: SOFT, FEATURES: FRECKLES)
@@ -173,7 +173,7 @@ DRAW ATHLETE WITH SKIN(TONE: TAN, CONDITION: HEALTHY, TEXTURE: TONED)
 ```
 
 ### Ethnicity-Based Skin Presets
-```sitl
+```sigl
 // Skin tone presets for different ethnicities
 DEFINE VARIATION "Nordic_Complexion":
   SKIN(TONE: PALE, UNDERTONE: PINK, TEXTURE: FAIR, FEATURES: MINIMAL)
@@ -188,7 +188,7 @@ DEFINE VARIATION "African_Complexion":
 ## Clothing Attributes
 
 ### Basic Clothing
-```sitl
+```sigl
 // Standard clothing
 DRAW MAN WITH RED SHIRT
 DRAW WOMAN WITH BLUE DRESS
@@ -203,7 +203,7 @@ DRAW WOMAN WITHOUT SHIRT AND WITH RED SKIRT
 ```
 
 ### Parameterized Clothing
-```sitl
+```sigl
 // Basic parameterized syntax
 DRAW MAN WITH SHIRT(COLOR: BLUE, STYLE: CASUAL)
 DRAW WOMAN WITH DRESS(COLOR: RED, STYLE: FORMAL, LENGTH: KNEE)
@@ -221,7 +221,7 @@ DRAW ATHLETE WITH SPORTSWEAR(COLOR: RED, STYLE: RUNNING, ACCESSORIES: HEADBAND)
 ```
 
 ### Clothing Variation Presets
-```sitl
+```sigl
 // Define reusable clothing presets
 DEFINE VARIATION "Business_Formal":
   OUTFIT(SHIRT: WHITE, PANTS: CHARCOAL, SHOES: BLACK, ACCESSORIES: TIE, STYLE: FORMAL)
@@ -239,7 +239,7 @@ DRAW ATHLETE WITH VARIATION "Athletic_Gym" AND BRAND: NIKE
 ```
 
 ### Clothing Toggle Mechanism
-```sitl
+```sigl
 // WITHOUT keyword for omitting clothing items
 DRAW MAN WITHOUT SHIRT
 DRAW WOMAN WITHOUT PANTS
@@ -252,7 +252,7 @@ DRAW WOMAN WITH ATTIRE(TOP: NONE, BOTTOM: SKIRT, ACCESSORIES: JEWELRY)
 ```
 
 ### Context-Aware Clothing Rendering
-```sitl
+```sigl
 // Clothing adapts to environment
 ADD ENVIRONMENT BEACH
 DRAW MAN WITH NO SHIRT  // Renders with swim trunks
@@ -269,9 +269,9 @@ DRAW WOMAN WITH OUTFIT(STYLE: PROFESSIONAL, COLOR: NAVY)
 
 ### Pattern-Enhanced Clothing
 
-Integrate clothing with the SITL Pattern System for rich visual designs:
+Integrate clothing with the SIGL Pattern System for rich visual designs:
 
-```sitl
+```sigl
 // Basic pattern application
 DRAW MAN WITH SHIRT(COLOR: BLUE, PATTERN: STRIPES)
 DRAW WOMAN WITH DRESS(COLOR: RED, PATTERN: POLKA_DOTS)
@@ -298,7 +298,7 @@ DRAW BOY WITH OUTFIT(
 
 ### Pattern Presets for Clothing
 
-```sitl
+```sigl
 // Define reusable pattern combinations
 DEFINE PATTERN "School_Uniform":
   BASE(COLOR: NAVY) WITH STRIPES(COLOR: WHITE, WIDTH: THIN, SPACING: REGULAR)
@@ -317,7 +317,7 @@ DRAW BUSINESSMAN WITH SUIT(PATTERN: "Business_Pinstripe")
 
 ### Cultural Pattern Integration
 
-```sitl
+```sigl
 // Cultural clothing patterns
 DRAW MAN WITH SHIRT(PATTERN: TARTAN(CLAN: SCOTTISH, COLORS: [GREEN, BLUE]))
 DRAW WOMAN WITH DRESS(PATTERN: PAISLEY(STYLE: INDIAN, COLORS: [GOLD, RED]))
@@ -335,7 +335,7 @@ DRAW MAN WITH KILT(
 
 ### Dynamic Pattern Effects
 
-```sitl
+```sigl
 // Patterns that respond to context
 DRAW ATHLETE WITH JERSEY(
     NUMBER: 23,
@@ -361,7 +361,7 @@ DRAW GIRL WITH DRESS(
 
 ### Pattern Layering and Combinations
 
-```sitl
+```sigl
 // Multiple pattern layers
 DRAW MAN WITH OUTFIT(
     BASE_LAYER: SHIRT(COLOR: WHITE),
@@ -382,7 +382,7 @@ DRAW WOMAN WITH ATTIRE(
 
 Multiple attributes can be combined for detailed character creation:
 
-```sitl
+```sigl
 DRAW MAN WITH AGE 30 AND SAD FACE AND BEARD AND BROWN HAIR
 DRAW WOMAN WITH AGE 25 AND HAPPY FACE AND LONG HAIR AND GLASSES
 DRAW BOY WITH AGE 10 AND SURPRISED FACE AND CURLY HAIR AND FRECKLES

@@ -1,24 +1,24 @@
 #!/usr/bin/env tsx
 
 /**
- * TypeScript Example: Generate images from SITL
+ * TypeScript Example: Generate images from SIGL
  * 
  * This demonstrates the complete workflow with proper type safety:
- * 1. Parse SITL code with type checking
+ * 1. Parse SIGL code with type checking
  * 2. Render the scene with typed configurations
  * 3. Export to image format with validated options
  */
 
 import { 
-  SITLEngine, 
-  SITLParser, 
+  SIGLEngine, 
+  SIGLParser, 
   SceneRenderer, 
   ExportManager,
   DEFAULT_CONFIG 
 } from './src/index.js';
 
 import type {
-  SITLConfig,
+  SIGLConfig,
   SceneDefinition,
   RenderOptions,
   ExportOptions,
@@ -32,14 +32,14 @@ import { promises as fs } from 'fs';
 import * as path from 'path';
 
 /**
- * Generate an image from SITL code using the full engine
+ * Generate an image from SIGL code using the full engine
  */
-async function generateImageFromSITL(): Promise<void> {
-  console.log('🚀 Starting SITL image generation...');
+async function generateImageFromSIGL(): Promise<void> {
+  console.log('🚀 Starting SIGL image generation...');
 
   try {
-    // 1. Configure the SITL engine with proper typing
-    const config: SITLConfig = {
+    // 1. Configure the SIGL engine with proper typing
+    const config: SIGLConfig = {
       canvas: {
         width: 1024,
         height: 768,
@@ -56,8 +56,8 @@ async function generateImageFromSITL(): Promise<void> {
     };
 
     // 2. Initialize the engine
-    console.log('⚙️ Initializing SITL engine...');
-    const engine = new SITLEngine(config);
+    console.log('⚙️ Initializing SIGL engine...');
+    const engine = new SIGLEngine(config);
     const initResult = await engine.initialize();
     
     if (!initResult.success) {
@@ -65,8 +65,8 @@ async function generateImageFromSITL(): Promise<void> {
       return;
     }
 
-    // 3. Define your SITL scene (using the actual SITL syntax)
-    const sitlCode = `
+    // 3. Define your SIGL scene (using the actual SIGL syntax)
+    const siglCode = `
 scene "Medical Consultation" {
     // Environment setup
     environment {
@@ -113,15 +113,15 @@ scene "Medical Consultation" {
     position medical_chart at background_wall
 }`;
 
-    // 4. Parse the SITL code with type checking
-    console.log('📝 Parsing SITL code...');
-    const parseResult: Result<SceneDefinition> = await engine.parse(sitlCode);
+    // 4. Parse the SIGL code with type checking
+    console.log('📝 Parsing SIGL code...');
+    const parseResult: Result<SceneDefinition> = await engine.parse(siglCode);
     
     if (!parseResult.success || !parseResult.data) {
       console.error('❌ Parse failed:', parseResult.errors);
       return;
     }
-    console.log('✅ SITL code parsed successfully');
+    console.log('✅ SIGL code parsed successfully');
     console.log(`   - Scene: ${parseResult.data.name}`);
     console.log(`   - Entities: ${parseResult.data.entities?.length || 0}`);
 
@@ -181,16 +181,16 @@ async function generateImageWithComponents(): Promise<void> {
   console.log('🔧 Using individual components with TypeScript...');
 
   try {
-    // Read SITL file with proper error handling
-    const sitlFilePath = path.join(process.cwd(), 'examples', 'basic', 'simple-scene.sitl');
+    // Read SIGL file with proper error handling
+    const siglFilePath = path.join(process.cwd(), 'examples', 'basic', 'simple-scene.sigl');
     
-    let sitlContent: string;
+    let siglContent: string;
     try {
-      sitlContent = await fs.readFile(sitlFilePath, 'utf8');
-      console.log(`📖 Read SITL file: ${sitlFilePath}`);
+      siglContent = await fs.readFile(siglFilePath, 'utf8');
+      console.log(`📖 Read SIGL file: ${siglFilePath}`);
     } catch (fileError) {
-      console.log('📝 Using inline SITL code (file not found)');
-      sitlContent = `
+      console.log('📝 Using inline SIGL code (file not found)');
+      siglContent = `
 scene "Simple Demo" {
     environment {
         lighting: natural
@@ -208,15 +208,15 @@ scene "Simple Demo" {
     }
     
     // Parse with typed result
-    console.log('🔍 Parsing with SITLParser...');
-    const parseResult: ParseResult = SITLParser.parse(sitlContent);
+    console.log('🔍 Parsing with SIGLParser...');
+    const parseResult: ParseResult = SIGLParser.parse(siglContent);
     if (!parseResult.success || !parseResult.ast) {
       console.error('Parse failed:', parseResult.errors);
       return;
     }
 
     // Create proper config
-    const config: SITLConfig = {
+    const config: SIGLConfig = {
       canvas: {
         width: 800,
         height: 600,
@@ -265,22 +265,22 @@ scene "Simple Demo" {
 }
 
 /**
- * Batch process multiple SITL files
+ * Batch process multiple SIGL files
  */
-async function batchProcessSITLFiles(inputDir: string, outputDir: string): Promise<void> {
-  console.log(`📁 Batch processing SITL files from ${inputDir}`);
+async function batchProcessSIGLFiles(inputDir: string, outputDir: string): Promise<void> {
+  console.log(`📁 Batch processing SIGL files from ${inputDir}`);
   
   try {
     // Ensure output directory exists
     await fs.mkdir(outputDir, { recursive: true });
     
-    // Find all .sitl files
+    // Find all .sigl files
     const files = await fs.readdir(inputDir);
-    const sitlFiles = files.filter(file => file.endsWith('.sitl'));
+    const siglFiles = files.filter(file => file.endsWith('.sigl'));
     
-    console.log(`Found ${sitlFiles.length} SITL files`);
+    console.log(`Found ${siglFiles.length} SIGL files`);
     
-    const config: SITLConfig = {
+    const config: SIGLConfig = {
       canvas: {
         width: 1024,
         height: 768,
@@ -296,7 +296,7 @@ async function batchProcessSITLFiles(inputDir: string, outputDir: string): Promi
        }
     };
     
-    const engine = new SITLEngine(config);
+    const engine = new SIGLEngine(config);
     const initResult = await engine.initialize();
     
     if (!initResult.success) {
@@ -304,11 +304,11 @@ async function batchProcessSITLFiles(inputDir: string, outputDir: string): Promi
       return;
     }
     
-    for (const file of sitlFiles) {
+    for (const file of siglFiles) {
       console.log(`\n🔄 Processing: ${file}`);
       
-      const sitlContent = await fs.readFile(path.join(inputDir, file), 'utf8');
-      const parseResult = await engine.parse(sitlContent);
+      const siglContent = await fs.readFile(path.join(inputDir, file), 'utf8');
+      const parseResult = await engine.parse(siglContent);
       
       if (!parseResult.success || !parseResult.data) {
         console.error(`❌ Failed to parse ${file}:`, parseResult.errors);
@@ -321,7 +321,7 @@ async function batchProcessSITLFiles(inputDir: string, outputDir: string): Promi
         continue;
       }
       
-      const outputFilename = file.replace('.sitl', '.png');
+      const outputFilename = file.replace('.sigl', '.png');
       const exportResult = await engine.export(renderResult.data, {
          format: 'png',
          filename: outputFilename,
@@ -344,7 +344,7 @@ async function batchProcessSITLFiles(inputDir: string, outputDir: string): Promi
 
 // Main execution with proper TypeScript patterns
 async function main(): Promise<void> {
-  console.log('🎯 SITL TypeScript Image Generation');
+  console.log('🎯 SIGL TypeScript Image Generation');
   console.log('===================================');
   
   const args = process.argv.slice(2);
@@ -354,7 +354,7 @@ async function main(): Promise<void> {
     case 'batch':
       const inputDir = args[1] || './examples';
       const outputDir = args[2] || './output';
-      await batchProcessSITLFiles(inputDir, outputDir);
+      await batchProcessSIGLFiles(inputDir, outputDir);
       break;
       
     case 'components':
@@ -363,7 +363,7 @@ async function main(): Promise<void> {
       
     default:
       // Run both examples
-      await generateImageFromSITL();
+      await generateImageFromSIGL();
       console.log('\n' + '='.repeat(50) + '\n');
       await generateImageWithComponents();
   }
@@ -371,9 +371,9 @@ async function main(): Promise<void> {
 
 // Export functions for use as a module
 export { 
-  generateImageFromSITL, 
+  generateImageFromSIGL, 
   generateImageWithComponents, 
-  batchProcessSITLFiles 
+  batchProcessSIGLFiles 
 };
 
 // Run if called directly

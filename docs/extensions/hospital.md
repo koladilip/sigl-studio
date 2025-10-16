@@ -1,11 +1,11 @@
 # Hospital Domain Extension
 
-This document describes the hospital domain extension for SITL, providing specialized entities, equipment, environments, and scenarios for medical and healthcare contexts.
+This document describes the hospital domain extension for SIGL, providing specialized entities, equipment, environments, and scenarios for medical and healthcare contexts.
 
 ## Medical Staff
 
 ### Basic Medical Personnel
-```sitl
+```sigl
 DRAW DOCTOR
 DRAW NURSE
 DRAW SURGEON
@@ -19,7 +19,7 @@ DRAW PEDIATRICIAN
 ```
 
 ### Specialized Medical Roles
-```sitl
+```sigl
 DRAW CARDIOLOGIST
 DRAW NEUROLOGIST
 DRAW ORTHOPEDIC SURGEON
@@ -38,7 +38,7 @@ DRAW CHAPLAIN
 ## Medical Equipment and Tools
 
 ### Basic Medical Equipment
-```sitl
+```sigl
 DRAW STETHOSCOPE
 DRAW SYRINGE
 DRAW THERMOMETER
@@ -54,7 +54,7 @@ DRAW SURGICAL INSTRUMENTS
 ```
 
 ### Advanced Medical Equipment
-```sitl
+```sigl
 DRAW MRI MACHINE
 DRAW CT SCANNER
 DRAW X-RAY MACHINE
@@ -70,7 +70,7 @@ DRAW AUTOCLAVE
 ```
 
 ### Surgical Instruments
-```sitl
+```sigl
 DRAW SCALPEL
 DRAW FORCEPS
 DRAW SURGICAL SCISSORS
@@ -86,7 +86,7 @@ DRAW ANESTHESIA MACHINE
 ## Hospital Environments
 
 ### Basic Hospital Areas
-```sitl
+```sigl
 DRAW HOSPITAL ROOM
 DRAW OPERATING ROOM
 DRAW EMERGENCY ROOM
@@ -100,7 +100,7 @@ DRAW PEDIATRIC WARD
 ```
 
 ### Specialized Hospital Areas
-```sitl
+```sigl
 DRAW CARDIAC CATHETERIZATION LAB
 DRAW NEONATAL ICU
 DRAW BURN UNIT
@@ -118,7 +118,7 @@ DRAW ADMINISTRATION OFFICE
 ## Medical Variation Presets
 
 ### Medical Attire Variations
-```sitl
+```sigl
 // Define medical attire variations
 DEFINE VARIATION "Surgeon_Scrubs":
   SCRUBS(COLOR: BLUE, STYLE: SURGICAL)
@@ -149,7 +149,7 @@ DEFINE VARIATION "Emergency_Paramedic":
 ```
 
 ### Specialty Variations
-```sitl
+```sigl
 // Define specialty variations
 DEFINE VARIATION "Pediatric_Specialist":
   COAT(COLOR: WHITE, DECORATIONS: CARTOON_CHARACTERS)
@@ -179,7 +179,7 @@ DEFINE VARIATION "Emergency_Response":
 ## Medical Personnel with Variations
 
 ### Using Predefined Variations
-```sitl
+```sigl
 // Basic variation usage
 DRAW SURGEON WITH VARIATION "Surgeon_Scrubs"
 DRAW DOCTOR WITH VARIATION "Doctor_Formal" AND SPECIALTY: CARDIOLOGY
@@ -193,7 +193,7 @@ DRAW EMERGENCY_DOCTOR WITH VARIATION "Doctor_Formal" AND DEPARTMENT: ER
 ```
 
 ### Using Parameterized Attributes
-```sitl
+```sigl
 // Detailed medical professional customization
 DRAW DOCTOR WITH COAT(COLOR: WHITE, SPECIALTY: NEUROLOGY, EXPERIENCE: SENIOR)
 DRAW NURSE WITH SCRUBS(COLOR: GREEN, DEPARTMENT: EMERGENCY, ACCESSORIES: TRAUMA_SHEARS)
@@ -208,7 +208,7 @@ DRAW CHIEF_OF_STAFF WITH ATTIRE(FORMAL: TRUE, AUTHORITY: EVIDENT)
 ```
 
 ### Context-Aware Medical Rendering
-```sitl
+```sigl
 // Automatic context adaptation
 DRAW DOCTOR IN OPERATING_ROOM:
   // Automatically applies surgical scrubs and sterile equipment
@@ -226,7 +226,7 @@ DRAW PHARMACIST IN PHARMACY:
 ## Medical Equipment Variations
 
 ### Department-Specific Equipment
-```sitl
+```sigl
 // Define equipment variations by department
 DEFINE VARIATION "OR_Equipment":
   SURGICAL_TABLE(TYPE: ADJUSTABLE, POSITION: CENTER)
@@ -258,7 +258,7 @@ DEFINE VARIATION "Lab_Equipment":
 ```
 
 ### Using Equipment Variations
-```sitl
+```sigl
 // Apply equipment variations to environments
 DRAW OPERATING_ROOM WITH VARIATION "OR_Equipment"
 DRAW EMERGENCY_ROOM WITH VARIATION "ER_Equipment"
@@ -276,7 +276,7 @@ DRAW SURGERY_SUITE:
 ## Medical Scenarios
 
 ### Surgical Scenarios
-```sitl
+```sigl
 DRAW SURGERY SCENE WITH VARIATION "OR_Equipment":
   DRAW SURGEON WITH VARIATION "Surgeon_Scrubs"
   DRAW PATIENT ON OPERATING TABLE
@@ -293,7 +293,7 @@ DRAW HEART_SURGERY:
 ```
 
 ### Emergency Scenarios
-```sitl
+```sigl
 DRAW EMERGENCY_RESPONSE:
   DRAW PARAMEDIC WITH VARIATION "Emergency_Paramedic"
   DRAW AMBULANCE WITH EQUIPMENT(TYPE: ADVANCED_LIFE_SUPPORT)
@@ -308,7 +308,7 @@ DRAW TRAUMA_RESPONSE:
 ```
 
 ### Routine Care Scenarios
-```sitl
+```sigl
 DRAW CHECKUP SCENE:
   DRAW DOCTOR WITH VARIATION "Doctor_Formal"
   DRAW PATIENT SITTING ON EXAMINATION TABLE
@@ -329,7 +329,7 @@ DRAW VACCINATION_CLINIC:
 ```
 
 ### Specialized Care Scenarios
-```sitl
+```sigl
 DRAW ICU_MONITORING:
   DRAW ICU_NURSE WITH VARIATION "Nurse_Uniform"
   DRAW PATIENT WITH CONDITION: CRITICAL_BUT_STABLE
@@ -352,7 +352,7 @@ DRAW PHARMACY_CONSULTATION:
 ## Medical Conditions and Patient States
 
 ### Patient Conditions
-```sitl
+```sigl
 // Define patient condition variations
 DEFINE VARIATION "Stable_Patient":
   VITALS(HEART_RATE: NORMAL, BLOOD_PRESSURE: STABLE)
@@ -371,7 +371,7 @@ DEFINE VARIATION "Recovery_Patient":
 ```
 
 ### Using Patient Variations
-```sitl
+```sigl
 DRAW PATIENT WITH VARIATION "Stable_Patient"
 DRAW PATIENT WITH VARIATION "Critical_Patient" IN ICU
 DRAW PATIENT WITH VARIATION "Recovery_Patient" IN REHABILITATION
@@ -380,7 +380,7 @@ DRAW PATIENT WITH VARIATION "Recovery_Patient" IN REHABILITATION
 ## Medical Communication and Documentation
 
 ### Medical Documentation
-```sitl
+```sigl
 DRAW MEDICAL_CHART WITH INFORMATION: COMPLETE
 DRAW PRESCRIPTION WITH DETAILS: SPECIFIC
 DRAW LAB_RESULTS WITH DATA: CURRENT
@@ -389,7 +389,7 @@ DRAW DISCHARGE_INSTRUCTIONS WITH CLARITY: PATIENT_FRIENDLY
 ```
 
 ### Medical Communication
-```sitl
+```sigl
 DRAW DOCTOR_PATIENT_CONSULTATION:
   DRAW DOCTOR WITH MANNER: EXPLANATORY
   DRAW PATIENT WITH ATTENTION: FOCUSED

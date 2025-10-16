@@ -5,8 +5,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'SITLEngine',
-      fileName: 'sitl-engine',
+      name: 'SIGLEngine',
+      fileName: 'sigl-engine',
       formats: ['es', 'cjs']
     },
     rollupOptions: {

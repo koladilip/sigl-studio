@@ -1,11 +1,11 @@
 # Court/Legal Domain Extension
 
-The Court/Legal Domain Extension provides comprehensive support for legal and judicial environments, personnel, and scenarios in SITL.
+The Court/Legal Domain Extension provides comprehensive support for legal and judicial environments, personnel, and scenarios in SIGL.
 
 ## Legal Personnel
 
 ### Basic Legal Roles
-```sitl
+```sigl
 DRAW JUDGE
 DRAW LAWYER
 DRAW ATTORNEY
@@ -19,7 +19,7 @@ DRAW LEGAL_SECRETARY
 ```
 
 ### Specialized Legal Roles
-```sitl
+```sigl
 DRAW SUPREME_COURT_JUSTICE
 DRAW FEDERAL_JUDGE
 DRAW DISTRICT_ATTORNEY
@@ -35,7 +35,7 @@ DRAW PATENT_LAWYER
 ## Legal Objects and Equipment
 
 ### Court Furniture and Equipment
-```sitl
+```sigl
 DRAW JUDGE_BENCH
 DRAW WITNESS_STAND
 DRAW JURY_BOX
@@ -49,7 +49,7 @@ DRAW COURT_SECURITY_BARRIER
 ```
 
 ### Legal Documents and Materials
-```sitl
+```sigl
 DRAW LEGAL_BRIEF
 DRAW CONTRACT
 DRAW SUBPOENA
@@ -67,7 +67,7 @@ DRAW COURT_TRANSCRIPT
 ## Legal Environments
 
 ### Court Facilities
-```sitl
+```sigl
 DRAW COURTROOM
 DRAW SUPREME_COURT
 DRAW FEDERAL_COURTHOUSE
@@ -81,7 +81,7 @@ DRAW JUVENILE_COURT
 ```
 
 ### Legal Office Environments
-```sitl
+```sigl
 DRAW LAW_FIRM
 DRAW LEGAL_OFFICE
 DRAW JUDGE_CHAMBERS
@@ -97,7 +97,7 @@ DRAW LEGAL_AID_OFFICE
 ## Legal Variation Presets
 
 ### Judicial Attire
-```sitl
+```sigl
 DEFINE VARIATION "Supreme_Court_Justice":
   ATTIRE(COLOR: BLACK, STYLE: JUDICIAL_ROBE, ACCESSORIES: GAVEL)
   POSTURE(STANCE: AUTHORITATIVE, DEMEANOR: DIGNIFIED)
@@ -112,7 +112,7 @@ DEFINE VARIATION "Municipal_Judge":
 ```
 
 ### Attorney Attire
-```sitl
+```sigl
 DEFINE VARIATION "Corporate_Lawyer":
   ATTIRE(COLOR: NAVY, STYLE: BUSINESS_SUIT, ACCESSORIES: TIE, BRIEFCASE)
   EQUIPMENT(DOCUMENTS: CONTRACTS, LAPTOP: PROFESSIONAL)
@@ -127,7 +127,7 @@ DEFINE VARIATION "Prosecutor":
 ```
 
 ### Court Staff Attire
-```sitl
+```sigl
 DEFINE VARIATION "Court_Bailiff":
   UNIFORM(COLOR: NAVY, STYLE: SECURITY, ACCESSORIES: BADGE, RADIO)
   EQUIPMENT(HANDCUFFS: STANDARD, KEYS: COURT_ACCESS)
@@ -144,21 +144,21 @@ DEFINE VARIATION "Court_Reporter":
 ## Legal Personnel with Variations
 
 ### Using Predefined Variations
-```sitl
+```sigl
 DRAW JUDGE WITH VARIATION "Supreme_Court_Justice"
 DRAW LAWYER WITH VARIATION "Corporate_Lawyer" AND EXPERIENCE: SENIOR
 DRAW BAILIFF WITH VARIATION "Court_Bailiff" AND RANK: SERGEANT
 ```
 
 ### Using Parameterized Attributes
-```sitl
+```sigl
 DRAW ATTORNEY WITH ATTIRE(TYPE: BUSINESS_SUIT, COLOR: CHARCOAL, ACCESSORIES: BRIEFCASE)
 DRAW PROSECUTOR WITH UNIFORM(TYPE: GOVERNMENT, RANK: DISTRICT_ATTORNEY, EXPERIENCE: VETERAN)
 DRAW PARALEGAL WITH ATTIRE(TYPE: BUSINESS_CASUAL, ACCESSORIES: LEGAL_NOTEPAD, BADGE: FIRM_ID)
 ```
 
 ### Context-Aware Legal Rendering
-```sitl
+```sigl
 DRAW JUDGE IN COURTROOM:
   // Automatically applies judicial robes and gavel
 DRAW LAWYER IN LAW_FIRM:
@@ -168,7 +168,7 @@ DRAW LAWYER IN LAW_FIRM:
 ## Legal Equipment Variations
 
 ### Court Technology
-```sitl
+```sigl
 DEFINE VARIATION "Modern_Courtroom":
   EQUIPMENT(AUDIO_SYSTEM: DIGITAL, VIDEO: RECORDING, DISPLAYS: ELECTRONIC)
   TECHNOLOGY(CASE_MANAGEMENT: DIGITAL, EVIDENCE: ELECTRONIC)
@@ -179,7 +179,7 @@ DEFINE VARIATION "Traditional_Courtroom":
 ```
 
 ### Legal Documentation Systems
-```sitl
+```sigl
 DEFINE VARIATION "Digital_Law_Firm":
   EQUIPMENT(COMPUTERS: MODERN, SOFTWARE: LEGAL_SUITE, STORAGE: CLOUD)
   DOCUMENTS(FORMAT: DIGITAL, ACCESS: SECURE, BACKUP: AUTOMATED)
@@ -192,7 +192,7 @@ DEFINE VARIATION "Traditional_Law_Firm":
 ## Legal Scenarios
 
 ### Court Proceedings
-```sitl
+```sigl
 DRAW CRIMINAL_TRIAL:
   DRAW JUDGE WITH VARIATION "Federal_Judge" AT BENCH
   DRAW PROSECUTOR WITH VARIATION "Prosecutor" AT PROSECUTION_TABLE
@@ -216,7 +216,7 @@ DRAW SUPREME_COURT_SESSION:
 ```
 
 ### Law Firm Operations
-```sitl
+```sigl
 DRAW LAW_FIRM_MEETING:
   DRAW SENIOR_PARTNER WITH VARIATION "Corporate_Lawyer" AND EXPERIENCE: SENIOR
   DRAW ASSOCIATE_LAWYERS WITH VARIATION "Corporate_Lawyer" AND EXPERIENCE: JUNIOR
@@ -237,7 +237,7 @@ DRAW CLIENT_CONSULTATION:
 ```
 
 ### Legal Proceedings Types
-```sitl
+```sigl
 DRAW ARRAIGNMENT:
   DRAW DEFENDANT WITH ATTIRE(STYLE: ORANGE_JUMPSUIT) AT DEFENDANT_TABLE
   DRAW PUBLIC_DEFENDER WITH VARIATION "Public_Defender" BESIDE_DEFENDANT
@@ -260,7 +260,7 @@ DRAW SENTENCING:
 ## Legal Communication and Documentation
 
 ### Legal Correspondence
-```sitl
+```sigl
 DRAW LEGAL_CORRESPONDENCE:
   DRAW LAWYER DRAFTING_LEGAL_BRIEF
   DRAW PARALEGAL PREPARING_DOCUMENTS
@@ -275,7 +275,7 @@ DRAW COURT_FILING:
 ```
 
 ### Legal Research and Analysis
-```sitl
+```sigl
 DRAW LEGAL_RESEARCH:
   DRAW ATTORNEY ANALYZING_CASE_LAW
   DRAW PARALEGAL RESEARCHING_STATUTES
@@ -292,7 +292,7 @@ DRAW CASE_PREPARATION:
 ## Legal Ethics and Professional Standards
 
 ### Professional Conduct
-```sitl
+```sigl
 DRAW ATTORNEY_CLIENT_PRIVILEGE:
   DRAW CONFIDENTIAL_MEETING BETWEEN LAWYER AND CLIENT
   DRAW SECURE_DOCUMENT_HANDLING
@@ -309,7 +309,7 @@ DRAW LEGAL_ETHICS_TRAINING:
 ## Specialized Legal Areas
 
 ### Family Law
-```sitl
+```sigl
 DRAW FAMILY_COURT_SESSION:
   DRAW FAMILY_COURT_JUDGE WITH VARIATION "Family_Court_Judge"
   DRAW DIVORCE_ATTORNEY WITH VARIATION "Family_Law_Attorney"
@@ -318,7 +318,7 @@ DRAW FAMILY_COURT_SESSION:
 ```
 
 ### Criminal Law
-```sitl
+```sigl
 DRAW CRIMINAL_DEFENSE_CASE:
   DRAW CRIMINAL_DEFENSE_ATTORNEY WITH VARIATION "Criminal_Defense"
   DRAW PROSECUTOR WITH VARIATION "District_Attorney"
@@ -327,7 +327,7 @@ DRAW CRIMINAL_DEFENSE_CASE:
 ```
 
 ### Corporate Law
-```sitl
+```sigl
 DRAW CORPORATE_LEGAL_MEETING:
   DRAW CORPORATE_COUNSEL WITH VARIATION "Corporate_Lawyer"
   DRAW BUSINESS_EXECUTIVES WITH VARIATION "Corporate_Client"
@@ -347,7 +347,7 @@ DRAW CORPORATE_LEGAL_MEETING:
 ## Usage Examples
 
 ### Basic Legal Scene
-```sitl
+```sigl
 ADD ENVIRONMENT COURTROOM
 DRAW JUDGE WITH VARIATION "Federal_Judge"
 DRAW LAWYER WITH VARIATION "Corporate_Lawyer"
@@ -355,7 +355,7 @@ DRAW DEFENDANT WITH FORMAL_ATTIRE
 ```
 
 ### Complex Trial Scene
-```sitl
+```sigl
 CREATE SCENE "criminal_trial":
   ADD ENVIRONMENT FEDERAL_COURTHOUSE
   DRAW JUDGE WITH VARIATION "Federal_Judge" AT BENCH
@@ -367,7 +367,7 @@ CREATE SCENE "criminal_trial":
 ```
 
 ### Law Firm Environment
-```sitl
+```sigl
 CREATE SCENE "law_firm_office":
   ADD ENVIRONMENT LAW_FIRM
   DRAW SENIOR_PARTNER WITH VARIATION "Corporate_Lawyer" AND EXPERIENCE: SENIOR

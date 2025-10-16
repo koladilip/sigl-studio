@@ -1,11 +1,11 @@
 # Nature and Environment Elements
 
-This document describes the natural elements available in the SITL core system for creating environmental scenes, including trees, water features, terrain, weather, and biomes.
+This document describes the natural elements available in the SIGL core system for creating environmental scenes, including trees, water features, terrain, weather, and biomes.
 
 ## Trees and Vegetation
 
 ### Basic Tree Types
-```sitl
+```sigl
 DRAW TREE
 DRAW OAK TREE
 DRAW PINE TREE
@@ -19,7 +19,7 @@ DRAW CACTUS
 ```
 
 ### Tree Attributes
-```sitl
+```sigl
 DRAW TREE WITH GREEN LEAVES
 DRAW TREE WITH AUTUMN LEAVES
 DRAW TREE WITH NO LEAVES
@@ -29,7 +29,7 @@ DRAW TREE WITH SIZE LARGE
 ```
 
 ### Advanced Tree Customization
-```sitl
+```sigl
 // Detailed tree specifications
 DRAW OAK TREE WITH LEAVES(COLOR: GREEN, DENSITY: THICK, SEASON: SUMMER)
 DRAW PINE TREE WITH NEEDLES(COLOR: DARK_GREEN, SNOW: LIGHT)
@@ -45,7 +45,7 @@ DRAW ANCIENT_TREE WITH AGE(YEARS: 200, SIZE: MASSIVE, TRUNK: GNARLED)
 ## Water Elements
 
 ### Basic Water Features
-```sitl
+```sigl
 DRAW RIVER
 DRAW STREAM
 DRAW LAKE
@@ -57,7 +57,7 @@ DRAW WAVES
 ```
 
 ### Water Attributes
-```sitl
+```sigl
 DRAW RIVER FLOWING LEFT TO RIGHT
 DRAW LAKE WITH REFLECTION
 DRAW POND WITH LILY PADS
@@ -66,7 +66,7 @@ DRAW BEACH WITH SAND
 ```
 
 ### Advanced Water Features
-```sitl
+```sigl
 // Detailed water specifications
 DRAW RIVER WITH FLOW(DIRECTION: EAST, SPEED: MODERATE, WIDTH: 50)
 DRAW LAKE WITH SURFACE(CALM: TRUE, REFLECTION: TREES, CLARITY: CLEAR)
@@ -82,7 +82,7 @@ DRAW OCEAN WITH COLOR TURQUOISE AND WAVES GENTLE
 ## Terrain and Landforms
 
 ### Basic Terrain
-```sitl
+```sigl
 DRAW HILL
 DRAW MOUNTAIN
 DRAW MOUNTAIN RANGE
@@ -95,7 +95,7 @@ DRAW SANDY GROUND
 ```
 
 ### Terrain Attributes
-```sitl
+```sigl
 // Basic terrain modifications
 DRAW HILL WITH GRASS
 DRAW MOUNTAIN WITH SNOW_CAP
@@ -109,7 +109,7 @@ DRAW VALLEY WITH FEATURES(RIVER: WINDING, TREES: DENSE, MEADOW: OPEN)
 ```
 
 ### Ground Textures
-```sitl
+```sigl
 // Different ground types
 DRAW GROUND WITH TEXTURE GRASS
 DRAW GROUND WITH TEXTURE DIRT
@@ -125,7 +125,7 @@ DRAW GROUND WITH PATCHES(GRASS: 60%, DIRT: 30%, ROCKS: 10%)
 ## Sky and Weather
 
 ### Sky Elements
-```sitl
+```sigl
 DRAW SKY
 DRAW CLOUDS
 DRAW SUN
@@ -135,7 +135,7 @@ DRAW RAINBOW
 ```
 
 ### Weather Conditions
-```sitl
+```sigl
 DRAW RAIN
 DRAW SNOW
 DRAW STORM CLOUDS
@@ -144,7 +144,7 @@ DRAW MIST
 ```
 
 ### Advanced Sky and Weather
-```sitl
+```sigl
 // Detailed sky specifications
 DRAW SKY WITH COLOR(BLUE: LIGHT, GRADIENT: HORIZON_WHITE)
 DRAW CLOUDS WITH TYPE(CUMULUS: FLUFFY, COVERAGE: 30%, COLOR: WHITE)
@@ -160,7 +160,7 @@ DRAW STORM WITH LIGHTNING(FREQUENCY: OCCASIONAL, BRIGHTNESS: INTENSE)
 ## Seasonal Variations
 
 ### Seasonal Modifiers
-```sitl
+```sigl
 DRAW TREE IN SPRING
 DRAW TREE IN SUMMER
 DRAW TREE IN AUTUMN
@@ -169,7 +169,7 @@ DRAW LANDSCAPE IN SPRING
 ```
 
 ### Seasonal Characteristics
-```sitl
+```sigl
 // Spring features
 DRAW SCENE IN SPRING:
   DRAW TREES WITH NEW_LEAVES(COLOR: LIGHT_GREEN)
@@ -198,7 +198,7 @@ DRAW SCENE IN WINTER:
 ## Biome Templates
 
 ### Predefined Biomes
-```sitl
+```sigl
 CREATE BIOME "tropical":
   DRAW PALM TREES
   DRAW SANDY GROUND
@@ -224,7 +224,7 @@ CREATE BIOME "mountain":
 ```
 
 ### Custom Biome Creation
-```sitl
+```sigl
 // Define custom biome
 DEFINE BIOME "meadow":
   TERRAIN: ROLLING_HILLS
@@ -240,7 +240,7 @@ ADD ENVIRONMENT BIOME "meadow"
 ## Environmental Interactions
 
 ### Element Combinations
-```sitl
+```sigl
 // Natural combinations
 DRAW RIVER FLOWING THROUGH VALLEY
 DRAW TREES GROWING NEAR LAKE
@@ -255,7 +255,7 @@ DRAW FOG RISING FROM LAKE
 ```
 
 ### Ecosystem Relationships
-```sitl
+```sigl
 // Create interconnected natural systems
 CREATE ECOSYSTEM "forest_lake":
   DRAW LAKE AT CENTER
@@ -268,7 +268,7 @@ CREATE ECOSYSTEM "forest_lake":
 ## Lighting and Natural Effects
 
 ### Natural Lighting
-```sitl
+```sigl
 // Time-based lighting
 DRAW SCENE AT DAWN:
   DRAW SUN WITH POSITION LOW_EAST
@@ -287,7 +287,7 @@ DRAW SCENE AT SUNSET:
 ```
 
 ### Atmospheric Effects
-```sitl
+```sigl
 // Environmental atmosphere
 DRAW FOREST WITH ATMOSPHERE MISTY
 DRAW MOUNTAIN WITH ATMOSPHERE CRISP

@@ -1,5 +1,5 @@
 /**
- * Entity type definitions for the SITL system
+ * Entity type definitions for the SIGL system
  */
 
 // Base entity attributes

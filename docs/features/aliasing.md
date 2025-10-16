@@ -1,8 +1,8 @@
-# SITL Aliasing System
+# SIGL Aliasing System
 
 ## Overview
 
-The SITL Aliasing System provides a powerful mechanism for creating shortcuts, references, and reusable entity definitions. This system enables developers to create more maintainable and readable SITL code by allowing entities to be referenced by custom names, grouped into collections, and reused across different contexts.
+The SIGL Aliasing System provides a powerful mechanism for creating shortcuts, references, and reusable entity definitions. This system enables developers to create more maintainable and readable SIGL code by allowing entities to be referenced by custom names, grouped into collections, and reused across different contexts.
 
 ## Core Principles
 
@@ -16,7 +16,7 @@ The SITL Aliasing System provides a powerful mechanism for creating shortcuts, r
 
 ### Simple Entity Aliases
 
-```sitl
+```sigl
 # Define an alias
 @alias hero = human(age:25, emotion:confident, hair:brown)
 
@@ -26,7 +26,7 @@ create hero at(0,0)
 
 ### Attribute Aliases
 
-```sitl
+```sigl
 # Define attribute combinations
 @alias warrior_gear = clothing:armor, weapon:sword, shield:round
 @alias mage_gear = clothing:robe, weapon:staff, accessory:hat
@@ -40,7 +40,7 @@ create human(age:40, mage_gear) at(10,0)
 
 ### Parameterized Aliases
 
-```sitl
+```sigl
 # Aliases with parameters
 @alias guard(weapon_type) = human(
     age:30-40,
@@ -58,7 +58,7 @@ create guard(bow) at(10,0)
 
 ### Conditional Aliases
 
-```sitl
+```sigl
 # Aliases with conditional logic
 @alias villager(profession) = human(
     age:20-60,
@@ -76,7 +76,7 @@ create villager(merchant) at(10,0)
 
 ### Group Definitions
 
-```sitl
+```sigl
 # Define a collection of related aliases
 @collection party {
     leader = human(age:30, emotion:confident, clothing:armor, weapon:sword)
@@ -94,7 +94,7 @@ create party.healer at(0,4)
 
 ### Nested Collections
 
-```sitl
+```sigl
 @collection army {
     @collection infantry {
         soldier = human(age:20-30, clothing:armor, weapon:sword)
@@ -117,7 +117,7 @@ create army.cavalry.knight at(10,0)
 
 ### Entity References
 
-```sitl
+```sigl
 # Create entities with references
 create human(age:25, name:"Alice") as @alice at(0,0)
 create human(age:30, name:"Bob") as @bob at(5,0)
@@ -130,7 +130,7 @@ move @alice to(@bob.position + offset(1,0))
 
 ### Dynamic References
 
-```sitl
+```sigl
 # Reference by properties
 @ref nearest_guard = find(human, clothing:uniform, distance:closest)
 @ref all_villagers = find(human, clothing:casual, area:village)
@@ -146,7 +146,7 @@ for entity in @all_villagers {
 
 ### Base Aliases
 
-```sitl
+```sigl
 # Base character template
 @alias base_character = human(age:25, emotion:neutral)
 
@@ -161,7 +161,7 @@ create warrior at(0,0)  # Inherits age:25, emotion:neutral, adds armor and sword
 
 ### Override Inheritance
 
-```sitl
+```sigl
 @alias experienced_warrior extends warrior = age:35, emotion:confident
 
 # Results in: human(age:35, emotion:confident, clothing:armor, weapon:sword)
@@ -171,7 +171,7 @@ create warrior at(0,0)  # Inherits age:25, emotion:neutral, adds armor and sword
 
 ### Environment Aliases
 
-```sitl
+```sigl
 @collection environments {
     forest = {
         ground: grass,
@@ -194,7 +194,7 @@ apply environments.forest to area(0,0,20,20)
 
 ### Scene Aliases
 
-```sitl
+```sigl
 @alias tavern_scene = {
     bartender = human(age:45, clothing:apron) at(bar_position),
     customers = [
@@ -216,7 +216,7 @@ create tavern_scene
 
 ### Local Aliases
 
-```sitl
+```sigl
 scene village_market {
     # Local aliases only available within this scene
     @alias vendor = human(age:40, clothing:merchant, emotion:friendly)
@@ -229,7 +229,7 @@ scene village_market {
 
 ### Global Aliases
 
-```sitl
+```sigl
 # Global aliases available everywhere
 @global alias protagonist = human(age:25, name:"Hero", emotion:determined)
 @global alias antagonist = human(age:40, name:"Villain", emotion:evil)
@@ -239,7 +239,7 @@ scene village_market {
 
 ### Type Checking
 
-```sitl
+```sigl
 # Ensure alias produces valid entity
 @alias valid_human = human(age:25, emotion:happy)  # ✓ Valid
 @alias invalid_human = human(age:"old", emotion:123)  # ✗ Invalid types
@@ -249,7 +249,7 @@ scene village_market {
 
 ### Constraint Validation
 
-```sitl
+```sigl
 # Aliases with constraints
 @alias adult_human = human(age:18+, emotion:any)
 @alias child_human = human(age:0-17, emotion:any)
@@ -263,7 +263,7 @@ create adult_human(age:15)  # ✗ Constraint violation
 
 ### Lazy Evaluation
 
-```sitl
+```sigl
 # Aliases are evaluated only when used
 @alias complex_calculation = human(
     age: random(20,60),
@@ -277,7 +277,7 @@ create complex_calculation
 
 ### Caching
 
-```sitl
+```sigl
 # Cache expensive alias evaluations
 @alias @cached expensive_npc = human(
     age: complex_age_calculation(),
@@ -293,7 +293,7 @@ create expensive_npc at(5,0)  # Uses cached result
 
 ### Pattern Integration
 
-```sitl
+```sigl
 @alias patterned_clothing(pattern_name) = human(
     clothing: apply_pattern(base_shirt, ${pattern_name})
 )
@@ -303,7 +303,7 @@ create patterned_clothing(stripes) at(0,0)
 
 ### Animation Integration
 
-```sitl
+```sigl
 @alias animated_guard = human(clothing:armor) with {
     animation: patrol_route(waypoints:[a,b,c,d]),
     behavior: alert_on_approach
@@ -312,7 +312,7 @@ create patterned_clothing(stripes) at(0,0)
 
 ### Expression Integration
 
-```sitl
+```sigl
 @alias reactive_npc = human(age:30) with {
     expressions: {
         on_approach: surprised,
@@ -326,20 +326,20 @@ create patterned_clothing(stripes) at(0,0)
 
 ### Undefined Alias Errors
 
-```sitl
+```sigl
 create unknown_alias  # Error: Alias 'unknown_alias' not defined
 ```
 
 ### Circular Reference Detection
 
-```sitl
+```sigl
 @alias a = b
 @alias b = a  # Error: Circular reference detected
 ```
 
 ### Parameter Mismatch
 
-```sitl
+```sigl
 @alias parameterized(x, y) = human(age:${x}, emotion:${y})
 create parameterized(25)  # Error: Missing parameter 'y'
 ```
@@ -348,7 +348,7 @@ create parameterized(25)  # Error: Missing parameter 'y'
 
 ### Naming Conventions
 
-```sitl
+```sigl
 # Use descriptive names
 @alias town_guard = human(...)  # ✓ Good
 @alias tg = human(...)          # ✗ Poor
@@ -361,7 +361,7 @@ create parameterized(25)  # Error: Missing parameter 'y'
 
 ### Organization
 
-```sitl
+```sigl
 # Group related aliases
 @collection characters {
     # All character aliases here
@@ -378,7 +378,7 @@ create parameterized(25)  # Error: Missing parameter 'y'
 
 ### Documentation
 
-```sitl
+```sigl
 # Document complex aliases
 @alias complex_boss = human(
     # High-level enemy with multiple phases
@@ -395,7 +395,7 @@ create parameterized(25)  # Error: Missing parameter 'y'
 
 ### Macro-like Aliases
 
-```sitl
+```sigl
 @alias create_party(leader_name, size) = {
     create human(name:${leader_name}, role:leader) as @party_leader
     repeat ${size - 1} {
@@ -409,7 +409,7 @@ create_party("Aragorn", 4)  # Creates leader + 3 followers
 
 ### Conditional Compilation
 
-```sitl
+```sigl
 @if debug_mode {
     @alias test_npc = human(name:"DEBUG", visible_stats:true)
 } @else {
@@ -419,7 +419,7 @@ create_party("Aragorn", 4)  # Creates leader + 3 followers
 
 ### Version Control
 
-```sitl
+```sigl
 @version 1.2
 @alias modern_guard = human(clothing:updated_armor, ai:enhanced)
 
@@ -441,7 +441,7 @@ create_party("Aragorn", 4)  # Creates leader + 3 followers
 - **AI-Generated Aliases**: Automatic alias creation based on context
 - **Dynamic Alias Loading**: Runtime alias definition and modification
 - **Alias Analytics**: Usage tracking and optimization suggestions
-- **Cross-File Aliases**: Alias sharing between SITL files
+- **Cross-File Aliases**: Alias sharing between SIGL files
 - **Alias Versioning**: Support for multiple versions of the same alias
 - **Template Aliases**: Aliases that generate other aliases
 
@@ -449,7 +449,7 @@ create_party("Aragorn", 4)  # Creates leader + 3 followers
 
 ### Complete Game Scene
 
-```sitl
+```sigl
 # Define character archetypes
 @collection rpg_characters {
     warrior = human(age:30, clothing:armor, weapon:sword, emotion:brave)
@@ -472,4 +472,4 @@ scene dungeon_entrance {
 }
 ```
 
-This aliasing system provides the foundation for creating maintainable, reusable, and expressive SITL code that scales from simple character shortcuts to complex scene templates.
+This aliasing system provides the foundation for creating maintainable, reusable, and expressive SIGL code that scales from simple character shortcuts to complex scene templates.

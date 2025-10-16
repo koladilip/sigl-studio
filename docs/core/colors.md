@@ -1,12 +1,12 @@
 # Core Color System
 
-This document describes the comprehensive color system in SITL, including basic colors, advanced specifications, patterns, themes, and special color handling.
+This document describes the comprehensive color system in SIGL, including basic colors, advanced specifications, patterns, themes, and special color handling.
 
 ## Basic Clothing Colors
 
 Simple color specifications for clothing items:
 
-```sitl
+```sigl
 DRAW MAN WITH RED SHIRT
 DRAW WOMAN WITH BLUE DRESS
 DRAW BOY WITH GREEN PANTS
@@ -24,7 +24,7 @@ DRAW WOMAN WITH WHITE BLOUSE
 
 Specify colors for multiple clothing pieces:
 
-```sitl
+```sigl
 DRAW MAN WITH RED SHIRT AND BLUE PANTS
 DRAW WOMAN WITH GREEN DRESS AND BLACK SHOES
 DRAW BOY WITH YELLOW SHIRT AND BROWN SHORTS
@@ -37,7 +37,7 @@ DRAW GIRL WITH PINK DRESS AND WHITE SOCKS
 
 Add intensity and shade modifiers to basic colors:
 
-```sitl
+```sigl
 DRAW MAN WITH DARK BLUE SHIRT
 DRAW WOMAN WITH LIGHT GREEN DRESS
 DRAW BOY WITH BRIGHT RED JACKET
@@ -50,7 +50,7 @@ DRAW GIRL WITH PALE PINK DRESS
 - **Tone**: `WARM`, `COOL`, `NEUTRAL`
 
 ### Examples
-```sitl
+```sigl
 DRAW MAN WITH BRIGHT RED SHIRT
 DRAW WOMAN WITH MUTED BLUE DRESS
 DRAW BOY WITH SOFT GREEN JACKET
@@ -61,7 +61,7 @@ DRAW GIRL WITH BOLD YELLOW TOP
 
 Use precise hex color codes for exact color matching:
 
-```sitl
+```sigl
 DRAW MAN WITH SHIRT COLOR #FF5733
 DRAW WOMAN WITH DRESS COLOR #3498DB
 DRAW BOY WITH PANTS COLOR #2ECC71
@@ -77,7 +77,7 @@ DRAW GIRL WITH SKIRT COLOR #E74C3C
 
 Create patterned clothing with multiple colors:
 
-```sitl
+```sigl
 DRAW MAN WITH STRIPED SHIRT IN BLUE AND WHITE
 DRAW WOMAN WITH POLKA DOT DRESS IN RED AND BLACK
 DRAW BOY WITH CHECKERED SHIRT IN GREEN AND YELLOW
@@ -93,7 +93,7 @@ DRAW GIRL WITH FLORAL DRESS IN PINK AND PURPLE
 - `GEOMETRIC` - Abstract geometric shapes
 
 ### Pattern Syntax
-```sitl
+```sigl
 DRAW ENTITY WITH PATTERN_TYPE ITEM IN COLOR1 AND COLOR2
 DRAW ENTITY WITH PATTERN_TYPE ITEM IN COLOR1 AND COLOR2 AND COLOR3
 ```
@@ -102,7 +102,7 @@ DRAW ENTITY WITH PATTERN_TYPE ITEM IN COLOR1 AND COLOR2 AND COLOR3
 
 Set overall color schemes for scenes or groups:
 
-```sitl
+```sigl
 SET COLOR THEME WARM
 SET COLOR THEME COOL
 SET COLOR THEME PASTEL
@@ -136,7 +136,7 @@ DRAW GROUP WITH THEME PASTEL
 - Creates sophisticated, artistic effects
 
 ### Theme Application
-```sitl
+```sigl
 // Apply theme to entire scene
 CREATE SCENE "family_portrait" WITH THEME WARM:
   DRAW MAN WITH AGE 35
@@ -152,7 +152,7 @@ CREATE GROUP "children" WITH THEME PASTEL:
 ## Clothing Toggle and Color Interaction
 
 ### Clothing Omission
-```sitl
+```sigl
 // WITHOUT keyword for omitting clothing items
 DRAW MAN WITHOUT SHIRT
 DRAW WOMAN WITHOUT PANTS
@@ -174,7 +174,7 @@ DRAW BOY WITHOUT SHOES AND WITH GREEN SHIRT AND BROWN SHORTS
 
 When clothing is omitted, skin tone becomes visible and can be colored:
 
-```sitl
+```sigl
 // Skin tone becomes visible when shirtless
 DRAW MAN WITH NO SHIRT AND LIGHT SKIN
 DRAW WOMAN WITH BARE TORSO AND MEDIUM SKIN
@@ -188,21 +188,21 @@ DRAW WOMAN WITH BARE TORSO AND SKIN COLOR #D4A76A
 ## Color Combinations and Harmony
 
 ### Complementary Colors
-```sitl
+```sigl
 DRAW MAN WITH BLUE SHIRT AND ORANGE PANTS    // Blue-Orange complement
 DRAW WOMAN WITH RED DRESS AND GREEN SHOES    // Red-Green complement
 DRAW BOY WITH PURPLE SHIRT AND YELLOW SHORTS // Purple-Yellow complement
 ```
 
 ### Analogous Colors
-```sitl
+```sigl
 DRAW MAN WITH BLUE SHIRT AND TEAL PANTS      // Blue-Teal analogy
 DRAW WOMAN WITH RED DRESS AND ORANGE SHOES   // Red-Orange analogy
 DRAW GIRL WITH GREEN SHIRT AND LIME SKIRT    // Green-Lime analogy
 ```
 
 ### Triadic Colors
-```sitl
+```sigl
 DRAW GROUP "triadic_family":
   DRAW MAN WITH RED SHIRT
   DRAW WOMAN WITH BLUE DRESS
@@ -212,7 +212,7 @@ DRAW GROUP "triadic_family":
 ## Color Validation and Error Handling
 
 ### Invalid Color Specifications
-```sitl
+```sigl
 // These will generate warnings or use defaults
 DRAW MAN WITH SHIRT COLOR #INVALID    // Invalid hex format
 DRAW WOMAN WITH PURPLE SHIRT AND PURPLE PANTS  // Potential monotony warning
@@ -220,7 +220,7 @@ DRAW BOY WITH NEON PINK FORMAL SUIT   // Style-color mismatch warning
 ```
 
 ### Color Accessibility
-```sitl
+```sigl
 // High contrast combinations for accessibility
 DRAW MAN WITH BLACK SHIRT AND WHITE TEXT
 DRAW WOMAN WITH DARK BLUE DRESS AND LIGHT YELLOW ACCESSORIES
@@ -233,21 +233,21 @@ DRAW FAMILY WITH THEME COLORBLIND_FRIENDLY
 ## Advanced Color Features
 
 ### Gradient Colors
-```sitl
+```sigl
 DRAW MAN WITH SHIRT GRADIENT FROM BLUE TO WHITE
 DRAW WOMAN WITH DRESS GRADIENT FROM RED TO PINK
 DRAW BOY WITH JACKET GRADIENT FROM GREEN TO YELLOW
 ```
 
 ### Transparency and Opacity
-```sitl
+```sigl
 DRAW MAN WITH SHIRT COLOR #FF5733 OPACITY 0.8
 DRAW WOMAN WITH DRESS COLOR BLUE TRANSPARENCY 20%
 DRAW BOY WITH JACKET COLOR RED ALPHA 0.9
 ```
 
 ### Color Animation
-```sitl
+```sigl
 DRAW MAN WITH SHIRT COLOR BLUE ANIMATE TO RED OVER 2 SECONDS
 DRAW WOMAN WITH DRESS COLOR CYCLING THROUGH RAINBOW
 ```
@@ -258,7 +258,7 @@ DRAW WOMAN WITH DRESS COLOR CYCLING THROUGH RAINBOW
 
 Define and work with different color spaces for professional workflows:
 
-```sitl
+```sigl
 SET COLOR_SPACE: sRGB           // Standard web/monitor color space
 SET COLOR_SPACE: Adobe_RGB      // Extended gamut for print
 SET COLOR_SPACE: P3             // Display P3 for modern displays
@@ -275,7 +275,7 @@ DRAW WOMAN WITH DRESS COLOR LAB(50, 20, -30)
 
 Control color temperature for realistic lighting conditions:
 
-```sitl
+```sigl
 SET COLOR_TEMPERATURE: 2700K    // Warm incandescent
 SET COLOR_TEMPERATURE: 3200K    // Tungsten lighting
 SET COLOR_TEMPERATURE: 5500K    // Daylight
@@ -291,7 +291,7 @@ DRAW WOMAN WITH DRESS COOL_WHITE AT TEMPERATURE 6500K
 ### Professional Color Workflows
 
 #### Color Calibration and Accuracy
-```sitl
+```sigl
 SET COLOR_CALIBRATION:
   MONITOR_PROFILE: "sRGB_IEC61966-2.1"
   PRINTER_PROFILE: "Adobe_RGB_1998"
@@ -305,7 +305,7 @@ VALIDATE_COLOR_ACCURACY:
 ```
 
 #### Gamut Mapping and Conversion
-```sitl
+```sigl
 SET GAMUT_MAPPING:
   OUT_OF_GAMUT_HANDLING: CLIP | COMPRESS | DESATURATE
   GAMUT_WARNING: ENABLED
@@ -318,7 +318,7 @@ CONVERT_COLOR LAB(50, 20, -30) TO sRGB
 ### Scientific Color Specifications
 
 #### CIE Color Spaces
-```sitl
+```sigl
 // CIE XYZ color space
 DRAW MAN WITH SHIRT COLOR XYZ(0.412, 0.213, 0.019)
 
@@ -333,7 +333,7 @@ DRAW GIRL WITH SKIRT COLOR LCH(50, 35, 120)  // Lightness, Chroma, Hue
 ```
 
 #### Spectral Color Data
-```sitl
+```sigl
 // Define colors using spectral power distribution
 DEFINE_SPECTRAL_COLOR "custom_red":
   WAVELENGTHS: [380, 400, 420, ..., 700, 720, 740] nm
@@ -344,7 +344,7 @@ DRAW MAN WITH SHIRT COLOR SPECTRAL("custom_red")
 ```
 
 #### Metamerism and Observer Angles
-```sitl
+```sigl
 SET COLOR_OBSERVER:
   STANDARD: CIE_1931_2_DEGREE | CIE_1964_10_DEGREE
   CUSTOM_OBSERVER: "observer_data.csv"
@@ -360,7 +360,7 @@ CHECK_METAMERISM:
 ### Color Harmony and Theory
 
 #### Advanced Color Relationships
-```sitl
+```sigl
 // Generate harmonious color schemes
 GENERATE_COLOR_SCHEME:
   BASE_COLOR: #3498DB
@@ -376,7 +376,7 @@ SET COLOR_HARMONY_RULES:
 ```
 
 #### Color Psychology and Mood
-```sitl
+```sigl
 SET COLOR_PSYCHOLOGY:
   MOOD: ENERGETIC | CALMING | PROFESSIONAL | PLAYFUL | LUXURIOUS
   CULTURAL_CONTEXT: WESTERN | EASTERN | NEUTRAL
@@ -389,7 +389,7 @@ APPLY_PSYCHOLOGICAL_COLORS TO SCENE WITH MOOD CALMING
 ### Dynamic Color Systems
 
 #### Adaptive Color Schemes
-```sitl
+```sigl
 SET ADAPTIVE_COLORS:
   TIME_OF_DAY: AUTO             // Adjust colors based on time
   SEASON: AUTO                  // Seasonal color adjustments
@@ -400,7 +400,7 @@ SET ADAPTIVE_COLORS:
 ```
 
 #### Color Animation and Transitions
-```sitl
+```sigl
 // Smooth color transitions
 ANIMATE COLOR FROM #FF0000 TO #00FF00:
   DURATION: 3 seconds
@@ -418,7 +418,7 @@ CYCLE_COLORS:
 ### Color Accessibility and Inclusion
 
 #### Color Blindness Support
-```sitl
+```sigl
 SET COLORBLIND_SIMULATION:
   TYPE: PROTANOPIA | DEUTERANOPIA | TRITANOPIA | ACHROMATOPSIA
   SEVERITY: MILD | MODERATE | SEVERE
@@ -431,7 +431,7 @@ TEST_COLORBLIND_ACCESSIBILITY:
 ```
 
 #### High Contrast and Low Vision Support
-```sitl
+```sigl
 SET HIGH_CONTRAST_MODE:
   ENABLED: true
   CONTRAST_RATIO: 7.0           // WCAG AAA compliance
@@ -446,7 +446,7 @@ SET LOW_VISION_SUPPORT:
 ### Color Quality and Validation
 
 #### Color Accuracy Metrics
-```sitl
+```sigl
 MEASURE_COLOR_ACCURACY:
   METRIC: DELTA_E_76 | DELTA_E_94 | DELTA_E_2000 | DELTA_E_CMC
   REFERENCE_COLOR: #FF5733
@@ -456,7 +456,7 @@ MEASURE_COLOR_ACCURACY:
 ```
 
 #### Color Consistency Checking
-```sitl
+```sigl
 CHECK_COLOR_CONSISTENCY:
   TOLERANCE: 2.0 DELTA_E
   SCOPE: SCENE | GROUP | GLOBAL
@@ -472,7 +472,7 @@ VALIDATE_COLOR_PALETTE:
 ### Integration with Rendering Pipeline
 
 #### Color Management in Rendering
-```sitl
+```sigl
 SET_RENDERING_COLOR_MANAGEMENT:
   INPUT_COLOR_SPACE: sRGB
   WORKING_COLOR_SPACE: ACES_AP1  // Academy Color Encoding System
@@ -486,7 +486,7 @@ SET_RENDERING_COLOR_MANAGEMENT:
 ```
 
 #### Color Grading and Post-Processing
-```sitl
+```sigl
 APPLY_COLOR_GRADING:
   SHADOWS: {
     lift: (0.0, 0.0, 0.0),      // RGB lift values

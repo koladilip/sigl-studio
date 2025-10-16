@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Pattern System in SITL allows you to apply various visual patterns to clothing items (dresses, shirts, pants) and other entities (curtains, flags) to add visual variety and creative flexibility. This system supports both predefined patterns and custom user-defined patterns.
+The Pattern System in SIGL allows you to apply various visual patterns to clothing items (dresses, shirts, pants) and other entities (curtains, flags) to add visual variety and creative flexibility. This system supports both predefined patterns and custom user-defined patterns.
 
 ## Core Principles
 
@@ -15,12 +15,12 @@ The Pattern System in SITL allows you to apply various visual patterns to clothi
 ## Basic Pattern Syntax
 
 ### Simple Pattern Application
-```sitl
+```sigl
 DRAW <ENTITY> WITH <CLOTHING>(PATTERN: <TYPE>, COLOR: <COLOR>)
 ```
 
 **Examples:**
-```sitl
+```sigl
 DRAW WOMAN WITH DRESS(PATTERN: FLORAL, COLOR: PINK)
 DRAW MAN WITH SHIRT(PATTERN: STRIPED, COLOR: BLUE_AND_WHITE)
 DRAW GIRL WITH SKIRT(PATTERN: POLKA_DOT, COLOR: RED_AND_BLACK)
@@ -44,7 +44,7 @@ DRAW GIRL WITH SKIRT(PATTERN: POLKA_DOT, COLOR: RED_AND_BLACK)
 ### Pattern Modifiers
 Add fine-grained control for pattern properties:
 
-```sitl
+```sigl
 DRAW WOMAN WITH DRESS(PATTERN: STRIPED, STRIPE_WIDTH: THIN, ORIENTATION: HORIZONTAL)
 DRAW MAN WITH SHIRT(PATTERN: POLKA_DOT, DOT_SIZE: SMALL, SPACING: DENSE)
 ```
@@ -58,7 +58,7 @@ DRAW MAN WITH SHIRT(PATTERN: POLKA_DOT, DOT_SIZE: SMALL, SPACING: DENSE)
 ### Pattern Presets
 Define reusable pattern configurations:
 
-```sitl
+```sigl
 DEFINE VARIATION "floral_dress":
   DRESS(PATTERN: FLORAL, COLOR: PINK_AND_PURPLE, STYLE: SUMMER)
 
@@ -69,7 +69,7 @@ DRAW WOMAN WITH VARIATION "floral_dress" AND COLOR: BLUE_AND_WHITE
 ### Custom Patterns
 Load and use custom pattern assets:
 
-```sitl
+```sigl
 LOAD PATTERN ASSET "custom_tartan.svg" AS "TARTAN"
 DRAW WOMAN WITH DRESS(PATTERN: TARTAN, COLOR: GREEN_AND_RED)
 ```
@@ -77,7 +77,7 @@ DRAW WOMAN WITH DRESS(PATTERN: TARTAN, COLOR: GREEN_AND_RED)
 ## Domain-Specific Examples
 
 ### Core Domain (Casual Clothing)
-```sitl
+```sigl
 // Basic dress with pattern
 DRAW WOMAN WITH DRESS(PATTERN: FLORAL, COLOR: YELLOW_AND_GREEN)
 // Shirt with pattern
@@ -85,7 +85,7 @@ DRAW MAN WITH SHIRT(PATTERN: CHECKERED, COLOR: BLUE_AND_WHITE)
 ```
 
 ### Hospital Domain
-```sitl
+```sigl
 LOAD EXTENSION hospital
 DEFINE VARIATION "pediatric_scrubs":
   SCRUBS(PATTERN: CARTOON, COLOR: BLUE, ACCESSORIES: NAME_TAG)
@@ -93,7 +93,7 @@ DRAW NURSE WITH VARIATION "pediatric_scrubs"
 ```
 
 ### Military Domain
-```sitl
+```sigl
 LOAD EXTENSION military
 DEFINE VARIATION "desert_camo":
   UNIFORM(PATTERN: CAMOUFLAGE, COLOR: TAN_AND_BROWN, STYLE: COMBAT)
@@ -101,7 +101,7 @@ DRAW SOLDIER WITH VARIATION "desert_camo"
 ```
 
 ### Religious Domain
-```sitl
+```sigl
 LOAD EXTENSION religious
 DEFINE VARIATION "ceremonial_robe":
   ATTIRE(PATTERN: EMBROIDERED, COLOR: WHITE_AND_GOLD, STYLE: ORNATE)
@@ -111,7 +111,7 @@ DRAW PRIEST WITH VARIATION "ceremonial_robe"
 ## Pattern Defaults and Context
 
 ### Global Pattern Defaults
-```sitl
+```sigl
 SET DEFAULT PATTERN FOR DRESS: SOLID
 SET DEFAULT PATTERN FOR SHIRT: SOLID
 ```
@@ -119,7 +119,7 @@ SET DEFAULT PATTERN FOR SHIRT: SOLID
 ### Contextual Pattern Inference
 Patterns can be automatically inferred based on environment:
 
-```sitl
+```sigl
 ADD ENVIRONMENT WEDDING
 DRAW WOMAN WITH DRESS // Infers PATTERN: LACE or FLORAL
 
@@ -133,13 +133,13 @@ DRAW SOLDIER WITH UNIFORM // Infers PATTERN: CAMOUFLAGE
 ## Error Handling
 
 ### Invalid Patterns
-```sitl
+```sigl
 DRAW WOMAN WITH DRESS(PATTERN: UNKNOWN)
 // Warning: Invalid pattern "UNKNOWN" for DRESS. Using default SOLID pattern.
 ```
 
 ### Conflicting Patterns
-```sitl
+```sigl
 DRAW WOMAN WITH DRESS(PATTERN: FLORAL AND PATTERN: STRIPED)
 // Error: Multiple patterns specified for DRESS. Choose one (e.g., FLORAL or STRIPED).
 ```
@@ -172,7 +172,7 @@ Certain patterns are restricted to appropriate entities:
 ### Cultural Patterns
 Support culturally specific patterns:
 
-```sitl
+```sigl
 DRAW MAN WITH KILT(PATTERN: TARTAN, COLOR: BLUE_AND_GREEN)
 DRAW WOMAN WITH DRESS(PATTERN: KENTE, COLOR: TRADITIONAL)
 ```
@@ -180,7 +180,7 @@ DRAW WOMAN WITH DRESS(PATTERN: KENTE, COLOR: TRADITIONAL)
 ### Pattern Scaling
 Control pattern size and density:
 
-```sitl
+```sigl
 DRAW DRESS WITH PATTERN: POLKA_DOT, DOT_SIZE: SMALL, PATTERN_SCALE: 0.5
 ```
 
@@ -194,7 +194,7 @@ DRAW DRESS WITH PATTERN: POLKA_DOT, DOT_SIZE: SMALL, PATTERN_SCALE: 0.5
 ## Examples and Use Cases
 
 ### Fashion Design
-```sitl
+```sigl
 CREATE SCENE "fashion_show":
   DRAW WOMAN WITH DRESS(PATTERN: GEOMETRIC, COLOR: BLACK_AND_WHITE) AT LEFT
   DRAW WOMAN WITH DRESS(PATTERN: FLORAL, COLOR: SPRING_COLORS) AT CENTER
@@ -202,14 +202,14 @@ CREATE SCENE "fashion_show":
 ```
 
 ### Children's Book Illustration
-```sitl
+```sigl
 CREATE SCENE "playground":
   DRAW GIRL WITH DRESS(PATTERN: POLKA_DOT, COLOR: BRIGHT_PINK) AT SWING
   DRAW BOY WITH SHIRT(PATTERN: CARTOON, COLOR: BLUE) AT SLIDE
 ```
 
 ### Historical Recreation
-```sitl
+```sigl
 CREATE SCENE "medieval_court":
   DRAW KING WITH ROBE(PATTERN: EMBROIDERED, COLOR: ROYAL_PURPLE)
   DRAW QUEEN WITH DRESS(PATTERN: BROCADE, COLOR: GOLD_AND_SILVER)

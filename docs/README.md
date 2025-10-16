@@ -1,14 +1,14 @@
-# SITL (Scene Illustration Template Language) Documentation
+# SIGL (Structured Image Generation Language) Documentation
 
-Welcome to the comprehensive documentation for SITL, a powerful domain-specific language designed for creating detailed, customizable scene illustrations with human figures, objects, and environments.
+Welcome to the comprehensive documentation for SIGL, a powerful domain-specific language designed for creating detailed, customizable scene illustrations with human figures, objects, and environments.
 
 ## Overview
 
-SITL provides an intuitive, English-like syntax for describing complex scenes while offering advanced features for customization, reusability, and domain-specific extensions. The language is built on a modular architecture that separates core functionality from specialized domain knowledge.
+SIGL provides an intuitive, English-like syntax for describing complex scenes while offering advanced features for customization, reusability, and domain-specific extensions. The language is built on a modular architecture that separates core functionality from specialized domain knowledge.
 
 ## Quick Start
 
-```sitl
+```sigl
 // Basic scene creation
 DRAW MAN WITH AGE 30 AND BLUE SHIRT
 DRAW WOMAN WITH RED DRESS NEXT TO MAN
@@ -75,7 +75,7 @@ Advanced features for power users and developers:
 ## Common Use Cases
 
 ### Educational Content
-```sitl
+```sigl
 LOAD EXTENSION educational
 ADD ENVIRONMENT CLASSROOM
 DRAW TEACHER WITH PROFESSIONAL ATTIRE
@@ -84,7 +84,7 @@ DRAW BLACKBOARD WITH LESSON CONTENT
 ```
 
 ### Medical Scenarios
-```sitl
+```sigl
 LOAD EXTENSION hospital
 ADD ENVIRONMENT OPERATING_ROOM
 DRAW SURGEON WITH SURGICAL_SCRUBS AND MASK
@@ -93,7 +93,7 @@ DRAW PATIENT ON OPERATING_TABLE
 ```
 
 ### Legal Proceedings
-```sitl
+```sigl
 LOAD EXTENSION court
 ADD ENVIRONMENT COURTROOM
 DRAW JUDGE WITH JUDICIAL_ROBES AT BENCH
@@ -102,7 +102,7 @@ DRAW JURY IN JURY_BOX
 ```
 
 ### Transportation Scenes
-```sitl
+```sigl
 LOAD EXTENSION transportation
 ADD ENVIRONMENT AIRPORT
 DRAW PILOT WITH AIRLINE_UNIFORM
@@ -122,7 +122,7 @@ DRAW AIRPLANE IN BACKGROUND
 
 ### Example Workflow
 
-```sitl
+```sigl
 // Step 1: Create basic entities
 DRAW MAN WITH AGE 35
 DRAW WOMAN WITH AGE 30
@@ -149,7 +149,7 @@ DRAW WINDOWS WITH CITY_VIEW
 
 Extensions are loaded automatically when domain-specific entities are used, or can be loaded explicitly:
 
-```sitl
+```sigl
 // Automatic loading
 DRAW DOCTOR  // Automatically loads hospital extension
 
@@ -194,9 +194,9 @@ LOAD EXTENSION religious
 
 ## Error Handling
 
-SITL provides comprehensive error handling with helpful suggestions:
+SIGL provides comprehensive error handling with helpful suggestions:
 
-```sitl
+```sigl
 // Typo correction
 DRAW MAN WITH BLU SHIRT
 // → "Did you mean 'BLUE SHIRT'?"
@@ -263,7 +263,7 @@ DRAW MAN WITH BLUE SHIRT
 ## Quick Reference
 
 ### Basic Syntax
-```sitl
+```sigl
 DRAW <entity> [WITH <attributes>] [AT <position>]
 CREATE <template> "<name>" WITH <definition>
 ADD ENVIRONMENT <environment_type>
@@ -271,7 +271,7 @@ LOAD EXTENSION <extension_name>
 ```
 
 ### Common Attributes
-```sitl
+```sigl
 AGE <number>
 HAIR <color> | <style>
 CLOTHING <type> | OUTFIT <category>
@@ -280,14 +280,14 @@ POSITION <x>,<y> | <relative_position>
 ```
 
 ### Environment Types
-```sitl
+```sigl
 OFFICE | PARK | HOSPITAL | SCHOOL | BEACH | FOREST | CITY
 INDOOR | OUTDOOR | CLASSROOM | COURTROOM | AIRPORT
 ```
 
 ### Extension Commands
-```sitl
+```sigl
 LOAD EXTENSION hospital | court | religious | transportation | educational
 ```
 
-This documentation is designed to grow with the SITL language. As new features and extensions are added, the documentation will be updated to reflect the latest capabilities and best practices.
+This documentation is designed to grow with the SIGL language. As new features and extensions are added, the documentation will be updated to reflect the latest capabilities and best practices.

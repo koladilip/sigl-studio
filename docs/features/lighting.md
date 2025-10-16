@@ -2,7 +2,7 @@
 
 ## Overview
 
-The SITL Advanced Lighting and Visual Effects System provides sophisticated lighting controls, realistic shadow rendering, and atmospheric effects to create professional-quality images. This system supports everything from basic ambient lighting to complex physically-based rendering with ray tracing.
+The SIGL Advanced Lighting and Visual Effects System provides sophisticated lighting controls, realistic shadow rendering, and atmospheric effects to create professional-quality images. This system supports everything from basic ambient lighting to complex physically-based rendering with ray tracing.
 
 ## Core Principles
 
@@ -15,7 +15,7 @@ The SITL Advanced Lighting and Visual Effects System provides sophisticated ligh
 ## Basic Lighting System
 
 ### Ambient Lighting
-```sitl
+```sigl
 SET AMBIENT_LIGHTING:
   COLOR: #87CEEB        // Sky blue
   INTENSITY: 0.3        // 30% intensity
@@ -25,7 +25,7 @@ SET AMBIENT_LIGHTING: PRESET(DAYLIGHT | TWILIGHT | NIGHT | INDOOR | STUDIO)
 ```
 
 ### Directional Lighting (Sun/Moon)
-```sitl
+```sigl
 SET SUN_LIGHTING:
   DIRECTION: (45, -30, 0)    // Elevation, azimuth, roll in degrees
   COLOR: #FFF8DC             // Warm white
@@ -43,7 +43,7 @@ SET MOON_LIGHTING:
 ```
 
 ### Point Lights
-```sitl
+```sigl
 ADD POINT_LIGHT AT (2, 3, 1):
   COLOR: #FFE4B5
   INTENSITY: 2.0
@@ -60,7 +60,7 @@ ADD POINT_LIGHT "table_lamp" AT TABLE_POSITION:
 ```
 
 ### Spot Lights
-```sitl
+```sigl
 ADD SPOT_LIGHT AT (0, 5, 0):
   DIRECTION: (0, -1, 0)      // Pointing down
   COLOR: #FFFFFF
@@ -81,7 +81,7 @@ ADD SPOT_LIGHT "stage_light" AT STAGE_POSITION:
 ```
 
 ### Area Lights
-```sitl
+```sigl
 ADD AREA_LIGHT AT (0, 4, 0):
   TYPE: RECTANGLE | CIRCLE | TUBE
   SIZE: (2, 1) meters        // Width x Height for rectangle
@@ -103,7 +103,7 @@ ADD AREA_LIGHT "window_light" AT WINDOW_POSITION:
 ## Advanced Lighting Models
 
 ### Physically-Based Rendering (PBR)
-```sitl
+```sigl
 SET LIGHTING_MODEL: PBR WITH:
   GLOBAL_ILLUMINATION: ENABLED
   INDIRECT_BOUNCES: 3        // Number of light bounces
@@ -120,7 +120,7 @@ SET LIGHTING_MODEL: PBR WITH:
 ```
 
 ### Ray Tracing
-```sitl
+```sigl
 SET LIGHTING_MODEL: RAY_TRACED WITH:
   MAX_BOUNCES: 8
   SAMPLES_PER_PIXEL: 64
@@ -141,7 +141,7 @@ SET LIGHTING_MODEL: RAY_TRACED WITH:
 ```
 
 ### High Dynamic Range (HDR)
-```sitl
+```sigl
 SET HDR_LIGHTING:
   ENABLED: true
   EXPOSURE: 0.0              // EV adjustment
@@ -159,7 +159,7 @@ SET HDR_LIGHTING:
 ## Shadow Systems
 
 ### Shadow Quality Settings
-```sitl
+```sigl
 SET SHADOW_QUALITY:
   RESOLUTION: 512 | 1024 | 2048 | 4096 | 8192
   FILTERING: NONE | PCF | PCSS | VSM | ESM
@@ -171,7 +171,7 @@ SET SHADOW_DISTANCE: 100 meters   // Maximum shadow rendering distance
 ```
 
 ### Advanced Shadow Techniques
-```sitl
+```sigl
 SET SHADOW_TECHNIQUE: CASCADED_SHADOW_MAPS WITH:
   CASCADE_DISTANCES: [5, 15, 50, 200] meters
   CASCADE_BLEND: 0.1             // Blend between cascades
@@ -185,7 +185,7 @@ SET SHADOW_TECHNIQUE: RAY_TRACED_SHADOWS WITH:
 ```
 
 ### Contact Shadows
-```sitl
+```sigl
 SET CONTACT_SHADOWS:
   ENABLED: true
   LENGTH: 0.1 meters             // Maximum shadow length
@@ -197,7 +197,7 @@ SET CONTACT_SHADOWS:
 ## Atmospheric Effects
 
 ### Volumetric Lighting
-```sitl
+```sigl
 SET VOLUMETRIC_LIGHTING:
   ENABLED: true
   DENSITY: 0.1
@@ -211,7 +211,7 @@ SET VOLUMETRIC_LIGHTING:
 ```
 
 ### God Rays (Light Shafts)
-```sitl
+```sigl
 ADD GOD_RAYS FROM SUN:
   INTENSITY: 1.0
   SAMPLES: 64
@@ -224,7 +224,7 @@ ADD GOD_RAYS FROM SUN:
 ```
 
 ### Atmospheric Scattering
-```sitl
+```sigl
 SET ATMOSPHERIC_SCATTERING:
   RAYLEIGH_COEFFICIENT: (5.8e-6, 13.5e-6, 33.1e-6)  // RGB wavelengths
   MIE_COEFFICIENT: 21e-6
@@ -238,7 +238,7 @@ SET ATMOSPHERIC_SCATTERING:
 ## Environmental Lighting
 
 ### Image-Based Lighting (IBL)
-```sitl
+```sigl
 SET IBL_LIGHTING:
   HDRI_MAP: "environment.hdr"
   INTENSITY: 1.0
@@ -250,7 +250,7 @@ SET IBL_LIGHTING:
 ```
 
 ### Sky Models
-```sitl
+```sigl
 SET SKY_MODEL: PROCEDURAL WITH:
   SUN_POSITION: (45, 180)       // Elevation, azimuth
   TURBIDITY: 2.0                // Atmospheric clarity (1-10)
@@ -273,7 +273,7 @@ SET SKY_MODEL: GRADIENT WITH:
 ## Time-Based Lighting
 
 ### Day/Night Cycle
-```sitl
+```sigl
 SET TIME_OF_DAY: 14:30 WITH:    // 2:30 PM
   LATITUDE: 40.7128             // New York City
   LONGITUDE: -74.0060
@@ -284,7 +284,7 @@ ANIMATE TIME_OF_DAY FROM 06:00 TO 18:00 OVER 10 seconds
 ```
 
 ### Seasonal Lighting
-```sitl
+```sigl
 SET SEASONAL_LIGHTING: SUMMER WITH:
   SUN_INTENSITY: 1.2
   SUN_TEMPERATURE: 5800K
@@ -300,7 +300,7 @@ SET SEASONAL_LIGHTING: WINTER WITH:
 ```
 
 ### Weather-Based Lighting
-```sitl
+```sigl
 SET WEATHER_LIGHTING: OVERCAST WITH:
   CLOUD_COVERAGE: 0.8
   DIFFUSE_MULTIPLIER: 0.6
@@ -321,7 +321,7 @@ SET WEATHER_LIGHTING: STORMY WITH:
 ## Lighting Presets and Moods
 
 ### Portrait Lighting Presets
-```sitl
+```sigl
 SET LIGHTING_PRESET: PORTRAIT_SOFT WITH:
   KEY_LIGHT: {
     position: (45, 45, 200) degrees,
@@ -350,7 +350,7 @@ SET LIGHTING_PRESET: PORTRAIT_DRAMATIC WITH:
 ```
 
 ### Scene Mood Presets
-```sitl
+```sigl
 SET MOOD_LIGHTING: ROMANTIC WITH:
   OVERALL_WARMTH: 0.3           // Warmer colors
   INTENSITY: 0.7                // Dimmer overall
@@ -376,7 +376,7 @@ SET MOOD_LIGHTING: ENERGETIC WITH:
 ## Advanced Effects
 
 ### Lens Effects
-```sitl
+```sigl
 SET LENS_EFFECTS:
   LENS_FLARE: {
     enabled: true,
@@ -401,7 +401,7 @@ SET LENS_EFFECTS:
 ```
 
 ### Light Shaping
-```sitl
+```sigl
 ADD LIGHT_MODIFIER TO "key_light":
   BARN_DOORS: {
     top: 10 degrees,
@@ -416,7 +416,7 @@ ADD LIGHT_MODIFIER TO "key_light":
 ```
 
 ### Projection Mapping
-```sitl
+```sigl
 ADD PROJECTION_LIGHT AT (0, 5, 0):
   PROJECTION_TEXTURE: "pattern.png"
   PROJECTION_ANGLE: 45 degrees
@@ -428,7 +428,7 @@ ADD PROJECTION_LIGHT AT (0, 5, 0):
 ## Performance Optimization
 
 ### Level of Detail (LOD) for Lighting
-```sitl
+```sigl
 SET LIGHTING_LOD:
   DISTANCE_THRESHOLDS: [10, 50, 200] meters
   QUALITY_LEVELS: [
@@ -439,7 +439,7 @@ SET LIGHTING_LOD:
 ```
 
 ### Dynamic Lighting Culling
-```sitl
+```sigl
 SET LIGHTING_CULLING:
   MAX_LIGHTS_PER_OBJECT: 8
   LIGHT_IMPORTANCE_THRESHOLD: 0.01
@@ -449,7 +449,7 @@ SET LIGHTING_CULLING:
 ```
 
 ### Baked Lighting
-```sitl
+```sigl
 BAKE_LIGHTING FOR SCENE "interior":
   RESOLUTION: 512 | 1024 | 2048
   SAMPLES: 1024
@@ -464,7 +464,7 @@ BAKE_LIGHTING FOR SCENE "interior":
 ## Integration Examples
 
 ### Complete Scene Lighting Setup
-```sitl
+```sigl
 CREATE SCENE "golden_hour_portrait":
   // Set time and location
   SET TIME_OF_DAY: 17:30
@@ -503,7 +503,7 @@ CREATE SCENE "golden_hour_portrait":
 ```
 
 ### Dynamic Lighting Animation
-```sitl
+```sigl
 CREATE SCENE "campfire_night":
   SET TIME_OF_DAY: 22:00
   SET AMBIENT_LIGHTING: NIGHT
@@ -529,4 +529,4 @@ CREATE SCENE "campfire_night":
   DRAW PEOPLE_GROUP AROUND FIRE_POSITION
 ```
 
-This advanced lighting system provides professional-grade lighting control while maintaining the intuitive SITL syntax, enabling everything from simple ambient lighting to complex cinematic setups.
+This advanced lighting system provides professional-grade lighting control while maintaining the intuitive SIGL syntax, enabling everything from simple ambient lighting to complex cinematic setups.

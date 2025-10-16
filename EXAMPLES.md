@@ -1,6 +1,6 @@
-# SITL Examples
+# SIGL Examples
 
-This directory contains examples demonstrating how to generate images from SITL (Scene Instruction and Transformation Language) code.
+This directory contains examples demonstrating how to generate images from SIGL (Structured Image Generation Language) code.
 
 ## Quick Start
 
@@ -24,7 +24,7 @@ This directory contains examples demonstrating how to generate images from SITL 
 ### 1. `test-example.js` - Simple JavaScript Example
 A straightforward JavaScript example that demonstrates:
 - Engine initialization with configuration
-- SITL code parsing
+- SIGL code parsing
 - Scene rendering
 - Image export to PNG
 
@@ -48,14 +48,14 @@ npx tsx example-usage.ts
 # Use individual components
 npx tsx example-usage.ts components
 
-# Batch process SITL files
+# Batch process SIGL files
 npx tsx example-usage.ts batch ./examples ./output
 ```
 
-## SITL Syntax Examples
+## SIGL Syntax Examples
 
 ### Basic Scene Structure
-```sitl
+```sigl
 scene "Scene Name" {
     environment {
         lighting: natural | bright_clinical | dim | dramatic
@@ -86,7 +86,7 @@ scene "Scene Name" {
 ```
 
 ### Medical Scene Example
-```sitl
+```sigl
 scene "Medical Consultation" {
     environment {
         lighting: bright_clinical
@@ -125,7 +125,7 @@ scene "Medical Consultation" {
 ```
 
 ### Office Scene Example
-```sitl
+```sigl
 scene "Team Meeting" {
     environment {
         lighting: natural
@@ -212,22 +212,22 @@ const config = {
 
 ### Basic Usage
 ```typescript
-import { SITLEngine } from './src/index.js';
+import { SIGLEngine } from './src/index.js';
 
-const engine = new SITLEngine(config);
+const engine = new SIGLEngine(config);
 await engine.initialize();
 
-const parseResult = await engine.parse(sitlCode);
+const parseResult = await engine.parse(siglCode);
 const renderResult = await engine.render(parseResult.data);
 const exportResult = await engine.export(renderResult.data, exportOptions);
 ```
 
 ### Using Individual Components
 ```typescript
-import { SITLParser, SceneRenderer, ExportManager } from './src/index.js';
+import { SIGLParser, SceneRenderer, ExportManager } from './src/index.js';
 
-// Parse SITL code
-const parseResult = SITLParser.parse(sitlCode);
+// Parse SIGL code
+const parseResult = SIGLParser.parse(siglCode);
 
 // Render scene
 const renderer = new SceneRenderer(config);
@@ -252,7 +252,7 @@ interface Result<T> {
 
 Always check the `success` property before using `data`:
 ```typescript
-const result = await engine.parse(sitlCode);
+const result = await engine.parse(siglCode);
 if (result.success && result.data) {
   // Use result.data safely
 } else {
@@ -277,7 +277,7 @@ if (result.success && result.data) {
    - Verify configuration is valid
 
 2. **Parse errors**
-   - Validate SITL syntax
+   - Validate SIGL syntax
    - Check for missing required properties
 
 3. **Render failures**
@@ -291,7 +291,7 @@ if (result.success && result.data) {
 ### Debug Mode
 Enable debug logging by setting the environment variable:
 ```bash
-DEBUG=sitl:* node your-script.js
+DEBUG=sigl:* node your-script.js
 ```
 
 ## Contributing
@@ -300,5 +300,5 @@ When adding new examples:
 1. Include both TypeScript and JavaScript versions when possible
 2. Add comprehensive error handling
 3. Document the example purpose and usage
-4. Test with different SITL scene types
+4. Test with different SIGL scene types
 5. Update this README with new examples

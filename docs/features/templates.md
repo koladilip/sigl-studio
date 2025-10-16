@@ -1,12 +1,12 @@
 # Templates and Reusability
 
-The SITL Template System provides powerful mechanisms for creating reusable, parameterized entity definitions that can be applied across different contexts and scenarios.
+The SIGL Template System provides powerful mechanisms for creating reusable, parameterized entity definitions that can be applied across different contexts and scenarios.
 
 ## Template Definition
 
 Templates allow you to define reusable patterns for entities with customizable parameters:
 
-```sitl
+```sigl
 DEFINE TEMPLATE "Professional_Worker":
   PERSON WITH ATTIRE(STYLE: BUSINESS, COLOR: $color, FORMALITY: $formality)
   ACCESSORIES(BADGE: $badge_type, BRIEFCASE: $has_briefcase)
@@ -17,7 +17,7 @@ DEFINE TEMPLATE "Professional_Worker":
 
 Templates support various parameter types:
 
-```sitl
+```sigl
 DEFINE TEMPLATE "Uniformed_Personnel":
   PERSON WITH UNIFORM(
     TYPE: $uniform_type,           // String parameter
@@ -31,7 +31,7 @@ DEFINE TEMPLATE "Uniformed_Personnel":
 ## Template Usage
 
 ### Basic Template Application
-```sitl
+```sigl
 USE TEMPLATE "Professional_Worker" WITH:
   color: NAVY_BLUE
   formality: FORMAL
@@ -40,7 +40,7 @@ USE TEMPLATE "Professional_Worker" WITH:
 ```
 
 ### Multiple Template Instances
-```sitl
+```sigl
 USE TEMPLATE "Uniformed_Personnel" WITH:
   uniform_type: POLICE
   color: DARK_BLUE
@@ -59,7 +59,7 @@ USE TEMPLATE "Uniformed_Personnel" WITH:
 ### Override Mechanisms
 Templates can be modified at application time:
 
-```sitl
+```sigl
 USE TEMPLATE "Professional_Worker" WITH:
   color: CHARCOAL_GRAY
   formality: BUSINESS_CASUAL
@@ -71,7 +71,7 @@ OVERRIDE:
 ### Partial Application
 Apply templates with only some parameters specified:
 
-```sitl
+```sigl
 USE TEMPLATE "Uniformed_Personnel" WITH:
   uniform_type: FIREFIGHTER
   color: RED
@@ -83,7 +83,7 @@ USE TEMPLATE "Uniformed_Personnel" WITH:
 ### Inheritance Chains
 Templates can inherit from other templates:
 
-```sitl
+```sigl
 DEFINE TEMPLATE "Emergency_Responder" EXTENDS "Uniformed_Personnel":
   EQUIPMENT(RADIO: true, EMERGENCY_GEAR: $gear_type)
   TRAINING(CERTIFICATION: $certification)
@@ -98,7 +98,7 @@ DEFINE TEMPLATE "Paramedic" EXTENDS "Emergency_Responder":
 ### Complete Attribute Sets
 Inherited templates maintain complete attribute definitions:
 
-```sitl
+```sigl
 USE TEMPLATE "Paramedic" WITH:
   gear_type: ADVANCED_LIFE_SUPPORT
   experience: VETERAN
@@ -110,7 +110,7 @@ USE TEMPLATE "Paramedic" WITH:
 ### Automatic Template Selection
 Templates can be selected based on context:
 
-```sitl
+```sigl
 DRAW PERSON IN HOSPITAL WITH ROLE: MEDICAL_STAFF
 // Automatically selects appropriate medical template
 
@@ -119,7 +119,7 @@ DRAW PERSON IN COURTROOM WITH ROLE: LEGAL_PROFESSIONAL
 ```
 
 ### Conditional Template Application
-```sitl
+```sigl
 DEFINE TEMPLATE "Weather_Appropriate_Clothing":
   IF WEATHER = RAIN:
     ATTIRE(OUTERWEAR: RAINCOAT, FOOTWEAR: WATERPROOF)
@@ -134,7 +134,7 @@ DEFINE TEMPLATE "Weather_Appropriate_Clothing":
 ### Parameter Validation
 Templates include validation rules for parameters:
 
-```sitl
+```sigl
 DEFINE TEMPLATE "Military_Personnel" WITH VALIDATION:
   UNIFORM_TYPE: REQUIRED, VALUES: [ARMY, NAVY, AIR_FORCE, MARINES]
   RANK: REQUIRED, VALIDATE: MILITARY_RANK_STRUCTURE
@@ -148,7 +148,7 @@ VALIDATE TEMPLATE "Military_Personnel":
 ### Cross-Domain Compatibility
 Templates ensure compatibility across different domains:
 
-```sitl
+```sigl
 DEFINE TEMPLATE "Authority_Figure":
   COMPATIBLE_DOMAINS: [MILITARY, POLICE, SECURITY, CORPORATE]
   ATTRIBUTES(AUTHORITY_LEVEL: $level, COMMAND_PRESENCE: true)
@@ -158,7 +158,7 @@ DEFINE TEMPLATE "Authority_Figure":
 ## Template Libraries
 
 ### Professional Domain Templates
-```sitl
+```sigl
 TEMPLATE_LIBRARY "Professional":
   "Business_Executive": PERSON WITH ATTIRE(STYLE: EXECUTIVE_SUIT)
   "Office_Worker": PERSON WITH ATTIRE(STYLE: BUSINESS_CASUAL)
@@ -167,7 +167,7 @@ TEMPLATE_LIBRARY "Professional":
 ```
 
 ### Family Domain Templates
-```sitl
+```sigl
 TEMPLATE_LIBRARY "Family":
   "Parent": PERSON WITH ATTIRE(STYLE: CASUAL_RESPONSIBLE)
   "Child": PERSON WITH ATTIRE(STYLE: PLAYFUL_APPROPRIATE)
@@ -176,7 +176,7 @@ TEMPLATE_LIBRARY "Family":
 ```
 
 ### Athletic Domain Templates
-```sitl
+```sigl
 TEMPLATE_LIBRARY "Athletic":
   "Runner": PERSON WITH ATTIRE(STYLE: RUNNING_GEAR, FOOTWEAR: RUNNING_SHOES)
   "Swimmer": PERSON WITH ATTIRE(STYLE: SWIMWEAR, ACCESSORIES: GOGGLES)
@@ -185,7 +185,7 @@ TEMPLATE_LIBRARY "Athletic":
 ```
 
 ### Seasonal Templates
-```sitl
+```sigl
 TEMPLATE_LIBRARY "Seasonal":
   "Summer_Casual": PERSON WITH ATTIRE(STYLE: LIGHT_CASUAL, SEASON: SUMMER)
   "Winter_Outdoor": PERSON WITH ATTIRE(STYLE: WINTER_GEAR, ACCESSORIES: WARM)
@@ -196,7 +196,7 @@ TEMPLATE_LIBRARY "Seasonal":
 ## Advanced Template Features
 
 ### Dynamic Template Generation
-```sitl
+```sigl
 GENERATE TEMPLATE "Event_Attendee" FROM CONTEXT:
   EVENT_TYPE: $event_type
   FORMALITY_LEVEL: $formality
@@ -209,7 +209,7 @@ APPLY RULES:
 ```
 
 ### Template Composition
-```sitl
+```sigl
 COMPOSE TEMPLATE "Conference_Speaker" FROM:
   BASE: "Professional_Worker"
   ADDITIONS: "Public_Speaker_Traits"
@@ -220,7 +220,7 @@ RESULT:
 ```
 
 ### Template Versioning
-```sitl
+```sigl
 DEFINE TEMPLATE "Modern_Office_Worker" VERSION 2.0:
   INHERITS: "Office_Worker" VERSION 1.0
   UPDATES:
@@ -232,7 +232,7 @@ DEFINE TEMPLATE "Modern_Office_Worker" VERSION 2.0:
 ## Template Performance Optimization
 
 ### Template Caching
-```sitl
+```sigl
 CACHE TEMPLATE "Frequently_Used_Professional":
   CACHE_DURATION: 1_HOUR
   CACHE_VARIANTS: 10
@@ -240,7 +240,7 @@ CACHE TEMPLATE "Frequently_Used_Professional":
 ```
 
 ### Lazy Template Loading
-```sitl
+```sigl
 LAZY_LOAD TEMPLATE "Specialized_Professional":
   LOAD_TRIGGER: ON_FIRST_USE
   DEPENDENCIES: ["Base_Professional", "Industry_Specific"]
@@ -248,7 +248,7 @@ LAZY_LOAD TEMPLATE "Specialized_Professional":
 ```
 
 ### Template Batching
-```sitl
+```sigl
 BATCH_APPLY TEMPLATES:
   "Office_Team": ["Manager", "Developer", "Designer", "Analyst"]
   SHARED_PARAMETERS:
@@ -260,7 +260,7 @@ BATCH_APPLY TEMPLATES:
 ## Template Error Handling
 
 ### Missing Parameter Handling
-```sitl
+```sigl
 DEFINE TEMPLATE "Robust_Professional" WITH ERROR_HANDLING:
   REQUIRED_PARAMETERS: [role, department]
   OPTIONAL_PARAMETERS: [experience_level, specialization]
@@ -275,7 +275,7 @@ DEFINE TEMPLATE "Robust_Professional" WITH ERROR_HANDLING:
 ```
 
 ### Template Conflict Resolution
-```sitl
+```sigl
 RESOLVE TEMPLATE_CONFLICTS:
   PRIORITY_ORDER: [USER_SPECIFIED, CONTEXT_INFERRED, TEMPLATE_DEFAULT]
   CONFLICT_STRATEGY: MERGE_COMPATIBLE, OVERRIDE_INCOMPATIBLE
@@ -285,10 +285,10 @@ RESOLVE TEMPLATE_CONFLICTS:
 ## Template Documentation and Metadata
 
 ### Template Documentation
-```sitl
+```sigl
 DOCUMENT TEMPLATE "Professional_Worker":
   DESCRIPTION: "Generic professional worker suitable for office environments"
-  AUTHOR: "SITL_Team"
+  AUTHOR: "SIGL_Team"
   VERSION: "1.2"
   CREATED: "2024-01-15"
   LAST_MODIFIED: "2024-03-20"
@@ -309,7 +309,7 @@ DOCUMENT TEMPLATE "Professional_Worker":
 ```
 
 ### Template Analytics
-```sitl
+```sigl
 TRACK TEMPLATE_USAGE:
   TEMPLATE: "Professional_Worker"
   METRICS:
@@ -329,7 +329,7 @@ TRACK TEMPLATE_USAGE:
 ## Usage Examples
 
 ### Basic Template Usage
-```sitl
+```sigl
 DEFINE TEMPLATE "Office_Worker":
   PERSON WITH ATTIRE(STYLE: BUSINESS_CASUAL, COLOR: $color)
 
@@ -337,7 +337,7 @@ USE TEMPLATE "Office_Worker" WITH color: NAVY_BLUE
 ```
 
 ### Complex Template with Multiple Parameters
-```sitl
+```sigl
 DEFINE TEMPLATE "Emergency_Responder":
   PERSON WITH UNIFORM(TYPE: $service, COLOR: $color, RANK: $rank)
   EQUIPMENT(RADIO: true, VEHICLE: $vehicle_type)
@@ -352,7 +352,7 @@ USE TEMPLATE "Emergency_Responder" WITH:
 ```
 
 ### Template Inheritance Example
-```sitl
+```sigl
 DEFINE TEMPLATE "Medical_Professional" EXTENDS "Professional_Worker":
   UNIFORM(TYPE: MEDICAL, COLOR: WHITE)
   EQUIPMENT(STETHOSCOPE: true, ID_BADGE: MEDICAL)

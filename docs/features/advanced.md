@@ -1,12 +1,12 @@
 # Advanced Features and Implementation Guidelines
 
-This document covers advanced SITL features, implementation guidelines, and best practices for developers and advanced users.
+This document covers advanced SIGL features, implementation guidelines, and best practices for developers and advanced users.
 
 ## Extension System Architecture
 
 ### Core-Extension Relationship
 
-The SITL system is built on a modular architecture that separates core functionality from domain-specific features:
+The SIGL system is built on a modular architecture that separates core functionality from domain-specific features:
 
 ```
 Core System (Always Loaded)
@@ -29,7 +29,7 @@ Domain Extensions (Loaded on Demand)
 ### Extension Loading Mechanism
 
 #### Automatic Extension Detection
-```sitl
+```sigl
 // Automatic extension detection based on entity usage
 DRAW DOCTOR → Loads Hospital Extension
 DRAW ASTRONAUT → Loads Space Extension
@@ -38,7 +38,7 @@ DRAW SOLDIER → Loads Military Extension
 ```
 
 #### Explicit Extension Loading
-```sitl
+```sigl
 // Manual extension loading
 LOAD EXTENSION hospital
 LOAD EXTENSION space
@@ -49,14 +49,14 @@ LOAD EXTENSION military
 ### Extension Namespace
 
 #### Core Entities (No Prefix)
-```sitl
+```sigl
 DRAW MAN
 DRAW WOMAN
 DRAW TREE
 ```
 
 #### Extension Entities (With Domain Context)
-```sitl
+```sigl
 DRAW DOCTOR (hospital extension)
 DRAW ASTRONAUT (space extension)
 DRAW JUDGE (court extension)
@@ -66,7 +66,7 @@ DRAW SOLDIER (military extension)
 ### Extension Compatibility
 
 #### Cross-Extension Usage
-```sitl
+```sigl
 // Extensions can work together
 DRAW MILITARY DOCTOR (military + hospital)
 DRAW SPACE ENGINEER (space + core)
@@ -119,7 +119,7 @@ DRAW MILITARY HOSPITAL SCENE:
 When attributes are not specified, entities use predictable defaults:
 
 #### Adult Defaults (Age 30)
-```sitl
+```sigl
 // MAN/WOMAN defaults
 - Physical: Age 30, medium height (5'9"/5'6"), average build
 - Face: Neutral expression, light skin tone
@@ -129,7 +129,7 @@ When attributes are not specified, entities use predictable defaults:
 ```
 
 #### Child Defaults (Age 10)
-```sitl
+```sigl
 // BOY/GIRL defaults
 - Physical: Age 10, child height (4'6"/4'4"), slim build
 - Face: Neutral expression, light skin tone
@@ -139,7 +139,7 @@ When attributes are not specified, entities use predictable defaults:
 ```
 
 #### Infant Defaults (Age 1)
-```sitl
+```sigl
 // BABY defaults
 - Physical: Age 1, infant size, sitting/lying position
 - Face: Happy expression, light skin tone
@@ -153,7 +153,7 @@ When attributes are not specified, entities use predictable defaults:
 Environment and scene context can override base defaults:
 
 #### Environment-Specific Defaults
-```sitl
+```sigl
 // OFFICE Environment
 ADD ENVIRONMENT OFFICE
 DRAW MAN  // Results in: Navy suit jacket, white dress shirt, black dress pants
@@ -172,7 +172,7 @@ DRAW WOMAN  // Results in: Swimwear, beach cover-up, sandals, sun hat
 ```
 
 #### Seasonal Context Defaults
-```sitl
+```sigl
 // Winter Scene
 SET SEASON WINTER
 DRAW MAN  // Results in: Winter coat, warm clothing, boots, hat/gloves
@@ -185,7 +185,7 @@ DRAW WOMAN  // Results in: Light clothing, sandals, sun protection
 ### Outfit Categories and Smart Inference
 
 #### Complete Outfit Categories
-```sitl
+```sigl
 // CASUAL outfit - complete clothing set
 DRAW MAN WITH OUTFIT CASUAL
 // Results in: White t-shirt, blue jeans, white sneakers, casual belt
@@ -200,7 +200,7 @@ DRAW PERSON WITH OUTFIT ATHLETIC
 ```
 
 #### Outfit Customization
-```sitl
+```sigl
 // Customize specific parts of outfit categories
 DRAW MAN WITH OUTFIT CASUAL(SHIRT:RED, PANTS:BLACK)
 // Results in: Red t-shirt, black jeans, white sneakers, casual belt
@@ -215,7 +215,7 @@ DRAW MAN WITH OUTFIT CASUAL_FORMAL
 ### Incomplete Attribute Handling
 
 #### Missing Attributes with Defaults
-```sitl
+```sigl
 // Missing attributes - apply defaults with warnings
 INPUT: DRAW MAN WITH BLUE SHIRT
 WARNING: "Pants not specified for MAN, using default BLACK PANTS"
@@ -224,7 +224,7 @@ RESULT: Man with blue shirt, black pants, black shoes, age 30
 ```
 
 #### Context-Based Default Application
-```sitl
+```sigl
 // Context-based default application
 INPUT: ADD ENVIRONMENT OFFICE; DRAW MAN WITH BLUE SHIRT
 INFO: "Office environment detected, applying FORMAL context defaults"
@@ -234,7 +234,7 @@ RESULT: Man with blue dress shirt, navy pants, black dress shoes, tie
 ### Attribute Conflict Resolution
 
 #### Style Conflicts
-```sitl
+```sigl
 // Conflicting attributes
 INPUT: DRAW MAN WITH FORMAL_OUTFIT AND ATHLETIC_SHOES
 WARNING: "Style conflict: FORMAL_OUTFIT with ATHLETIC_SHOES"
@@ -243,7 +243,7 @@ RESOLUTION: "Using FORMAL_OUTFIT, replacing ATHLETIC_SHOES with DRESS_SHOES"
 ```
 
 #### Age-Inappropriate Attributes
-```sitl
+```sigl
 // Age-inappropriate attributes
 INPUT: DRAW BOY WITH BUSINESS_SUIT  
 WARNING: "Age conflict: BOY (default age 10) with BUSINESS_SUIT"
@@ -252,7 +252,7 @@ RESOLUTION: "Adjusting age to 18 for business attire appropriateness"
 ```
 
 #### Shirtless Context Validation
-```sitl
+```sigl
 // Appropriate shirtless contexts
 INPUT: ADD ENVIRONMENT BEACH; DRAW MAN WITH NO SHIRT
 INFO: "Beach environment detected, applying swimwear defaults"
@@ -268,7 +268,7 @@ RESOLUTION: "Applying office-appropriate defaults: white dress shirt, navy pants
 ### Smart Suggestions and Auto-Correction
 
 #### Typo Detection and Correction
-```sitl
+```sigl
 // Typo detection and correction
 INPUT: DRAW MAN WITH BLU SHIRT
 SUGGESTION: "Did you mean 'BLUE SHIRT'? (y/n)"
@@ -281,7 +281,7 @@ SUGGESTION: "Did you mean: MAN, WOMAN, or HUMAN?"
 ```
 
 #### Template and Outfit Suggestions
-```sitl
+```sigl
 // Suggest templates for incomplete specifications
 INPUT: DRAW DOCTOR
 WARNING: "DOCTOR entity requires hospital extension"
@@ -294,7 +294,7 @@ OPTIONS: "1. LOAD EXTENSION hospital; DRAW DOCTOR
 ## Advanced Language Features
 
 ### Expressions and Actions
-```sitl
+```sigl
 DRAW MAN TALKING
 DRAW WOMAN LAUGHING
 DRAW BOY RUNNING
@@ -304,7 +304,7 @@ DRAW WOMAN STANDING
 ```
 
 ### Interactions
-```sitl
+```sigl
 DRAW MAN HOLDING WOMAN HAND
 DRAW WOMAN HUGGING BOY
 DRAW BOY PLAYING WITH ANIMAL DOG
@@ -312,7 +312,7 @@ DRAW GIRL FEEDING ANIMAL CAT
 ```
 
 ### Dynamic Elements (Future)
-```sitl
+```sigl
 ANIMATE MAN WALK FROM LEFT TO RIGHT
 ANIMATE WOMAN WAVE HAND
 ANIMATE BOY JUMP
@@ -390,7 +390,7 @@ Store variations as JSON in extensions:
 ## Export and Output
 
 ### Export Formats
-```sitl
+```sigl
 EXPORT AS PNG WITH SIZE 800x600
 EXPORT AS SVG WITH QUALITY HIGH
 EXPORT AS JSON TEMPLATE
@@ -398,7 +398,7 @@ SAVE AS "my_image.png"
 ```
 
 ### Quality Settings
-```sitl
+```sigl
 EXPORT AS PNG WITH QUALITY HIGH
 EXPORT AS JPG WITH COMPRESSION 80
 EXPORT AS SVG WITH PRECISION 2
@@ -407,7 +407,7 @@ EXPORT AS SVG WITH PRECISION 2
 ## Error Recovery Strategies
 
 ### Graceful Degradation
-```sitl
+```sigl
 // Graceful degradation
 INPUT: DRAW INVALID_ENTITY WITH BLUE SHIRT
 ERROR: "Unknown entity 'INVALID_ENTITY'"
@@ -416,7 +416,7 @@ RESULT: Person with blue shirt and default attributes
 ```
 
 ### Partial Command Execution
-```sitl
+```sigl
 // Partial command execution
 INPUT: DRAW MAN WITH INVALID_ATTRIBUTE AND BLUE SHIRT
 ERROR: "Unknown attribute 'INVALID_ATTRIBUTE'"
@@ -425,7 +425,7 @@ RESULT: Man with blue shirt and default other attributes
 ```
 
 ### Extension Dependency Resolution
-```sitl
+```sigl
 // Extension dependency resolution
 INPUT: DRAW SPACESHIP
 ERROR: "SPACESHIP requires space extension"
@@ -436,7 +436,7 @@ ALTERNATIVE: "Use generic VEHICLE if space extension unavailable"
 ## Validation Warnings and Limits
 
 ### Performance Warnings
-```sitl
+```sigl
 // Performance warnings
 INPUT: CREATE SCENE WITH 200 PEOPLE
 WARNING: "High entity count (200) may impact performance"
@@ -445,7 +445,7 @@ LIMIT: "Maximum 100 detailed entities recommended"
 ```
 
 ### Attribute Range Validation
-```sitl
+```sigl
 // Attribute range validation
 INPUT: DRAW MAN WITH AGE 150
 ERROR: "Invalid age 150 (valid range: 0-120)"

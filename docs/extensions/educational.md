@@ -1,11 +1,11 @@
 # Educational Domain Extension
 
-The Educational Domain Extension provides comprehensive support for educational institutions, personnel, equipment, and academic scenarios in SITL.
+The Educational Domain Extension provides comprehensive support for educational institutions, personnel, equipment, and academic scenarios in SIGL.
 
 ## Educational Personnel
 
 ### Teaching Staff
-```sitl
+```sigl
 DRAW TEACHER
 DRAW PROFESSOR
 DRAW INSTRUCTOR
@@ -19,7 +19,7 @@ DRAW PRINCIPAL
 ```
 
 ### Administrative Staff
-```sitl
+```sigl
 DRAW PRINCIPAL
 DRAW VICE_PRINCIPAL
 DRAW SUPERINTENDENT
@@ -33,7 +33,7 @@ DRAW STUDENT_AFFAIRS_COORDINATOR
 ```
 
 ### Support Staff
-```sitl
+```sigl
 DRAW LIBRARIAN
 DRAW CUSTODIAN
 DRAW SECURITY_GUARD
@@ -47,7 +47,7 @@ DRAW MEDIA_SPECIALIST
 ```
 
 ### Specialized Educational Roles
-```sitl
+```sigl
 DRAW SPECIAL_EDUCATION_TEACHER
 DRAW ESL_TEACHER
 DRAW SPEECH_THERAPIST
@@ -61,7 +61,7 @@ DRAW ARTS_TEACHER
 ```
 
 ### Students
-```sitl
+```sigl
 DRAW STUDENT
 DRAW ELEMENTARY_STUDENT
 DRAW MIDDLE_SCHOOL_STUDENT
@@ -77,7 +77,7 @@ DRAW DISTANCE_LEARNER
 ## Educational Equipment
 
 ### Classroom Technology
-```sitl
+```sigl
 DRAW COMPUTER
 DRAW LAPTOP
 DRAW TABLET
@@ -91,7 +91,7 @@ DRAW HEADPHONES
 ```
 
 ### Traditional Teaching Tools
-```sitl
+```sigl
 DRAW WHITEBOARD
 DRAW BLACKBOARD
 DRAW EASEL
@@ -105,7 +105,7 @@ DRAW MAP
 ```
 
 ### Laboratory Equipment
-```sitl
+```sigl
 DRAW MICROSCOPE
 DRAW TELESCOPE
 DRAW BEAKER
@@ -119,7 +119,7 @@ DRAW LAB_BENCH
 ```
 
 ### Library Resources
-```sitl
+```sigl
 DRAW BOOK
 DRAW TEXTBOOK
 DRAW REFERENCE_BOOK
@@ -133,7 +133,7 @@ DRAW BOOKSHELF
 ```
 
 ### Sports and Recreation Equipment
-```sitl
+```sigl
 DRAW BASKETBALL
 DRAW SOCCER_BALL
 DRAW VOLLEYBALL
@@ -149,7 +149,7 @@ DRAW FITNESS_EQUIPMENT
 ## Educational Environments
 
 ### Classroom Spaces
-```sitl
+```sigl
 DRAW CLASSROOM
 DRAW LECTURE_HALL
 DRAW SEMINAR_ROOM
@@ -163,7 +163,7 @@ DRAW RESOURCE_ROOM
 ```
 
 ### Common Areas
-```sitl
+```sigl
 DRAW LIBRARY
 DRAW CAFETERIA
 DRAW GYMNASIUM
@@ -177,7 +177,7 @@ DRAW PLAYGROUND
 ```
 
 ### Administrative Spaces
-```sitl
+```sigl
 DRAW PRINCIPAL_OFFICE
 DRAW TEACHERS_LOUNGE
 DRAW CONFERENCE_ROOM
@@ -191,7 +191,7 @@ DRAW RECORDS_OFFICE
 ```
 
 ### Specialized Facilities
-```sitl
+```sigl
 DRAW THEATER
 DRAW WORKSHOP
 DRAW GREENHOUSE
@@ -207,7 +207,7 @@ DRAW RECORDING_STUDIO
 ## Educational Variation Presets
 
 ### Teacher Variations
-```sitl
+```sigl
 DEFINE VARIATION "Elementary_Teacher":
   ATTIRE(STYLE: PROFESSIONAL_CASUAL, COLOR: BRIGHT_FRIENDLY)
   ACCESSORIES(BADGE: NAME_TAG, SUPPLIES: TEACHING_MATERIALS)
@@ -230,7 +230,7 @@ DEFINE VARIATION "Substitute_Teacher":
 ```
 
 ### Student Variations
-```sitl
+```sigl
 DEFINE VARIATION "Elementary_Student":
   ATTIRE(STYLE: CASUAL_SCHOOL_APPROPRIATE, BACKPACK: COLORFUL)
   SUPPLIES(MATERIALS: BASIC_SCHOOL, LUNCH: PACKED_OR_CAFETERIA)
@@ -253,7 +253,7 @@ DEFINE VARIATION "College_Student":
 ```
 
 ### Administrative Variations
-```sitl
+```sigl
 DEFINE VARIATION "Principal":
   ATTIRE(STYLE: FORMAL_PROFESSIONAL, AUTHORITY: VISIBLE)
   RESPONSIBILITIES(LEADERSHIP: SCHOOL_WIDE, DECISIONS: ADMINISTRATIVE)
@@ -273,21 +273,21 @@ DEFINE VARIATION "Librarian":
 ## Educational Personnel with Variations
 
 ### Using Predefined Variations
-```sitl
+```sigl
 DRAW TEACHER WITH VARIATION "Elementary_Teacher"
 DRAW STUDENT WITH VARIATION "High_School_Student" AND GRADE: SENIOR
 DRAW PRINCIPAL WITH VARIATION "Principal" AND EXPERIENCE: VETERAN
 ```
 
 ### Using Parameterized Attributes
-```sitl
+```sigl
 DRAW PROFESSOR WITH SUBJECT(AREA: MATHEMATICS, LEVEL: ADVANCED)
 DRAW STUDENT WITH GRADE(LEVEL: 3RD, PERFORMANCE: HONOR_ROLL)
 DRAW LIBRARIAN WITH SPECIALIZATION(AREA: DIGITAL_RESOURCES, CERTIFICATION: MLS)
 ```
 
 ### Context-Aware Educational Rendering
-```sitl
+```sigl
 DRAW TEACHER IN CLASSROOM:
   // Automatically applies appropriate teaching materials and classroom setup
 DRAW STUDENT IN LABORATORY:
@@ -297,7 +297,7 @@ DRAW STUDENT IN LABORATORY:
 ## Educational Scenarios
 
 ### Classroom Instruction
-```sitl
+```sigl
 DRAW MATH_CLASS:
   DRAW TEACHER WITH VARIATION "Math_Teacher" AT WHITEBOARD
   DRAW STUDENTS WITH VARIATION "Middle_School_Student" AT_DESKS
@@ -312,7 +312,7 @@ DRAW SCIENCE_EXPERIMENT:
 ```
 
 ### School Activities
-```sitl
+```sigl
 DRAW SCHOOL_ASSEMBLY:
   DRAW PRINCIPAL WITH VARIATION "Principal" ADDRESSING_STUDENTS
   DRAW STUDENTS WITH VARIATION "Elementary_Student" SEATED_IN_AUDITORIUM
@@ -327,7 +327,7 @@ DRAW LIBRARY_RESEARCH:
 ```
 
 ### Extracurricular Activities
-```sitl
+```sigl
 DRAW BASKETBALL_PRACTICE:
   DRAW COACH WITH VARIATION "PE_Teacher" TRAINING_TEAM
   DRAW STUDENTS WITH VARIATION "High_School_Student" IN_UNIFORMS
@@ -342,7 +342,7 @@ DRAW DRAMA_REHEARSAL:
 ```
 
 ### Administrative Functions
-```sitl
+```sigl
 DRAW PARENT_TEACHER_CONFERENCE:
   DRAW TEACHER WITH VARIATION "Elementary_Teacher" MEETING_PARENTS
   DRAW PARENTS WITH VARIATION "Concerned_Parent" DISCUSSING_PROGRESS
@@ -359,7 +359,7 @@ DRAW ENROLLMENT_DAY:
 ## Educational Technology Integration
 
 ### Digital Classrooms
-```sitl
+```sigl
 DRAW SMART_CLASSROOM:
   DRAW TEACHER WITH VARIATION "Tech_Savvy_Teacher" USING_SMARTBOARD
   DRAW STUDENTS WITH VARIATION "Digital_Native_Student" WITH_TABLETS
@@ -374,7 +374,7 @@ DRAW COMPUTER_LAB:
 ```
 
 ### Distance Learning
-```sitl
+```sigl
 DRAW VIRTUAL_CLASSROOM:
   DRAW TEACHER WITH VARIATION "Online_Instructor" BROADCASTING_LESSON
   DRAW STUDENTS WITH VARIATION "Remote_Learner" PARTICIPATING_VIRTUALLY
@@ -391,7 +391,7 @@ DRAW HYBRID_LEARNING:
 ## Special Education and Inclusion
 
 ### Special Needs Support
-```sitl
+```sigl
 DRAW SPECIAL_EDUCATION_CLASS:
   DRAW SPECIAL_ED_TEACHER WITH VARIATION "Special_Education_Teacher" PROVIDING_SUPPORT
   DRAW STUDENTS WITH VARIATION "Special_Needs_Student" RECEIVING_INSTRUCTION
@@ -406,7 +406,7 @@ DRAW INCLUSION_CLASSROOM:
 ```
 
 ### Therapeutic Services
-```sitl
+```sigl
 DRAW SPEECH_THERAPY:
   DRAW SPEECH_THERAPIST WITH VARIATION "Speech_Language_Pathologist" WORKING_WITH_STUDENT
   DRAW STUDENT WITH VARIATION "Student_Receiving_Therapy" PRACTICING_SKILLS
@@ -423,7 +423,7 @@ DRAW OCCUPATIONAL_THERAPY:
 ## School Safety and Emergency Procedures
 
 ### Safety Protocols
-```sitl
+```sigl
 DRAW FIRE_DRILL:
   DRAW TEACHERS WITH VARIATION "Safety_Conscious_Teacher" LEADING_EVACUATION
   DRAW STUDENTS WITH VARIATION "Disciplined_Student" FOLLOWING_PROCEDURES
@@ -438,7 +438,7 @@ DRAW SECURITY_MEASURES:
 ```
 
 ### Health and Wellness
-```sitl
+```sigl
 DRAW SCHOOL_NURSE_OFFICE:
   DRAW SCHOOL_NURSE WITH VARIATION "School_Health_Professional" CARING_FOR_STUDENT
   DRAW STUDENT WITH VARIATION "Student_Needing_Care" RECEIVING_ATTENTION
@@ -455,7 +455,7 @@ DRAW WELLNESS_PROGRAM:
 ## Educational Assessment and Evaluation
 
 ### Testing Environments
-```sitl
+```sigl
 DRAW STANDARDIZED_TESTING:
   DRAW PROCTOR WITH VARIATION "Test_Administrator" SUPERVISING_EXAM
   DRAW STUDENTS WITH VARIATION "Test_Taking_Student" CONCENTRATING
@@ -470,7 +470,7 @@ DRAW PORTFOLIO_ASSESSMENT:
 ```
 
 ### Academic Conferences
-```sitl
+```sigl
 DRAW ACADEMIC_CONFERENCE:
   DRAW PROFESSORS WITH VARIATION "Research_Professor" PRESENTING_PAPERS
   DRAW ATTENDEES WITH VARIATION "Academic_Professional" LISTENING
@@ -496,14 +496,14 @@ DRAW FACULTY_MEETING:
 ## Usage Examples
 
 ### Basic Classroom Scene
-```sitl
+```sigl
 ADD ENVIRONMENT CLASSROOM
 DRAW TEACHER WITH VARIATION "Elementary_Teacher"
 DRAW STUDENTS WITH VARIATION "Elementary_Student" AT_DESKS
 ```
 
 ### Complex School Day Scene
-```sitl
+```sigl
 CREATE SCENE "busy_school_day":
   ADD ENVIRONMENT ELEMENTARY_SCHOOL
   DRAW PRINCIPAL WITH VARIATION "Principal" GREETING_STUDENTS
@@ -514,7 +514,7 @@ CREATE SCENE "busy_school_day":
 ```
 
 ### University Campus Scene
-```sitl
+```sigl
 CREATE SCENE "university_campus":
   ADD ENVIRONMENT UNIVERSITY_CAMPUS
   DRAW PROFESSOR WITH VARIATION "College_Professor" WALKING_TO_CLASS

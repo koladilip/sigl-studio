@@ -2,8 +2,8 @@ import {
   SceneDefinition, 
   EntityDefinition, 
   RenderOptions, 
-  SITLConfig,
-  SITLError,
+  SIGLConfig,
+  SIGLError,
   LightingDefinition,
   AtmosphereDefinition,
   FogDefinition
@@ -48,17 +48,17 @@ export interface RenderResult {
   canvas?: HTMLCanvasElement;
   entities: RenderedEntity[];
   renderTime: number;
-  errors: SITLError[];
+  errors: SIGLError[];
 }
 
 /**
  * Main scene renderer class
  */
 export class SceneRenderer {
-  private config: SITLConfig;
+  private config: SIGLConfig;
   private context?: RenderContext;
 
-  constructor(config: SITLConfig) {
+  constructor(config: SIGLConfig) {
     this.config = config;
   }
 
@@ -67,7 +67,7 @@ export class SceneRenderer {
    */
   async render(scene: SceneDefinition, options: RenderOptions = {}): Promise<RenderResult> {
     const startTime = performance.now();
-    const errors: SITLError[] = [];
+    const errors: SIGLError[] = [];
     const renderedEntities: RenderedEntity[] = [];
 
     try {

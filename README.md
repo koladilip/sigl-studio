@@ -1,16 +1,16 @@
-# SimpleImage Template Language (SITL) Specification
+# Structured Image Generation Language (SIGL) Specification
 **Version 1.0**
 
 ## Overview
 
-The SimpleImage Template Language (SITL) is a modular, text-based command language for generating simple images using HTML5, JavaScript, and JSON templates. It consists of a **Core System** with basic functionality and **Domain Extensions** for specialized contexts.
+The Structured Image Generation Language (SIGL) is a modular, text-based command language for generating simple images using HTML5, JavaScript, and JSON templates. It consists of a **Core System** with basic functionality and **Domain Extensions** for specialized contexts.
 
 ## Quick Start Guide
 
 ### Basic Example
 Here's a complete example from input to output:
 
-```sitl
+```sigl
 // Load required extensions
 LOAD EXTENSION hospital
 
@@ -30,7 +30,7 @@ This creates a hospital scene with a doctor examining a patient, complete with a
 ### More Examples
 
 #### Family Portrait
-```sitl
+```sigl
 CREATE SCENE "family_portrait":
   DRAW MAN WITH AGE 35 AND BLUE SHIRT AT LEFT
   DRAW WOMAN WITH AGE 32 AND RED DRESS NEXT TO MAN
@@ -42,7 +42,7 @@ EXPORT AS PNG WITH SIZE 1920x1080
 ```
 
 #### Space Mission
-```sitl
+```sigl
 LOAD EXTENSION space
 CREATE SCENE "moon_landing":
   DRAW ASTRONAUT WITH SPACE_SUIT AT CENTER
@@ -54,7 +54,7 @@ EXPORT AS PNG WITH SIZE 1024x768
 ```
 
 #### Professional Portrait with Advanced Features
-```sitl
+```sigl
 CREATE SCENE "executive_portrait":
   // Advanced camera and composition
   SET_CAMERA:
@@ -96,7 +96,7 @@ CREATE SCENE "executive_portrait":
 ```
 
 #### Cinematic Landscape
-```sitl
+```sigl
 CREATE_SCENE "golden_hour_vista":
   // Cinematic camera setup
   SET_CAMERA:
@@ -138,7 +138,7 @@ CREATE_SCENE "golden_hour_vista":
 ```
 
 ### Command Structure
-All SITL commands follow this standardized pattern:
+All SIGL commands follow this standardized pattern:
 ```
 ACTION ENTITY [WITH ATTRIBUTES] [AT POSITION] [MODIFIERS]
 ```
@@ -228,7 +228,7 @@ Specialized extensions for specific contexts that can be loaded as needed to ext
 ### Extension System Rules
 
 #### Loading Extensions
-```sitl
+```sigl
 LOAD EXTENSION hospital
 LOAD EXTENSION space
 LOAD EXTENSION military
@@ -239,7 +239,7 @@ When multiple extensions define the same entity:
 1. **Core System** takes precedence over extensions
 2. **Last loaded extension** takes precedence over earlier ones
 3. Use explicit namespacing to resolve conflicts:
-   ```sitl
+   ```sigl
    DRAW CORE:CAR          // Uses core car definition
    DRAW TRANSPORT:CAR     // Uses transportation extension car
    DRAW MILITARY:CAR      // Uses military extension vehicle
@@ -247,7 +247,7 @@ When multiple extensions define the same entity:
 
 #### Cross-Extension Compatibility
 Extensions can be combined when they don't conflict:
-```sitl
+```sigl
 LOAD EXTENSION hospital
 LOAD EXTENSION military
 CREATE SCENE "field_hospital":

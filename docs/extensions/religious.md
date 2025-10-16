@@ -1,11 +1,11 @@
 # Religious Domain Extension
 
-The Religious Domain Extension provides comprehensive support for religious and spiritual environments, personnel, and scenarios across multiple faith traditions in SITL.
+The Religious Domain Extension provides comprehensive support for religious and spiritual environments, personnel, and scenarios across multiple faith traditions in SIGL.
 
 ## Religious Personnel
 
 ### Christian Clergy
-```sitl
+```sigl
 DRAW PRIEST
 DRAW PASTOR
 DRAW MINISTER
@@ -19,7 +19,7 @@ DRAW MISSIONARY
 ```
 
 ### Other Faith Leaders
-```sitl
+```sigl
 DRAW IMAM
 DRAW RABBI
 DRAW MONK
@@ -33,7 +33,7 @@ DRAW RELIGIOUS_TEACHER
 ```
 
 ### Religious Support Staff
-```sitl
+```sigl
 DRAW ALTAR_SERVER
 DRAW CHOIR_DIRECTOR
 DRAW ORGANIST
@@ -49,7 +49,7 @@ DRAW GREETER
 ## Religious Buildings and Structures
 
 ### Christian Buildings
-```sitl
+```sigl
 DRAW CHURCH
 DRAW CATHEDRAL
 DRAW CHAPEL
@@ -63,7 +63,7 @@ DRAW RECTORY
 ```
 
 ### Other Faith Buildings
-```sitl
+```sigl
 DRAW MOSQUE
 DRAW SYNAGOGUE
 DRAW TEMPLE
@@ -79,7 +79,7 @@ DRAW PILGRIMAGE_DESTINATION
 ## Religious Objects and Symbols
 
 ### Christian Objects
-```sitl
+```sigl
 DRAW CROSS
 DRAW CRUCIFIX
 DRAW BIBLE
@@ -93,7 +93,7 @@ DRAW HOLY_WATER
 ```
 
 ### Multi-Faith Objects
-```sitl
+```sigl
 DRAW PRAYER_BEADS
 DRAW INCENSE
 DRAW PRAYER_RUG
@@ -107,7 +107,7 @@ DRAW SACRED_TEXT
 ```
 
 ### Religious Symbols
-```sitl
+```sigl
 DRAW STAR_OF_DAVID
 DRAW CRESCENT_MOON
 DRAW OM_SYMBOL
@@ -123,7 +123,7 @@ DRAW SACRED_GEOMETRY
 ## Religious Variation Presets
 
 ### Christian Clergy Variations
-```sitl
+```sigl
 DEFINE VARIATION "Catholic_Priest":
   ATTIRE(COLOR: BLACK, STYLE: CLERICAL, ACCESSORIES: COLLAR, CROSS)
   POSTURE(STANCE: REVERENT, HANDS: BLESSING)
@@ -142,7 +142,7 @@ DEFINE VARIATION "Bishop_Formal":
 ```
 
 ### Other Faith Variations
-```sitl
+```sigl
 DEFINE VARIATION "Islamic_Imam":
   ATTIRE(COLOR: WHITE, STYLE: THOBE, ACCESSORIES: KUFI, PRAYER_BEADS)
   POSTURE(STANCE: HUMBLE, HANDS: PRAYER)
@@ -161,7 +161,7 @@ DEFINE VARIATION "Hindu_Guru":
 ```
 
 ### Religious Congregation Variations
-```sitl
+```sigl
 DEFINE VARIATION "Sunday_Worshipper":
   ATTIRE(COLOR: FORMAL, STYLE: RESPECTFUL, ACCESSORIES: BIBLE)
   POSTURE(STANCE: REVERENT, HANDS: PRAYER)
@@ -178,21 +178,21 @@ DEFINE VARIATION "Funeral_Attendee":
 ## Religious Personnel with Variations
 
 ### Using Predefined Variations
-```sitl
+```sigl
 DRAW PRIEST WITH VARIATION "Catholic_Priest"
 DRAW IMAM WITH VARIATION "Islamic_Imam" AND EXPERIENCE: SENIOR
 DRAW RABBI WITH VARIATION "Jewish_Rabbi" AND SPECIALIZATION: TORAH_SCHOLAR
 ```
 
 ### Using Parameterized Attributes
-```sitl
+```sigl
 DRAW MINISTER WITH ATTIRE(TYPE: CLERICAL, COLOR: BLACK, ACCESSORIES: COLLAR)
 DRAW MONK WITH ROBE(TYPE: BUDDHIST, COLOR: MAROON, ACCESSORIES: PRAYER_BEADS)
 DRAW NUN WITH HABIT(TYPE: TRADITIONAL, COLOR: BLUE, ACCESSORIES: ROSARY)
 ```
 
 ### Context-Aware Religious Rendering
-```sitl
+```sigl
 DRAW PRIEST IN CHURCH:
   // Automatically applies liturgical vestments and sacred objects
 DRAW IMAM IN MOSQUE:
@@ -202,7 +202,7 @@ DRAW IMAM IN MOSQUE:
 ## Religious Environment Variations
 
 ### Worship Space Configurations
-```sitl
+```sigl
 DEFINE VARIATION "Traditional_Church":
   ARCHITECTURE(STYLE: GOTHIC, FEATURES: STAINED_GLASS, ALTAR: ORNATE)
   SEATING(TYPE: PEWS, ARRANGEMENT: ROWS, CAPACITY: LARGE)
@@ -223,7 +223,7 @@ DEFINE VARIATION "Synagogue_Orthodox":
 ## Religious Scenarios
 
 ### Worship Services
-```sitl
+```sigl
 DRAW SUNDAY_SERVICE:
   DRAW PASTOR WITH VARIATION "Protestant_Pastor" AT PULPIT
   DRAW CONGREGATION WITH VARIATION "Sunday_Worshipper" IN PEWS
@@ -245,7 +245,7 @@ DRAW SABBATH_SERVICE:
 ```
 
 ### Religious Ceremonies
-```sitl
+```sigl
 DRAW WEDDING_CEREMONY:
   DRAW PRIEST WITH VARIATION "Catholic_Priest" AT ALTAR
   DRAW BRIDE WITH VARIATION "Wedding_Bride" IN WHITE_DRESS
@@ -267,7 +267,7 @@ DRAW FUNERAL_SERVICE:
 ```
 
 ### Religious Education
-```sitl
+```sigl
 DRAW SUNDAY_SCHOOL:
   DRAW TEACHER WITH VARIATION "Sunday_School_Teacher" AT FRONT
   DRAW CHILDREN WITH VARIATION "Sunday_School_Student" AT TABLES
@@ -288,7 +288,7 @@ DRAW RELIGIOUS_STUDY:
 ```
 
 ### Interfaith Activities
-```sitl
+```sigl
 DRAW INTERFAITH_GATHERING:
   DRAW PRIEST WITH VARIATION "Catholic_Priest"
   DRAW IMAM WITH VARIATION "Islamic_Imam"
@@ -305,7 +305,7 @@ DRAW COMMUNITY_SERVICE:
 ## Religious Festivals and Celebrations
 
 ### Christian Celebrations
-```sitl
+```sigl
 DRAW CHRISTMAS_SERVICE:
   DRAW NATIVITY_SCENE WITH TRADITIONAL_FIGURES
   DRAW CHRISTMAS_CHOIR WITH FESTIVE_ROBES
@@ -320,7 +320,7 @@ DRAW EASTER_SERVICE:
 ```
 
 ### Other Faith Celebrations
-```sitl
+```sigl
 DRAW RAMADAN_IFTAR:
   DRAW MUSLIM_FAMILIES WITH VARIATION "Ramadan_Participant"
   DRAW IFTAR_MEAL WITH TRADITIONAL_FOODS
@@ -337,7 +337,7 @@ DRAW PASSOVER_SEDER:
 ## Religious Music and Arts
 
 ### Sacred Music
-```sitl
+```sigl
 DRAW CHURCH_CHOIR:
   DRAW CHOIR_DIRECTOR WITH VARIATION "Church_Musician"
   DRAW CHOIR_MEMBERS WITH VARIATION "Church_Choir" IN ROBES
@@ -352,7 +352,7 @@ DRAW GOSPEL_MUSIC:
 ```
 
 ### Religious Art
-```sitl
+```sigl
 DRAW RELIGIOUS_ART:
   DRAW STAINED_GLASS_WINDOWS WITH BIBLICAL_SCENES
   DRAW RELIGIOUS_PAINTINGS WITH SACRED_IMAGERY
@@ -369,7 +369,7 @@ DRAW CALLIGRAPHY:
 ## Religious Communication and Outreach
 
 ### Pastoral Care
-```sitl
+```sigl
 DRAW HOSPITAL_VISIT:
   DRAW CHAPLAIN WITH VARIATION "Hospital_Chaplain" VISITING_PATIENT
   DRAW PATIENT WITH VARIATION "Hospital_Patient" RECEIVING_COMFORT
@@ -384,7 +384,7 @@ DRAW COUNSELING_SESSION:
 ```
 
 ### Community Outreach
-```sitl
+```sigl
 DRAW FOOD_PANTRY:
   DRAW VOLUNTEERS WITH VARIATION "Faith_Volunteer" SERVING
   DRAW RECIPIENTS WITH VARIATION "Community_Member" RECEIVING_HELP
@@ -401,7 +401,7 @@ DRAW MISSION_WORK:
 ## Meditation and Spiritual Practices
 
 ### Contemplative Practices
-```sitl
+```sigl
 DRAW MEDITATION_SESSION:
   DRAW MEDITATION_TEACHER WITH VARIATION "Spiritual_Guide" LEADING
   DRAW MEDITATORS WITH VARIATION "Meditation_Practitioner" SITTING
@@ -416,7 +416,7 @@ DRAW PRAYER_CIRCLE:
 ```
 
 ### Retreat Activities
-```sitl
+```sigl
 DRAW SPIRITUAL_RETREAT:
   DRAW RETREAT_LEADER WITH VARIATION "Spiritual_Director" TEACHING
   DRAW RETREATANTS WITH VARIATION "Retreat_Participant" REFLECTING
@@ -442,14 +442,14 @@ DRAW PILGRIMAGE:
 ## Usage Examples
 
 ### Basic Religious Scene
-```sitl
+```sigl
 ADD ENVIRONMENT CHURCH
 DRAW PRIEST WITH VARIATION "Catholic_Priest"
 DRAW CONGREGATION WITH VARIATION "Sunday_Worshipper"
 ```
 
 ### Complex Worship Service
-```sitl
+```sigl
 CREATE SCENE "sunday_service":
   ADD ENVIRONMENT TRADITIONAL_CHURCH
   DRAW PASTOR WITH VARIATION "Protestant_Pastor" AT PULPIT
@@ -460,7 +460,7 @@ CREATE SCENE "sunday_service":
 ```
 
 ### Interfaith Dialogue
-```sitl
+```sigl
 CREATE SCENE "interfaith_meeting":
   ADD ENVIRONMENT COMMUNITY_CENTER
   DRAW PRIEST WITH VARIATION "Catholic_Priest"

@@ -1,8 +1,8 @@
-# SITL Enhanced Expressions and Interactivity System
+# SIGL Enhanced Expressions and Interactivity System
 
 ## Overview
 
-The SITL Enhanced Expressions and Interactivity System extends the basic emotion system to provide rich, dynamic character expressions and interactive behaviors. This system enables characters to respond naturally to their environment, other characters, and player actions through a sophisticated expression and event-action framework.
+The SIGL Enhanced Expressions and Interactivity System extends the basic emotion system to provide rich, dynamic character expressions and interactive behaviors. This system enables characters to respond naturally to their environment, other characters, and player actions through a sophisticated expression and event-action framework.
 
 ## Core Principles
 
@@ -16,7 +16,7 @@ The SITL Enhanced Expressions and Interactivity System extends the basic emotion
 
 ### Mood System
 
-```sitl
+```sigl
 # Basic mood attributes
 create human(
     mood:cheerful,           # Overall emotional disposition
@@ -36,7 +36,7 @@ create human(
 
 ### Style Expressions
 
-```sitl
+```sigl
 # Personality-based expression styles
 create human(
     style:dramatic,          # Exaggerated expressions
@@ -59,7 +59,7 @@ create human(
 
 ### Special Expression Modes
 
-```sitl
+```sigl
 # Special expression states
 create human(
     special:mime,           # Silent, exaggerated expressions
@@ -72,7 +72,7 @@ create human(
 
 ### Animal-Inspired Expressions
 
-```sitl
+```sigl
 # Animal-like expression patterns
 create human(
     animal_trait:feline,    # Cat-like expressions (curious, aloof)
@@ -87,7 +87,7 @@ create human(
 
 ### Basic Event Responses
 
-```sitl
+```sigl
 # Define character with event responses
 create human(age:25, name:"Alice") with {
     on_approach: {
@@ -112,7 +112,7 @@ create human(age:25, name:"Alice") with {
 
 ### Complex Event Handling
 
-```sitl
+```sigl
 # Advanced event-action system
 create human(age:30, name:"Guard") with {
     events: {
@@ -151,7 +151,7 @@ create human(age:30, name:"Guard") with {
 
 ### Environmental Responses
 
-```sitl
+```sigl
 # Responses to environmental changes
 create human(age:20, name:"Farmer") with {
     environmental_responses: {
@@ -182,7 +182,7 @@ create human(age:20, name:"Farmer") with {
 
 ### Swappable Expression Parts
 
-```sitl
+```sigl
 # Define modular expression components
 create human(age:25) with {
     expression_components: {
@@ -214,7 +214,7 @@ create human(age:25) with {
 
 ### Color Pickers for Expression Elements
 
-```sitl
+```sigl
 # Customizable expression colors
 create human(age:30) with {
     expression_colors: {
@@ -241,7 +241,7 @@ create human(age:30) with {
 
 ### Emotion Sliders
 
-```sitl
+```sigl
 # Adjustable emotional parameters
 create human(age:25) with {
     emotion_controls: {
@@ -280,7 +280,7 @@ create human(age:25) with {
 
 ### Learning Objectives
 
-```sitl
+```sigl
 # Characters designed for educational purposes
 create human(age:35, role:teacher) with {
     educational_metadata: {
@@ -318,7 +318,7 @@ create human(age:35, role:teacher) with {
 
 ### Scene Creation Examples
 
-```sitl
+```sigl
 # Educational scene with interactive characters
 scene math_classroom {
     # Teacher character
@@ -368,7 +368,7 @@ scene math_classroom {
 
 ### Text Integration Examples
 
-```sitl
+```sigl
 # Characters that respond to text input
 create human(age:25, role:librarian) with {
     text_responses: {
@@ -404,7 +404,7 @@ create human(age:25, role:librarian) with {
 
 ### Micro-Expressions
 
-```sitl
+```sigl
 # Subtle, brief expressions
 create human(age:30) with {
     micro_expressions: {
@@ -436,7 +436,7 @@ create human(age:30) with {
 
 ### Expression Transitions
 
-```sitl
+```sigl
 # Smooth expression changes
 create human(age:25) with {
     expression_transitions: {
@@ -462,7 +462,7 @@ create human(age:25) with {
 
 ### Cultural Expression Variations
 
-```sitl
+```sigl
 # Culture-specific expression patterns
 create human(age:30, culture:japanese) with {
     cultural_expressions: {
@@ -491,7 +491,7 @@ create human(age:30, culture:japanese) with {
 
 ### Pattern Integration
 
-```sitl
+```sigl
 # Expressions that affect clothing patterns
 create human(age:25) with {
     mood_responsive_clothing: {
@@ -505,7 +505,7 @@ create human(age:25) with {
 
 ### Animation Integration
 
-```sitl
+```sigl
 # Expressions synchronized with animations
 create human(age:30) with {
     expression_animations: {
@@ -526,7 +526,7 @@ create human(age:30) with {
 
 ### Aliasing Integration
 
-```sitl
+```sigl
 # Expression-based character aliases
 @alias cheerful_merchant = human(
     age: 40,
@@ -555,7 +555,7 @@ create human(age:30) with {
 
 ### Expression Caching
 
-```sitl
+```sigl
 # Cache frequently used expressions
 create human(age:25) with {
     expression_cache: {
@@ -568,7 +568,7 @@ create human(age:25) with {
 
 ### Level of Detail (LOD)
 
-```sitl
+```sigl
 # Adjust expression complexity based on distance/importance
 create human(age:30) with {
     expression_lod: {
@@ -594,7 +594,7 @@ create human(age:30) with {
 
 ### Expression Validation
 
-```sitl
+```sigl
 # Validate expression compatibility
 create human(age:25) with {
     expressions: {
@@ -611,7 +611,7 @@ create human(age:25) with {
 
 ### Fallback Expressions
 
-```sitl
+```sigl
 # Define fallback behavior for invalid expressions
 create human(age:30) with {
     expression_fallbacks: {

@@ -1,11 +1,11 @@
 # Transportation Domain Extension
 
-The Transportation Domain Extension provides comprehensive support for vehicles, transportation personnel, and travel-related scenarios in SITL.
+The Transportation Domain Extension provides comprehensive support for vehicles, transportation personnel, and travel-related scenarios in SIGL.
 
 ## Vehicles
 
 ### Ground Vehicles
-```sitl
+```sigl
 DRAW CAR
 DRAW BUS
 DRAW TRUCK
@@ -19,7 +19,7 @@ DRAW SCHOOL_BUS
 ```
 
 ### Rail Transportation
-```sitl
+```sigl
 DRAW TRAIN
 DRAW SUBWAY
 DRAW TRAM
@@ -33,7 +33,7 @@ DRAW CARGO_TRAIN
 ```
 
 ### Air Transportation
-```sitl
+```sigl
 DRAW AIRPLANE
 DRAW HELICOPTER
 DRAW JET
@@ -47,7 +47,7 @@ DRAW SEAPLANE
 ```
 
 ### Water Transportation
-```sitl
+```sigl
 DRAW BOAT
 DRAW SHIP
 DRAW YACHT
@@ -63,7 +63,7 @@ DRAW KAYAK
 ## Transportation Personnel
 
 ### Aviation Personnel
-```sitl
+```sigl
 DRAW PILOT
 DRAW COPILOT
 DRAW FLIGHT_ATTENDANT
@@ -77,7 +77,7 @@ DRAW FLIGHT_INSTRUCTOR
 ```
 
 ### Ground Transportation Personnel
-```sitl
+```sigl
 DRAW DRIVER
 DRAW BUS_DRIVER
 DRAW TAXI_DRIVER
@@ -91,7 +91,7 @@ DRAW TRAFFIC_OFFICER
 ```
 
 ### Rail Personnel
-```sitl
+```sigl
 DRAW TRAIN_CONDUCTOR
 DRAW ENGINEER
 DRAW STATION_MASTER
@@ -105,7 +105,7 @@ DRAW BRAKEMAN
 ```
 
 ### Maritime Personnel
-```sitl
+```sigl
 DRAW SHIP_CAPTAIN
 DRAW SAILOR
 DRAW FIRST_MATE
@@ -121,7 +121,7 @@ DRAW PORT_WORKER
 ## Transportation Variation Presets
 
 ### Aviation Variations
-```sitl
+```sigl
 DEFINE VARIATION "Commercial_Pilot":
   UNIFORM(COLOR: NAVY_BLUE, STYLE: AIRLINE, RANK: CAPTAIN)
   HAT(TYPE: PEAKED_CAP, COLOR: NAVY_BLUE, INSIGNIA: WINGS)
@@ -138,7 +138,7 @@ DEFINE VARIATION "Air_Traffic_Controller":
 ```
 
 ### Ground Transportation Variations
-```sitl
+```sigl
 DEFINE VARIATION "Bus_Driver":
   UNIFORM(COLOR: GRAY, STYLE: TRANSIT_AUTHORITY)
   ACCESSORIES(BADGE: TRANSIT, RADIO: HANDHELD)
@@ -154,7 +154,7 @@ DEFINE VARIATION "Truck_Driver":
 ```
 
 ### Rail Transportation Variations
-```sitl
+```sigl
 DEFINE VARIATION "Train_Conductor":
   UNIFORM(COLOR: DARK_BLUE, STYLE: RAILWAY)
   HAT(TYPE: CONDUCTOR_CAP, COLOR: DARK_BLUE)
@@ -170,7 +170,7 @@ DEFINE VARIATION "Locomotive_Engineer":
 ```
 
 ### Maritime Variations
-```sitl
+```sigl
 DEFINE VARIATION "Ship_Captain":
   UNIFORM(COLOR: NAVY, STYLE: MARITIME, RANK: CAPTAIN)
   HAT(TYPE: CAPTAIN_HAT, COLOR: NAVY, INSIGNIA: ANCHOR)
@@ -188,7 +188,7 @@ DEFINE VARIATION "Harbor_Pilot":
 ## Vehicle Variations
 
 ### Car Variations
-```sitl
+```sigl
 DEFINE VARIATION "Luxury_Car":
   EXTERIOR(COLOR: BLACK, FINISH: GLOSSY, STYLE: SEDAN)
   INTERIOR(MATERIAL: LEATHER, COLOR: TAN, FEATURES: PREMIUM)
@@ -204,7 +204,7 @@ DEFINE VARIATION "Taxi":
 ```
 
 ### Bus Variations
-```sitl
+```sigl
 DEFINE VARIATION "Public_Transit_Bus":
   EXTERIOR(COLOR: CITY_COLORS, SIZE: FULL_SIZE)
   INTERIOR(SEATING: PUBLIC_TRANSIT, ACCESSIBILITY: ADA_COMPLIANT)
@@ -221,7 +221,7 @@ DEFINE VARIATION "Tour_Bus":
 ```
 
 ### Train Variations
-```sitl
+```sigl
 DEFINE VARIATION "Passenger_Train":
   CARS(TYPE: PASSENGER, COUNT: MULTIPLE, CLASS: MIXED)
   ENGINE(TYPE: ELECTRIC, POWER: HIGH_SPEED)
@@ -239,7 +239,7 @@ DEFINE VARIATION "Subway_Train":
 ```
 
 ### Aircraft Variations
-```sitl
+```sigl
 DEFINE VARIATION "Commercial_Airliner":
   TYPE(CATEGORY: PASSENGER, SIZE: LARGE, RANGE: LONG_HAUL)
   ENGINES(COUNT: TWO, TYPE: JET, POWER: HIGH_THRUST)
@@ -259,21 +259,21 @@ DEFINE VARIATION "Cargo_Plane":
 ## Transportation Personnel with Variations
 
 ### Using Predefined Variations
-```sitl
+```sigl
 DRAW PILOT WITH VARIATION "Commercial_Pilot"
 DRAW FLIGHT_ATTENDANT WITH VARIATION "Flight_Attendant" AND EXPERIENCE: SENIOR
 DRAW CONDUCTOR WITH VARIATION "Train_Conductor"
 ```
 
 ### Using Parameterized Attributes
-```sitl
+```sigl
 DRAW DRIVER WITH UNIFORM(TYPE: TAXI, COLOR: YELLOW, ACCESSORIES: METER)
 DRAW CAPTAIN WITH UNIFORM(TYPE: MARITIME, RANK: CAPTAIN, EXPERIENCE: VETERAN)
 DRAW MECHANIC WITH COVERALLS(COLOR: BLUE, CONDITION: WORK_WORN, TOOLS: WRENCH_SET)
 ```
 
 ### Context-Aware Transportation Rendering
-```sitl
+```sigl
 DRAW PILOT IN COCKPIT:
   // Automatically applies appropriate flight gear and instruments
 DRAW DRIVER IN TAXI:
@@ -283,7 +283,7 @@ DRAW DRIVER IN TAXI:
 ## Transportation Scenarios
 
 ### Airport Scenes
-```sitl
+```sigl
 DRAW AIRPORT_DEPARTURE:
   DRAW AIRPLANE WITH VARIATION "Commercial_Airliner"
   DRAW PILOT WITH VARIATION "Commercial_Pilot"
@@ -299,7 +299,7 @@ DRAW AIRPORT_ARRIVAL:
 ```
 
 ### Train Station Scenes
-```sitl
+```sigl
 DRAW TRAIN_STATION_DEPARTURE:
   DRAW TRAIN WITH VARIATION "Passenger_Train"
   DRAW CONDUCTOR WITH VARIATION "Train_Conductor"
@@ -314,7 +314,7 @@ DRAW SUBWAY_RUSH_HOUR:
 ```
 
 ### Road Transportation Scenes
-```sitl
+```sigl
 DRAW CITY_TRAFFIC:
   DRAW CARS WITH VARIATION "City_Vehicle" IN_TRAFFIC
   DRAW BUS WITH VARIATION "Public_Transit_Bus"
@@ -329,7 +329,7 @@ DRAW HIGHWAY_TRAVEL:
 ```
 
 ### Maritime Scenes
-```sitl
+```sigl
 DRAW HARBOR_ACTIVITY:
   DRAW CARGO_SHIP WITH VARIATION "Container_Ship" DOCKING
   DRAW HARBOR_PILOT WITH VARIATION "Harbor_Pilot" GUIDING_SHIP
@@ -346,7 +346,7 @@ DRAW CRUISE_DEPARTURE:
 ## Transportation Safety and Emergency
 
 ### Emergency Vehicles
-```sitl
+```sigl
 DRAW EMERGENCY_RESPONSE:
   DRAW AMBULANCE WITH VARIATION "Emergency_Medical_Vehicle"
   DRAW PARAMEDIC WITH UNIFORM(TYPE: EMS, EQUIPMENT: MEDICAL)
@@ -361,7 +361,7 @@ DRAW ACCIDENT_SCENE:
 ```
 
 ### Safety Equipment and Procedures
-```sitl
+```sigl
 DRAW AVIATION_SAFETY:
   DRAW PILOT WITH SAFETY_EQUIPMENT AND EMERGENCY_PROCEDURES
   DRAW FLIGHT_ATTENDANT DEMONSTRATING_SAFETY_FEATURES
@@ -378,7 +378,7 @@ DRAW MARITIME_SAFETY:
 ## Transportation Infrastructure
 
 ### Airports
-```sitl
+```sigl
 DRAW AIRPORT_TERMINAL:
   DRAW CHECK_IN_COUNTERS WITH AIRLINE_STAFF
   DRAW SECURITY_CHECKPOINT WITH TSA_AGENTS
@@ -393,7 +393,7 @@ DRAW AIRPORT_OPERATIONS:
 ```
 
 ### Train Stations
-```sitl
+```sigl
 DRAW TRAIN_STATION:
   DRAW TICKET_OFFICE WITH STATION_AGENTS
   DRAW WAITING_AREA WITH PASSENGER_SEATING
@@ -408,7 +408,7 @@ DRAW RAIL_YARD:
 ```
 
 ### Ports and Harbors
-```sitl
+```sigl
 DRAW SHIPPING_PORT:
   DRAW CONTAINER_CRANES WITH CARGO_OPERATIONS
   DRAW WAREHOUSE_FACILITIES WITH STORAGE_AREAS
@@ -425,7 +425,7 @@ DRAW MARINA:
 ## Transportation Technology
 
 ### Modern Transportation Systems
-```sitl
+```sigl
 DRAW SMART_TRANSPORTATION:
   DRAW ELECTRIC_VEHICLES WITH CHARGING_STATIONS
   DRAW AUTONOMOUS_VEHICLES WITH SELF_DRIVING_TECHNOLOGY
@@ -440,7 +440,7 @@ DRAW HIGH_SPEED_RAIL:
 ```
 
 ### Transportation Communication
-```sitl
+```sigl
 DRAW AIR_TRAFFIC_CONTROL:
   DRAW CONTROLLERS WITH RADAR_SYSTEMS
   DRAW COMMUNICATION_EQUIPMENT WITH RADIO_TOWERS
@@ -466,14 +466,14 @@ DRAW MARITIME_COMMUNICATION:
 ## Usage Examples
 
 ### Basic Transportation Scene
-```sitl
+```sigl
 ADD ENVIRONMENT AIRPORT
 DRAW PILOT WITH VARIATION "Commercial_Pilot"
 DRAW AIRPLANE WITH VARIATION "Commercial_Airliner"
 ```
 
 ### Complex Travel Scene
-```sitl
+```sigl
 CREATE SCENE "international_airport":
   ADD ENVIRONMENT INTERNATIONAL_AIRPORT
   DRAW AIRPLANE WITH VARIATION "Commercial_Airliner" AT GATE
@@ -484,7 +484,7 @@ CREATE SCENE "international_airport":
 ```
 
 ### Multi-Modal Transportation Hub
-```sitl
+```sigl
 CREATE SCENE "transportation_hub":
   ADD ENVIRONMENT TRANSIT_CENTER
   DRAW TRAIN WITH VARIATION "Passenger_Train" AT PLATFORM

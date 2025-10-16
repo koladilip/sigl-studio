@@ -1,11 +1,11 @@
 # Background and Environment
 
-The SITL Background and Environment System provides comprehensive support for creating contextual scenes with appropriate backgrounds, environmental elements, and scene-specific customizations.
+The SIGL Background and Environment System provides comprehensive support for creating contextual scenes with appropriate backgrounds, environmental elements, and scene-specific customizations.
 
 ## Background Colors
 
 ### Basic Background Colors
-```sitl
+```sigl
 ADD BACKGROUND COLOR: WHITE
 ADD BACKGROUND COLOR: BLACK
 ADD BACKGROUND COLOR: GRAY
@@ -20,14 +20,14 @@ ADD BACKGROUND COLOR: DARK_GREEN
 ```
 
 ### Custom Background Colors
-```sitl
+```sigl
 ADD BACKGROUND COLOR: RGB(245, 245, 245)  // Custom light gray
 ADD BACKGROUND COLOR: HEX(#F0F8FF)        // Alice blue
 ADD BACKGROUND COLOR: HSL(210, 100%, 97%) // Very light blue
 ```
 
 ### Gradient Backgrounds
-```sitl
+```sigl
 ADD BACKGROUND GRADIENT:
   START_COLOR: LIGHT_BLUE
   END_COLOR: WHITE
@@ -44,7 +44,7 @@ ADD BACKGROUND GRADIENT:
 ### Indoor Environments
 
 #### Residential Interiors
-```sitl
+```sigl
 ADD ENVIRONMENT HOUSE_INTERIOR:
   WALLS: PAINTED_NEUTRAL
   FLOORING: HARDWOOD
@@ -75,7 +75,7 @@ ADD ENVIRONMENT BATHROOM:
 ```
 
 #### Commercial Interiors
-```sitl
+```sigl
 ADD ENVIRONMENT OFFICE:
   WALLS: PROFESSIONAL_NEUTRAL
   FLOORING: CARPET_OR_POLISHED_CONCRETE
@@ -106,7 +106,7 @@ ADD ENVIRONMENT SHOP:
 ```
 
 #### Institutional Interiors
-```sitl
+```sigl
 ADD ENVIRONMENT HOSPITAL:
   WALLS: MEDICAL_WHITE_CLEAN
   FLOORING: MEDICAL_GRADE_TILE
@@ -132,7 +132,7 @@ ADD ENVIRONMENT LIBRARY:
 ### Outdoor Environments
 
 #### Natural Environments
-```sitl
+```sigl
 ADD ENVIRONMENT PARK:
   GROUND: GRASS_AND_PATHWAYS
   VEGETATION: TREES_BUSHES_FLOWERS
@@ -162,7 +162,7 @@ ADD ENVIRONMENT MOUNTAIN:
 ```
 
 #### Urban Environments
-```sitl
+```sigl
 ADD ENVIRONMENT CITY_STREET:
   GROUND: PAVEMENT_SIDEWALKS
   FEATURES: BUILDINGS_TRAFFIC_SIGNS
@@ -193,7 +193,7 @@ ADD ENVIRONMENT INDUSTRIAL:
 ### Contextual Scene Combinations
 
 #### Smart Environment Detection
-```sitl
+```sigl
 DRAW PERSON IN HOSPITAL:
   // Automatically applies hospital environment
   // Suggests medical attire and equipment
@@ -206,7 +206,7 @@ DRAW PERSON IN KITCHEN:
 ```
 
 #### Activity-Based Scenes
-```sitl
+```sigl
 CREATE SCENE "Cooking_Activity":
   ADD ENVIRONMENT KITCHEN
   DRAW PERSON WITH ATTIRE(STYLE: CASUAL_COOKING, ACCESSORIES: APRON)
@@ -221,7 +221,7 @@ CREATE SCENE "Office_Meeting":
 ```
 
 #### Time-Based Scene Variations
-```sitl
+```sigl
 CREATE SCENE "Morning_Kitchen":
   ADD ENVIRONMENT KITCHEN WITH TIME: MORNING
   LIGHTING(TYPE: NATURAL_MORNING, WARMTH: SOFT)
@@ -238,7 +238,7 @@ CREATE SCENE "Evening_Office":
 ### Environment-Specific People and Clothing
 
 #### Hospital Context
-```sitl
+```sigl
 ENVIRONMENT HOSPITAL SUGGESTS:
   MEDICAL_STAFF:
     ATTIRE: SCRUBS_OR_WHITE_COAT
@@ -257,7 +257,7 @@ ENVIRONMENT HOSPITAL SUGGESTS:
 ```
 
 #### School Context
-```sitl
+```sigl
 ENVIRONMENT SCHOOL SUGGESTS:
   TEACHERS:
     ATTIRE: PROFESSIONAL_CASUAL
@@ -276,7 +276,7 @@ ENVIRONMENT SCHOOL SUGGESTS:
 ```
 
 #### Park Context
-```sitl
+```sigl
 ENVIRONMENT PARK SUGGESTS:
   FAMILIES:
     ATTIRE: CASUAL_COMFORTABLE
@@ -295,7 +295,7 @@ ENVIRONMENT PARK SUGGESTS:
 ```
 
 #### Office Context
-```sitl
+```sigl
 ENVIRONMENT OFFICE SUGGESTS:
   EXECUTIVES:
     ATTIRE: FORMAL_BUSINESS_SUITS
@@ -316,7 +316,7 @@ ENVIRONMENT OFFICE SUGGESTS:
 ## Seasonal Scene Variations
 
 ### Winter Scenes
-```sitl
+```sigl
 CREATE SCENE "Winter_Park":
   ADD ENVIRONMENT PARK WITH SEASON: WINTER
   WEATHER(CONDITION: SNOW, TEMPERATURE: COLD)
@@ -332,7 +332,7 @@ CREATE SCENE "Winter_Office":
 ```
 
 ### Summer Scenes
-```sitl
+```sigl
 CREATE SCENE "Summer_Beach":
   ADD ENVIRONMENT BEACH WITH SEASON: SUMMER
   WEATHER(CONDITION: SUNNY, TEMPERATURE: HOT)
@@ -352,7 +352,7 @@ CREATE SCENE "Summer_Park":
 ### Vehicle Interior Environments
 
 #### Inside Car
-```sitl
+```sigl
 ADD ENVIRONMENT CAR_INTERIOR:
   SEATING: DRIVER_PASSENGER_SEATS
   CONTROLS: DASHBOARD_STEERING_WHEEL
@@ -372,7 +372,7 @@ ENVIRONMENT CAR_INTERIOR SUGGESTS:
 ```
 
 #### Inside Bus
-```sitl
+```sigl
 ADD ENVIRONMENT BUS_INTERIOR:
   SEATING: PUBLIC_TRANSIT_SEATS
   FEATURES: HANDRAILS_WINDOWS
@@ -392,7 +392,7 @@ ENVIRONMENT BUS_INTERIOR SUGGESTS:
 ```
 
 #### Riding Bicycle
-```sitl
+```sigl
 ADD ENVIRONMENT BICYCLE_RIDING:
   SETTING: OUTDOOR_CYCLING_PATH
   EQUIPMENT: BICYCLE_SAFETY_GEAR
@@ -407,7 +407,7 @@ ENVIRONMENT BICYCLE_RIDING SUGGESTS:
 ```
 
 #### Riding Motorcycle
-```sitl
+```sigl
 ADD ENVIRONMENT MOTORCYCLE_RIDING:
   SETTING: ROAD_HIGHWAY
   EQUIPMENT: MOTORCYCLE_PROTECTIVE_GEAR
@@ -422,7 +422,7 @@ ENVIRONMENT MOTORCYCLE_RIDING SUGGESTS:
 ```
 
 ### Transportation Safety Elements
-```sitl
+```sigl
 ADD TRANSPORTATION_SAFETY:
   VISIBILITY: REFLECTIVE_MATERIALS_LIGHTS
   PROTECTION: HELMETS_SAFETY_GEAR
@@ -431,7 +431,7 @@ ADD TRANSPORTATION_SAFETY:
 ```
 
 ### Weather-Based Transportation
-```sitl
+```sigl
 CREATE SCENE "Rainy_Day_Commute":
   ADD ENVIRONMENT BUS_STOP WITH WEATHER: RAIN
   PEOPLE_ATTIRE(OUTERWEAR: RAINCOATS, ACCESSORIES: UMBRELLAS)
@@ -446,7 +446,7 @@ CREATE SCENE "Sunny_Bicycle_Ride":
 ## Advanced Environment Features
 
 ### Dynamic Environment Adaptation
-```sitl
+```sigl
 ADAPTIVE_ENVIRONMENT "Smart_Office":
   TIME_OF_DAY:
     MORNING: BRIGHT_ENERGIZING_LIGHTING
@@ -465,7 +465,7 @@ ADAPTIVE_ENVIRONMENT "Smart_Office":
 ```
 
 ### Environment Transitions
-```sitl
+```sigl
 TRANSITION FROM OFFICE TO RESTAURANT:
   LIGHTING: PROFESSIONAL_TO_AMBIENT
   ATMOSPHERE: WORK_FOCUSED_TO_SOCIAL_RELAXED
@@ -480,7 +480,7 @@ TRANSITION FROM INDOOR TO OUTDOOR:
 ```
 
 ### Multi-Environment Scenes
-```sitl
+```sigl
 CREATE SCENE "Airport_Terminal":
   COMBINE_ENVIRONMENTS:
     - TRANSPORTATION_HUB
@@ -496,7 +496,7 @@ CREATE SCENE "Airport_Terminal":
 ## Environment Performance Optimization
 
 ### Environment Caching
-```sitl
+```sigl
 CACHE_ENVIRONMENT "Standard_Office":
   CACHE_DURATION: 2_HOURS
   VARIANTS: [MORNING, AFTERNOON, EVENING]
@@ -504,7 +504,7 @@ CACHE_ENVIRONMENT "Standard_Office":
 ```
 
 ### Lazy Environment Loading
-```sitl
+```sigl
 LAZY_LOAD_ENVIRONMENT "Complex_Hospital":
   LOAD_TRIGGER: ON_SCENE_ENTRY
   PROGRESSIVE_DETAIL: [BASIC_LAYOUT, EQUIPMENT, DETAILED_FEATURES]
@@ -512,7 +512,7 @@ LAZY_LOAD_ENVIRONMENT "Complex_Hospital":
 ```
 
 ### Environment Batching
-```sitl
+```sigl
 BATCH_ENVIRONMENTS "Office_Building":
   SHARED_ELEMENTS: [BUILDING_STRUCTURE, HVAC, LIGHTING_SYSTEM]
   VARIABLE_ELEMENTS: [ROOM_SPECIFIC_FURNITURE, DEPARTMENT_EQUIPMENT]
@@ -529,13 +529,13 @@ BATCH_ENVIRONMENTS "Office_Building":
 ## Usage Examples
 
 ### Basic Environment Setup
-```sitl
+```sigl
 ADD ENVIRONMENT OFFICE
 DRAW PERSON WITH ATTIRE(STYLE: BUSINESS_CASUAL)
 ```
 
 ### Complex Scene with Multiple Elements
-```sitl
+```sigl
 CREATE SCENE "Busy_Hospital_Emergency_Room":
   ADD ENVIRONMENT HOSPITAL_EMERGENCY_ROOM
   DRAW DOCTOR WITH VARIATION "Emergency_Physician" TREATING_PATIENT
@@ -547,7 +547,7 @@ CREATE SCENE "Busy_Hospital_Emergency_Room":
 ```
 
 ### Seasonal Environment Example
-```sitl
+```sigl
 CREATE SCENE "Winter_Holiday_Shopping":
   ADD ENVIRONMENT SHOPPING_MALL WITH SEASON: WINTER
   ADD DECORATIONS(TYPE: HOLIDAY, STYLE: FESTIVE)

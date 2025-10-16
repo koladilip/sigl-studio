@@ -2,7 +2,7 @@
 
 ## Overview
 
-The SITL Materials and Textures System provides sophisticated control over surface properties, material behaviors, and texture application. This system enables realistic material representation through physically-based rendering (PBR) properties, procedural texture generation, and advanced surface characteristics.
+The SIGL Materials and Textures System provides sophisticated control over surface properties, material behaviors, and texture application. This system enables realistic material representation through physically-based rendering (PBR) properties, procedural texture generation, and advanced surface characteristics.
 
 ## Core Concepts
 
@@ -15,7 +15,7 @@ The SITL Materials and Textures System provides sophisticated control over surfa
 ## Basic Material Definition
 
 ### Simple Material Application
-```sitl
+```sigl
 SET_MATERIAL:
   TARGET: CLOTHING | SKIN | HAIR | ENVIRONMENT | OBJECT
   TYPE: FABRIC | METAL | PLASTIC | WOOD | STONE | GLASS | ORGANIC
@@ -32,7 +32,7 @@ SET_DEFAULT_MATERIAL SKIN FOR PERSON
 ```
 
 ### Material Properties
-```sitl
+```sigl
 DEFINE_MATERIAL "custom_fabric":
   BASE_COLOR: #3366CC
   ROUGHNESS: 0.7              // 0.0 = mirror, 1.0 = completely rough
@@ -51,7 +51,7 @@ DEFINE_MATERIAL "custom_fabric":
 ## Physically-Based Rendering (PBR) Materials
 
 ### Metallic Materials
-```sitl
+```sigl
 DEFINE_MATERIAL "brushed_steel":
   BASE_COLOR: #C0C0C0
   METALLIC: 1.0
@@ -73,7 +73,7 @@ DEFINE_MATERIAL "copper_patina":
 ```
 
 ### Dielectric Materials
-```sitl
+```sigl
 DEFINE_MATERIAL "clear_glass":
   BASE_COLOR: #FFFFFF
   METALLIC: 0.0
@@ -99,7 +99,7 @@ DEFINE_MATERIAL "ceramic":
 ```
 
 ### Organic Materials
-```sitl
+```sigl
 DEFINE_MATERIAL "human_skin":
   BASE_COLOR: #FDBCB4
   METALLIC: 0.0
@@ -126,7 +126,7 @@ DEFINE_MATERIAL "fresh_leaves":
 ## Advanced Texture Mapping
 
 ### Texture Types and Channels
-```sitl
+```sigl
 APPLY_TEXTURE_MAP:
   TARGET: MATERIAL_NAME
   
@@ -151,7 +151,7 @@ APPLY_TEXTURE_MAP:
 ```
 
 ### Procedural Textures
-```sitl
+```sigl
 GENERATE_PROCEDURAL_TEXTURE:
   TYPE: NOISE | PATTERN | GEOMETRIC | ORGANIC
   
@@ -184,7 +184,7 @@ GENERATE_PROCEDURAL_TEXTURE:
 ```
 
 ### Texture Blending and Layering
-```sitl
+```sigl
 BLEND_TEXTURES:
   BASE_TEXTURE: "wood_base"
   OVERLAY_TEXTURE: "wood_grain"
@@ -213,7 +213,7 @@ LAYER_TEXTURES:
 ## Specialized Material Types
 
 ### Fabric and Clothing Materials
-```sitl
+```sigl
 FABRIC_MATERIALS:
   COTTON: {
     roughness: 0.8,
@@ -252,7 +252,7 @@ FABRIC_MATERIALS:
 ```
 
 ### Hair and Fur Materials
-```sitl
+```sigl
 HAIR_MATERIAL:
   STRAND_WIDTH: 0.001         // Individual hair thickness
   STRAND_COUNT: HIGH | MEDIUM | LOW
@@ -271,7 +271,7 @@ HAIR_MATERIAL:
 ```
 
 ### Skin Materials
-```sitl
+```sigl
 SKIN_MATERIAL:
   SKIN_TYPE: CAUCASIAN | AFRICAN | ASIAN | HISPANIC | MIXED
   AGE_FACTOR: 0.3             // 0.0 = young, 1.0 = elderly
@@ -302,7 +302,7 @@ SKIN_MATERIAL:
 ## Environmental Materials
 
 ### Natural Materials
-```sitl
+```sigl
 NATURAL_MATERIALS:
   WATER: {
     transparency: 0.9,
@@ -338,7 +338,7 @@ NATURAL_MATERIALS:
 ```
 
 ### Architectural Materials
-```sitl
+```sigl
 ARCHITECTURAL_MATERIALS:
   CONCRETE: {
     roughness: 0.7,
@@ -365,7 +365,7 @@ ARCHITECTURAL_MATERIALS:
 ## Dynamic Material Effects
 
 ### Time-Based Material Changes
-```sitl
+```sigl
 ANIMATE_MATERIAL_PROPERTIES:
   MATERIAL: "fabric"
   PROPERTY: ROUGHNESS | COLOR | TRANSPARENCY | EMISSION
@@ -380,7 +380,7 @@ ANIMATE_MATERIAL_PROPERTIES:
 ```
 
 ### Weather-Responsive Materials
-```sitl
+```sigl
 WEATHER_RESPONSIVE_MATERIALS:
   RAIN_EFFECT: {
     wetness_buildup: 0.8,
@@ -403,7 +403,7 @@ WEATHER_RESPONSIVE_MATERIALS:
 ```
 
 ### Wear and Aging Effects
-```sitl
+```sigl
 APPLY_WEAR_PATTERNS:
   WEAR_TYPE: FRICTION | CHEMICAL | UV | MECHANICAL
   INTENSITY: LIGHT | MODERATE | HEAVY
@@ -430,7 +430,7 @@ APPLY_WEAR_PATTERNS:
 ## Material Interaction and Physics
 
 ### Material Collision Properties
-```sitl
+```sigl
 SET_COLLISION_PROPERTIES:
   MATERIAL: "fabric"
   
@@ -447,7 +447,7 @@ SET_COLLISION_PROPERTIES:
 ```
 
 ### Fluid Interaction
-```sitl
+```sigl
 FLUID_INTERACTION:
   MATERIAL: "cotton_shirt"
   
@@ -461,7 +461,7 @@ FLUID_INTERACTION:
 ```
 
 ### Thermal Properties
-```sitl
+```sigl
 THERMAL_PROPERTIES:
   MATERIAL: "wool_sweater"
   
@@ -479,7 +479,7 @@ THERMAL_PROPERTIES:
 ## Quality and Performance Controls
 
 ### Level of Detail (LOD) for Materials
-```sitl
+```sigl
 SET_MATERIAL_LOD:
   DISTANCE_NEAR: {
     texture_resolution: 4096,
@@ -504,7 +504,7 @@ SET_MATERIAL_LOD:
 ```
 
 ### Material Optimization
-```sitl
+```sigl
 OPTIMIZE_MATERIALS:
   TEXTURE_COMPRESSION: DXT | BC7 | ASTC
   MIPMAP_GENERATION: AUTO | MANUAL | NONE
@@ -516,7 +516,7 @@ OPTIMIZE_MATERIALS:
 ```
 
 ### Memory Management
-```sitl
+```sigl
 MATERIAL_MEMORY_SETTINGS:
   TEXTURE_CACHE_SIZE: 512MB
   MATERIAL_INSTANCES: SHARED | UNIQUE
@@ -529,7 +529,7 @@ MATERIAL_MEMORY_SETTINGS:
 ## Integration Examples
 
 ### Complete Character Material Setup
-```sitl
+```sigl
 CREATE_SCENE "detailed_character":
   // Skin material
   APPLY_MATERIAL "realistic_skin" TO PERSON:
@@ -562,7 +562,7 @@ CREATE_SCENE "detailed_character":
 ```
 
 ### Environmental Scene with Material Variety
-```sitl
+```sigl
 CREATE_SCENE "urban_environment":
   // Building materials
   APPLY_MATERIAL "weathered_concrete" TO BUILDINGS:
@@ -594,7 +594,7 @@ CREATE_SCENE "urban_environment":
 ```
 
 ### Dynamic Material Animation
-```sitl
+```sigl
 CREATE_SCENE "fabric_in_wind":
   DEFINE_MATERIAL "silk_scarf":
     BASE_COLOR: #FF69B4
@@ -620,4 +620,4 @@ CREATE_SCENE "fabric_in_wind":
   APPLY_MATERIAL "silk_scarf" TO SCARF
 ```
 
-This materials system provides comprehensive control over surface properties and visual characteristics while maintaining SITL's intuitive syntax, enabling everything from simple material assignments to complex, physically-accurate material behaviors.
+This materials system provides comprehensive control over surface properties and visual characteristics while maintaining SIGL's intuitive syntax, enabling everything from simple material assignments to complex, physically-accurate material behaviors.

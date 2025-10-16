@@ -1,8 +1,8 @@
 /**
- * Parser type definitions for the SITL system
+ * Parser type definitions for the SIGL system
  */
 
-import { SITLError } from '../core/types';
+import { SIGLError } from '../core/types';
 
 // AST Node types
 export type NodeType =
@@ -226,7 +226,7 @@ export interface PointLightNode extends ASTNode {
 export interface ParseResult {
   success: boolean;
   ast?: ASTNode;
-  errors: SITLError[];
+  errors: SIGLError[];
   warnings: string[];
   metadata: ParseMetadata;
 }

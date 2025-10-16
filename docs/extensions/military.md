@@ -1,11 +1,11 @@
 # Military Domain Extension
 
-This document describes the military domain extension for SITL, providing specialized entities, vehicles, equipment, environments, and scenarios for military and defense contexts.
+This document describes the military domain extension for SIGL, providing specialized entities, vehicles, equipment, environments, and scenarios for military and defense contexts.
 
 ## Military Personnel
 
 ### Basic Military Personnel
-```sitl
+```sigl
 DRAW SOLDIER
 DRAW GENERAL
 DRAW SERGEANT
@@ -18,7 +18,7 @@ DRAW COMBAT_MEDIC
 ```
 
 ### Specialized Military Roles
-```sitl
+```sigl
 DRAW SPECIAL_FORCES
 DRAW SNIPER
 DRAW ENGINEER
@@ -37,7 +37,7 @@ DRAW SUBMARINE_COMMANDER
 ```
 
 ### Military Ranks
-```sitl
+```sigl
 // Enlisted Personnel
 DRAW PRIVATE
 DRAW CORPORAL
@@ -63,7 +63,7 @@ DRAW ADMIRAL
 ## Military Vehicles
 
 ### Ground Vehicles
-```sitl
+```sigl
 DRAW TANK
 DRAW MILITARY_TRUCK
 DRAW ARMORED_VEHICLE
@@ -77,7 +77,7 @@ DRAW COMMAND_VEHICLE
 ```
 
 ### Aircraft
-```sitl
+```sigl
 DRAW HELICOPTER
 DRAW FIGHTER_JET
 DRAW BOMBER
@@ -91,7 +91,7 @@ DRAW REFUELING_AIRCRAFT
 ```
 
 ### Naval Vessels
-```sitl
+```sigl
 DRAW AIRCRAFT_CARRIER
 DRAW SUBMARINE
 DRAW DESTROYER
@@ -107,7 +107,7 @@ DRAW SUPPLY_SHIP
 ## Military Equipment
 
 ### Personal Equipment
-```sitl
+```sigl
 DRAW RIFLE
 DRAW HELMET
 DRAW BODY_ARMOR
@@ -121,7 +121,7 @@ DRAW TACTICAL_VEST
 ```
 
 ### Weapons and Armaments
-```sitl
+```sigl
 DRAW ASSAULT_RIFLE
 DRAW SNIPER_RIFLE
 DRAW MACHINE_GUN
@@ -135,7 +135,7 @@ DRAW AMMUNITION
 ```
 
 ### Support Equipment
-```sitl
+```sigl
 DRAW FIELD_RADIO
 DRAW GPS_DEVICE
 DRAW NIGHT_VISION_GOGGLES
@@ -151,7 +151,7 @@ DRAW WATER_PURIFICATION_SYSTEM
 ## Military Environments
 
 ### Military Installations
-```sitl
+```sigl
 DRAW MILITARY_BASE
 DRAW BARRACKS
 DRAW COMMAND_CENTER
@@ -165,7 +165,7 @@ DRAW MISSILE_SILO
 ```
 
 ### Training Facilities
-```sitl
+```sigl
 DRAW OBSTACLE_COURSE
 DRAW FIRING_RANGE
 DRAW PARADE_GROUND
@@ -177,7 +177,7 @@ DRAW SURVIVAL_TRAINING_AREA
 ```
 
 ### Operational Environments
-```sitl
+```sigl
 DRAW FORWARD_OPERATING_BASE
 DRAW FIELD_HOSPITAL
 DRAW SUPPLY_DEPOT
@@ -191,7 +191,7 @@ DRAW AMMUNITION_STORAGE
 ## Military Variation Presets
 
 ### Uniform Variations
-```sitl
+```sigl
 // Define military uniform variations
 DEFINE VARIATION "US_Army_Combat":
   UNIFORM(COLOR: CAMOUFLAGE, STYLE: COMBAT, BRANCH: ARMY)
@@ -225,7 +225,7 @@ DEFINE VARIATION "Special_Forces_Gear":
 ```
 
 ### Rank and Insignia Variations
-```sitl
+```sigl
 // Define rank variations
 DEFINE VARIATION "Officer_Insignia":
   RANK(LEVEL: OFFICER, DISPLAY: SHOULDER_BOARDS)
@@ -249,7 +249,7 @@ DEFINE VARIATION "Flag_Officer":
 ```
 
 ### Environmental Variations
-```sitl
+```sigl
 // Define environment-specific variations
 DEFINE VARIATION "Desert_Operations":
   CAMOUFLAGE(PATTERN: DESERT, COLOR: TAN_BROWN)
@@ -275,7 +275,7 @@ DEFINE VARIATION "Urban_Operations":
 ## Military Personnel with Variations
 
 ### Using Predefined Variations
-```sitl
+```sigl
 // Basic variation usage
 DRAW SOLDIER WITH VARIATION "US_Army_Combat" AND RANK: SERGEANT
 DRAW GENERAL WITH VARIATION "Navy_Dress_Blue" AND VARIATION "Flag_Officer"
@@ -289,7 +289,7 @@ DRAW SPECIAL_FORCES WITH VARIATION "Urban_Operations" IN CITY
 ```
 
 ### Using Parameterized Attributes
-```sitl
+```sigl
 // Detailed military personnel customization
 DRAW SOLDIER WITH UNIFORM(COLOR: DESERT_CAMO, STYLE: COMBAT, ACCESSORIES: RADIO)
 DRAW LIEUTENANT WITH UNIFORM(BRANCH: AIR_FORCE, RANK: LIEUTENANT, SPECIALTY: PILOT)
@@ -303,7 +303,7 @@ DRAW SPECIAL_FORCES WITH TRAINING(ELITE: TRUE, MISSIONS: CLASSIFIED, SKILLS: ADV
 ```
 
 ### Context-Aware Military Rendering
-```sitl
+```sigl
 // Automatic context adaptation
 DRAW SOLDIER IN COMBAT:
   // Automatically applies combat gear and tactical equipment
@@ -321,7 +321,7 @@ DRAW PILOT IN COCKPIT:
 ## Military Equipment Variations
 
 ### Combat Equipment Variations
-```sitl
+```sigl
 // Define equipment variations by role
 DEFINE VARIATION "Infantry_Loadout":
   WEAPON(PRIMARY: RIFLE, SECONDARY: PISTOL)
@@ -349,7 +349,7 @@ DEFINE VARIATION "Engineer_Tools":
 ```
 
 ### Vehicle Equipment Variations
-```sitl
+```sigl
 // Define vehicle-specific variations
 DEFINE VARIATION "Tank_Crew":
   UNIFORM(TYPE: TANK_CREW, PROTECTION: FIRE_RESISTANT)
@@ -370,7 +370,7 @@ DEFINE VARIATION "Naval_Crew":
 ## Military Scenarios
 
 ### Combat Scenarios
-```sitl
+```sigl
 DRAW INFANTRY_ASSAULT:
   DRAW SOLDIERS WITH VARIATION "Infantry_Loadout"
   DRAW BATTLEFIELD WITH TERRAIN: ROUGH
@@ -391,7 +391,7 @@ DRAW AIR_COMBAT:
 ```
 
 ### Training Scenarios
-```sitl
+```sigl
 DRAW BASIC_TRAINING:
   DRAW RECRUITS WITH TRAINING: PHYSICAL
   DRAW DRILL_SERGEANT WITH AUTHORITY: COMMANDING
@@ -412,7 +412,7 @@ DRAW TACTICAL_EXERCISE:
 ```
 
 ### Ceremonial Scenarios
-```sitl
+```sigl
 DRAW MILITARY_PARADE:
   DRAW HONOR_GUARD WITH VARIATION "Marine_Dress_Blues"
   DRAW MILITARY_BAND WITH UNIFORM(STYLE: DRESS, COLOR: BLUE)
@@ -433,7 +433,7 @@ DRAW MEDAL_CEREMONY:
 ```
 
 ### Support Operations
-```sitl
+```sigl
 DRAW LOGISTICS_OPERATION:
   DRAW SUPPLY_CONVOY WITH PROTECTION: ARMED
   DRAW QUARTERMASTER WITH ORGANIZATION: EFFICIENT
@@ -456,7 +456,7 @@ DRAW INTELLIGENCE_GATHERING:
 ## Military Communication and Command
 
 ### Command Structure
-```sitl
+```sigl
 DRAW COMMAND_CENTER:
   DRAW COMMANDING_GENERAL WITH AUTHORITY: ULTIMATE
   DRAW STAFF_OFFICERS WITH PLANNING: STRATEGIC
@@ -471,7 +471,7 @@ DRAW FIELD_COMMAND_POST:
 ```
 
 ### Military Communications
-```sitl
+```sigl
 DRAW RADIO_COMMUNICATION:
   DRAW OPERATOR WITH EQUIPMENT: RADIO
   DRAW TRANSMISSION WITH CLARITY: CLEAR
@@ -488,7 +488,7 @@ DRAW SATELLITE_COMMUNICATION:
 ## Military Logistics and Support
 
 ### Supply Operations
-```sitl
+```sigl
 DRAW SUPPLY_DEPOT:
   DRAW QUARTERMASTER WITH INVENTORY: MANAGED
   DRAW SUPPLIES WITH ORGANIZATION: SYSTEMATIC
@@ -503,7 +503,7 @@ DRAW CONVOY_OPERATION:
 ```
 
 ### Maintenance and Repair
-```sitl
+```sigl
 DRAW MAINTENANCE_FACILITY:
   DRAW MECHANICS WITH EXPERTISE: TECHNICAL
   DRAW EQUIPMENT WITH REPAIR: ONGOING

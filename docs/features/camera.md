@@ -2,7 +2,7 @@
 
 ## Overview
 
-The SITL Camera and Perspective Control System provides sophisticated camera positioning, lens controls, and cinematic effects for creating professional-quality images. This system supports everything from basic viewpoint adjustments to complex multi-camera setups with advanced depth of field and motion effects.
+The SIGL Camera and Perspective Control System provides sophisticated camera positioning, lens controls, and cinematic effects for creating professional-quality images. This system supports everything from basic viewpoint adjustments to complex multi-camera setups with advanced depth of field and motion effects.
 
 ## Core Principles
 
@@ -15,7 +15,7 @@ The SITL Camera and Perspective Control System provides sophisticated camera pos
 ## Basic Camera Positioning
 
 ### Camera Location and Orientation
-```sitl
+```sigl
 SET CAMERA:
   POSITION: (0, 1.7, 5)         // X, Y, Z in meters (eye level, 5m back)
   TARGET: (0, 1.7, 0)           // Look at point
@@ -33,7 +33,7 @@ SET CAMERA:
 ```
 
 ### Camera Presets
-```sitl
+```sigl
 SET CAMERA_PRESET:
   PORTRAIT: {
     position: FRONT_OF_SUBJECT,
@@ -68,7 +68,7 @@ SET CAMERA_PRESET:
 ## Lens and Optical Settings
 
 ### Focal Length and Field of View
-```sitl
+```sigl
 SET LENS:
   FOCAL_LENGTH: 50mm            // Standard lens
   FIELD_OF_VIEW: 46.8 degrees   // Calculated from focal length
@@ -91,7 +91,7 @@ SET LENS:
 ```
 
 ### Lens Presets
-```sitl
+```sigl
 SET LENS_PRESET:
   ULTRA_WIDE: {focal_length: 14mm, fov: 114 degrees, distortion: FISHEYE}
   WIDE_ANGLE: {focal_length: 24mm, fov: 84 degrees, distortion: BARREL 0.05}
@@ -102,7 +102,7 @@ SET LENS_PRESET:
 ```
 
 ### Aperture and Depth of Field
-```sitl
+```sigl
 SET APERTURE:
   F_STOP: f/2.8                 // Wide aperture
   DEPTH_OF_FIELD: SHALLOW
@@ -124,7 +124,7 @@ SET APERTURE:
 ```
 
 ### Focus Controls
-```sitl
+```sigl
 SET FOCUS:
   MODE: SINGLE_POINT | ZONE | TRACKING
   TARGET: SUBJECT_EYES | SUBJECT_FACE | CUSTOM_POINT(x, y, z)
@@ -148,7 +148,7 @@ SET FOCUS:
 ## Advanced Camera Controls
 
 ### Camera Movement and Animation
-```sitl
+```sigl
 ANIMATE CAMERA:
   DOLLY FROM (0, 1.7, 5) TO (0, 1.7, 2) OVER 3 seconds
   EASING: EASE_IN_OUT
@@ -167,7 +167,7 @@ ANIMATE CAMERA:
 ```
 
 ### Camera Shake and Handheld Effects
-```sitl
+```sigl
 SET CAMERA_SHAKE:
   INTENSITY: 0.1                // Subtle shake
   FREQUENCY: 2.0 Hz
@@ -186,7 +186,7 @@ SET CAMERA_STABILIZATION:
 ```
 
 ### Multi-Camera Setup
-```sitl
+```sigl
 DEFINE_CAMERA "main_camera":
   POSITION: (0, 1.7, 4)
   FOCAL_LENGTH: 50mm
@@ -209,7 +209,7 @@ SWITCH_TO_CAMERA: "close_up" WITH TRANSITION: CROSS_FADE DURATION 1 second
 ## Projection and Perspective Types
 
 ### Perspective Projection
-```sitl
+```sigl
 SET PROJECTION: PERSPECTIVE WITH:
   FIELD_OF_VIEW: 50 degrees
   ASPECT_RATIO: 16:9 | 4:3 | 1:1 | CUSTOM(width/height)
@@ -222,7 +222,7 @@ SET PERSPECTIVE_CORRECTION:
 ```
 
 ### Orthographic Projection
-```sitl
+```sigl
 SET PROJECTION: ORTHOGRAPHIC WITH:
   WIDTH: 10 meters              // Orthographic width
   HEIGHT: 7.5 meters            // Calculated from aspect ratio
@@ -235,7 +235,7 @@ SET PROJECTION: ISOMETRIC WITH:
 ```
 
 ### Specialized Projections
-```sitl
+```sigl
 SET PROJECTION: FISHEYE WITH:
   FIELD_OF_VIEW: 180 degrees
   DISTORTION_MODEL: EQUIDISTANT | STEREOGRAPHIC | ORTHOGRAPHIC
@@ -254,7 +254,7 @@ SET PROJECTION: TILT_SHIFT WITH:
 ## Cinematic Effects
 
 ### Motion Blur
-```sitl
+```sigl
 SET MOTION_BLUR:
   ENABLED: true
   SHUTTER_SPEED: 1/60 second    // Slower = more blur
@@ -270,7 +270,7 @@ SET MOTION_BLUR_ADVANCED:
 ```
 
 ### Depth of Field Effects
-```sitl
+```sigl
 SET_DOF_ADVANCED:
   FOCUS_METHOD: DISTANCE | OBJECT | POINT
   FOCUS_TARGET: SUBJECT_EYES
@@ -297,7 +297,7 @@ SET_DOF_ADVANCED:
 ```
 
 ### Lens Effects
-```sitl
+```sigl
 SET LENS_EFFECTS:
   VIGNETTE: {
     intensity: 0.3,
@@ -332,7 +332,7 @@ SET LENS_EFFECTS:
 ## Camera Tracking and Following
 
 ### Subject Tracking
-```sitl
+```sigl
 SET CAMERA_TRACKING:
   TARGET: PERSON_1
   MODE: SMOOTH | RIGID | PREDICTIVE
@@ -353,7 +353,7 @@ SET_TRACKING_CONSTRAINTS:
 ```
 
 ### Path Following
-```sitl
+```sigl
 DEFINE_CAMERA_PATH "reveal_shot":
   KEYFRAMES: [
     {time: 0s, position: (10, 2, 10), target: BUILDING},
@@ -368,7 +368,7 @@ ANIMATE_CAMERA_ON_PATH "reveal_shot" DURATION 6 seconds
 ## Environmental Camera Effects
 
 ### Weather Effects on Camera
-```sitl
+```sigl
 SET_WEATHER_CAMERA_EFFECTS:
   RAIN: {
     droplets_on_lens: true,
@@ -391,7 +391,7 @@ SET_WEATHER_CAMERA_EFFECTS:
 ```
 
 ### Underwater Camera
-```sitl
+```sigl
 SET_UNDERWATER_CAMERA:
   DEPTH: 5 meters
   VISIBILITY: 20 meters
@@ -407,7 +407,7 @@ SET_UNDERWATER_CAMERA:
 ## Performance and Quality Settings
 
 ### Rendering Quality
-```sitl
+```sigl
 SET_CAMERA_QUALITY:
   ANTI_ALIASING: 4X | 8X | 16X
   ANISOTROPIC_FILTERING: 16X
@@ -424,7 +424,7 @@ SET_CAMERA_QUALITY:
 ```
 
 ### Culling and Optimization
-```sitl
+```sigl
 SET_CAMERA_CULLING:
   FRUSTUM_CULLING: true
   OCCLUSION_CULLING: true
@@ -443,7 +443,7 @@ SET_CAMERA_CULLING:
 ## Integration Examples
 
 ### Portrait Photography Setup
-```sitl
+```sigl
 CREATE_SCENE "professional_portrait":
   SET_CAMERA_PRESET: PORTRAIT
   
@@ -465,7 +465,7 @@ CREATE_SCENE "professional_portrait":
 ```
 
 ### Cinematic Reveal Shot
-```sitl
+```sigl
 CREATE_SCENE "dramatic_reveal":
   DEFINE_CAMERA_PATH "reveal":
     KEYFRAMES: [
@@ -489,7 +489,7 @@ CREATE_SCENE "dramatic_reveal":
 ```
 
 ### Action Scene with Camera Shake
-```sitl
+```sigl
 CREATE_SCENE "action_sequence":
   SET CAMERA:
     POSITION: BEHIND SUBJECT DISTANCE 3 meters
@@ -514,4 +514,4 @@ CREATE_SCENE "action_sequence":
   ADD ENVIRONMENT STREET
 ```
 
-This camera system provides professional-grade control over every aspect of image capture while maintaining the intuitive SITL syntax, enabling everything from simple snapshots to complex cinematic sequences.
+This camera system provides professional-grade control over every aspect of image capture while maintaining the intuitive SIGL syntax, enabling everything from simple snapshots to complex cinematic sequences.

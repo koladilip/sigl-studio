@@ -1,9 +1,9 @@
 /**
- * Core type definitions for the SITL system
+ * Core type definitions for the SIGL system
  */
 
 // Main configuration interface
-export interface SITLConfig {
+export interface SIGLConfig {
   canvas: CanvasConfig;
   rendering: RenderingConfig;
   export: ExportConfig;
@@ -193,7 +193,7 @@ export interface ExportOptions {
 }
 
 // Error interface
-export interface SITLError {
+export interface SIGLError {
   type: string;
   code?: string;
   message: string;
@@ -206,19 +206,19 @@ export interface SITLError {
 export interface Result<T> {
   success: boolean;
   data?: T;
-  errors?: SITLError[];
+  errors?: SIGLError[];
   warnings?: string[];
 }
 
 // Event types
-export interface SITLEvent {
+export interface SIGLEvent {
   type: string;
   timestamp: Date;
   data?: Record<string, unknown>;
 }
 
 // Plugin interface
-export interface SITLPlugin {
+export interface SIGLPlugin {
   name: string;
   version: string;
   initialize(): Promise<void>;
@@ -226,7 +226,7 @@ export interface SITLPlugin {
 }
 
 // Extension interface
-export interface Extension extends SITLPlugin {
+export interface Extension extends SIGLPlugin {
   entities?: EntityTypeDefinition[];
   attributes?: AttributeDefinition[];
   environments?: EnvironmentTypeDefinition[];
@@ -292,5 +292,5 @@ export type ASTNode = SceneDefinition | EntityDefinition | EnvironmentDefinition
 export interface ParseResult {
   success: boolean;
   ast?: ASTNode;
-  errors: SITLError[];
+  errors: SIGLError[];
 }

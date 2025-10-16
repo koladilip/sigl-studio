@@ -2,21 +2,21 @@ import {
   ParseResult, 
   SceneDefinition, 
   EntityDefinition, 
-  SITLError 
+  SIGLError 
 } from '../core/types';
 
 /**
- * Simple SITL Parser implementation
- * This is a basic parser that handles common SITL syntax patterns
+ * Simple SIGL Parser implementation
+ * This is a basic parser that handles common SIGL syntax patterns
  */
-export class SITLParser {
+export class SIGLParser {
   /**
-   * Parse SITL source code into an AST
+   * Parse SIGL source code into an AST
    */
   static parse(source: string): ParseResult {
     try {
       const lines = source.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('//'));
-      const errors: SITLError[] = [];
+      const errors: SIGLError[] = [];
       
       // Basic scene structure
       const scene: SceneDefinition = {
@@ -186,9 +186,9 @@ export class SITLParser {
   }
 
   /**
-   * Validate SITL source code syntax
+   * Validate SIGL source code syntax
    */
-  static validate(source: string): SITLError[] {
+  static validate(source: string): SIGLError[] {
     const result = this.parse(source);
     return result.success ? [] : result.errors;
   }
@@ -244,4 +244,4 @@ export class SITLParser {
   }
 }
 
-export default SITLParser;
+export default SIGLParser;

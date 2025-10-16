@@ -1,11 +1,11 @@
 # Space Domain Extension
 
-This document describes the space domain extension for SITL, providing specialized entities, vehicles, celestial bodies, equipment, and scenarios for space exploration and astronomy contexts.
+This document describes the space domain extension for SIGL, providing specialized entities, vehicles, celestial bodies, equipment, and scenarios for space exploration and astronomy contexts.
 
 ## Space Personnel
 
 ### Basic Space Personnel
-```sitl
+```sigl
 DRAW ASTRONAUT
 DRAW COSMONAUT
 DRAW MISSION COMMANDER
@@ -15,7 +15,7 @@ DRAW GROUND CONTROL OPERATOR
 ```
 
 ### Specialized Space Roles
-```sitl
+```sigl
 DRAW MISSION_SPECIALIST
 DRAW PAYLOAD_SPECIALIST
 DRAW PILOT
@@ -33,7 +33,7 @@ DRAW PLANETARY_GEOLOGIST
 ## Spacecraft and Vehicles
 
 ### Basic Spacecraft
-```sitl
+```sigl
 DRAW SPACE_SHUTTLE
 DRAW ROCKET
 DRAW SPACE_STATION
@@ -44,7 +44,7 @@ DRAW SPACE_CAPSULE
 ```
 
 ### Advanced Spacecraft
-```sitl
+```sigl
 DRAW INTERNATIONAL_SPACE_STATION
 DRAW DRAGON_CAPSULE
 DRAW FALCON_ROCKET
@@ -60,7 +60,7 @@ DRAW INTERPLANETARY_VESSEL
 ```
 
 ### Spacecraft Components
-```sitl
+```sigl
 DRAW SOLAR_PANELS
 DRAW ROBOTIC_ARM
 DRAW DOCKING_PORT
@@ -76,7 +76,7 @@ DRAW CREW_COMPARTMENT
 ## Celestial Bodies
 
 ### Planets and Moons
-```sitl
+```sigl
 DRAW EARTH
 DRAW MOON
 DRAW MARS
@@ -90,7 +90,7 @@ DRAW PLUTO
 ```
 
 ### Stellar Objects
-```sitl
+```sigl
 DRAW SUN
 DRAW STARS
 DRAW GALAXY
@@ -104,7 +104,7 @@ DRAW SOLAR_SYSTEM
 ```
 
 ### Space Phenomena
-```sitl
+```sigl
 DRAW ASTEROID
 DRAW COMET
 DRAW METEOR
@@ -120,7 +120,7 @@ DRAW TRANSIT
 ## Space Equipment
 
 ### Personal Space Equipment
-```sitl
+```sigl
 DRAW SPACE_SUIT
 DRAW HELMET
 DRAW OXYGEN_TANK
@@ -132,7 +132,7 @@ DRAW COMMUNICATION_HEADSET
 ```
 
 ### Space Tools and Instruments
-```sitl
+```sigl
 DRAW SPACE_TOOLS
 DRAW COMMUNICATION_DEVICE
 DRAW SCIENTIFIC_INSTRUMENTS
@@ -146,7 +146,7 @@ DRAW EMERGENCY_KIT
 ```
 
 ### Mission Equipment
-```sitl
+```sigl
 DRAW MISSION_CONTROL_CONSOLE
 DRAW LAUNCH_PAD
 DRAW GROUND_ANTENNA
@@ -160,7 +160,7 @@ DRAW LAUNCH_TOWER
 ## Space Variation Presets
 
 ### Space Suit Variations
-```sitl
+```sigl
 // Define space suit variations
 DEFINE VARIATION "EVA_Suit":
   SUIT(TYPE: EXTRAVEHICULAR, COLOR: WHITE)
@@ -191,7 +191,7 @@ DEFINE VARIATION "Lunar_Suit":
 ```
 
 ### Mission Variations
-```sitl
+```sigl
 // Define mission-specific variations
 DEFINE VARIATION "ISS_Mission":
   ENVIRONMENT(GRAVITY: MICROGRAVITY, ATMOSPHERE: CONTROLLED)
@@ -221,7 +221,7 @@ DEFINE VARIATION "Deep_Space":
 ## Space Personnel with Variations
 
 ### Using Predefined Variations
-```sitl
+```sigl
 // Basic variation usage
 DRAW ASTRONAUT WITH VARIATION "EVA_Suit"
 DRAW MISSION_COMMANDER WITH VARIATION "IVA_Suit" AND RANK: COMMANDER
@@ -235,7 +235,7 @@ DRAW MARS_COLONIST WITH VARIATION "Mars_Mission"
 ```
 
 ### Using Parameterized Attributes
-```sitl
+```sigl
 // Detailed space personnel customization
 DRAW ASTRONAUT WITH SUIT(TYPE: EVA, MISSION: SPACEWALK, EXPERIENCE: VETERAN)
 DRAW MISSION_SPECIALIST WITH EQUIPMENT(TOOLS: SCIENTIFIC, SAMPLES: COLLECTION)
@@ -249,7 +249,7 @@ DRAW MISSION_SPECIALIST WITH EXPERTISE(FIELD: ASTROPHYSICS, EQUIPMENT: SPECIALIZ
 ```
 
 ### Context-Aware Space Rendering
-```sitl
+```sigl
 // Automatic context adaptation
 DRAW ASTRONAUT IN SPACE:
   // Automatically applies EVA suit and space environment adaptations
@@ -267,7 +267,7 @@ DRAW GROUND_CREW AT LAUNCH_PAD:
 ## Space Environment Variations
 
 ### Spacecraft Interior Variations
-```sitl
+```sigl
 // Define spacecraft interior variations
 DEFINE VARIATION "ISS_Interior":
   GRAVITY(TYPE: MICROGRAVITY, ORIENTATION: FLEXIBLE)
@@ -289,7 +289,7 @@ DEFINE VARIATION "Mars_Habitat":
 ```
 
 ### Planetary Surface Variations
-```sitl
+```sigl
 // Define planetary surface variations
 DEFINE VARIATION "Lunar_Surface":
   TERRAIN(TYPE: REGOLITH, CRATERS: NUMEROUS)
@@ -313,7 +313,7 @@ DEFINE VARIATION "Deep_Space":
 ## Space Scenarios
 
 ### Launch and Orbital Scenarios
-```sitl
+```sigl
 DRAW ROCKET_LAUNCH:
   DRAW ROCKET WITH FLAMES: IGNITION
   DRAW LAUNCH_PAD WITH SMOKE: BILLOWING
@@ -334,7 +334,7 @@ DRAW DOCKING_MANEUVER:
 ```
 
 ### Spacewalk Scenarios
-```sitl
+```sigl
 DRAW SPACEWALK_EVA WITH VARIATION "EVA_Suit":
   DRAW ASTRONAUT WITH TETHER: SAFETY
   DRAW SPACE_STATION WITH MAINTENANCE: REQUIRED
@@ -355,7 +355,7 @@ DRAW CONSTRUCTION_EVA:
 ```
 
 ### Planetary Exploration Scenarios
-```sitl
+```sigl
 DRAW MOON_LANDING WITH VARIATION "Moon_Landing":
   DRAW LUNAR_MODULE WITH LANDING: SUCCESSFUL
   DRAW ASTRONAUT WITH FIRST_STEPS: HISTORIC
@@ -376,7 +376,7 @@ DRAW ASTEROID_MINING:
 ```
 
 ### Scientific Research Scenarios
-```sitl
+```sigl
 DRAW SPACE_LABORATORY:
   DRAW SCIENTIST WITH EXPERIMENT: MICROGRAVITY
   DRAW EQUIPMENT WITH PRECISION: SCIENTIFIC
@@ -397,7 +397,7 @@ DRAW PLANETARY_SURVEY:
 ```
 
 ### Emergency and Rescue Scenarios
-```sitl
+```sigl
 DRAW SPACE_RESCUE:
   DRAW DISABLED_SPACECRAFT WITH EMERGENCY: CRITICAL
   DRAW RESCUE_VEHICLE WITH APPROACH: URGENT
@@ -420,7 +420,7 @@ DRAW MEDICAL_EMERGENCY:
 ## Space Communication and Navigation
 
 ### Communication Systems
-```sitl
+```sigl
 DRAW MISSION_CONTROL:
   DRAW FLIGHT_CONTROLLERS WITH MONITORING: CONTINUOUS
   DRAW DISPLAYS WITH DATA: REAL_TIME
@@ -435,7 +435,7 @@ DRAW DEEP_SPACE_COMMUNICATION:
 ```
 
 ### Navigation and Tracking
-```sitl
+```sigl
 DRAW SPACECRAFT_NAVIGATION:
   DRAW STARS WITH REFERENCE: NAVIGATION
   DRAW COMPUTER WITH CALCULATIONS: PRECISE

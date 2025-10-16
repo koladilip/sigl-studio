@@ -8,7 +8,7 @@ import type {
   SceneDefinition,
   EntityDefinition,
   Result,
-  SITLError,
+  SIGLError,
 } from '../core/types';
 
 export interface TemplateContext {
@@ -128,7 +128,7 @@ export class TemplateEngine {
    * Validate template definition
    */
   private validateTemplate(template: TemplateDefinition): Result<void> {
-    const errors: SITLError[] = [];
+    const errors: SIGLError[] = [];
 
     if (!template.name || typeof template.name !== 'string') {
       errors.push({
@@ -181,7 +181,7 @@ export class TemplateEngine {
     parameterDefs: ParameterDefinition[],
     parameters: Record<string, unknown>
   ): Result<void> {
-    const errors: SITLError[] = [];
+    const errors: SIGLError[] = [];
 
     for (const paramDef of parameterDefs) {
       const value = parameters[paramDef.name];

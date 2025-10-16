@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Animation System in SITL enables dynamic movement and behavior for entities, bringing static scenes to life with smooth transitions, character movements, and interactive elements. This system supports both simple animations and complex sequences across all domain extensions.
+The Animation System in SIGL enables dynamic movement and behavior for entities, bringing static scenes to life with smooth transitions, character movements, and interactive elements. This system supports both simple animations and complex sequences across all domain extensions.
 
 ## Core Principles
 
@@ -15,24 +15,24 @@ The Animation System in SITL enables dynamic movement and behavior for entities,
 ## Basic Animation Syntax
 
 ### Simple Animation Commands
-```sitl
+```sigl
 ANIMATE <ENTITY> <ACTION> [WITH <PARAMETERS>]
 ```
 
 **Examples:**
-```sitl
+```sigl
 ANIMATE MAN WALK FROM LEFT TO RIGHT
 ANIMATE WOMAN WAVE WITH DURATION 2S
 ANIMATE CAR MOVE FROM BOTTOM TO TOP WITH SPEED FAST
 ```
 
 ### Animation with Entity Definition
-```sitl
+```sigl
 DRAW <ENTITY> WITH ANIMATION(<ACTION>, <PARAMETERS>)
 ```
 
 **Examples:**
-```sitl
+```sigl
 DRAW MAN WITH ANIMATION(WALK, FROM: LEFT, TO: RIGHT, SPEED: MEDIUM)
 DRAW BIRD WITH ANIMATION(FLY, FROM: BOTTOM, TO: TOP, REPEAT: INFINITE)
 ```
@@ -73,14 +73,14 @@ DRAW BIRD WITH ANIMATION(FLY, FROM: BOTTOM, TO: TOP, REPEAT: INFINITE)
 ## Animation Parameters
 
 ### Timing Parameters
-```sitl
+```sigl
 ANIMATE ENTITY ACTION WITH DURATION <TIME>
 ANIMATE ENTITY ACTION WITH DELAY <TIME>
 ANIMATE ENTITY ACTION WITH REPEAT <COUNT>
 ```
 
 **Examples:**
-```sitl
+```sigl
 ANIMATE MAN WALK WITH DURATION 3S
 ANIMATE WOMAN WAVE WITH DELAY 1S AND DURATION 2S
 ANIMATE BIRD FLY WITH REPEAT INFINITE
@@ -88,7 +88,7 @@ ANIMATE CAR MOVE WITH REPEAT 3
 ```
 
 ### Movement Parameters
-```sitl
+```sigl
 ANIMATE ENTITY MOVE FROM <START> TO <END> WITH SPEED <RATE>
 ```
 
@@ -105,7 +105,7 @@ ANIMATE ENTITY MOVE FROM <START> TO <END> WITH SPEED <RATE>
 - Coordinates: `(X, Y)`
 
 ### Easing and Style
-```sitl
+```sigl
 ANIMATE ENTITY ACTION WITH EASING <TYPE>
 ```
 
@@ -120,7 +120,7 @@ ANIMATE ENTITY ACTION WITH EASING <TYPE>
 ## Animation Sequences
 
 ### Sequential Animations
-```sitl
+```sigl
 CREATE ANIMATION SEQUENCE "morning_routine":
   ANIMATE MAN WALK FROM LEFT TO CENTER WITH DURATION 2S
   THEN ANIMATE MAN WAVE WITH DURATION 1S
@@ -128,7 +128,7 @@ CREATE ANIMATION SEQUENCE "morning_routine":
 ```
 
 ### Parallel Animations
-```sitl
+```sigl
 CREATE ANIMATION GROUP "crowd_scene":
   ANIMATE MAN1 WALK FROM LEFT TO RIGHT
   SIMULTANEOUSLY ANIMATE WOMAN1 WALK FROM RIGHT TO LEFT
@@ -136,7 +136,7 @@ CREATE ANIMATION GROUP "crowd_scene":
 ```
 
 ### Conditional Animations
-```sitl
+```sigl
 ANIMATE MAN WALK FROM LEFT TO CENTER
 ON COMPLETE: ANIMATE MAN WAVE
 ON COMPLETE: ANIMATE WOMAN WAVE IN RESPONSE
@@ -145,7 +145,7 @@ ON COMPLETE: ANIMATE WOMAN WAVE IN RESPONSE
 ## Domain-Specific Animations
 
 ### Hospital Domain
-```sitl
+```sigl
 LOAD EXTENSION hospital
 ANIMATE DOCTOR WALK FROM DOOR TO PATIENT WITH URGENCY HIGH
 ANIMATE NURSE RUN FROM STATION TO EMERGENCY_ROOM
@@ -153,7 +153,7 @@ ANIMATE PATIENT BREATHE WITH RHYTHM SLOW
 ```
 
 ### Military Domain
-```sitl
+```sigl
 LOAD EXTENSION military
 ANIMATE SOLDIER MARCH FROM BARRACKS TO FORMATION
 ANIMATE TROOPS SALUTE WITH SYNCHRONIZATION PERFECT
@@ -161,7 +161,7 @@ ANIMATE VEHICLE PATROL FROM CHECKPOINT TO CHECKPOINT
 ```
 
 ### Space Domain
-```sitl
+```sigl
 LOAD EXTENSION space
 ANIMATE ASTRONAUT FLOAT FROM AIRLOCK TO STATION
 ANIMATE SPACECRAFT ORBIT AROUND PLANET WITH PERIOD 30S
@@ -169,7 +169,7 @@ ANIMATE SATELLITE ROTATE WITH SPEED SLOW
 ```
 
 ### Educational Domain
-```sitl
+```sigl
 LOAD EXTENSION educational
 ANIMATE TEACHER POINT TO BLACKBOARD
 ANIMATE STUDENTS RAISE_HANDS IN SEQUENCE
@@ -179,7 +179,7 @@ ANIMATE BOOK PAGES TURN WITH SPEED MEDIUM
 ## Animation Presets and Templates
 
 ### Defining Animation Presets
-```sitl
+```sigl
 DEFINE ANIMATION "casual_walk":
   WALK(SPEED: MEDIUM, STYLE: RELAXED, DURATION: 3S)
 
@@ -188,13 +188,13 @@ DEFINE ANIMATION "urgent_run":
 ```
 
 ### Using Animation Presets
-```sitl
+```sigl
 ANIMATE MAN WITH PRESET "casual_walk" FROM LEFT TO RIGHT
 ANIMATE DOCTOR WITH PRESET "urgent_run" FROM OFFICE TO PATIENT
 ```
 
 ### Animation Variations
-```sitl
+```sigl
 DEFINE VARIATION "happy_character":
   ANIMATION(WALK, STYLE: BOUNCY, EXPRESSION: HAPPY)
 
@@ -205,14 +205,14 @@ ANIMATE "happy_character" WALK FROM LEFT TO RIGHT
 ## Interactive Animations
 
 ### Event-Triggered Animations
-```sitl
+```sigl
 ON CLICK DOCTOR: ANIMATE DOCTOR WAVE
 ON HOVER PATIENT: ANIMATE PATIENT LOOK_UP
 ON TIMER 5S: ANIMATE NURSE WALK TO PATIENT
 ```
 
 ### State-Based Animations
-```sitl
+```sigl
 IF PATIENT.STATUS = CRITICAL:
   ANIMATE DOCTOR RUN TO PATIENT
 ELSE:
@@ -220,7 +220,7 @@ ELSE:
 ```
 
 ### User-Controlled Animations
-```sitl
+```sigl
 ENABLE USER_CONTROL FOR MAN:
   ARROW_KEYS: MOVE
   SPACEBAR: JUMP
@@ -230,20 +230,20 @@ ENABLE USER_CONTROL FOR MAN:
 ## Animation Integration with Other Systems
 
 ### Animations with Patterns
-```sitl
+```sigl
 DRAW WOMAN WITH DRESS(PATTERN: FLORAL) AND ANIMATION(DANCE)
 ANIMATE WOMAN SPIN // Dress pattern rotates with character
 ```
 
 ### Animations with Aliasing
-```sitl
+```sigl
 DEFINE WOMAN AS "dancing_lady" WITH ANIMATION(DANCE, REPEAT: INFINITE)
 DRAW "dancing_lady" AT CENTER
 ANIMATE "dancing_lady" MOVE TO RIGHT // Continues dancing while moving
 ```
 
 ### Animations with Expressions
-```sitl
+```sigl
 ANIMATE MAN WALK WITH EXPRESSION: HAPPY
 ANIMATE WOMAN RUN WITH MOOD: EXCITED
 ```
@@ -251,7 +251,7 @@ ANIMATE WOMAN RUN WITH MOOD: EXCITED
 ## Performance and Optimization
 
 ### Animation Batching
-```sitl
+```sigl
 CREATE ANIMATION BATCH "crowd_movement":
   ANIMATE PERSON1 WALK FROM A TO B
   ANIMATE PERSON2 WALK FROM C TO D
@@ -260,13 +260,13 @@ EXECUTE BATCH WITH OPTIMIZATION HIGH
 ```
 
 ### Frame Rate Control
-```sitl
+```sigl
 SET ANIMATION FRAMERATE 30 // 30 FPS
 SET ANIMATION QUALITY MEDIUM // Balance performance and smoothness
 ```
 
 ### Memory Management
-```sitl
+```sigl
 PRELOAD ANIMATIONS "walk", "run", "wave" // Cache common animations
 CLEANUP ANIMATIONS AFTER SCENE_COMPLETE // Free memory
 ```
@@ -274,21 +274,21 @@ CLEANUP ANIMATIONS AFTER SCENE_COMPLETE // Free memory
 ## Advanced Animation Features
 
 ### Physics-Based Animations
-```sitl
+```sigl
 ANIMATE BALL BOUNCE WITH PHYSICS GRAVITY
 ANIMATE CLOTH SWAY WITH PHYSICS WIND
 ANIMATE WATER FLOW WITH PHYSICS FLUID
 ```
 
 ### Particle Animations
-```sitl
+```sigl
 ANIMATE FIRE FLICKER WITH PARTICLES FLAME
 ANIMATE SMOKE RISE WITH PARTICLES WISPY
 ANIMATE RAIN FALL WITH PARTICLES WATER
 ```
 
 ### Morphing Animations
-```sitl
+```sigl
 ANIMATE CATERPILLAR TRANSFORM TO BUTTERFLY WITH DURATION 5S
 ANIMATE SEED GROW TO TREE WITH STAGES 4
 ```
@@ -296,19 +296,19 @@ ANIMATE SEED GROW TO TREE WITH STAGES 4
 ## Error Handling
 
 ### Invalid Animation Types
-```sitl
+```sigl
 ANIMATE MAN TELEPORT
 // Error: Invalid animation "TELEPORT" for MAN. Available: WALK, RUN, JUMP, etc.
 ```
 
 ### Conflicting Animations
-```sitl
+```sigl
 ANIMATE MAN WALK AND RUN
 // Error: Multiple movement animations specified. Choose one.
 ```
 
 ### Performance Warnings
-```sitl
+```sigl
 ANIMATE 100 ENTITIES SIMULTANEOUSLY
 // Warning: High entity count may impact performance. Consider batching.
 ```
@@ -341,7 +341,7 @@ ANIMATE 100 ENTITIES SIMULTANEOUSLY
 ## Examples and Use Cases
 
 ### Educational Animation
-```sitl
+```sigl
 CREATE SCENE "solar_system":
   DRAW SUN AT CENTER
   DRAW EARTH WITH ANIMATION(ORBIT, AROUND: SUN, PERIOD: 10S)
@@ -349,7 +349,7 @@ CREATE SCENE "solar_system":
 ```
 
 ### Storytelling Animation
-```sitl
+```sigl
 CREATE SCENE "fairy_tale":
   ANIMATE PRINCESS WALK FROM CASTLE TO FOREST
   ON ARRIVAL: ANIMATE DRAGON APPEAR WITH EFFECT SMOKE
@@ -358,7 +358,7 @@ CREATE SCENE "fairy_tale":
 ```
 
 ### Medical Training Animation
-```sitl
+```sigl
 LOAD EXTENSION hospital
 CREATE SCENE "cpr_training":
   ANIMATE INSTRUCTOR DEMONSTRATE CPR_TECHNIQUE

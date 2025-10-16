@@ -1,8 +1,8 @@
-# SITL Implementation Plan
+# SIGL Implementation Plan
 
 ## Executive Summary
 
-This document outlines the comprehensive implementation plan for the SimpleImage Template Language (SITL) system - a sophisticated domain-specific language for generating scene illustrations. The plan includes MVP definition, technology stack selection, detailed task breakdown, architecture design, and implementation timeline.
+This document outlines the comprehensive implementation plan for the Structured Image Generation Language (SIGL) system - a sophisticated domain-specific language for generating scene illustrations. The plan includes MVP definition, technology stack selection, detailed task breakdown, architecture design, and implementation timeline.
 
 ## 1. CURRENT IMPLEMENTATION STATUS (Updated)
 
@@ -54,12 +54,12 @@ This document outlines the comprehensive implementation plan for the SimpleImage
 #### Phase 3: Domain Extensions (HIGH - Week 5-6)
 - ✅ Implement Educational extension with entities
 - ✅ Implement Hospital extension with entities
-- ✅ Add extension loading from SITL code (LOAD EXTENSION)
-- ✅ Create template definition from SITL (DEFINE TEMPLATE)
+- ✅ Add extension loading from SIGL code (LOAD EXTENSION)
+- ✅ Create template definition from SIGL (DEFINE TEMPLATE)
 
 ### 1.2 MVP Success Criteria
 
-1. **Functional Parser**: Successfully parse 90% of core SITL syntax
+1. **Functional Parser**: Successfully parse 90% of core SIGL syntax
 2. **Basic Scene Generation**: Create simple scenes with 2-5 entities
 3. **Export Capability**: Generate PNG images at 1024x768 resolution
 4. **Template System**: Create and reuse basic templates
@@ -92,7 +92,7 @@ This document outlines the comprehensive implementation plan for the SimpleImage
   - Industry-standard parser generator
   - Excellent TypeScript/JavaScript support
   - Powerful error handling and recovery
-  - Supports complex grammar features needed for SITL
+  - Supports complex grammar features needed for SIGL
 - **Alternative**: PEG.js (simpler but less powerful)
 
 #### Rendering Engine: **Fabric.js + Canvas API**
@@ -173,11 +173,11 @@ This document outlines the comprehensive implementation plan for the SimpleImage
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    SITL System Architecture                 │
+│                    SIGL System Architecture                 │
 ├─────────────────────────────────────────────────────────────┤
 │  CLI Interface  │  Web Interface  │  API Server  │  Library │
 ├─────────────────────────────────────────────────────────────┤
-│                     Core SITL Engine                       │
+│                     Core SIGL Engine                       │
 ├─────────────────────────────────────────────────────────────┤
 │ Parser Layer    │ AST Processing  │ Validation  │ Templates │
 ├─────────────────────────────────────────────────────────────┤
@@ -198,9 +198,9 @@ This document outlines the comprehensive implementation plan for the SimpleImage
 #### 3.2.1 Parser Layer
 ```typescript
 interface ParserLayer {
-  lexer: SITLLexer;           // Tokenization
-  parser: SITLParser;         // Syntax analysis
-  visitor: SITLVisitor;       // AST traversal
+  lexer: SIGLLexer;           // Tokenization
+  parser: SIGLParser;         // Syntax analysis
+  visitor: SIGLVisitor;       // AST traversal
   errorHandler: ErrorHandler; // Error reporting
 }
 ```
@@ -265,7 +265,7 @@ interface Extension {
   - Create project structure
 
 - [ ] **ANTLR Grammar Definition** (3 days)
-  - Define core SITL grammar in ANTLR
+  - Define core SIGL grammar in ANTLR
   - Implement lexer rules for tokens
   - Create parser rules for basic syntax
   - Generate TypeScript parser code
@@ -464,7 +464,7 @@ interface Extension {
 
 ## 8. Conclusion
 
-This implementation plan provides a structured approach to building the SITL system, starting with a focused MVP and expanding to a comprehensive scene generation platform. The modular architecture and phased approach ensure manageable development while maintaining flexibility for future enhancements.
+This implementation plan provides a structured approach to building the SIGL system, starting with a focused MVP and expanding to a comprehensive scene generation platform. The modular architecture and phased approach ensure manageable development while maintaining flexibility for future enhancements.
 
 The success of this project depends on:
 1. **Strong foundation**: Robust parser and core systems
@@ -473,4 +473,4 @@ The success of this project depends on:
 4. **User-centric design**: Intuitive syntax and clear documentation
 5. **Performance optimization**: Efficient rendering and export
 
-With proper execution of this plan, the SITL system will provide a powerful, flexible platform for scene illustration generation that can serve both technical and creative users effectively.
+With proper execution of this plan, the SIGL system will provide a powerful, flexible platform for scene illustration generation that can serve both technical and creative users effectively.

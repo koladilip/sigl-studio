@@ -1,9 +1,9 @@
 /**
- * SITL Engine - Core engine implementation
+ * SIGL Engine - Core engine implementation
  */
 
 import type {
-  SITLConfig,
+  SIGLConfig,
   SceneDefinition,
   RenderOptions,
   ExportOptions,
@@ -11,18 +11,18 @@ import type {
 } from './types';
 import { SceneRenderer } from '../rendering/scene-renderer';
 
-export class SITLEngine {
-  private config: SITLConfig;
+export class SIGLEngine {
+  private config: SIGLConfig;
   private initialized: boolean = false;
   private renderer: SceneRenderer;
 
-  constructor(config: SITLConfig) {
+  constructor(config: SIGLConfig) {
     this.config = config;
     this.renderer = new SceneRenderer(config);
   }
 
   /**
-   * Initialize the SITL engine
+   * Initialize the SIGL engine
    */
   async initialize(): Promise<Result<void>> {
     try {
@@ -48,9 +48,9 @@ export class SITLEngine {
   }
 
   /**
-   * Parse SITL code and generate scene definition
+   * Parse SIGL code and generate scene definition
    */
-  async parse(_sitlCode: string): Promise<Result<SceneDefinition>> {
+  async parse(_siglCode: string): Promise<Result<SceneDefinition>> {
     if (!this.initialized) {
       return {
         success: false,
@@ -63,9 +63,9 @@ export class SITLEngine {
     }
 
     try {
-      // TODO: Implement actual parsing logic using _sitlCode
+      // TODO: Implement actual parsing logic using _siglCode
       // For now, create a basic scene structure
-      const codeLength = _sitlCode.length;
+      const codeLength = _siglCode.length;
       
       const scene: SceneDefinition = {
         type: 'scene',
@@ -99,7 +99,7 @@ export class SITLEngine {
         errors: [{
           type: 'parse_error',
           code: 'PARSE_ERROR',
-          message: `Failed to parse SITL code: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          message: `Failed to parse SIGL code: ${error instanceof Error ? error.message : 'Unknown error'}`,
         }],
       };
     }
@@ -193,14 +193,14 @@ export class SITLEngine {
   /**
    * Get current configuration
    */
-  getConfig(): SITLConfig {
+  getConfig(): SIGLConfig {
     return { ...this.config };
   }
 
   /**
    * Update configuration
    */
-  updateConfig(newConfig: Partial<SITLConfig>): void {
+  updateConfig(newConfig: Partial<SIGLConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
 

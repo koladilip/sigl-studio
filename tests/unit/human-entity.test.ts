@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { HumanEntity, HumanAttributes, HumanAnimation, HumanEmotion } from '../../src/entities/human-entity';
-import { EntityDefinition, PositionDefinition } from '../../src/core/types';
+import { HumanEntity, HumanAttributes, HumanAnimation, HumanEmotion } from '../../src/engine/entities/human-entity';
+import { EntityDefinition, PositionDefinition } from '../../src/engine/core/types';
 
 // Helper function to safely cast entity attributes
 function getHumanAttributes(entity: EntityDefinition): HumanAttributes {

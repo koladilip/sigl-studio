@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { EntityFactory, ObjectAttributes, PropAttributes } from '../../src/entities/entity-factory';
-import { HumanAttributes } from '../../src/entities/human-entity';
-import { EntityDefinition, PositionDefinition } from '../../src/core/types';
+import { EntityFactory, ObjectAttributes, PropAttributes } from '../../src/engine/entities/entity-factory';
+import { HumanAttributes } from '../../src/engine/entities/human-entity';
+import { EntityDefinition, PositionDefinition } from '../../src/engine/core/types';
 
 // Helper function to safely cast entity attributes
 function getHumanAttributes(entity: EntityDefinition): HumanAttributes {

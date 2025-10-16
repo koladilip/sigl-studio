@@ -4,10 +4,10 @@
 
 **🚀 [Try Live Demo](https://koladilip.github.io/sigl-studio/)** | [Documentation](docs/README.md) | [Examples](examples/)
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://reactjs.org/)
-[![Three.js](https://img.shields.io/badge/Three.js-0.160-000000.svg)](https://threejs.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://reactjs.org/)
+[![Three.js](https://img.shields.io/badge/Three.js-0.180-000000.svg)](https://threejs.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1-646CFF.svg)](https://vitejs.dev/)
 
 ## 🎨 What is SIGL?
 
@@ -139,11 +139,11 @@ game-template-engine/
 
 | Technology | Purpose |
 |-----------|---------|
-| **React 18** | UI framework |
-| **TypeScript** | Type safety |
-| **Three.js** | 3D rendering engine |
-| **Vite** | Build tool & dev server |
-| **Vitest** | Testing framework |
+| **React 19** | UI framework |
+| **TypeScript 5.6** | Type safety |
+| **Three.js 0.180** | 3D rendering engine |
+| **Vite 7.1** | Build tool & dev server |
+| **Vitest 3.2** | Testing framework |
 
 ## 🎨 Rendering
 
@@ -253,7 +253,7 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+License to be determined - currently in alpha development.
 
 ## 🙏 Acknowledgments
 

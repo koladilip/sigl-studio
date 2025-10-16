@@ -35,8 +35,18 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>🎨 SIGL 3D Scene Generator</h1>
-        <div className="renderer-badge">
-          {rendererType === '3D' ? '🎮 Three.js WebGL' : '🖼️ Canvas 2D'}
+        <div className="header-actions">
+          <a 
+            href="docs/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="docs-link"
+          >
+            📚 Docs
+          </a>
+          <div className="renderer-badge">
+            {rendererType === '3D' ? '🎮 Three.js WebGL' : '🖼️ Canvas 2D'}
+          </div>
         </div>
       </header>
 

@@ -22,6 +22,30 @@
   -webkit-text-fill-color: transparent;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.docs-link {
+  padding: 0.5rem 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s;
+  border: 2px solid #667eea;
+}
+
+.docs-link:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
 .renderer-badge {
   background: #667eea;
   color: white;
